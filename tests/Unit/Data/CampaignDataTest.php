@@ -11,6 +11,7 @@ use LBHurtado\XCampaign\Data\CampaignExecutionData;
 use LBHurtado\XCampaign\Data\CampaignFeatureProfileData;
 use LBHurtado\XCampaign\Data\CampaignImportData;
 use LBHurtado\XCampaign\Data\CampaignRecipientData;
+use LBHurtado\XCampaign\Enums\CampaignStatus;
 
 it('serializes the campaign dto baseline', function () {
     $campaign = new CampaignData(
@@ -34,6 +35,16 @@ it('serializes the campaign dto baseline', function () {
         'scheduledAt' => null,
         'metadata' => ['program_blueprint_reference' => 'blueprint-1'],
     ]);
+});
+
+it('accepts normalized campaign status grammar values', function () {
+    $campaign = new CampaignData(
+        name: 'Payroll Batch 2027-01',
+        status: CampaignStatus::normalize('scheduled')->value,
+    );
+
+    expect($campaign->status)->toBe('scheduled')
+        ->and($campaign->toArray()['status'])->toBe('scheduled');
 });
 
 it('keeps phase zero dto defaults side effect free', function () {
@@ -76,4 +87,3 @@ it('keeps phase zero dto defaults side effect free', function () {
             'metadata' => [],
         ]);
 });
-

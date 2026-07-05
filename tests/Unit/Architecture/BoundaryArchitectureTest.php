@@ -31,3 +31,19 @@ it('does not scaffold routes controllers jobs migrations or execution owners in 
         ->and(is_dir($root.'/src/Wallets'))->toBeFalse();
 });
 
+it('does not introduce campaign execution side effects in phase one a', function () {
+    $source = collect([
+        ...glob(__DIR__.'/../../../src/**/*.php') ?: [],
+        ...glob(__DIR__.'/../../../src/**/**/*.php') ?: [],
+    ])->map(fn (string $file): string => file_get_contents($file) ?: '')->implode("\n");
+
+    expect($source)
+        ->not->toContain('dispatch(')
+        ->not->toContain('Mail::')
+        ->not->toContain('Notification::')
+        ->not->toContain('Http::')
+        ->not->toContain('DB::transaction')
+        ->not->toContain('redeem')
+        ->not->toContain('disburse')
+        ->not->toContain('withdraw');
+});

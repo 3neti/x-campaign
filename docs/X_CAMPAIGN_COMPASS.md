@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 0: Architecture Foundation.
+Wave 5 — Phase 1A: Campaign Core DTO and State Grammar Baseline.
 
 ## Status
 
@@ -27,6 +27,10 @@ Complete.
 - Added model-name scaffolds without persistence behavior.
 - Added architecture, domain model, and test strategy documents.
 - Added Phase 0 Pest coverage for DTO defaults, service-provider binding, and architecture boundaries.
+- Added Phase 1A campaign, audience, and execution status grammar enums.
+- Added `CampaignStateGrammar` for side-effect-free transition checks.
+- Bound `CampaignStateGrammar` in the package service provider.
+- Added Phase 1A Pest coverage for status normalization, fail-closed unknown statuses, transition grammar, service-provider binding, and no-side-effect boundaries.
 
 ## Discoveries
 
@@ -45,6 +49,8 @@ Complete.
 - Phase 0 contains no migrations, routes, controllers, jobs, provider clients, execution calls, notification sends, or money movement.
 - `spatie/laravel-data` is used for DTO baselines to match neighboring packages.
 - Package dependencies are kept minimal: Laravel support, Spatie Data, Pest, and Testbench only.
+- Campaign state grammar is descriptive infrastructure only. It does not execute campaigns, issue Pay Codes, send notifications, write journals, call providers, or mutate wallets.
+- Unknown campaign core statuses fail closed instead of silently falling back to execution-like states.
 
 ## Test Coverage Status
 
@@ -52,10 +58,14 @@ Complete.
 - `php -d memory_limit=1G vendor/bin/pest` passed: 6 tests, 82 assertions.
 - `php -l` passed for modified PHP files under `src`, `tests`, and `config`.
 - Initial non-elevated Pest run failed because sandbox permissions blocked Testbench/Pest cache writes under `vendor`; elevated rerun passed.
+- Phase 1A focused failing baseline was observed before implementation: 5 failed, 5 passed, 86 assertions.
+- Phase 1A focused result after implementation: `13 passed, 121 assertions`.
+- Phase 1A full package result: `13 passed, 121 assertions`.
+- Phase 1A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 1A — Campaign Core DTO and state grammar baseline, before adding persistence.
+Phase 1B — Campaign Core Action Contracts and In-Memory Planning Baseline, before adding persistence.
 
 ## Open Questions
 

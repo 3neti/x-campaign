@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use LBHurtado\XCampaign\Contracts\CampaignFeatureProfileResolver;
+use LBHurtado\XCampaign\Services\CampaignStateGrammar;
 
 it('boots the package service provider and resolves the feature profile resolver', function () {
     $resolver = app(CampaignFeatureProfileResolver::class);
@@ -23,3 +24,6 @@ it('allows feature profile default to come from config', function () {
     expect($profile->name)->toBe('campaign-core');
 });
 
+it('resolves the campaign state grammar from the package container', function () {
+    expect(app(CampaignStateGrammar::class))->toBeInstanceOf(CampaignStateGrammar::class);
+});

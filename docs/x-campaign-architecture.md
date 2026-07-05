@@ -50,3 +50,13 @@ Phase 0 establishes shape only:
 
 No migrations, persistence, routes, jobs, provider clients, Pay Code issuance, notification delivery, campaign execution, or analytics calculations are implemented in Phase 0.
 
+## Phase 1A Boundary
+
+Phase 1A adds campaign core state grammar only:
+
+- campaign status normalization
+- audience status normalization
+- execution status normalization
+- side-effect-free transition checks
+
+The grammar is descriptive infrastructure. It does not execute campaigns, issue Pay Codes, send feedback, write journal records, run jobs, call providers, mutate wallets, or persist state.

@@ -4,9 +4,27 @@
 
 A distribution initiative, such as a payroll batch, educational assistance release, scholarship release, or disaster relief program.
 
+Phase 1A status grammar:
+
+- `draft`
+- `scheduled`
+- `running`
+- `paused`
+- `completed`
+- `cancelled`
+- `archived`
+
 ## CampaignAudience
 
 A collection of recipients targeted by a campaign.
+
+Phase 1A status grammar:
+
+- `draft`
+- `importing`
+- `ready`
+- `locked`
+- `archived`
 
 ## CampaignRecipient
 
@@ -15,6 +33,16 @@ A beneficiary. Recipients are long-lived and should support cumulative recipient
 ## CampaignExecution
 
 A campaign run. A campaign may have many executions over time.
+
+Phase 1A status grammar:
+
+- `planned`
+- `queued`
+- `running`
+- `paused`
+- `completed`
+- `failed`
+- `cancelled`
 
 ## CampaignBatch
 
@@ -31,4 +59,3 @@ An audience ingestion event, such as manual entry, CSV import, API import, or fu
 ## External References
 
 Phase 0 allows references to external execution concepts through contracts and metadata. It does not create campaign-owned voucher templates or claim templates.
-

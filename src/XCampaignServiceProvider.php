@@ -6,6 +6,7 @@ namespace LBHurtado\XCampaign;
 
 use Illuminate\Support\ServiceProvider;
 use LBHurtado\XCampaign\Contracts\CampaignFeatureProfileResolver;
+use LBHurtado\XCampaign\Services\CampaignStateGrammar;
 use LBHurtado\XCampaign\Services\ConfigCampaignFeatureProfileResolver;
 
 class XCampaignServiceProvider extends ServiceProvider
@@ -18,6 +19,8 @@ class XCampaignServiceProvider extends ServiceProvider
             CampaignFeatureProfileResolver::class,
             ConfigCampaignFeatureProfileResolver::class,
         );
+
+        $this->app->singleton(CampaignStateGrammar::class);
     }
 
     public function boot(): void
