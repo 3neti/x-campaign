@@ -134,3 +134,29 @@ it('keeps phase one e read models free of routes persistence execution delivery 
         ->not->toContain('Journal')
         ->not->toContain('Wallet');
 });
+
+it('keeps phase one f repositories in memory without migrations queues issuance delivery or journal ownership', function () {
+    $source = collect([
+        ...glob(__DIR__.'/../../../src/Repositories/*.php') ?: [],
+        __DIR__.'/../../../src/Contracts/CampaignPlanRepository.php',
+    ])->map(fn (string $file): string => file_get_contents($file) ?: '')->implode("\n");
+
+    expect($source)
+        ->not->toContain('extends Model')
+        ->not->toContain('Eloquent')
+        ->not->toContain('DB::')
+        ->not->toContain('Schema::')
+        ->not->toContain('Migration')
+        ->not->toContain('save(')
+        ->not->toContain('create(')
+        ->not->toContain('update(')
+        ->not->toContain('delete(')
+        ->not->toContain('ShouldQueue')
+        ->not->toContain('dispatch(')
+        ->not->toContain('PayCode')
+        ->not->toContain('Voucher')
+        ->not->toContain('Notification::')
+        ->not->toContain('Mail::')
+        ->not->toContain('Journal')
+        ->not->toContain('Wallet');
+});

@@ -110,3 +110,14 @@ Phase 1E adds campaign summary read-model infrastructure:
 - expose execution summary rows with batch and planned-recipient counts
 
 Read models are derived views over existing DTOs. They do not query databases, register routes, persist state, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1F Boundary
+
+Phase 1F adds a campaign planning repository seam:
+
+- store an in-memory campaign plan under a caller-supplied planning key
+- retrieve a plan by key
+- list in-memory plans
+- forget an in-memory plan
+
+This is a repository contract baseline, not persistence. It does not add migrations, database tables, Eloquent queries, routes, jobs, Pay Code generation, notification delivery, journal writes, provider calls, wallet mutation, or money movement.

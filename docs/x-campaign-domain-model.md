@@ -123,3 +123,11 @@ Phase 1E introduces read-only campaign summary views:
 Summary output is represented by `CampaignSummaryData`, with nested `CampaignAudienceSummaryData` and `CampaignExecutionSummaryData`.
 
 Read models are projection helpers over in-memory planning DTOs. They do not load persisted records and they intentionally avoid exposing recipient detail records.
+
+## Campaign Planning Repository
+
+Phase 1F introduces `CampaignPlanRepository` as the seam for future persistence.
+
+The initial implementation, `InMemoryCampaignPlanRepository`, stores `CampaignPlanData` instances under caller-supplied planning keys.
+
+This repository is process-local and non-durable. It exists to stabilize package contracts before migrations or durable storage are introduced.
