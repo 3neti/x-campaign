@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 1A: Campaign Core DTO and State Grammar Baseline.
+Wave 5 — Phase 1B: Campaign Core Action Contracts and In-Memory Planning Baseline.
 
 ## Status
 
@@ -31,6 +31,21 @@ Complete.
 - Added `CampaignStateGrammar` for side-effect-free transition checks.
 - Bound `CampaignStateGrammar` in the package service provider.
 - Added Phase 1A Pest coverage for status normalization, fail-closed unknown statuses, transition grammar, service-provider binding, and no-side-effect boundaries.
+- Added Phase 1B action contracts:
+  - `CreatesCampaignPlans`
+  - `UpdatesCampaignPlans`
+  - `SchedulesCampaignPlans`
+  - `ArchivesCampaignPlans`
+- Added Phase 1B in-memory planning actions:
+  - `CreateCampaignPlan`
+  - `UpdateCampaignPlan`
+  - `ScheduleCampaignPlan`
+  - `ArchiveCampaignPlan`
+- Added planning DTOs:
+  - `CampaignPlanningInputData`
+  - `CampaignPlanData`
+- Bound planning action contracts to in-memory implementations.
+- Added Phase 1B Pest coverage for planning actions, action contract bindings, and no persistence/transport/execution side effects.
 
 ## Discoveries
 
@@ -51,6 +66,7 @@ Complete.
 - Package dependencies are kept minimal: Laravel support, Spatie Data, Pest, and Testbench only.
 - Campaign state grammar is descriptive infrastructure only. It does not execute campaigns, issue Pay Codes, send notifications, write journals, call providers, or mutate wallets.
 - Unknown campaign core statuses fail closed instead of silently falling back to execution-like states.
+- Campaign planning actions are in-memory only. They describe campaign plans and state changes without persistence, queues, distribution execution, notification delivery, journal writes, provider calls, wallet access, or money movement.
 
 ## Test Coverage Status
 
@@ -62,10 +78,16 @@ Complete.
 - Phase 1A focused result after implementation: `13 passed, 121 assertions`.
 - Phase 1A full package result: `13 passed, 121 assertions`.
 - Phase 1A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 1B focused failing baseline was observed before implementation: 5 failed, 4 passed, 35 assertions.
+- Phase 1B focused result after implementation: `9 passed, 73 assertions`.
+- Phase 1B full package result: `19 passed, 171 assertions`.
+- Phase 1B syntax checks passed for `src`, `tests`, and `config`.
+- Phase 1B `composer validate --strict` passed.
+- Phase 1B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 1B — Campaign Core Action Contracts and In-Memory Planning Baseline, before adding persistence.
+Phase 1C — Audience and Recipient Planning Baseline, before adding persistence.
 
 ## Open Questions
 

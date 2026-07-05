@@ -47,3 +47,24 @@ it('does not introduce campaign execution side effects in phase one a', function
         ->not->toContain('disburse')
         ->not->toContain('withdraw');
 });
+
+it('keeps phase one b planning actions free of persistence transport and execution calls', function () {
+    $source = collect([
+        ...glob(__DIR__.'/../../../src/Actions/*.php') ?: [],
+        ...glob(__DIR__.'/../../../src/Services/*.php') ?: [],
+    ])->map(fn (string $file): string => file_get_contents($file) ?: '')->implode("\n");
+
+    expect($source)
+        ->not->toContain('Model::')
+        ->not->toContain('save(')
+        ->not->toContain('create(')
+        ->not->toContain('update(')
+        ->not->toContain('delete(')
+        ->not->toContain('dispatch(')
+        ->not->toContain('Mail::')
+        ->not->toContain('Notification::')
+        ->not->toContain('Http::')
+        ->not->toContain('PayCode')
+        ->not->toContain('Voucher')
+        ->not->toContain('Wallet');
+});

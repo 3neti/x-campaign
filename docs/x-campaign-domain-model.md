@@ -59,3 +59,22 @@ An audience ingestion event, such as manual entry, CSV import, API import, or fu
 ## External References
 
 Phase 0 allows references to external execution concepts through contracts and metadata. It does not create campaign-owned voucher templates or claim templates.
+
+## Campaign Planning
+
+Phase 1B introduces in-memory campaign planning contracts:
+
+- create plan
+- update plan
+- schedule plan
+- archive plan
+
+Planning output is represented by `CampaignPlanData`.
+
+Planning actions are intentionally not persistence actions. They preserve side-effect metadata showing:
+
+- no persistence
+- no Pay Code issuance
+- no feedback delivery
+- no journal writes
+- no money movement

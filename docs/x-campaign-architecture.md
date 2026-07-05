@@ -60,3 +60,14 @@ Phase 1A adds campaign core state grammar only:
 - side-effect-free transition checks
 
 The grammar is descriptive infrastructure. It does not execute campaigns, issue Pay Codes, send feedback, write journal records, run jobs, call providers, mutate wallets, or persist state.
+
+## Phase 1B Boundary
+
+Phase 1B adds campaign planning action contracts and in-memory implementations:
+
+- create campaign plan
+- update campaign plan
+- schedule campaign plan
+- archive campaign plan
+
+These actions return immutable planning DTOs and explicit side-effect metadata. They do not persist plans, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, delete records, or move money.
