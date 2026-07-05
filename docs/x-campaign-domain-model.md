@@ -111,3 +111,15 @@ Execution planning output is represented by `CampaignExecutionPlanData`, which c
 - side-effect metadata
 
 Execution planning does not execute distribution. Batches are not queued jobs and do not issue Pay Codes or send messages.
+
+## Campaign Read Models
+
+Phase 1E introduces read-only campaign summary views:
+
+- campaign-level summary counts
+- audience summary rows
+- execution summary rows
+
+Summary output is represented by `CampaignSummaryData`, with nested `CampaignAudienceSummaryData` and `CampaignExecutionSummaryData`.
+
+Read models are projection helpers over in-memory planning DTOs. They do not load persisted records and they intentionally avoid exposing recipient detail records.

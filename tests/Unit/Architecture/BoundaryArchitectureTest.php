@@ -110,3 +110,27 @@ it('keeps phase one d execution planning free of queues issuance delivery and pe
         ->not->toContain('Http::')
         ->not->toContain('Wallet');
 });
+
+it('keeps phase one e read models free of routes persistence execution delivery and journal ownership', function () {
+    $source = collect([
+        ...glob(__DIR__.'/../../../src/ReadModels/*.php') ?: [],
+        ...glob(__DIR__.'/../../../src/Data/*.php') ?: [],
+    ])->map(fn (string $file): string => file_get_contents($file) ?: '')->implode("\n");
+
+    expect($source)
+        ->not->toContain('Route::')
+        ->not->toContain('Controller')
+        ->not->toContain('extends Model')
+        ->not->toContain('Eloquent')
+        ->not->toContain('save(')
+        ->not->toContain('DB::')
+        ->not->toContain('ShouldQueue')
+        ->not->toContain('dispatch(')
+        ->not->toContain('ExecutionEngine')
+        ->not->toContain('PayCode')
+        ->not->toContain('Voucher')
+        ->not->toContain('Notification::')
+        ->not->toContain('Mail::')
+        ->not->toContain('Journal')
+        ->not->toContain('Wallet');
+});

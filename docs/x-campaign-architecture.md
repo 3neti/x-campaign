@@ -100,3 +100,13 @@ Phase 1D adds campaign execution planning contracts with in-memory implementatio
 Execution planning is still not execution. It does not queue jobs, persist execution records, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
 
 Execution batches are planning partitions only. They exist to describe future scale behavior before introducing queues or persistence.
+
+## Phase 1E Boundary
+
+Phase 1E adds campaign summary read-model infrastructure:
+
+- build a campaign summary from an existing in-memory plan
+- expose audience summary rows without recipient detail records
+- expose execution summary rows with batch and planned-recipient counts
+
+Read models are derived views over existing DTOs. They do not query databases, register routes, persist state, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

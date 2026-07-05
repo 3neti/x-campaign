@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 1D: Campaign Execution Planning Baseline.
+Wave 5 — Phase 1E: Campaign Core Read Model and Summary Baseline.
 
 ## Status
 
@@ -71,6 +71,16 @@ Complete.
   - `CampaignExecutionPlanData`
 - Bound execution planning contracts to in-memory implementations.
 - Added Phase 1D Pest coverage for execution planning, unknown-audience fail-closed behavior, batch planning, invalid batch size rejection, action bindings, and no queue/issuance/delivery/persistence side effects.
+- Added Phase 1E summary read model contract:
+  - `BuildsCampaignSummaries`
+- Added Phase 1E read model:
+  - `CampaignSummaryReadModel`
+- Added summary DTOs:
+  - `CampaignSummaryData`
+  - `CampaignAudienceSummaryData`
+  - `CampaignExecutionSummaryData`
+- Bound the summary read model contract to the read-only implementation.
+- Added Phase 1E Pest coverage for side-effect-free campaign summaries, audience summary rows, execution summary rows, empty-plan summaries, contract binding, and no route/persistence/execution/delivery/journal ownership.
 
 ## Discoveries
 
@@ -96,6 +106,7 @@ Complete.
 - Recipient planning normalizes presentation contact fields only. It is not KYC, identity verification, notification routing, or execution authorization.
 - Campaign execution planning is in-memory only. It does not queue jobs, issue Pay Codes, send feedback, write journals, call providers, persist state, or move money.
 - Execution batches are planning partitions only. They are not queue batches, job batches, delivery batches, or execution records.
+- Campaign read models are derived from existing in-memory planning DTOs only. They do not query persistence, register routes, execute campaigns, deliver feedback, write journals, issue Pay Codes, or expose recipient detail records.
 
 ## Test Coverage Status
 
@@ -125,10 +136,16 @@ Complete.
 - Phase 1D syntax checks passed for `src`, `tests`, and `config`.
 - Phase 1D `composer validate --strict` passed.
 - Phase 1D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 1E focused failing baseline was observed before implementation: 4 failed, 7 passed, 73 assertions.
+- Phase 1E focused result after implementation: `11 passed, 117 assertions`.
+- Phase 1E full package result: `36 passed, 323 assertions`.
+- Phase 1E syntax checks passed for `src`, `tests`, and `config`.
+- Phase 1E `composer validate --strict` passed.
+- Phase 1E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 1E — Campaign Core Read Model and Summary Baseline, before persistence, queues, Pay Code generation, or delivery.
+Phase 1F — Campaign Planning Repository Contract Baseline, before migrations, queues, Pay Code generation, or delivery.
 
 ## Open Questions
 
