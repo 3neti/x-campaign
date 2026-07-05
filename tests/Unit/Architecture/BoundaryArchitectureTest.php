@@ -1,0 +1,33 @@
+<?php
+
+declare(strict_types=1);
+
+it('keeps phase zero free of execution and notification package dependencies', function () {
+    $source = collect([
+        ...glob(__DIR__.'/../../../src/**/*.php') ?: [],
+        ...glob(__DIR__.'/../../../src/**/**/*.php') ?: [],
+    ])->map(fn (string $file): string => file_get_contents($file) ?: '')->implode("\n");
+
+    expect($source)
+        ->not->toContain('LBHurtado\\XChange')
+        ->not->toContain('LBHurtado\\XFeedback')
+        ->not->toContain('LBHurtado\\XJournal')
+        ->not->toContain('LBHurtado\\XAction')
+        ->not->toContain('LBHurtado\\Voucher')
+        ->not->toContain('Bavix\\Wallet')
+        ->not->toContain('Netbank')
+        ->not->toContain('Paynamics');
+});
+
+it('does not scaffold routes controllers jobs migrations or execution owners in phase zero', function () {
+    $root = realpath(__DIR__.'/../../..');
+
+    expect(is_dir($root.'/routes'))->toBeFalse()
+        ->and(is_dir($root.'/database/migrations'))->toBeFalse()
+        ->and(is_dir($root.'/src/Http/Controllers'))->toBeFalse()
+        ->and(is_dir($root.'/src/Jobs'))->toBeFalse()
+        ->and(is_dir($root.'/src/Execution'))->toBeFalse()
+        ->and(is_dir($root.'/src/Payments'))->toBeFalse()
+        ->and(is_dir($root.'/src/Wallets'))->toBeFalse();
+});
+
