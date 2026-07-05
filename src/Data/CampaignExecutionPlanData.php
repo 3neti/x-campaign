@@ -6,18 +6,16 @@ namespace LBHurtado\XCampaign\Data;
 
 use Spatie\LaravelData\Data;
 
-class CampaignPlanData extends Data
+class CampaignExecutionPlanData extends Data
 {
     /**
-     * @param  array<int, CampaignAudiencePlanData>  $audiences
-     * @param  array<int, CampaignExecutionPlanData>  $executions
+     * @param  array<int, CampaignBatchData>  $batches
      * @param  array<string, bool>  $effects
      * @param  array<string, mixed>  $metadata
      */
     public function __construct(
-        public readonly CampaignData $campaign,
-        public readonly array $audiences = [],
-        public readonly array $executions = [],
+        public readonly CampaignExecutionData $execution,
+        public readonly array $batches = [],
         public readonly array $effects = [],
         public readonly array $metadata = [],
     ) {}

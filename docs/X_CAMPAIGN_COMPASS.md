@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 1C: Audience and Recipient Planning Baseline.
+Wave 5 — Phase 1D: Campaign Execution Planning Baseline.
 
 ## Status
 
@@ -60,6 +60,17 @@ Complete.
   - `CampaignRecipientPlanningInputData`
 - Bound audience and recipient planning contracts to in-memory implementations.
 - Added Phase 1C Pest coverage for audience planning, recipient normalization, recipient removal, unknown-audience fail-closed behavior, contract bindings, and no import/persistence/transport side effects.
+- Added Phase 1D execution planning contracts:
+  - `PlansCampaignExecutions`
+  - `PlansCampaignExecutionBatches`
+- Added Phase 1D in-memory planning actions:
+  - `PlanCampaignExecution`
+  - `PlanCampaignExecutionBatches`
+- Added execution planning DTOs:
+  - `CampaignExecutionPlanningInputData`
+  - `CampaignExecutionPlanData`
+- Bound execution planning contracts to in-memory implementations.
+- Added Phase 1D Pest coverage for execution planning, unknown-audience fail-closed behavior, batch planning, invalid batch size rejection, action bindings, and no queue/issuance/delivery/persistence side effects.
 
 ## Discoveries
 
@@ -83,6 +94,8 @@ Complete.
 - Campaign planning actions are in-memory only. They describe campaign plans and state changes without persistence, queues, distribution execution, notification delivery, journal writes, provider calls, wallet access, or money movement.
 - Audience and recipient planning actions are in-memory only. They do not import files, persist recipients, send messages, issue Pay Codes, write journals, call providers, or mutate wallets.
 - Recipient planning normalizes presentation contact fields only. It is not KYC, identity verification, notification routing, or execution authorization.
+- Campaign execution planning is in-memory only. It does not queue jobs, issue Pay Codes, send feedback, write journals, call providers, persist state, or move money.
+- Execution batches are planning partitions only. They are not queue batches, job batches, delivery batches, or execution records.
 
 ## Test Coverage Status
 
@@ -106,10 +119,16 @@ Complete.
 - Phase 1C syntax checks passed for `src`, `tests`, and `config`.
 - Phase 1C `composer validate --strict` passed.
 - Phase 1C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 1D focused failing baseline was observed before implementation: 5 failed, 6 passed, 61 assertions.
+- Phase 1D focused result after implementation: `11 passed, 96 assertions`.
+- Phase 1D full package result: `31 passed, 265 assertions`.
+- Phase 1D syntax checks passed for `src`, `tests`, and `config`.
+- Phase 1D `composer validate --strict` passed.
+- Phase 1D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 1D — Campaign Execution Planning Baseline, before queues, persistence, Pay Code generation, or delivery.
+Phase 1E — Campaign Core Read Model and Summary Baseline, before persistence, queues, Pay Code generation, or delivery.
 
 ## Open Questions
 

@@ -89,3 +89,14 @@ Recipient field normalization is limited to planning presentation:
 - lowercase email values
 
 It is not KYC, notification routing, identity verification, or execution authorization.
+
+## Phase 1D Boundary
+
+Phase 1D adds campaign execution planning contracts with in-memory implementations:
+
+- plan a campaign execution for an existing audience plan
+- partition a planned execution into in-memory batches
+
+Execution planning is still not execution. It does not queue jobs, persist execution records, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+Execution batches are planning partitions only. They exist to describe future scale behavior before introducing queues or persistence.

@@ -89,3 +89,24 @@ it('keeps phase one c audience recipient planning free of imports persistence an
         ->not->toContain('Voucher')
         ->not->toContain('Wallet');
 });
+
+it('keeps phase one d execution planning free of queues issuance delivery and persistence', function () {
+    $source = collect([
+        ...glob(__DIR__.'/../../../src/Actions/*.php') ?: [],
+        ...glob(__DIR__.'/../../../src/Data/*.php') ?: [],
+    ])->map(fn (string $file): string => file_get_contents($file) ?: '')->implode("\n");
+
+    expect($source)
+        ->not->toContain('ShouldQueue')
+        ->not->toContain('Bus::')
+        ->not->toContain('dispatch(')
+        ->not->toContain('Queue::')
+        ->not->toContain('save(')
+        ->not->toContain('DB::')
+        ->not->toContain('PayCode')
+        ->not->toContain('Voucher')
+        ->not->toContain('Notification::')
+        ->not->toContain('Mail::')
+        ->not->toContain('Http::')
+        ->not->toContain('Wallet');
+});

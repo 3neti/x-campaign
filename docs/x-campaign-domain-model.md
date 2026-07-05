@@ -96,3 +96,18 @@ Audience planning output is represented by `CampaignAudiencePlanData`, which con
 Recipient planning accepts `CampaignRecipientPlanningInputData` and produces `CampaignRecipientData` inside the in-memory plan.
 
 This layer intentionally does not import spreadsheets or CSV files yet. File import and bulk ingestion remain future slices.
+
+## Execution Planning
+
+Phase 1D introduces in-memory execution planning:
+
+- plan an execution for a campaign audience
+- partition a planned execution into batches
+
+Execution planning output is represented by `CampaignExecutionPlanData`, which contains:
+
+- `CampaignExecutionData`
+- planned `CampaignBatchData` partitions
+- side-effect metadata
+
+Execution planning does not execute distribution. Batches are not queued jobs and do not issue Pay Codes or send messages.
