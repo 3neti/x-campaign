@@ -5,13 +5,19 @@ declare(strict_types=1);
 namespace LBHurtado\XCampaign;
 
 use Illuminate\Support\ServiceProvider;
+use LBHurtado\XCampaign\Actions\AddAudienceToCampaignPlan;
+use LBHurtado\XCampaign\Actions\AddRecipientToCampaignAudiencePlan;
 use LBHurtado\XCampaign\Actions\ArchiveCampaignPlan;
 use LBHurtado\XCampaign\Actions\CreateCampaignPlan;
+use LBHurtado\XCampaign\Actions\RemoveRecipientFromCampaignAudiencePlan;
 use LBHurtado\XCampaign\Actions\ScheduleCampaignPlan;
 use LBHurtado\XCampaign\Actions\UpdateCampaignPlan;
+use LBHurtado\XCampaign\Contracts\AddsAudiencesToCampaignPlans;
+use LBHurtado\XCampaign\Contracts\AddsRecipientsToCampaignAudiencePlans;
 use LBHurtado\XCampaign\Contracts\ArchivesCampaignPlans;
 use LBHurtado\XCampaign\Contracts\CampaignFeatureProfileResolver;
 use LBHurtado\XCampaign\Contracts\CreatesCampaignPlans;
+use LBHurtado\XCampaign\Contracts\RemovesRecipientsFromCampaignAudiencePlans;
 use LBHurtado\XCampaign\Contracts\SchedulesCampaignPlans;
 use LBHurtado\XCampaign\Contracts\UpdatesCampaignPlans;
 use LBHurtado\XCampaign\Services\CampaignStateGrammar;
@@ -33,6 +39,9 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(UpdatesCampaignPlans::class, UpdateCampaignPlan::class);
         $this->app->singleton(SchedulesCampaignPlans::class, ScheduleCampaignPlan::class);
         $this->app->singleton(ArchivesCampaignPlans::class, ArchiveCampaignPlan::class);
+        $this->app->singleton(AddsAudiencesToCampaignPlans::class, AddAudienceToCampaignPlan::class);
+        $this->app->singleton(AddsRecipientsToCampaignAudiencePlans::class, AddRecipientToCampaignAudiencePlan::class);
+        $this->app->singleton(RemovesRecipientsFromCampaignAudiencePlans::class, RemoveRecipientFromCampaignAudiencePlan::class);
     }
 
     public function boot(): void

@@ -78,3 +78,21 @@ Planning actions are intentionally not persistence actions. They preserve side-e
 - no feedback delivery
 - no journal writes
 - no money movement
+
+## Audience and Recipient Planning
+
+Phase 1C introduces in-memory audience and recipient planning:
+
+- add an audience to a campaign plan
+- add a recipient to an audience plan
+- remove a recipient from an audience plan
+
+Audience planning output is represented by `CampaignAudiencePlanData`, which contains:
+
+- `CampaignAudienceData`
+- planned recipients
+- side-effect metadata
+
+Recipient planning accepts `CampaignRecipientPlanningInputData` and produces `CampaignRecipientData` inside the in-memory plan.
+
+This layer intentionally does not import spreadsheets or CSV files yet. File import and bulk ingestion remain future slices.

@@ -68,3 +68,24 @@ it('keeps phase one b planning actions free of persistence transport and executi
         ->not->toContain('Voucher')
         ->not->toContain('Wallet');
 });
+
+it('keeps phase one c audience recipient planning free of imports persistence and transport', function () {
+    $source = collect([
+        ...glob(__DIR__.'/../../../src/Actions/*.php') ?: [],
+        ...glob(__DIR__.'/../../../src/Data/*.php') ?: [],
+    ])->map(fn (string $file): string => file_get_contents($file) ?: '')->implode("\n");
+
+    expect($source)
+        ->not->toContain('UploadedFile')
+        ->not->toContain('Storage::')
+        ->not->toContain('fopen(')
+        ->not->toContain('file_get_contents(')
+        ->not->toContain('save(')
+        ->not->toContain('dispatch(')
+        ->not->toContain('Mail::')
+        ->not->toContain('Notification::')
+        ->not->toContain('Http::')
+        ->not->toContain('PayCode')
+        ->not->toContain('Voucher')
+        ->not->toContain('Wallet');
+});

@@ -71,3 +71,21 @@ Phase 1B adds campaign planning action contracts and in-memory implementations:
 - archive campaign plan
 
 These actions return immutable planning DTOs and explicit side-effect metadata. They do not persist plans, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, delete records, or move money.
+
+## Phase 1C Boundary
+
+Phase 1C adds audience and recipient planning contracts with in-memory implementations:
+
+- add audience to a campaign plan
+- add recipient to an audience plan
+- remove recipient from an audience plan
+
+These actions update planning DTOs only. They do not import files, parse CSVs, persist audiences or recipients, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+Recipient field normalization is limited to planning presentation:
+
+- trim names and references
+- remove spaces from mobile values
+- lowercase email values
+
+It is not KYC, notification routing, identity verification, or execution authorization.

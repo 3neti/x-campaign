@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 1B: Campaign Core Action Contracts and In-Memory Planning Baseline.
+Wave 5 — Phase 1C: Audience and Recipient Planning Baseline.
 
 ## Status
 
@@ -46,6 +46,20 @@ Complete.
   - `CampaignPlanData`
 - Bound planning action contracts to in-memory implementations.
 - Added Phase 1B Pest coverage for planning actions, action contract bindings, and no persistence/transport/execution side effects.
+- Added Phase 1C audience and recipient planning contracts:
+  - `AddsAudiencesToCampaignPlans`
+  - `AddsRecipientsToCampaignAudiencePlans`
+  - `RemovesRecipientsFromCampaignAudiencePlans`
+- Added Phase 1C in-memory planning actions:
+  - `AddAudienceToCampaignPlan`
+  - `AddRecipientToCampaignAudiencePlan`
+  - `RemoveRecipientFromCampaignAudiencePlan`
+- Added audience and recipient planning DTOs:
+  - `CampaignAudiencePlanData`
+  - `CampaignAudiencePlanningInputData`
+  - `CampaignRecipientPlanningInputData`
+- Bound audience and recipient planning contracts to in-memory implementations.
+- Added Phase 1C Pest coverage for audience planning, recipient normalization, recipient removal, unknown-audience fail-closed behavior, contract bindings, and no import/persistence/transport side effects.
 
 ## Discoveries
 
@@ -67,6 +81,8 @@ Complete.
 - Campaign state grammar is descriptive infrastructure only. It does not execute campaigns, issue Pay Codes, send notifications, write journals, call providers, or mutate wallets.
 - Unknown campaign core statuses fail closed instead of silently falling back to execution-like states.
 - Campaign planning actions are in-memory only. They describe campaign plans and state changes without persistence, queues, distribution execution, notification delivery, journal writes, provider calls, wallet access, or money movement.
+- Audience and recipient planning actions are in-memory only. They do not import files, persist recipients, send messages, issue Pay Codes, write journals, call providers, or mutate wallets.
+- Recipient planning normalizes presentation contact fields only. It is not KYC, identity verification, notification routing, or execution authorization.
 
 ## Test Coverage Status
 
@@ -84,10 +100,16 @@ Complete.
 - Phase 1B syntax checks passed for `src`, `tests`, and `config`.
 - Phase 1B `composer validate --strict` passed.
 - Phase 1B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 1C focused failing baseline was observed before implementation: 5 failed, 5 passed, 48 assertions.
+- Phase 1C focused result after implementation: `10 passed, 80 assertions`.
+- Phase 1C full package result: `25 passed, 216 assertions`.
+- Phase 1C syntax checks passed for `src`, `tests`, and `config`.
+- Phase 1C `composer validate --strict` passed.
+- Phase 1C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 1C — Audience and Recipient Planning Baseline, before adding persistence.
+Phase 1D — Campaign Execution Planning Baseline, before queues, persistence, Pay Code generation, or delivery.
 
 ## Open Questions
 
