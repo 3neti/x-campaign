@@ -166,3 +166,14 @@ Phase 1J adds recipient import row planning:
 - expose explicit no-side-effect metadata
 
 This is row planning, not import execution. It does not read files, parse spreadsheets or CSVs, persist imports, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1K Boundary
+
+Phase 1K adds repository-backed recipient import row workspace integration:
+
+- validate that a planning key exists
+- validate that the target audience exists inside the stored plan
+- compose the recipient import row planner with repository-backed campaign/audience context
+- return row planning metadata with planning key, audience name, and existing recipient count
+
+This is still not ingestion and not audience mutation. It does not read files, parse spreadsheets or CSVs, persist imports, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

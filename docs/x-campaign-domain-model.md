@@ -165,3 +165,9 @@ The initial implementation produces `CampaignRecipientImportRowData`, which cont
 - no-side-effect metadata
 
 This layer intentionally stops before file parsing, persistence, audience mutation, queues, Pay Code generation, delivery, journal writes, or money movement.
+
+## Recipient Import Row Workspace
+
+Phase 1K introduces `CampaignRecipientImportRowWorkspace` as the composition seam between stored campaign planning state and recipient import row planning.
+
+The initial implementation validates the planning key and audience id against the in-memory repository, then delegates to the row planner. It enriches row planning output with campaign/audience context metadata, but it does not attach the row to the audience or mutate recipient state.

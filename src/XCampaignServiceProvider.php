@@ -24,6 +24,7 @@ use LBHurtado\XCampaign\Contracts\CampaignAudienceImportWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignFeatureProfileResolver;
 use LBHurtado\XCampaign\Contracts\CampaignPlanRepository;
 use LBHurtado\XCampaign\Contracts\CampaignPlanningWorkspace;
+use LBHurtado\XCampaign\Contracts\CampaignRecipientImportRowWorkspace;
 use LBHurtado\XCampaign\Contracts\CreatesCampaignPlans;
 use LBHurtado\XCampaign\Contracts\PlansCampaignAudienceImports;
 use LBHurtado\XCampaign\Contracts\PlansCampaignExecutionBatches;
@@ -38,6 +39,7 @@ use LBHurtado\XCampaign\Services\CampaignStateGrammar;
 use LBHurtado\XCampaign\Services\ConfigCampaignFeatureProfileResolver;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignPlanningWorkspace;
+use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignRecipientImportRowWorkspace;
 
 class XCampaignServiceProvider extends ServiceProvider
 {
@@ -66,6 +68,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(CampaignPlanRepository::class, InMemoryCampaignPlanRepository::class);
         $this->app->singleton(CampaignPlanningWorkspace::class, RepositoryBackedCampaignPlanningWorkspace::class);
         $this->app->singleton(CampaignAudienceImportWorkspace::class, RepositoryBackedCampaignAudienceImportWorkspace::class);
+        $this->app->singleton(CampaignRecipientImportRowWorkspace::class, RepositoryBackedCampaignRecipientImportRowWorkspace::class);
     }
 
     public function boot(): void
