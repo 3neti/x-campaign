@@ -131,3 +131,9 @@ Phase 1F introduces `CampaignPlanRepository` as the seam for future persistence.
 The initial implementation, `InMemoryCampaignPlanRepository`, stores `CampaignPlanData` instances under caller-supplied planning keys.
 
 This repository is process-local and non-durable. It exists to stabilize package contracts before migrations or durable storage are introduced.
+
+## Campaign Planning Workspace
+
+Phase 1G introduces `CampaignPlanningWorkspace` as the composition seam over planning actions, repository state, and summary read models.
+
+The initial implementation, `RepositoryBackedCampaignPlanningWorkspace`, uses the in-memory repository and existing planning actions. It does not introduce persistence or execution behavior.

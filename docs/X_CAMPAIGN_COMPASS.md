@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 1F: Campaign Planning Repository Contract Baseline.
+Wave 5 — Phase 1G: Campaign Planning Repository Integration Baseline.
 
 ## Status
 
@@ -87,6 +87,12 @@ Complete.
   - `InMemoryCampaignPlanRepository`
 - Bound the planning repository contract to the in-memory baseline.
 - Added Phase 1F Pest coverage for storing, retrieving, listing, forgetting, empty-key rejection, contract binding, and no migrations/queues/issuance/delivery/journal ownership.
+- Added Phase 1G campaign planning workspace contract:
+  - `CampaignPlanningWorkspace`
+- Added Phase 1G repository-backed workspace:
+  - `RepositoryBackedCampaignPlanningWorkspace`
+- Bound the planning workspace contract to the repository-backed implementation.
+- Added Phase 1G Pest coverage for create/store, update, schedule, archive, summary, missing-key fail-closed behavior, binding, and no migrations/queues/issuance/delivery/journal ownership.
 
 ## Discoveries
 
@@ -114,6 +120,7 @@ Complete.
 - Execution batches are planning partitions only. They are not queue batches, job batches, delivery batches, or execution records.
 - Campaign read models are derived from existing in-memory planning DTOs only. They do not query persistence, register routes, execute campaigns, deliver feedback, write journals, issue Pay Codes, or expose recipient detail records.
 - Campaign planning repositories are introduced as contracts before persistence. The Phase 1F implementation is process-local and in-memory only; it does not create tables, use Eloquent, queue work, issue Pay Codes, send feedback, write journals, or move money.
+- Campaign planning workspace integration composes existing planning actions, repository state, and read models. It is not a controller, API, workflow executor, persistence layer, queue layer, delivery layer, journal writer, or Pay Code issuer.
 
 ## Test Coverage Status
 
@@ -155,10 +162,16 @@ Complete.
 - Phase 1F syntax checks passed for `src`, `tests`, and `config`.
 - Phase 1F `composer validate --strict` passed.
 - Phase 1F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 1G focused failing baseline was observed before implementation: 5 failed, 9 passed, 104 assertions.
+- Phase 1G focused result after implementation: `14 passed, 135 assertions`.
+- Phase 1G full package result: `48 passed, 413 assertions`.
+- Phase 1G syntax checks passed for `src`, `tests`, and `config`.
+- Phase 1G `composer validate --strict` passed.
+- Phase 1G formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 1G — Campaign Planning Repository Integration Baseline, before migrations, queues, Pay Code generation, or delivery.
+Phase 1H — Audience Import Contract Baseline, before file parsing, migrations, queues, Pay Code generation, or delivery.
 
 ## Open Questions
 

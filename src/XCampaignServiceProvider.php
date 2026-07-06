@@ -20,6 +20,7 @@ use LBHurtado\XCampaign\Contracts\ArchivesCampaignPlans;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignSummaries;
 use LBHurtado\XCampaign\Contracts\CampaignFeatureProfileResolver;
 use LBHurtado\XCampaign\Contracts\CampaignPlanRepository;
+use LBHurtado\XCampaign\Contracts\CampaignPlanningWorkspace;
 use LBHurtado\XCampaign\Contracts\CreatesCampaignPlans;
 use LBHurtado\XCampaign\Contracts\PlansCampaignExecutionBatches;
 use LBHurtado\XCampaign\Contracts\PlansCampaignExecutions;
@@ -30,6 +31,7 @@ use LBHurtado\XCampaign\ReadModels\CampaignSummaryReadModel;
 use LBHurtado\XCampaign\Repositories\InMemoryCampaignPlanRepository;
 use LBHurtado\XCampaign\Services\CampaignStateGrammar;
 use LBHurtado\XCampaign\Services\ConfigCampaignFeatureProfileResolver;
+use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignPlanningWorkspace;
 
 class XCampaignServiceProvider extends ServiceProvider
 {
@@ -54,6 +56,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(PlansCampaignExecutionBatches::class, PlanCampaignExecutionBatches::class);
         $this->app->singleton(BuildsCampaignSummaries::class, CampaignSummaryReadModel::class);
         $this->app->singleton(CampaignPlanRepository::class, InMemoryCampaignPlanRepository::class);
+        $this->app->singleton(CampaignPlanningWorkspace::class, RepositoryBackedCampaignPlanningWorkspace::class);
     }
 
     public function boot(): void

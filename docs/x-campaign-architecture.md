@@ -121,3 +121,14 @@ Phase 1F adds a campaign planning repository seam:
 - forget an in-memory plan
 
 This is a repository contract baseline, not persistence. It does not add migrations, database tables, Eloquent queries, routes, jobs, Pay Code generation, notification delivery, journal writes, provider calls, wallet mutation, or money movement.
+
+## Phase 1G Boundary
+
+Phase 1G adds a repository-backed campaign planning workspace:
+
+- create a plan and store it under a caller-supplied key
+- retrieve stored planning state
+- update, schedule, and archive stored plans through existing planning actions
+- produce summaries from stored plans through the existing summary read model
+
+The workspace is a composition seam only. It does not add routes, controllers, migrations, database persistence, queue dispatching, Pay Code generation, notification delivery, journal writes, provider calls, wallet mutation, or money movement.
