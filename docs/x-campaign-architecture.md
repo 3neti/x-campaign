@@ -143,3 +143,14 @@ Phase 1H adds audience import planning:
 - return explicit no-side-effect metadata
 
 Audience import planning is not ingestion. It does not read files, parse rows, persist imports, create recipients, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1I Boundary
+
+Phase 1I adds repository-backed audience import workspace integration:
+
+- validate that a planning key exists
+- validate that the target audience exists inside the stored plan
+- compose the audience import planner with repository-backed campaign/audience context
+- return audience import plan metadata with planning key and audience name
+
+This is still not ingestion. It does not read files, parse rows, persist imports, create recipients, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

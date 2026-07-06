@@ -143,3 +143,9 @@ The initial implementation, `RepositoryBackedCampaignPlanningWorkspace`, uses th
 Phase 1H introduces `PlansCampaignAudienceImports` as the contract for describing audience import intent.
 
 The initial implementation produces `CampaignAudienceImportPlanData` around `CampaignImportData`. It captures planned source metadata only and does not parse files or create recipients.
+
+## Audience Import Workspace
+
+Phase 1I introduces `CampaignAudienceImportWorkspace` as the composition seam between stored campaign planning state and audience import planning.
+
+The initial implementation validates the planning key and audience id against the in-memory repository, then delegates to the import planner. It does not parse files or mutate recipient state.
