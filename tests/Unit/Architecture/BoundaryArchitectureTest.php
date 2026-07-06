@@ -184,3 +184,34 @@ it('keeps phase one g repository integration free of migrations queues issuance 
         ->not->toContain('Journal')
         ->not->toContain('Wallet');
 });
+
+it('keeps phase one h audience import planning free of file parsing persistence queues delivery and issuance', function () {
+    $source = collect([
+        __DIR__.'/../../../src/Actions/PlanCampaignAudienceImport.php',
+        __DIR__.'/../../../src/Contracts/PlansCampaignAudienceImports.php',
+        __DIR__.'/../../../src/Data/CampaignAudienceImportPlanningInputData.php',
+        __DIR__.'/../../../src/Data/CampaignAudienceImportPlanData.php',
+    ])->filter(fn (string $file): bool => is_file($file))
+        ->map(fn (string $file): string => file_get_contents($file) ?: '')
+        ->implode("\n");
+
+    expect($source)
+        ->not->toContain('UploadedFile')
+        ->not->toContain('SplFileObject')
+        ->not->toContain('Storage::')
+        ->not->toContain('fopen(')
+        ->not->toContain('file_get_contents(')
+        ->not->toContain('str_getcsv')
+        ->not->toContain('League\\Csv')
+        ->not->toContain('DB::')
+        ->not->toContain('Schema::')
+        ->not->toContain('save(')
+        ->not->toContain('ShouldQueue')
+        ->not->toContain('dispatch(')
+        ->not->toContain('PayCode')
+        ->not->toContain('Voucher')
+        ->not->toContain('Notification::')
+        ->not->toContain('Mail::')
+        ->not->toContain('Journal')
+        ->not->toContain('Wallet');
+});

@@ -137,3 +137,9 @@ This repository is process-local and non-durable. It exists to stabilize package
 Phase 1G introduces `CampaignPlanningWorkspace` as the composition seam over planning actions, repository state, and summary read models.
 
 The initial implementation, `RepositoryBackedCampaignPlanningWorkspace`, uses the in-memory repository and existing planning actions. It does not introduce persistence or execution behavior.
+
+## Audience Import Planning
+
+Phase 1H introduces `PlansCampaignAudienceImports` as the contract for describing audience import intent.
+
+The initial implementation produces `CampaignAudienceImportPlanData` around `CampaignImportData`. It captures planned source metadata only and does not parse files or create recipients.

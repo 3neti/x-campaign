@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 1G: Campaign Planning Repository Integration Baseline.
+Wave 5 — Phase 1H: Audience Import Contract Baseline.
 
 ## Status
 
@@ -93,6 +93,15 @@ Complete.
   - `RepositoryBackedCampaignPlanningWorkspace`
 - Bound the planning workspace contract to the repository-backed implementation.
 - Added Phase 1G Pest coverage for create/store, update, schedule, archive, summary, missing-key fail-closed behavior, binding, and no migrations/queues/issuance/delivery/journal ownership.
+- Added Phase 1H audience import planning contract:
+  - `PlansCampaignAudienceImports`
+- Added Phase 1H audience import planning action:
+  - `PlanCampaignAudienceImport`
+- Added audience import planning DTOs:
+  - `CampaignAudienceImportPlanningInputData`
+  - `CampaignAudienceImportPlanData`
+- Bound the audience import planning contract to the non-parsing baseline implementation.
+- Added Phase 1H Pest coverage for import-intent planning, manual defaults, empty-audience fail-closed behavior, binding, and no file parsing/persistence/queues/issuance/delivery behavior.
 
 ## Discoveries
 
@@ -121,6 +130,7 @@ Complete.
 - Campaign read models are derived from existing in-memory planning DTOs only. They do not query persistence, register routes, execute campaigns, deliver feedback, write journals, issue Pay Codes, or expose recipient detail records.
 - Campaign planning repositories are introduced as contracts before persistence. The Phase 1F implementation is process-local and in-memory only; it does not create tables, use Eloquent, queue work, issue Pay Codes, send feedback, write journals, or move money.
 - Campaign planning workspace integration composes existing planning actions, repository state, and read models. It is not a controller, API, workflow executor, persistence layer, queue layer, delivery layer, journal writer, or Pay Code issuer.
+- Audience import planning records import intent only. Phase 1H does not read files, parse rows, persist imports, create recipients, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
 
 ## Test Coverage Status
 
@@ -168,10 +178,16 @@ Complete.
 - Phase 1G syntax checks passed for `src`, `tests`, and `config`.
 - Phase 1G `composer validate --strict` passed.
 - Phase 1G formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 1H focused failing baseline was observed before implementation: 4 failed, 10 passed, 123 assertions.
+- Phase 1H focused result after implementation: `14 passed, 155 assertions`.
+- Phase 1H full package result: `53 passed, 464 assertions`.
+- Phase 1H syntax checks passed for `src`, `tests`, and `config`.
+- Phase 1H `composer validate --strict` passed.
+- Phase 1H formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 1H — Audience Import Contract Baseline, before file parsing, migrations, queues, Pay Code generation, or delivery.
+Phase 1I — Audience Import Workspace Integration Baseline, before file parsing, migrations, queues, Pay Code generation, or delivery.
 
 ## Open Questions
 

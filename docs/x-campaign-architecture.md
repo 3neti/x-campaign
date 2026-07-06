@@ -132,3 +132,14 @@ Phase 1G adds a repository-backed campaign planning workspace:
 - produce summaries from stored plans through the existing summary read model
 
 The workspace is a composition seam only. It does not add routes, controllers, migrations, database persistence, queue dispatching, Pay Code generation, notification delivery, journal writes, provider calls, wallet mutation, or money movement.
+
+## Phase 1H Boundary
+
+Phase 1H adds audience import planning:
+
+- describe an intended audience import
+- capture source type and source reference metadata
+- capture expected recipient count and column names
+- return explicit no-side-effect metadata
+
+Audience import planning is not ingestion. It does not read files, parse rows, persist imports, create recipients, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
