@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 1I: Audience Import Workspace Integration Baseline.
+Wave 5 — Phase 1J: Recipient Import Row Contract Baseline.
 
 ## Status
 
@@ -108,6 +108,15 @@ Complete.
   - `RepositoryBackedCampaignAudienceImportWorkspace`
 - Bound the audience import workspace contract to the repository-backed non-parsing implementation.
 - Added Phase 1I Pest coverage for planning imports against stored campaign audiences, missing planning keys, missing audiences, binding, and no file parsing/persistence/queues/issuance/delivery behavior.
+- Added Phase 1J recipient import row planning contract:
+  - `PlansCampaignRecipientImportRows`
+- Added Phase 1J recipient import row planner:
+  - `PlanCampaignRecipientImportRow`
+- Added recipient import row DTOs:
+  - `CampaignRecipientImportRowPlanningInputData`
+  - `CampaignRecipientImportRowData`
+- Bound the recipient import row planning contract to the non-importing implementation.
+- Added Phase 1J Pest coverage for row normalization, common aliases, invalid row diagnostics, binding, and no file parsing/persistence/queues/issuance/delivery behavior.
 
 ## Discoveries
 
@@ -138,6 +147,7 @@ Complete.
 - Campaign planning workspace integration composes existing planning actions, repository state, and read models. It is not a controller, API, workflow executor, persistence layer, queue layer, delivery layer, journal writer, or Pay Code issuer.
 - Audience import planning records import intent only. Phase 1H does not read files, parse rows, persist imports, create recipients, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
 - Audience import workspace integration validates import intent against stored in-memory campaign/audience plans. It still does not read files, parse rows, persist imports, create recipients, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
+- Recipient import row planning normalizes one raw row array into recipient planning data, row status, diagnostics, and side-effect metadata. It does not parse files, persist recipients, attach recipients to audiences, queue work, issue Pay Codes, send feedback, write journals, or move money.
 
 ## Test Coverage Status
 
@@ -197,10 +207,16 @@ Complete.
 - Phase 1I syntax checks passed for `src`, `tests`, and `config`.
 - Phase 1I `composer validate --strict` passed.
 - Phase 1I formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 1J focused failing baseline was observed before implementation: 4 failed, 12 passed, 160 assertions.
+- Phase 1J focused result after implementation: `16 passed, 199 assertions`.
+- Phase 1J full package result: `63 passed, 567 assertions`.
+- Phase 1J syntax checks passed for `src`, `tests`, and `config`.
+- Phase 1J `composer validate --strict` passed.
+- Phase 1J formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 1J — Recipient Import Row Contract Baseline, before file parsing, migrations, queues, Pay Code generation, or delivery.
+Phase 1K — Recipient Import Row Workspace Integration Baseline, before file parsing, migrations, queues, Pay Code generation, or delivery.
 
 ## Open Questions
 

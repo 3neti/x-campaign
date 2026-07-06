@@ -245,3 +245,35 @@ it('keeps phase one i audience import workspace integration free of file parsing
         ->not->toContain('Journal')
         ->not->toContain('Wallet');
 });
+
+it('keeps phase one j recipient import row planning free of file parsing persistence queues delivery and issuance', function () {
+    $source = collect([
+        __DIR__.'/../../../src/Actions/PlanCampaignRecipientImportRow.php',
+        __DIR__.'/../../../src/Contracts/PlansCampaignRecipientImportRows.php',
+        __DIR__.'/../../../src/Data/CampaignRecipientImportRowPlanningInputData.php',
+        __DIR__.'/../../../src/Data/CampaignRecipientImportRowData.php',
+    ])->filter(fn (string $file): bool => is_file($file))
+        ->map(fn (string $file): string => file_get_contents($file) ?: '')
+        ->implode("\n");
+
+    expect($source)
+        ->not->toContain('UploadedFile')
+        ->not->toContain('SplFileObject')
+        ->not->toContain('Storage::')
+        ->not->toContain('fopen(')
+        ->not->toContain('file_get_contents(')
+        ->not->toContain('str_getcsv')
+        ->not->toContain('League\\Csv')
+        ->not->toContain('DB::')
+        ->not->toContain('Schema::')
+        ->not->toContain('Migration')
+        ->not->toContain('save(')
+        ->not->toContain('ShouldQueue')
+        ->not->toContain('dispatch(')
+        ->not->toContain('PayCode')
+        ->not->toContain('Voucher')
+        ->not->toContain('Notification::')
+        ->not->toContain('Mail::')
+        ->not->toContain('Journal')
+        ->not->toContain('Wallet');
+});

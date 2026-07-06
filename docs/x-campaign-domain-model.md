@@ -149,3 +149,19 @@ The initial implementation produces `CampaignAudienceImportPlanData` around `Cam
 Phase 1I introduces `CampaignAudienceImportWorkspace` as the composition seam between stored campaign planning state and audience import planning.
 
 The initial implementation validates the planning key and audience id against the in-memory repository, then delegates to the import planner. It does not parse files or mutate recipient state.
+
+## Recipient Import Row Planning
+
+Phase 1J introduces `PlansCampaignRecipientImportRows` as the contract for normalizing a single raw recipient row into campaign recipient planning data.
+
+The initial implementation produces `CampaignRecipientImportRowData`, which contains:
+
+- import and audience references
+- row number
+- row status
+- normalized `CampaignRecipientPlanningInputData`
+- raw row data
+- validation diagnostics
+- no-side-effect metadata
+
+This layer intentionally stops before file parsing, persistence, audience mutation, queues, Pay Code generation, delivery, journal writes, or money movement.

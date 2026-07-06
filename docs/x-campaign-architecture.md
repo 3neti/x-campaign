@@ -154,3 +154,15 @@ Phase 1I adds repository-backed audience import workspace integration:
 - return audience import plan metadata with planning key and audience name
 
 This is still not ingestion. It does not read files, parse rows, persist imports, create recipients, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1J Boundary
+
+Phase 1J adds recipient import row planning:
+
+- normalize one raw row array into recipient planning input
+- support common recipient column aliases
+- return row status and validation diagnostics
+- preserve raw row data for later operator review
+- expose explicit no-side-effect metadata
+
+This is row planning, not import execution. It does not read files, parse spreadsheets or CSVs, persist imports, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
