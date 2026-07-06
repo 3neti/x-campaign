@@ -171,3 +171,11 @@ This layer intentionally stops before file parsing, persistence, audience mutati
 Phase 1K introduces `CampaignRecipientImportRowWorkspace` as the composition seam between stored campaign planning state and recipient import row planning.
 
 The initial implementation validates the planning key and audience id against the in-memory repository, then delegates to the row planner. It enriches row planning output with campaign/audience context metadata, but it does not attach the row to the audience or mutate recipient state.
+
+## Audience Import Row Collection Planning
+
+Phase 1L introduces `PlansCampaignAudienceImportRowCollections` as the contract for planning an already-materialized collection of raw recipient rows.
+
+The initial implementation delegates each row to `CampaignRecipientImportRowWorkspace` and returns `CampaignAudienceImportRowCollectionPlanData` with row-level results, total row counts, valid/invalid counts, and row-number diagnostics.
+
+This layer intentionally assumes row arrays already exist in memory. It does not parse files, persist imports, attach recipients, queue work, issue Pay Codes, deliver feedback, write journals, or move money.

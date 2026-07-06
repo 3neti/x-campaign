@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 1K: Recipient Import Row Workspace Integration Baseline.
+Wave 5 — Phase 1L: Audience Import Row Collection Planning Baseline.
 
 ## Status
 
@@ -123,6 +123,15 @@ Complete.
   - `RepositoryBackedCampaignRecipientImportRowWorkspace`
 - Bound the recipient import row workspace contract to the repository-backed non-importing implementation.
 - Added Phase 1K Pest coverage for planning rows against stored campaign audiences, invalid-row diagnostics with validated context, missing planning keys, missing audiences, binding, and no file parsing/persistence/queues/issuance/delivery behavior.
+- Added Phase 1L audience import row collection planning contract:
+  - `PlansCampaignAudienceImportRowCollections`
+- Added Phase 1L audience import row collection planner:
+  - `PlanCampaignAudienceImportRowCollection`
+- Added audience import row collection DTOs:
+  - `CampaignAudienceImportRowCollectionPlanningInputData`
+  - `CampaignAudienceImportRowCollectionPlanData`
+- Bound the audience import row collection planning contract to the non-importing implementation.
+- Added Phase 1L Pest coverage for planning in-memory row collections, valid/invalid row summaries, empty collections, context validation handoff, binding, and no file parsing/persistence/queues/issuance/delivery behavior.
 
 ## Discoveries
 
@@ -155,6 +164,7 @@ Complete.
 - Audience import workspace integration validates import intent against stored in-memory campaign/audience plans. It still does not read files, parse rows, persist imports, create recipients, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
 - Recipient import row planning normalizes one raw row array into recipient planning data, row status, diagnostics, and side-effect metadata. It does not parse files, persist recipients, attach recipients to audiences, queue work, issue Pay Codes, send feedback, write journals, or move money.
 - Recipient import row workspace integration validates row planning against stored in-memory campaign/audience context. It still does not parse files, persist recipients, attach recipients to audiences, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
+- Audience import row collection planning composes the recipient row workspace across in-memory row arrays and returns aggregate row counts/diagnostics. It does not read files, parse files, persist imports, attach recipients to audiences, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
 
 ## Test Coverage Status
 
@@ -226,10 +236,16 @@ Complete.
 - Phase 1K syntax checks passed for `src`, `tests`, and `config`.
 - Phase 1K `composer validate --strict` passed.
 - Phase 1K formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 1L focused failing baseline was observed before implementation: 4 failed, 14 passed, 199 assertions.
+- Phase 1L focused result after implementation: `18 passed, 244 assertions`.
+- Phase 1L full package result: `74 passed, 687 assertions`.
+- Phase 1L syntax checks passed for `src`, `tests`, and `config`.
+- Phase 1L `composer validate --strict` passed.
+- Phase 1L formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 1L — Audience Import Row Collection Planning Baseline, before file parsing, migrations, queues, Pay Code generation, or delivery.
+Phase 1M — Audience Import Review Summary Baseline, before file parsing, migrations, queues, Pay Code generation, or delivery.
 
 ## Open Questions
 

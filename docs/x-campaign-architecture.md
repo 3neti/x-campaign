@@ -177,3 +177,15 @@ Phase 1K adds repository-backed recipient import row workspace integration:
 - return row planning metadata with planning key, audience name, and existing recipient count
 
 This is still not ingestion and not audience mutation. It does not read files, parse spreadsheets or CSVs, persist imports, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1L Boundary
+
+Phase 1L adds audience import row collection planning:
+
+- accept an already in-memory collection of raw recipient row arrays
+- delegate each row to the recipient import row workspace
+- preserve row-level diagnostics
+- summarize total, valid, and invalid row counts
+- expose valid and invalid row numbers for later review
+
+This is collection planning, not file ingestion. It does not read files, parse spreadsheets or CSVs, persist imports, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
