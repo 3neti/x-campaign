@@ -179,3 +179,11 @@ Phase 1L introduces `PlansCampaignAudienceImportRowCollections` as the contract 
 The initial implementation delegates each row to `CampaignRecipientImportRowWorkspace` and returns `CampaignAudienceImportRowCollectionPlanData` with row-level results, total row counts, valid/invalid counts, and row-number diagnostics.
 
 This layer intentionally assumes row arrays already exist in memory. It does not parse files, persist imports, attach recipients, queue work, issue Pay Codes, deliver feedback, write journals, or move money.
+
+## Audience Import Review Summary
+
+Phase 1M introduces `BuildsCampaignAudienceImportReviewSummaries` as the contract for projecting a row collection plan into an operator-review summary.
+
+The initial implementation returns `CampaignAudienceImportReviewSummaryData` with import/audience references, review status, counts, row-number groups, and `CampaignAudienceImportReviewRowIssueData` entries for invalid rows.
+
+This layer is read-only. It does not approve imports, mutate audiences, attach recipients, persist state, queue work, issue Pay Codes, deliver feedback, write journals, or move money.

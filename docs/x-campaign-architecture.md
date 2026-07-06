@@ -189,3 +189,15 @@ Phase 1L adds audience import row collection planning:
 - expose valid and invalid row numbers for later review
 
 This is collection planning, not file ingestion. It does not read files, parse spreadsheets or CSVs, persist imports, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1M Boundary
+
+Phase 1M adds audience import review summary read models:
+
+- project a row collection plan into review status
+- expose total, valid, and invalid row counts
+- expose valid and invalid row numbers
+- expose row-level validation issues for operator review
+- mark all-valid non-empty collections as ready for approval
+
+This is a read-only review projection, not approval or ingestion. It does not read files, parse spreadsheets or CSVs, persist imports, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
