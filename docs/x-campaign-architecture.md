@@ -239,3 +239,15 @@ Phase 1P adds approved import recipient attachment planning:
 - expose attachable row numbers, blocked row numbers, blockers, and effect metadata
 
 This is an attachment plan, not recipient mutation. It does not persist approval state, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1Q Boundary
+
+Phase 1Q adds approved import recipient attachment workspace integration:
+
+- compose the audience import approval workspace
+- compose the recipient attachment planner
+- return approval context and attachment readiness together
+- preserve fail-closed planning key and audience validation from the approval workspace
+- expose workspace-level effect metadata
+
+This is a workspace baseline, not recipient mutation. It does not persist approval state, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

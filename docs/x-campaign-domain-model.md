@@ -211,3 +211,11 @@ Phase 1P introduces `PlansCampaignAudienceImportRecipientAttachments` as the con
 The initial implementation returns `CampaignAudienceImportRecipientAttachmentPlanData` with attachable recipient planning inputs, attachable row numbers, blocked row numbers, blockers, effect flags, and context metadata.
 
 This layer plans the next mutation boundary only. It does not attach recipients, persist state, queue work, issue Pay Codes, deliver feedback, write journals, or move money.
+
+## Audience Import Recipient Attachment Workspace
+
+Phase 1Q introduces `CampaignAudienceImportRecipientAttachmentWorkspace` as the composition seam between approval workspace planning and recipient attachment planning.
+
+The initial implementation returns `CampaignAudienceImportRecipientAttachmentWorkspaceResultData` with the approval workspace result, attachment plan, effect flags, and context metadata.
+
+This layer keeps approval and attachment readiness together for later operator or host integration. It does not attach recipients, persist state, queue work, issue Pay Codes, deliver feedback, write journals, or move money.
