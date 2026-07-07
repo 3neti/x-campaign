@@ -299,3 +299,15 @@ Phase 1U adds approved import recipient attachment mutation summaries:
 - expose a contract suitable for later operator or Cockpit read-model composition
 
 This is a read-model baseline, not an execution or mutation surface. It does not trigger recipient attachment, create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1V Boundary
+
+Phase 1V adds campaign audience import attachment operator read-model aggregation:
+
+- consume existing recipient attachment mutation summaries
+- aggregate import counts by status
+- aggregate row counts, attached rows, blocked rows, and recipient deltas
+- preserve blocker visibility for operator attention
+- expose a read-only overview suitable for later workspace or Cockpit composition
+
+This is an operator read-model baseline, not an execution, routing, persistence, or delivery surface. It does not trigger recipient attachment, create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

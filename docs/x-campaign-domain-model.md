@@ -251,3 +251,11 @@ Phase 1U introduces `BuildsCampaignAudienceImportRecipientAttachmentMutationSumm
 The initial implementation returns `CampaignAudienceImportRecipientAttachmentMutationSummaryData` with import/audience identifiers, summary status, decision status, mutation status, row counts, recipient count deltas, readiness, blockers, effect flags, and context metadata.
 
 This layer is projection-only. It does not trigger attachment mutation, persist to a database, create migrations, queue work, issue Pay Codes, deliver feedback, write journals, call providers, or move money.
+
+## Audience Import Attachment Operator Read Model
+
+Phase 1V introduces `BuildsCampaignAudienceImportAttachmentOperatorReadModels` as the contract for aggregating recipient attachment mutation summaries into an operator-facing overview.
+
+The initial implementation returns `CampaignAudienceImportAttachmentOperatorReadModelData` with campaign/audience identifiers, aggregate status, import counts, row counts, recipient deltas, summary rows, blockers, effect flags, and context metadata.
+
+This layer is projection-only. It does not trigger attachment mutation, persist to a database, create migrations, queue work, issue Pay Codes, deliver feedback, write journals, call providers, or move money.
