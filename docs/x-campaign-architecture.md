@@ -288,3 +288,14 @@ Phase 1T adds approved import recipient attachment mutation workspace integratio
 - preserve fail-closed planning key and audience validation through the underlying workspace
 
 This is end-to-end in-memory orchestration, not durable ingestion. It may mutate only process-local planning state through the in-memory repository. It does not create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1U Boundary
+
+Phase 1U adds approved import recipient attachment mutation summaries:
+
+- consume an existing recipient attachment mutation workspace result
+- expose attachment, decision, mutation, row-count, recipient-count, and blocker summaries
+- preserve read-only effect metadata
+- expose a contract suitable for later operator or Cockpit read-model composition
+
+This is a read-model baseline, not an execution or mutation surface. It does not trigger recipient attachment, create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

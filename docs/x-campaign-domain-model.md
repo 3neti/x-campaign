@@ -243,3 +243,11 @@ Phase 1T introduces `CampaignAudienceImportRecipientAttachmentMutationWorkspace`
 The initial implementation returns `CampaignAudienceImportRecipientAttachmentMutationWorkspaceResultData` with the recipient attachment workspace result, mutation decision, mutation result, effect flags, and context metadata.
 
 This layer orchestrates existing in-memory components only. It may mutate process-local planning repository state, but it does not persist to a database, create migrations, queue work, issue Pay Codes, deliver feedback, write journals, call providers, or move money.
+
+## Audience Import Recipient Attachment Mutation Summary
+
+Phase 1U introduces `BuildsCampaignAudienceImportRecipientAttachmentMutationSummaries` as the contract for deriving a read-only summary from an existing recipient attachment mutation workspace result.
+
+The initial implementation returns `CampaignAudienceImportRecipientAttachmentMutationSummaryData` with import/audience identifiers, summary status, decision status, mutation status, row counts, recipient count deltas, readiness, blockers, effect flags, and context metadata.
+
+This layer is projection-only. It does not trigger attachment mutation, persist to a database, create migrations, queue work, issue Pay Codes, deliver feedback, write journals, call providers, or move money.

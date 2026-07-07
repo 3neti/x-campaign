@@ -1,0 +1,13 @@
+<?php
+
+declare(strict_types=1);
+
+namespace LBHurtado\XCampaign\Contracts;
+
+use LBHurtado\XCampaign\Data\CampaignAudienceImportRecipientAttachmentMutationSummaryData;
+use LBHurtado\XCampaign\Data\CampaignAudienceImportRecipientAttachmentMutationWorkspaceResultData;
+
+interface BuildsCampaignAudienceImportRecipientAttachmentMutationSummaries
+{
+    public function fromWorkspaceResult(CampaignAudienceImportRecipientAttachmentMutationWorkspaceResultData $result): CampaignAudienceImportRecipientAttachmentMutationSummaryData;
+}
