@@ -347,3 +347,15 @@ Phase 1Y adds campaign audience import attachment operator workspace collection 
 - preserve fail-closed behavior for missing plans
 
 This is a read-only workspace baseline, not an execution, routing, persistence, or delivery surface. It does not trigger recipient attachment, create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1Z Boundary
+
+Phase 1Z adds campaign audience import attachment operator workspace collection operator summaries:
+
+- consume an existing operator workspace collection workspace result
+- expose aggregate campaign, audience, import, row, recipient delta, and blocker counts
+- derive an operator posture from collection status
+- preserve blockers for operator review visibility
+- expose a read-only summary suitable for later operator shell or Cockpit composition
+
+This is an operator summary read-model baseline, not an execution, routing, persistence, or delivery surface. It does not query persistence, trigger recipient attachment, create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

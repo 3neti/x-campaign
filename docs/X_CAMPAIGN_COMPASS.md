@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 1Y: Campaign Audience Import Attachment Operator Workspace Collection Workspace Baseline.
+Wave 5 — Phase 1Z: Campaign Audience Import Attachment Operator Workspace Collection Operator Summary Baseline.
 
 ## Status
 
@@ -240,6 +240,14 @@ Complete.
   - `CampaignAudienceImportAttachmentOperatorWorkspaceCollectionWorkspaceResultData`
 - Bound the collection workspace contract to the repository-backed read-only implementation.
 - Added Phase 1Y Pest coverage for repository-context collection workspace overviews, empty collection workspaces, missing planning keys, binding, and no durable persistence/queues/issuance/delivery behavior.
+- Added Phase 1Z audience import attachment operator workspace collection operator summary contract:
+  - `BuildsCampaignAudienceImportAttachmentOperatorWorkspaceCollectionOperatorSummaries`
+- Added Phase 1Z operator summary read model:
+  - `CampaignAudienceImportAttachmentOperatorWorkspaceCollectionOperatorSummaryReadModel`
+- Added operator summary DTO:
+  - `CampaignAudienceImportAttachmentOperatorWorkspaceCollectionOperatorSummaryData`
+- Bound the operator summary contract to the read-only implementation.
+- Added Phase 1Z Pest coverage for attention-required, complete, and empty operator summaries, binding, and no durable persistence/queues/issuance/delivery behavior.
 
 ## Discoveries
 
@@ -440,10 +448,16 @@ Complete.
 - Phase 1Y syntax checks passed for `src`, `tests`, and `config`.
 - Phase 1Y `composer validate --strict` passed.
 - Phase 1Y formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 1Z focused failing baseline was observed before implementation: 4 failed, 28 passed, 474 assertions.
+- Phase 1Z focused result after implementation: `32 passed, 525 assertions`.
+- Phase 1Z full package result: `156 passed, 1655 assertions`.
+- Phase 1Z syntax checks passed for `src`, `tests`, and `config`.
+- Phase 1Z `composer validate --strict` passed.
+- Phase 1Z formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 1Z — Campaign Audience Import Attachment Operator Workspace Collection Operator Summary Baseline, before migrations, queues, Pay Code generation, or delivery.
+Phase 2A — Campaign Durable Storage Boundary Plan, before migrations, queues, Pay Code generation, or delivery.
 
 ## Open Questions
 
