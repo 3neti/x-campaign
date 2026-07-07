@@ -251,3 +251,15 @@ Phase 1Q adds approved import recipient attachment workspace integration:
 - expose workspace-level effect metadata
 
 This is a workspace baseline, not recipient mutation. It does not persist approval state, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1R Boundary
+
+Phase 1R adds approved import recipient attachment mutation decisions:
+
+- consume recipient attachment workspace results
+- accept an operator decision to attach or defer
+- allow mutation only for fully ready attachment plans
+- block partial, blocked, empty, or unknown-decision cases
+- return decision-only metadata for a later mutation slice
+
+This is a mutation decision point, not mutation execution. It does not persist approval state, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

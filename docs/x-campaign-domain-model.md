@@ -219,3 +219,11 @@ Phase 1Q introduces `CampaignAudienceImportRecipientAttachmentWorkspace` as the 
 The initial implementation returns `CampaignAudienceImportRecipientAttachmentWorkspaceResultData` with the approval workspace result, attachment plan, effect flags, and context metadata.
 
 This layer keeps approval and attachment readiness together for later operator or host integration. It does not attach recipients, persist state, queue work, issue Pay Codes, deliver feedback, write journals, or move money.
+
+## Audience Import Recipient Attachment Mutation Decision
+
+Phase 1R introduces `DecidesCampaignAudienceImportRecipientAttachmentMutations` as the contract for deciding whether a recipient attachment workspace result may proceed to a future mutation.
+
+The initial implementation returns `CampaignAudienceImportRecipientAttachmentMutationDecisionData` with the requested decision, decision status, operator metadata, readiness flags, row counts, blockers, effect flags, and context metadata.
+
+This layer is a gate only. It does not attach recipients, persist state, queue work, issue Pay Codes, deliver feedback, write journals, or move money.
