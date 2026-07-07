@@ -335,3 +335,15 @@ Phase 1X adds campaign audience import attachment operator workspace collection 
 - expose a read-only collection suitable for later operator shell or Cockpit composition
 
 This is a collection read-model baseline, not an execution, routing, persistence, or delivery surface. It does not query persistence, trigger recipient attachment, create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1Y Boundary
+
+Phase 1Y adds campaign audience import attachment operator workspace collection workspace composition:
+
+- validate campaign planning keys through the in-memory repository
+- compose existing operator workspace collection aggregation from supplied workspace results
+- enrich collection metadata with campaign context
+- return collection, effect flags, and repository context metadata
+- preserve fail-closed behavior for missing plans
+
+This is a read-only workspace baseline, not an execution, routing, persistence, or delivery surface. It does not trigger recipient attachment, create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

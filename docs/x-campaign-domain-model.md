@@ -275,3 +275,11 @@ Phase 1X introduces `BuildsCampaignAudienceImportAttachmentOperatorWorkspaceColl
 The initial implementation returns `CampaignAudienceImportAttachmentOperatorWorkspaceCollectionData` with planning key, aggregate status, audience counts, import counts, row counts, recipient deltas, workspace results, blockers, effect flags, and context metadata.
 
 This layer is projection-only. It does not query persistence, trigger attachment mutation, persist to a database, create migrations, queue work, issue Pay Codes, deliver feedback, write journals, call providers, or move money.
+
+## Audience Import Attachment Operator Workspace Collection Workspace
+
+Phase 1Y introduces `CampaignAudienceImportAttachmentOperatorWorkspaceCollectionWorkspace` as the repository-context workspace seam for building operator workspace collections.
+
+The initial implementation returns `CampaignAudienceImportAttachmentOperatorWorkspaceCollectionWorkspaceResultData` with the collection read model, effect flags, and context metadata such as planning key and campaign name.
+
+This layer validates in-memory repository context only. It does not trigger attachment mutation, persist to a database, create migrations, queue work, issue Pay Codes, deliver feedback, write journals, call providers, or move money.
