@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 1W: Campaign Audience Import Attachment Operator Workspace Baseline.
+Wave 5 — Phase 1X: Campaign Audience Import Attachment Operator Workspace Collection Baseline.
 
 ## Status
 
@@ -224,6 +224,14 @@ Complete.
   - `CampaignAudienceImportAttachmentOperatorWorkspaceResultData`
 - Bound the operator workspace contract to the repository-backed read-only implementation.
 - Added Phase 1W Pest coverage for repository-context operator overviews, empty summaries, missing planning keys, missing audiences, binding, and no durable persistence/queues/issuance/delivery behavior.
+- Added Phase 1X audience import attachment operator workspace collection contract:
+  - `BuildsCampaignAudienceImportAttachmentOperatorWorkspaceCollections`
+- Added Phase 1X operator workspace collection read model:
+  - `CampaignAudienceImportAttachmentOperatorWorkspaceCollectionReadModel`
+- Added operator workspace collection DTO:
+  - `CampaignAudienceImportAttachmentOperatorWorkspaceCollectionData`
+- Bound the workspace collection contract to the read-only implementation.
+- Added Phase 1X Pest coverage for attention-required, complete, and empty workspace collections, binding, and no durable persistence/queues/issuance/delivery behavior.
 
 ## Discoveries
 
@@ -268,6 +276,7 @@ Complete.
 - Approved import recipient attachment mutation summaries are read-only projections over existing mutation workspace results. They summarize status, row counts, recipient deltas, blockers, and metadata, but they do not trigger mutation, persist state, queue ingestion, issue Pay Codes, send feedback, write journals, call providers, or move money.
 - Campaign audience import attachment operator read models aggregate existing mutation summaries into an operator-facing overview. They are read-only and do not trigger attachment mutation, persist state, queue ingestion, issue Pay Codes, send feedback, write journals, call providers, or move money.
 - Campaign audience import attachment operator workspaces validate in-memory campaign/audience context and compose existing operator read-model aggregation. They are read-only and do not trigger attachment mutation, persist state, queue ingestion, issue Pay Codes, send feedback, write journals, call providers, or move money.
+- Campaign audience import attachment operator workspace collections aggregate existing workspace results across audiences. They are read-only and do not query persistence, trigger attachment mutation, queue ingestion, issue Pay Codes, send feedback, write journals, call providers, or move money.
 
 ## Test Coverage Status
 
@@ -411,10 +420,16 @@ Complete.
 - Phase 1W syntax checks passed for `src`, `tests`, and `config`.
 - Phase 1W `composer validate --strict` passed.
 - Phase 1W formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 1X focused failing baseline was observed before implementation: 4 failed, 26 passed, 436 assertions.
+- Phase 1X focused result after implementation: `30 passed, 488 assertions`.
+- Phase 1X full package result: `146 passed, 1518 assertions`.
+- Phase 1X syntax checks passed for `src`, `tests`, and `config`.
+- Phase 1X `composer validate --strict` passed.
+- Phase 1X formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 1X — Campaign Audience Import Attachment Operator Workspace Collection Baseline, before migrations, queues, Pay Code generation, or delivery.
+Phase 1Y — Campaign Audience Import Attachment Operator Workspace Collection Workspace Baseline, before migrations, queues, Pay Code generation, or delivery.
 
 ## Open Questions
 

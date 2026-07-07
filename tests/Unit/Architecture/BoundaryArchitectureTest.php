@@ -694,3 +694,34 @@ it('keeps phase one w attachment operator workspace free of durable persistence 
         ->not->toContain('Journal')
         ->not->toContain('Wallet');
 });
+
+it('keeps phase one x attachment operator workspace collections free of durable persistence queues delivery and issuance', function () {
+    $source = collect([
+        __DIR__.'/../../../src/ReadModels/CampaignAudienceImportAttachmentOperatorWorkspaceCollectionReadModel.php',
+        __DIR__.'/../../../src/Contracts/BuildsCampaignAudienceImportAttachmentOperatorWorkspaceCollections.php',
+        __DIR__.'/../../../src/Data/CampaignAudienceImportAttachmentOperatorWorkspaceCollectionData.php',
+    ])->filter(fn (string $file): bool => is_file($file))
+        ->map(fn (string $file): string => file_get_contents($file) ?: '')
+        ->implode("\n");
+
+    expect($source)
+        ->not->toContain('UploadedFile')
+        ->not->toContain('SplFileObject')
+        ->not->toContain('Storage::')
+        ->not->toContain('fopen(')
+        ->not->toContain('file_get_contents(')
+        ->not->toContain('str_getcsv')
+        ->not->toContain('League\\Csv')
+        ->not->toContain('DB::')
+        ->not->toContain('Schema::')
+        ->not->toContain('Migration')
+        ->not->toContain('save(')
+        ->not->toContain('ShouldQueue')
+        ->not->toContain('dispatch(')
+        ->not->toContain('PayCode')
+        ->not->toContain('Voucher')
+        ->not->toContain('Notification::')
+        ->not->toContain('Mail::')
+        ->not->toContain('Journal')
+        ->not->toContain('Wallet');
+});

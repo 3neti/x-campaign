@@ -323,3 +323,15 @@ Phase 1W adds campaign audience import attachment operator workspace composition
 - preserve fail-closed behavior for missing plans or audiences
 
 This is an operator workspace baseline, not an execution, routing, persistence, or delivery surface. It does not trigger recipient attachment, create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1X Boundary
+
+Phase 1X adds campaign audience import attachment operator workspace collection aggregation:
+
+- consume existing operator workspace results
+- aggregate audience counts by status
+- aggregate import counts, attached rows, blocked rows, and recipient deltas
+- preserve blocker visibility across audiences
+- expose a read-only collection suitable for later operator shell or Cockpit composition
+
+This is a collection read-model baseline, not an execution, routing, persistence, or delivery surface. It does not query persistence, trigger recipient attachment, create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
