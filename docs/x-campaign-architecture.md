@@ -311,3 +311,15 @@ Phase 1V adds campaign audience import attachment operator read-model aggregatio
 - expose a read-only overview suitable for later workspace or Cockpit composition
 
 This is an operator read-model baseline, not an execution, routing, persistence, or delivery surface. It does not trigger recipient attachment, create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1W Boundary
+
+Phase 1W adds campaign audience import attachment operator workspace composition:
+
+- validate campaign planning keys through the in-memory repository
+- validate audience context against the stored campaign plan
+- compose existing operator read-model aggregation from supplied mutation summaries
+- return overview, effect flags, and repository context metadata
+- preserve fail-closed behavior for missing plans or audiences
+
+This is an operator workspace baseline, not an execution, routing, persistence, or delivery surface. It does not trigger recipient attachment, create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
