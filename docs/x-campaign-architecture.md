@@ -214,3 +214,16 @@ Phase 1N adds audience import approval decision planning:
 - return blockers when approval is not allowed
 
 This is a decision baseline, not mutation. It does not persist approval state, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1O Boundary
+
+Phase 1O adds audience import approval workspace integration:
+
+- validate planning keys against the campaign planning repository
+- validate audience ids against stored campaign audience plans
+- compose in-memory row collection planning
+- compose read-only audience import review summaries
+- compose decision-only audience import approval results
+- return collection, summary, decision, effects, and workspace metadata in one result
+
+This is an approval workspace baseline, not import execution. It does not persist approval state, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

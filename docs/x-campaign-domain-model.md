@@ -195,3 +195,11 @@ Phase 1N introduces `DecidesCampaignAudienceImportApprovals` as the contract for
 The initial implementation returns `CampaignAudienceImportApprovalDecisionData` with decision status, operator metadata, blockers, summary counts, and no-side-effect metadata.
 
 This layer does not persist approval state or mutate imports. Approval means the review summary is eligible for a later explicit workspace or mutation slice; it does not attach recipients, queue work, issue Pay Codes, deliver feedback, write journals, or move money.
+
+## Audience Import Approval Workspace
+
+Phase 1O introduces `CampaignAudienceImportApprovalWorkspace` as the composition seam between stored campaign planning state, row collection planning, review summaries, and approval decisions.
+
+The initial implementation returns `CampaignAudienceImportApprovalWorkspaceResultData` with the planned row collection, review summary, approval decision, effect flags, and context metadata.
+
+This layer is still non-mutating. It does not persist approval state, attach recipients, queue work, issue Pay Codes, deliver feedback, write journals, or move money.

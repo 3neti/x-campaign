@@ -23,6 +23,7 @@ use LBHurtado\XCampaign\Contracts\AddsRecipientsToCampaignAudiencePlans;
 use LBHurtado\XCampaign\Contracts\ArchivesCampaignPlans;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignAudienceImportReviewSummaries;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignSummaries;
+use LBHurtado\XCampaign\Contracts\CampaignAudienceImportApprovalWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignAudienceImportWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignFeatureProfileResolver;
 use LBHurtado\XCampaign\Contracts\CampaignPlanRepository;
@@ -44,6 +45,7 @@ use LBHurtado\XCampaign\Repositories\InMemoryCampaignPlanRepository;
 use LBHurtado\XCampaign\Services\CampaignStateGrammar;
 use LBHurtado\XCampaign\Services\ConfigCampaignFeatureProfileResolver;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportWorkspace;
+use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportApprovalWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignPlanningWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignRecipientImportRowWorkspace;
 
@@ -76,6 +78,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(BuildsCampaignSummaries::class, CampaignSummaryReadModel::class);
         $this->app->singleton(CampaignPlanRepository::class, InMemoryCampaignPlanRepository::class);
         $this->app->singleton(CampaignPlanningWorkspace::class, RepositoryBackedCampaignPlanningWorkspace::class);
+        $this->app->singleton(CampaignAudienceImportApprovalWorkspace::class, RepositoryBackedCampaignAudienceImportApprovalWorkspace::class);
         $this->app->singleton(CampaignAudienceImportWorkspace::class, RepositoryBackedCampaignAudienceImportWorkspace::class);
         $this->app->singleton(CampaignRecipientImportRowWorkspace::class, RepositoryBackedCampaignRecipientImportRowWorkspace::class);
     }

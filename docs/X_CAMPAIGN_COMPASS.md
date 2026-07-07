@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 1N: Audience Import Approval Decision Baseline.
+Wave 5 — Phase 1O: Audience Import Approval Workspace Baseline.
 
 ## Status
 
@@ -150,6 +150,15 @@ Complete.
   - `CampaignAudienceImportApprovalDecisionData`
 - Bound the audience import approval decision contract to the decision-only implementation.
 - Added Phase 1N Pest coverage for approval, rejection, blocked approval, unknown decision fail-closed behavior, binding, and no persistence/queues/issuance/delivery/audience mutation behavior.
+- Added Phase 1O audience import approval workspace contract:
+  - `CampaignAudienceImportApprovalWorkspace`
+- Added Phase 1O repository-backed approval workspace:
+  - `RepositoryBackedCampaignAudienceImportApprovalWorkspace`
+- Added audience import approval workspace DTOs:
+  - `CampaignAudienceImportApprovalWorkspaceInputData`
+  - `CampaignAudienceImportApprovalWorkspaceResultData`
+- Bound the audience import approval workspace contract to the repository-backed non-mutating implementation.
+- Added Phase 1O Pest coverage for approving, blocking approval, rejecting, missing planning keys, missing audiences, binding, and no persistence/queues/issuance/delivery/audience mutation behavior.
 
 ## Discoveries
 
@@ -185,6 +194,7 @@ Complete.
 - Audience import row collection planning composes the recipient row workspace across in-memory row arrays and returns aggregate row counts/diagnostics. It does not read files, parse files, persist imports, attach recipients to audiences, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
 - Audience import review summaries are read-only projections over row collection plans. They do not approve imports, attach recipients, persist state, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
 - Audience import approval decisions are decision-only DTO outputs over review summaries. They do not persist approval state, attach recipients, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
+- Audience import approval workspace integration composes stored in-memory campaign/audience context, row collection planning, review summaries, and approval decisions. It does not persist approval state, attach recipients, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
 
 ## Test Coverage Status
 
@@ -274,10 +284,16 @@ Complete.
 - Phase 1N syntax checks passed for `src`, `tests`, and `config`.
 - Phase 1N `composer validate --strict` passed.
 - Phase 1N formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 1O focused failing baseline was observed before implementation: 6 failed, 17 passed, 261 assertions.
+- Phase 1O focused result after implementation: `23 passed, 298 assertions`.
+- Phase 1O full package result: `92 passed, 874 assertions`.
+- Phase 1O syntax checks passed for `src`, `tests`, and `config`.
+- Phase 1O `composer validate --strict` passed.
+- Phase 1O formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 1O — Audience Import Approval Workspace Baseline, before migrations, queues, Pay Code generation, or delivery.
+Phase 1P — Approved Import Recipient Attachment Plan, before migrations, queues, Pay Code generation, or delivery.
 
 ## Open Questions
 
