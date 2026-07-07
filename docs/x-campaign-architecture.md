@@ -201,3 +201,16 @@ Phase 1M adds audience import review summary read models:
 - mark all-valid non-empty collections as ready for approval
 
 This is a read-only review projection, not approval or ingestion. It does not read files, parse spreadsheets or CSVs, persist imports, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1N Boundary
+
+Phase 1N adds audience import approval decision planning:
+
+- accept an audience import review summary
+- accept an operator decision request
+- approve only ready review summaries
+- reject as a decision-only outcome
+- fail closed for unknown decisions
+- return blockers when approval is not allowed
+
+This is a decision baseline, not mutation. It does not persist approval state, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

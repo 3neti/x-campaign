@@ -187,3 +187,11 @@ Phase 1M introduces `BuildsCampaignAudienceImportReviewSummaries` as the contrac
 The initial implementation returns `CampaignAudienceImportReviewSummaryData` with import/audience references, review status, counts, row-number groups, and `CampaignAudienceImportReviewRowIssueData` entries for invalid rows.
 
 This layer is read-only. It does not approve imports, mutate audiences, attach recipients, persist state, queue work, issue Pay Codes, deliver feedback, write journals, or move money.
+
+## Audience Import Approval Decision
+
+Phase 1N introduces `DecidesCampaignAudienceImportApprovals` as the contract for producing a decision-only approval result from an import review summary.
+
+The initial implementation returns `CampaignAudienceImportApprovalDecisionData` with decision status, operator metadata, blockers, summary counts, and no-side-effect metadata.
+
+This layer does not persist approval state or mutate imports. Approval means the review summary is eligible for a later explicit workspace or mutation slice; it does not attach recipients, queue work, issue Pay Codes, deliver feedback, write journals, or move money.
