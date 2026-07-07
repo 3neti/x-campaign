@@ -227,3 +227,15 @@ Phase 1O adds audience import approval workspace integration:
 - return collection, summary, decision, effects, and workspace metadata in one result
 
 This is an approval workspace baseline, not import execution. It does not persist approval state, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1P Boundary
+
+Phase 1P adds approved import recipient attachment planning:
+
+- consume an audience import approval workspace result
+- require an approved decision before attachment planning is ready
+- require a ready review summary before attachment planning is ready
+- convert valid import rows into recipient planning inputs
+- expose attachable row numbers, blocked row numbers, blockers, and effect metadata
+
+This is an attachment plan, not recipient mutation. It does not persist approval state, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

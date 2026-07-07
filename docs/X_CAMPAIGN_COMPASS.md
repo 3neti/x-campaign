@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 1O: Audience Import Approval Workspace Baseline.
+Wave 5 — Phase 1P: Approved Import Recipient Attachment Plan.
 
 ## Status
 
@@ -159,6 +159,14 @@ Complete.
   - `CampaignAudienceImportApprovalWorkspaceResultData`
 - Bound the audience import approval workspace contract to the repository-backed non-mutating implementation.
 - Added Phase 1O Pest coverage for approving, blocking approval, rejecting, missing planning keys, missing audiences, binding, and no persistence/queues/issuance/delivery/audience mutation behavior.
+- Added Phase 1P approved import recipient attachment planning contract:
+  - `PlansCampaignAudienceImportRecipientAttachments`
+- Added Phase 1P recipient attachment planning action:
+  - `PlanCampaignAudienceImportRecipientAttachments`
+- Added audience import recipient attachment planning DTO:
+  - `CampaignAudienceImportRecipientAttachmentPlanData`
+- Bound the recipient attachment planning contract to the planning-only implementation.
+- Added Phase 1P Pest coverage for approved attachment planning, non-approved blocking, not-ready review blocking, partial row planning, binding, and no persistence/queues/issuance/delivery/audience mutation behavior.
 
 ## Discoveries
 
@@ -195,6 +203,7 @@ Complete.
 - Audience import review summaries are read-only projections over row collection plans. They do not approve imports, attach recipients, persist state, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
 - Audience import approval decisions are decision-only DTO outputs over review summaries. They do not persist approval state, attach recipients, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
 - Audience import approval workspace integration composes stored in-memory campaign/audience context, row collection planning, review summaries, and approval decisions. It does not persist approval state, attach recipients, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
+- Approved import recipient attachment planning converts an approved import workspace result into a recipient attachment plan only. It identifies attachable recipient planning inputs and blocked rows, but it does not persist approval state, mutate campaign audiences, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
 
 ## Test Coverage Status
 
@@ -290,10 +299,16 @@ Complete.
 - Phase 1O syntax checks passed for `src`, `tests`, and `config`.
 - Phase 1O `composer validate --strict` passed.
 - Phase 1O formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 1P focused failing baseline was observed before implementation: 5 failed, 18 passed, 280 assertions.
+- Phase 1P focused result after implementation: `23 passed, 342 assertions`.
+- Phase 1P full package result: `98 passed, 957 assertions`.
+- Phase 1P syntax checks passed for `src`, `tests`, and `config`.
+- Phase 1P `composer validate --strict` passed.
+- Phase 1P formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 1P — Approved Import Recipient Attachment Plan, before migrations, queues, Pay Code generation, or delivery.
+Phase 1Q — Approved Import Recipient Attachment Workspace Baseline, before migrations, queues, Pay Code generation, or delivery.
 
 ## Open Questions
 

@@ -203,3 +203,11 @@ Phase 1O introduces `CampaignAudienceImportApprovalWorkspace` as the composition
 The initial implementation returns `CampaignAudienceImportApprovalWorkspaceResultData` with the planned row collection, review summary, approval decision, effect flags, and context metadata.
 
 This layer is still non-mutating. It does not persist approval state, attach recipients, queue work, issue Pay Codes, deliver feedback, write journals, or move money.
+
+## Audience Import Recipient Attachment Planning
+
+Phase 1P introduces `PlansCampaignAudienceImportRecipientAttachments` as the contract for converting an approved audience import workspace result into a recipient attachment plan.
+
+The initial implementation returns `CampaignAudienceImportRecipientAttachmentPlanData` with attachable recipient planning inputs, attachable row numbers, blocked row numbers, blockers, effect flags, and context metadata.
+
+This layer plans the next mutation boundary only. It does not attach recipients, persist state, queue work, issue Pay Codes, deliver feedback, write journals, or move money.
