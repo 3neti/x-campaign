@@ -359,3 +359,15 @@ Phase 1Z adds campaign audience import attachment operator workspace collection 
 - expose a read-only summary suitable for later operator shell or Cockpit composition
 
 This is an operator summary read-model baseline, not an execution, routing, persistence, or delivery surface. It does not query persistence, trigger recipient attachment, create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 2A Boundary
+
+Phase 2A adds the durable storage boundary plan before any migration exists:
+
+- document storage ownership and non-ownership
+- name proposed durable tables
+- preserve portable identifiers as public DTO identifiers
+- allow JSON only for flexible metadata/context, not lifecycle truth
+- sequence later persistence slices
+
+This is a planning slice only. It does not create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

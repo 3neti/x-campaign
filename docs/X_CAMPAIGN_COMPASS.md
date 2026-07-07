@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 1Z: Campaign Audience Import Attachment Operator Workspace Collection Operator Summary Baseline.
+Wave 5 — Phase 2A: Campaign Durable Storage Boundary Plan.
 
 ## Status
 
@@ -248,6 +248,9 @@ Complete.
   - `CampaignAudienceImportAttachmentOperatorWorkspaceCollectionOperatorSummaryData`
 - Bound the operator summary contract to the read-only implementation.
 - Added Phase 1Z Pest coverage for attention-required, complete, and empty operator summaries, binding, and no durable persistence/queues/issuance/delivery behavior.
+- Added Phase 2A durable storage boundary plan:
+  - `docs/phase-2-durable-storage-boundary.md`
+- Added Phase 2A architecture tests proving the storage boundary is documented before migrations exist and that Phase 2A introduces no migrations.
 
 ## Discoveries
 
@@ -454,10 +457,16 @@ Complete.
 - Phase 1Z syntax checks passed for `src`, `tests`, and `config`.
 - Phase 1Z `composer validate --strict` passed.
 - Phase 1Z formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 2A focused failing baseline was observed before implementation: 1 failed, 1 passed, 2 assertions.
+- Phase 2A focused result after implementation: `2 passed, 22 assertions`.
+- Phase 2A full package result: `158 passed, 1677 assertions`.
+- Phase 2A syntax checks passed for `src`, `tests`, and `config`.
+- Phase 2A `composer validate --strict` passed.
+- Phase 2A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 2A — Campaign Durable Storage Boundary Plan, before migrations, queues, Pay Code generation, or delivery.
+Phase 2B — Campaign Persistence Contract Baseline, before migrations, queues, Pay Code generation, or delivery.
 
 ## Open Questions
 
