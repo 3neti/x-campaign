@@ -276,3 +276,15 @@ Phase 1S adds approved import recipient attachment in-memory mutation:
 - return before/after recipient counts and no-durable-side-effect metadata
 
 This is the first in-memory audience mutation baseline, not durable ingestion. It does not create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1T Boundary
+
+Phase 1T adds approved import recipient attachment mutation workspace integration:
+
+- compose the recipient attachment workspace
+- compose the recipient attachment mutation decision gate
+- compose the in-memory attachment mutation action
+- return workspace context, decision, mutation result, effect flags, and metadata
+- preserve fail-closed planning key and audience validation through the underlying workspace
+
+This is end-to-end in-memory orchestration, not durable ingestion. It may mutate only process-local planning state through the in-memory repository. It does not create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
