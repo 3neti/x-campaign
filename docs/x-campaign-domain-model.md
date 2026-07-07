@@ -227,3 +227,11 @@ Phase 1R introduces `DecidesCampaignAudienceImportRecipientAttachmentMutations` 
 The initial implementation returns `CampaignAudienceImportRecipientAttachmentMutationDecisionData` with the requested decision, decision status, operator metadata, readiness flags, row counts, blockers, effect flags, and context metadata.
 
 This layer is a gate only. It does not attach recipients, persist state, queue work, issue Pay Codes, deliver feedback, write journals, or move money.
+
+## Audience Import Recipient Attachment In-Memory Mutation
+
+Phase 1S introduces `AttachesCampaignAudienceImportRecipientsInMemory` as the contract for applying an allowed attachment decision to process-local campaign planning state.
+
+The initial implementation returns `CampaignAudienceImportRecipientAttachmentMutationResultData` with the mutated `CampaignPlanData`, mutation status, attached/skipped row counts, before/after recipient counts, blockers, effect flags, and context metadata.
+
+This layer mutates only the in-memory planning repository. It does not persist to a database, create migrations, queue work, issue Pay Codes, deliver feedback, write journals, or move money.

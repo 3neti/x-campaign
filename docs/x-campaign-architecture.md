@@ -263,3 +263,16 @@ Phase 1R adds approved import recipient attachment mutation decisions:
 - return decision-only metadata for a later mutation slice
 
 This is a mutation decision point, not mutation execution. It does not persist approval state, attach recipients to audiences, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 1S Boundary
+
+Phase 1S adds approved import recipient attachment in-memory mutation:
+
+- consume a recipient attachment workspace result
+- consume an allowed recipient attachment mutation decision
+- load the current campaign plan from the in-memory planning repository
+- attach planned recipients to the target audience in a new `CampaignPlanData`
+- store the mutated plan back into the in-memory repository
+- return before/after recipient counts and no-durable-side-effect metadata
+
+This is the first in-memory audience mutation baseline, not durable ingestion. It does not create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

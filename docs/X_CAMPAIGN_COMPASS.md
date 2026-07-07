@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 1R: Approved Import Recipient Attachment Mutation Decision Point.
+Wave 5 — Phase 1S: Approved Import Recipient Attachment In-Memory Mutation Baseline.
 
 ## Status
 
@@ -184,6 +184,14 @@ Complete.
   - `CampaignAudienceImportRecipientAttachmentMutationDecisionData`
 - Bound the mutation decision contract to the decision-only implementation.
 - Added Phase 1R Pest coverage for allowed decisions, deferred decisions, blocked plans, partial plans, unknown decisions, binding, and no persistence/queues/issuance/delivery/audience mutation behavior.
+- Added Phase 1S approved import recipient attachment in-memory mutation contract:
+  - `AttachesCampaignAudienceImportRecipientsInMemory`
+- Added Phase 1S in-memory attachment mutation action:
+  - `AttachCampaignAudienceImportRecipientsInMemory`
+- Added recipient attachment mutation result DTO:
+  - `CampaignAudienceImportRecipientAttachmentMutationResultData`
+- Bound the in-memory mutation contract to the in-memory implementation.
+- Added Phase 1S Pest coverage for attaching approved recipients to an in-memory plan, blocked decisions, not-ready workspace plans, missing planning keys, missing audiences, binding, and no durable persistence/queues/issuance/delivery behavior.
 
 ## Discoveries
 
@@ -223,6 +231,7 @@ Complete.
 - Approved import recipient attachment planning converts an approved import workspace result into a recipient attachment plan only. It identifies attachable recipient planning inputs and blocked rows, but it does not persist approval state, mutate campaign audiences, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
 - Approved import recipient attachment workspace integration composes approval workspace results with attachment planning. It returns approval context and attachment readiness together, but it does not persist approval state, mutate campaign audiences, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
 - Approved import recipient attachment mutation decisions are decision-only gates. They can mark a ready attachment plan as allowed for a future mutation, deferred, or blocked, but they do not persist state, mutate campaign audiences, queue ingestion, issue Pay Codes, send feedback, write journals, or move money.
+- Approved import recipient attachment in-memory mutation is the first package-owned recipient attachment mutation, but only against process-local planning state. It may update an in-memory `CampaignPlanData` through the in-memory repository, but it does not create migrations, use a database, queue ingestion, issue Pay Codes, send feedback, write journals, call providers, or move money.
 
 ## Test Coverage Status
 
@@ -336,10 +345,16 @@ Complete.
 - Phase 1R syntax checks passed for `src`, `tests`, and `config`.
 - Phase 1R `composer validate --strict` passed.
 - Phase 1R formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 1S focused failing baseline was observed before implementation: 6 failed, 21 passed, 343 assertions.
+- Phase 1S focused result after implementation: `27 passed, 391 assertions`.
+- Phase 1S full package result: `119 passed, 1160 assertions`.
+- Phase 1S syntax checks passed for `src`, `tests`, and `config`.
+- Phase 1S `composer validate --strict` passed.
+- Phase 1S formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 1S — Approved Import Recipient Attachment In-Memory Mutation Baseline, before migrations, queues, Pay Code generation, or delivery.
+Phase 1T — Approved Import Recipient Attachment Workspace Integration, before migrations, queues, Pay Code generation, or delivery.
 
 ## Open Questions
 
