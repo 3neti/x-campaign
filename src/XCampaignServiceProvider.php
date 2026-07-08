@@ -39,6 +39,7 @@ use LBHurtado\XCampaign\Contracts\CampaignAudienceImportApprovalWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignAudienceImportRecipientAttachmentMutationWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignAudienceImportRecipientAttachmentWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignAudienceImportWorkspace;
+use LBHurtado\XCampaign\Contracts\CampaignExecutionHandoffWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignFeatureProfileResolver;
 use LBHurtado\XCampaign\Contracts\CampaignPlanRepository;
 use LBHurtado\XCampaign\Contracts\CampaignPlanSnapshotRepository;
@@ -77,6 +78,7 @@ use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportAttachm
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportRecipientAttachmentMutationWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportRecipientAttachmentWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignPlanningWorkspace;
+use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignExecutionHandoffWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignRecipientImportRowWorkspace;
 
 class XCampaignServiceProvider extends ServiceProvider
@@ -125,6 +127,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(CampaignAudienceImportRecipientAttachmentMutationWorkspace::class, RepositoryBackedCampaignAudienceImportRecipientAttachmentMutationWorkspace::class);
         $this->app->singleton(CampaignAudienceImportRecipientAttachmentWorkspace::class, RepositoryBackedCampaignAudienceImportRecipientAttachmentWorkspace::class);
         $this->app->singleton(CampaignAudienceImportWorkspace::class, RepositoryBackedCampaignAudienceImportWorkspace::class);
+        $this->app->singleton(CampaignExecutionHandoffWorkspace::class, RepositoryBackedCampaignExecutionHandoffWorkspace::class);
         $this->app->singleton(CampaignRecipientImportRowWorkspace::class, RepositoryBackedCampaignRecipientImportRowWorkspace::class);
     }
 

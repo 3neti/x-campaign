@@ -528,3 +528,15 @@ Phase 4C adds an in-memory execution handoff planner:
 - returns stable handoff identifiers and operator-safe handoff metadata
 
 This is still a handoff planning slice only. It does not execute campaigns, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, persist state, or move money.
+
+## Phase 4D Boundary
+
+Phase 4D adds a repository-backed execution handoff workspace:
+
+- reads existing campaign planning state through `CampaignPlanRepository`
+- selects an existing campaign execution plan by execution ID
+- delegates readiness evaluation to `PlansCampaignExecutionHandoffs`
+- fails closed for unknown planning keys or execution IDs
+- exposes side-effect metadata for host/Cockpit consumers
+
+This workspace is an integration seam over existing planning data. It does not mutate repository state, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, or move money.
