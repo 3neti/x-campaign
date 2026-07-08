@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 8D: Repository-Backed Analytics Workspace Baseline.
+Wave 5 — Phase 8E: Analytics Queue Mapping Baseline.
 
 ## Status
 
-Complete through Phase 8C.
+Complete through Phase 8D.
 
 ## Completed Work
 
@@ -284,6 +284,12 @@ Complete through Phase 8C.
   - `CampaignAnalyticsSnapshotBuilder`
 - Bound `BuildsCampaignAnalyticsSnapshots` to the read-only analytics snapshot builder.
 - Added Phase 8C Pest coverage proving analytics snapshots aggregate existing read-only summaries, expose blockers, and remain non-persistent/non-mutating.
+- Added Phase 8D analytics workspace contract:
+  - `CampaignAnalyticsWorkspace`
+- Added Phase 8D repository-backed analytics workspace:
+  - `RepositoryBackedCampaignAnalyticsWorkspace`
+- Bound `CampaignAnalyticsWorkspace` to the repository-backed read-only workspace.
+- Added Phase 8D Pest coverage proving analytics snapshots compose existing repository-backed generation, delivery, claim visibility, and summary seams while failing closed for unknown planning keys or execution IDs.
 
 ## Discoveries
 
@@ -339,6 +345,7 @@ Complete through Phase 8C.
 - Portable-code generation planning creates deterministic generation plans for recipient/execution pairs. It does not invoke the gateway, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, persist state, or move money.
 - Analytics snapshot contracts describe read-only aggregation over existing campaign, generation, delivery, and claim visibility summaries. Phase 8B does not bind an aggregator, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist analytics, mutate wallets, or move money.
 - Analytics snapshot aggregation is read-model-only. Phase 8C derives counts and blockers from existing summaries without invoking workspaces, reports, exports, lifecycle mutation, providers, feedback, journal writes, Pay Code issuance, analytics persistence, wallet mutation, or money movement.
+- Repository-backed analytics workspace integration composes existing package workspaces and read models. Phase 8D remains read-only and does not persist analytics, run reports, generate exports, mutate lifecycle state, call providers directly, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
 
 ## Test Coverage Status
 
@@ -740,10 +747,16 @@ Complete through Phase 8C.
 - Phase 8C syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 8C `composer validate --strict` passed.
 - Phase 8C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 8D focused failing baseline was observed before implementation: `4 failed, 2 assertions`.
+- Phase 8D focused result after implementation: `4 passed, 56 assertions`.
+- Phase 8D full package result: `299 passed, 3076 assertions`.
+- Phase 8D syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 8D `composer validate --strict` passed.
+- Phase 8D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 8D — Repository-Backed Analytics Workspace Baseline.
+Phase 8E — Analytics Queue Mapping Baseline.
 
 ## Open Questions
 

@@ -811,3 +811,15 @@ Phase 8C adds in-memory analytics snapshot aggregation:
 - binds the analytics snapshot contract to a read-only builder
 
 This is an in-memory read-model slice only. It does not invoke workspaces, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist analytics, mutate wallets, or move money.
+
+## Phase 8D Boundary
+
+Phase 8D adds repository-backed analytics workspace integration:
+
+- reads existing campaign planning state through `CampaignPlanRepository`
+- composes existing portable-code generation, delivery handoff, and claim visibility workspaces
+- summarizes those workspace results through existing read models
+- delegates final analytics aggregation to `BuildsCampaignAnalyticsSnapshots`
+- fails closed for unknown planning keys or execution IDs
+
+This workspace is read-only aggregation over existing package seams. It does not persist analytics, run reports, generate exports, mutate lifecycle state, call providers directly, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.

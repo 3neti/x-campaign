@@ -41,6 +41,7 @@ use LBHurtado\XCampaign\Contracts\BuildsCampaignDeliveryHandoffSummaries;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignExecutionHandoffSummaries;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignPortableCodeGenerationSummaries;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignSummaries;
+use LBHurtado\XCampaign\Contracts\CampaignAnalyticsWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignClaimStatusProvider;
 use LBHurtado\XCampaign\Contracts\CampaignClaimVisibilityWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignDeliveryHandoffWorkspace;
@@ -106,6 +107,7 @@ use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportAttachm
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportAttachmentOperatorWorkspaceCollectionWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportRecipientAttachmentMutationWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportRecipientAttachmentWorkspace;
+use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAnalyticsWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignClaimVisibilityWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignDeliveryHandoffWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignPlanningWorkspace;
@@ -166,6 +168,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(CampaignPlanRepository::class, InMemoryCampaignPlanRepository::class);
         $this->app->singleton(CampaignPlanSnapshotRepository::class, EloquentCampaignPlanSnapshotRepository::class);
         $this->app->singleton(CampaignPlanningWorkspace::class, RepositoryBackedCampaignPlanningWorkspace::class);
+        $this->app->singleton(CampaignAnalyticsWorkspace::class, RepositoryBackedCampaignAnalyticsWorkspace::class);
         $this->app->singleton(CampaignAudienceImportAttachmentOperatorWorkspace::class, RepositoryBackedCampaignAudienceImportAttachmentOperatorWorkspace::class);
         $this->app->singleton(CampaignAudienceImportAttachmentOperatorWorkspaceCollectionWorkspace::class, RepositoryBackedCampaignAudienceImportAttachmentOperatorWorkspaceCollectionWorkspace::class);
         $this->app->singleton(CampaignAudienceImportApprovalWorkspace::class, RepositoryBackedCampaignAudienceImportApprovalWorkspace::class);
