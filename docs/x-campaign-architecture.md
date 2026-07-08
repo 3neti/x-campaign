@@ -706,3 +706,14 @@ Phase 6F adds the delivery handoff read model and parity closure:
 - documents Phase 6 parity across boundary plan, contracts, planner, workspace, queue mapper, and read model
 
 The delivery handoff read model is read-only. It does not invoke the workspace, call x-feedback, send notifications, call providers, write journals, issue Pay Codes, persist state, mutate wallets, or move money.
+
+## Phase 7A Boundary
+
+Phase 7A adds the engagement / claim visibility boundary plan:
+
+- document campaign-side claim visibility ownership
+- preserve external ownership of claim lifecycle truth and voucher execution semantics
+- define visibility non-goals
+- sequence the remaining Phase 7 claim visibility slices
+
+This is a planning slice only. It does not create claim visibility request/result contracts, query x-change, redeem vouchers, mutate claim lifecycle state, call providers, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.

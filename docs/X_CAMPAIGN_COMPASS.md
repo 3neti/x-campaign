@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 6 complete. Next boundary: Phase 7.
+Wave 5 — Phase 7B: Claim Visibility Request/Result Contract Baseline.
 
 ## Status
 
-Complete through Phase 6F. Stop before Phase 7 until explicitly authorized.
+Complete through Phase 7A.
 
 ## Completed Work
 
@@ -674,10 +674,16 @@ Complete through Phase 6F. Stop before Phase 7 until explicitly authorized.
 - Phase 6F syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 6F `composer validate --strict` passed.
 - Phase 6F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 7A focused failing baseline was observed before implementation: `1 failed, 1 passed, 5 assertions`.
+- Phase 7A focused result after implementation: `2 passed, 22 assertions`.
+- Phase 7A full package result: `264 passed, 2694 assertions`.
+- Phase 7A syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 7A `composer validate --strict` passed.
+- Phase 7A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 7 — Engagement / Claim Visibility Boundary Plan.
+Phase 7B — Claim Visibility Request/Result Contract Baseline.
 
 ## Open Questions
 
