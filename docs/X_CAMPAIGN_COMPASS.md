@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 9C: In-Memory Operator Report Builder Baseline.
+Wave 5 — Phase 9D: Export Handoff Contract Baseline.
 
 ## Status
 
-Complete through Phase 9B.
+Complete through Phase 9C.
 
 ## Completed Work
 
@@ -314,6 +314,10 @@ Complete through Phase 9B.
   - `CampaignOperatorReportRequestData`
   - `CampaignOperatorReportData`
 - Added Phase 9B Pest coverage proving report requests/results are read-only and carry no persistence, queue, Pay Code, feedback, journal, or money movement effects by default.
+- Added Phase 9C operator report builder:
+  - `CampaignOperatorReportBuilder`
+- Bound `BuildsCampaignOperatorReports` to the read-only report builder.
+- Added Phase 9C Pest coverage proving operator reports expose analytics overview counts, operator posture, readiness, and blockers without rendering, storage, delivery, or persistence effects.
 
 ## Discoveries
 
@@ -374,6 +378,7 @@ Complete through Phase 9B.
 - Analytics operator summaries are presentation aggregation only. Phase 8F does not invoke workspaces, persist analytics, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
 - Operator report/export handoff is campaign-side planning metadata only. Phase 9A does not generate PDFs, spreadsheets, CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
 - Operator report contracts describe report handoff shape over existing analytics summaries. Phase 9B does not bind a report builder, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
+- Operator report building is read-model-only. Phase 9C derives report sections from existing analytics summaries without invoking workspaces, generating files, storing files, delivering reports, mutating lifecycle state, calling providers, sending feedback, writing journals, issuing Pay Codes, persisting reports, mutating wallets, or moving money.
 
 ## Test Coverage Status
 
@@ -805,10 +810,16 @@ Complete through Phase 9B.
 - Phase 9B syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 9B `composer validate --strict` passed.
 - Phase 9B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 9C focused failing baseline was observed before implementation: `3 failed, 0 assertions`.
+- Phase 9C focused result after implementation: `3 passed, 28 assertions`.
+- Phase 9C full package result: `315 passed, 3238 assertions`.
+- Phase 9C syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 9C `composer validate --strict` passed.
+- Phase 9C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 9C — In-Memory Operator Report Builder Baseline.
+Phase 9D — Export Handoff Contract Baseline.
 
 ## Open Questions
 

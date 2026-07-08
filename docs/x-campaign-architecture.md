@@ -868,3 +868,13 @@ Phase 9B adds operator report contracts and DTOs:
 - keep default effect metadata non-persistent and non-mutating
 
 This is a contract slice only. It does not bind a report builder, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
+
+## Phase 9C Boundary
+
+Phase 9C adds in-memory operator report building:
+
+- builds read-only report sections from analytics operator summaries
+- exposes overview counts, operator posture, readiness, and blockers
+- binds the operator report contract to a read-only builder
+
+This is an in-memory read-model slice only. It does not invoke workspaces, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
