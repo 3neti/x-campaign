@@ -608,3 +608,17 @@ Phase 5D adds portable-code generation planning:
 - keeps gateway invocation explicitly false
 
 This is a planning action only. It does not invoke the gateway, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, persist state, or move money.
+
+## Phase 5E Boundary
+
+Phase 5E adds a repository-backed portable-code generation workspace:
+
+- reads existing campaign planning state through `CampaignPlanRepository`
+- selects an existing campaign execution plan by execution ID
+- selects recipients from the execution audience plan
+- delegates per-recipient planning to `PlansCampaignPortableCodeGenerations`
+- fails closed for unknown planning keys or execution IDs
+- blocks generation planning for audiences without planned recipients
+- exposes workspace-level metadata for future host/Cockpit consumers
+
+This workspace is a composition seam over existing planning data. It does not mutate repository state, invoke the gateway, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, persist new state, or move money.

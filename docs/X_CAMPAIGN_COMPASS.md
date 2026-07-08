@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 5E: Repository-Backed Portable Code Generation Workspace Baseline.
+Wave 5 — Phase 5F: Portable Code Generation Read Model and Parity.
 
 ## Status
 
-Complete through Phase 5D.
+Complete through Phase 5E.
 
 ## Completed Work
 
@@ -626,10 +626,16 @@ Complete through Phase 5D.
 - Phase 5D syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 5D `composer validate --strict` passed.
 - Phase 5D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 5E focused failing baseline was observed before implementation: `5 failed, 0 assertions`.
+- Phase 5E focused result after implementation: `5 passed, 84 assertions`.
+- Phase 5E full package result: `232 passed, 2379 assertions`.
+- Phase 5E syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 5E `composer validate --strict` passed.
+- Phase 5E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 5E — Repository-Backed Portable Code Generation Workspace Baseline.
+Phase 5F — Portable Code Generation Read Model and Parity.
 
 ## Open Questions
 

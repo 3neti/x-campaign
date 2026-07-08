@@ -46,6 +46,7 @@ use LBHurtado\XCampaign\Contracts\CampaignFeatureProfileResolver;
 use LBHurtado\XCampaign\Contracts\CampaignPlanRepository;
 use LBHurtado\XCampaign\Contracts\CampaignPlanSnapshotRepository;
 use LBHurtado\XCampaign\Contracts\CampaignPlanningWorkspace;
+use LBHurtado\XCampaign\Contracts\CampaignPortableCodeGenerationWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignRecipientImportRowWorkspace;
 use LBHurtado\XCampaign\Contracts\CreatesCampaignPlans;
 use LBHurtado\XCampaign\Contracts\DecidesCampaignAudienceImportApprovals;
@@ -87,6 +88,7 @@ use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportRecipie
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportRecipientAttachmentWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignPlanningWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignExecutionHandoffWorkspace;
+use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignPortableCodeGenerationWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignRecipientImportRowWorkspace;
 
 class XCampaignServiceProvider extends ServiceProvider
@@ -140,6 +142,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(CampaignAudienceImportRecipientAttachmentWorkspace::class, RepositoryBackedCampaignAudienceImportRecipientAttachmentWorkspace::class);
         $this->app->singleton(CampaignAudienceImportWorkspace::class, RepositoryBackedCampaignAudienceImportWorkspace::class);
         $this->app->singleton(CampaignExecutionHandoffWorkspace::class, RepositoryBackedCampaignExecutionHandoffWorkspace::class);
+        $this->app->singleton(CampaignPortableCodeGenerationWorkspace::class, RepositoryBackedCampaignPortableCodeGenerationWorkspace::class);
         $this->app->singleton(CampaignRecipientImportRowWorkspace::class, RepositoryBackedCampaignRecipientImportRowWorkspace::class);
     }
 
