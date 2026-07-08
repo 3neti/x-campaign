@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 2B: Campaign Persistence Contract Baseline.
+Wave 5 — Phase 2C: Campaign Migration Readiness Review.
 
 ## Status
 
@@ -256,6 +256,9 @@ Complete.
   - `CampaignPlanSnapshotData`
   - `CampaignPersistenceEffectData`
 - Added Phase 2B Pest coverage proving the snapshot seam exists, current `CampaignPlanRepository` remains intact, and persistence effects remain separate from queues, Pay Codes, feedback, journal writes, and money movement.
+- Added Phase 2C migration readiness review:
+  - `docs/phase-2-migration-readiness.md`
+- Added Phase 2C architecture tests proving table names, portable identifiers, index expectations, JSON boundaries, and non-goals are documented before migrations exist.
 
 ## Discoveries
 
@@ -475,10 +478,16 @@ Complete.
 - Phase 2B `composer validate --strict` passed.
 - Phase 2B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 - Phase 2B architectural discovery: production code cannot contain package-owner tokens such as `PayCode` or `Journal`; persistence-effect internals use boundary-safe names while preserving serialized keys like `issues_pay_codes` and `writes_journal`.
+- Phase 2C focused failing baseline was observed before implementation: 1 failed, 1 passed, 2 assertions.
+- Phase 2C focused result after implementation: `2 passed, 35 assertions`.
+- Phase 2C full package result: `163 passed, 1747 assertions`.
+- Phase 2C syntax checks passed for `src`, `tests`, and `config`.
+- Phase 2C `composer validate --strict` passed.
+- Phase 2C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 2C — Campaign Migration Readiness Review, before migrations, queues, Pay Code generation, or delivery.
+Phase 2D — Campaign Database Migration Baseline, before queues, Pay Code generation, or delivery.
 
 ## Open Questions
 

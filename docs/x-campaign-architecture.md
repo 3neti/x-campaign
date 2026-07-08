@@ -382,3 +382,15 @@ Phase 2B adds persistence contracts and DTOs before migrations exist:
 - keep the existing campaign plan repository contract intact
 
 This is a contract baseline only. It does not create migrations, bind a database repository, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 2C Boundary
+
+Phase 2C adds migration readiness review before migrations exist:
+
+- lock initial durable table names
+- lock portable identifier columns
+- lock minimum lookup indexes
+- constrain JSON columns to metadata/context
+- keep lifecycle truth explicit in status and identifier columns
+
+This is a review slice only. It does not create migrations, bind a database repository, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
