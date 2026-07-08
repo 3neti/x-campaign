@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 9F: Operator Report / Export Parity.
+Wave 5 — Phase 9 complete. Next boundary: Phase 10.
 
 ## Status
 
-Complete through Phase 9E.
+Complete through Phase 9F.
 
 ## Completed Work
 
@@ -332,6 +332,10 @@ Complete through Phase 9E.
   - `CampaignQueuedPayloadExportHandoffMapper`
 - Bound queued export handoff payload mapping to the export handoff mapper.
 - Added Phase 9E Pest coverage proving queued payloads map to export handoff input without generating exports and fail closed for unsupported operations or missing execution IDs.
+- Added Phase 9F export handoff planner:
+  - `CampaignExportHandoffPlanner`
+- Bound export handoff planning to the no-side-effect planner.
+- Added Phase 9F Pest coverage proving export handoff manifests are planned or blocked from report readiness without file generation, storage, delivery, persistence, journal writes, feedback sends, Pay Code issuance, or money movement.
 
 ## Discoveries
 
@@ -395,6 +399,7 @@ Complete through Phase 9E.
 - Operator report building is read-model-only. Phase 9C derives report sections from existing analytics summaries without invoking workspaces, generating files, storing files, delivering reports, mutating lifecycle state, calling providers, sending feedback, writing journals, issuing Pay Codes, persisting reports, mutating wallets, or moving money.
 - Export handoff contracts describe export planning shape over existing operator reports. Phase 9D does not bind an export planner, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
 - Queued export handoff mapping is translation-only. Phase 9E does not invoke report builders, plan exports, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
+- Export handoff planning is manifest-only. Phase 9F binds a no-side-effect planner that describes export readiness and manifest shape, but it does not generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
 
 ## Test Coverage Status
 
@@ -840,10 +845,20 @@ Complete through Phase 9E.
 - Phase 9D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 - Phase 9E focused failing baseline was observed before implementation: `5 failed, 2 assertions`.
 - Phase 9E focused result after implementation: `5 passed, 38 assertions`.
+- Phase 9E full package result: `323 passed, 3319 assertions`.
+- Phase 9E syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 9E `composer validate --strict` passed.
+- Phase 9E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 9F focused failing baseline was observed before implementation: `5 failed, 16 assertions`.
+- Phase 9F focused result after implementation: `5 passed, 74 assertions`.
+- Phase 9F full package result: `328 passed, 3393 assertions`.
+- Phase 9F syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 9F `composer validate --strict` passed.
+- Phase 9F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 9F — Operator Report / Export Parity.
+Phase 10 — Campaign Cockpit / Operator API Integration Boundary Plan.
 
 ## Open Questions
 

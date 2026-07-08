@@ -901,3 +901,14 @@ Phase 9E adds queued payload mapping for export handoffs:
 - exposes explicit no-side-effect metadata for queue-to-workspace handoff
 
 This mapper is a translation seam only. It does not invoke report builders, plan exports, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
+
+## Phase 9F Boundary
+
+Phase 9F closes the operator report / export handoff baseline:
+
+- binds export handoff planning to a no-side-effect planner
+- projects operator reports into export manifests
+- marks export handoffs as planned or blocked from report readiness
+- verifies Phase 9 implementation parity against the boundary plan
+
+This planner is export handoff preparation only. It does not generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
