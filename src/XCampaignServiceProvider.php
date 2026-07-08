@@ -68,6 +68,7 @@ use LBHurtado\XCampaign\Contracts\MapsCampaignQueuedPayloadsToAnalyticsSnapshots
 use LBHurtado\XCampaign\Contracts\MapsCampaignQueuedPayloadsToClaimVisibilities;
 use LBHurtado\XCampaign\Contracts\MapsCampaignQueuedPayloadsToDeliveryHandoffs;
 use LBHurtado\XCampaign\Contracts\MapsCampaignQueuedPayloadsToExecutionHandoffs;
+use LBHurtado\XCampaign\Contracts\MapsCampaignQueuedPayloadsToExportHandoffs;
 use LBHurtado\XCampaign\Contracts\PlansCampaignAudienceImportRowCollections;
 use LBHurtado\XCampaign\Contracts\PlansCampaignAudienceImportRecipientAttachments;
 use LBHurtado\XCampaign\Contracts\PlansCampaignAudienceImports;
@@ -106,6 +107,7 @@ use LBHurtado\XCampaign\Services\CampaignQueuedPayloadAnalyticsSnapshotMapper;
 use LBHurtado\XCampaign\Services\CampaignQueuedPayloadClaimVisibilityMapper;
 use LBHurtado\XCampaign\Services\CampaignQueuedPayloadDeliveryHandoffMapper;
 use LBHurtado\XCampaign\Services\CampaignQueuedPayloadExecutionHandoffMapper;
+use LBHurtado\XCampaign\Services\CampaignQueuedPayloadExportHandoffMapper;
 use LBHurtado\XCampaign\Services\ConfigCampaignFeatureProfileResolver;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportApprovalWorkspace;
@@ -155,6 +157,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(MapsCampaignQueuedPayloadsToClaimVisibilities::class, CampaignQueuedPayloadClaimVisibilityMapper::class);
         $this->app->singleton(MapsCampaignQueuedPayloadsToDeliveryHandoffs::class, CampaignQueuedPayloadDeliveryHandoffMapper::class);
         $this->app->singleton(MapsCampaignQueuedPayloadsToExecutionHandoffs::class, CampaignQueuedPayloadExecutionHandoffMapper::class);
+        $this->app->singleton(MapsCampaignQueuedPayloadsToExportHandoffs::class, CampaignQueuedPayloadExportHandoffMapper::class);
         $this->app->singleton(CampaignClaimStatusProvider::class, NullCampaignClaimStatusProvider::class);
         $this->app->singleton(PayCodeGenerationGateway::class, NullPortableCodeGenerationGateway::class);
         $this->app->singleton(PlansCampaignExecutions::class, PlanCampaignExecution::class);

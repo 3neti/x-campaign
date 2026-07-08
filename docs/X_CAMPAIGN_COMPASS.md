@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 9E: Queued Payload to Export Handoff Mapping Baseline.
+Wave 5 — Phase 9F: Operator Report / Export Parity.
 
 ## Status
 
-Complete through Phase 9D.
+Complete through Phase 9E.
 
 ## Completed Work
 
@@ -324,6 +324,14 @@ Complete through Phase 9D.
   - `CampaignExportHandoffRequestData`
   - `CampaignExportHandoffResultData`
 - Added Phase 9D Pest coverage proving export handoff requests/results carry manifest metadata without file generation, storage, delivery, persistence, queue, Pay Code, feedback, journal, or money movement effects.
+- Added Phase 9E queued export handoff mapper contract:
+  - `MapsCampaignQueuedPayloadsToExportHandoffs`
+- Added Phase 9E export handoff workspace input DTO:
+  - `CampaignExportHandoffWorkspaceInputData`
+- Added Phase 9E queued export handoff mapper:
+  - `CampaignQueuedPayloadExportHandoffMapper`
+- Bound queued export handoff payload mapping to the export handoff mapper.
+- Added Phase 9E Pest coverage proving queued payloads map to export handoff input without generating exports and fail closed for unsupported operations or missing execution IDs.
 
 ## Discoveries
 
@@ -386,6 +394,7 @@ Complete through Phase 9D.
 - Operator report contracts describe report handoff shape over existing analytics summaries. Phase 9B does not bind a report builder, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
 - Operator report building is read-model-only. Phase 9C derives report sections from existing analytics summaries without invoking workspaces, generating files, storing files, delivering reports, mutating lifecycle state, calling providers, sending feedback, writing journals, issuing Pay Codes, persisting reports, mutating wallets, or moving money.
 - Export handoff contracts describe export planning shape over existing operator reports. Phase 9D does not bind an export planner, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
+- Queued export handoff mapping is translation-only. Phase 9E does not invoke report builders, plan exports, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
 
 ## Test Coverage Status
 
@@ -829,10 +838,12 @@ Complete through Phase 9D.
 - Phase 9D syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 9D `composer validate --strict` passed.
 - Phase 9D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 9E focused failing baseline was observed before implementation: `5 failed, 2 assertions`.
+- Phase 9E focused result after implementation: `5 passed, 38 assertions`.
 
 ## Next Recommended Slice
 
-Phase 9E — Queued Payload to Export Handoff Mapping Baseline.
+Phase 9F — Operator Report / Export Parity.
 
 ## Open Questions
 

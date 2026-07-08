@@ -889,3 +889,15 @@ Phase 9D adds export handoff contracts and DTOs:
 - keep default effect metadata non-persistent and non-mutating
 
 This is a contract slice only. It does not bind an export planner, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
+
+## Phase 9E Boundary
+
+Phase 9E adds queued payload mapping for export handoffs:
+
+- accepts queued campaign payloads with operation `report.export`
+- requires an execution ID before mapping
+- carries report type, format, destination, correlation, and metadata into a workspace input DTO
+- fails closed for unsupported operations or incomplete payloads
+- exposes explicit no-side-effect metadata for queue-to-workspace handoff
+
+This mapper is a translation seam only. It does not invoke report builders, plan exports, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
