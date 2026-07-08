@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 3F: Queue Dispatch Integration Parity.
+Wave 5 — Phase 4A: Campaign Execution Handoff Boundary Plan.
 
 ## Status
 
-Complete through Phase 3F.
+Complete through Phase 4A.
 
 ## Completed Work
 
@@ -557,12 +557,16 @@ Complete through Phase 3F.
 - Phase 3F syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 3F `composer validate --strict` passed.
 - Phase 3F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 4A focused failing baseline was observed before implementation: 1 failed, 1 passed, 4 assertions.
+- Phase 4A focused result after implementation: `2 passed, 18 assertions`.
+- Phase 4A full package result: `193 passed, 1992 assertions`.
+- Phase 4A syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 4A `composer validate --strict` passed.
+- Phase 4A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 4A — Campaign Execution Handoff Boundary Plan.
-
-Do not start Phase 4 without explicit human approval. Phase 3 queue handoff is now present, but campaign execution, Pay Code generation, delivery, journal writes, provider calls, wallet mutation, and money movement remain intentionally unimplemented.
+Phase 4B — Execution Handoff Contract Baseline, before campaign execution, Pay Code generation, or delivery.
 
 ## Open Questions
 
