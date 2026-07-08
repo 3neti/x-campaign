@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 7 complete. Next boundary: Phase 8.
+Wave 5 — Phase 8B: Analytics Snapshot Contract Baseline.
 
 ## Status
 
-Complete through Phase 7F. Stop before Phase 8 until explicitly authorized.
+Complete through Phase 8A.
 
 ## Completed Work
 
@@ -710,10 +710,16 @@ Complete through Phase 7F. Stop before Phase 8 until explicitly authorized.
 - Phase 7F syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 7F `composer validate --strict` passed.
 - Phase 7F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 8A focused failing baseline was observed before implementation: `1 failed, 1 passed, 5 assertions`.
+- Phase 8A focused result after implementation: `2 passed, 21 assertions`.
+- Phase 8A full package result: `289 passed, 2943 assertions`.
+- Phase 8A syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 8A `composer validate --strict` passed.
+- Phase 8A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 8 — Analytics / Reporting Aggregation Boundary Plan.
+Phase 8B — Analytics Snapshot Contract Baseline.
 
 ## Open Questions
 

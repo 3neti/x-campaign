@@ -778,3 +778,14 @@ Phase 7F adds the claim visibility read model and parity closure:
 - documents Phase 7 parity across boundary plan, contracts, planner, workspace, queue mapper, and read model
 
 The claim visibility read model is read-only. It does not invoke the workspace, query x-change, redeem vouchers, mutate claim lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist state, mutate wallets, or move money.
+
+## Phase 8A Boundary
+
+Phase 8A adds the analytics / reporting aggregation boundary plan:
+
+- document campaign-side analytics aggregation ownership
+- preserve external ownership of lifecycle, audit, delivery, and settlement truth
+- define analytics/reporting non-goals
+- sequence the remaining Phase 8 analytics slices
+
+This is a planning slice only. It does not create analytics contracts, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist analytics, mutate wallets, or move money.
