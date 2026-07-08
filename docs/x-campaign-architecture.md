@@ -946,3 +946,14 @@ Phase 10C adds in-memory Cockpit summary building:
 - binds the Cockpit summary contract to a read-only builder
 
 This is an in-memory read-model slice only. It does not invoke workspaces, register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
+
+## Phase 10D Boundary
+
+Phase 10D adds repository-backed Cockpit workspace composition:
+
+- reads existing campaign planning state through `CampaignPlanRepository`
+- composes existing analytics, operator report, export handoff, and Cockpit summary read models
+- exposes workspace-level metadata for host/Cockpit consumers
+- fails closed for unknown planning keys through the repository boundary
+
+This workspace is read-only composition over existing package seams. It does not mutate repository state, register routes, create controllers, render UI, queue jobs, issue Pay Codes, send feedback, write journals, call providers directly, generate files, persist reports, mutate wallets, or move money.

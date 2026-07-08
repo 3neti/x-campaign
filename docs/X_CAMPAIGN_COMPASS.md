@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 10C: In-Memory Cockpit Summary Builder Baseline.
+Wave 5 — Phase 10D: Repository-Backed Cockpit Workspace Baseline.
 
 ## Status
 
-Complete through Phase 10C in progress.
+Complete through Phase 10D in progress.
 
 ## Completed Work
 
@@ -349,6 +349,12 @@ Complete through Phase 10C in progress.
   - `CampaignCockpitSummaryBuilder`
 - Bound `BuildsCampaignCockpitSummaries` to the read-only builder.
 - Added Phase 10C Pest coverage proving Cockpit summaries expose operator-safe cards, panels, action descriptors, and blockers without route, controller, UI, persistence, queue, feedback, journal, Pay Code, provider, or money movement behavior.
+- Added Phase 10D Cockpit workspace contract:
+  - `CampaignCockpitWorkspace`
+- Added Phase 10D repository-backed Cockpit workspace:
+  - `RepositoryBackedCampaignCockpitWorkspace`
+- Bound Cockpit workspace composition to the repository-backed read-only workspace.
+- Added Phase 10D Pest coverage proving Cockpit workspace summaries compose existing campaign, analytics, report, and export handoff seams without mutation or delivery side effects.
 
 ## Discoveries
 
@@ -416,6 +422,7 @@ Complete through Phase 10C in progress.
 - Cockpit/operator integration begins as a read-only package boundary. Phase 10A does not register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
 - Cockpit summary contracts describe package-side read-model shape only. Phase 10B does not bind a Cockpit summary builder, register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
 - Cockpit summary building is read-model-only. Phase 10C derives operator-safe cards, panels, and handoff action descriptors from existing DTOs without invoking workspaces, registering routes, creating controllers, rendering UI, mutating campaigns, queueing jobs, issuing Pay Codes, sending feedback, writing journals, calling providers, generating files, persisting reports, mutating wallets, or moving money.
+- Repository-backed Cockpit workspace integration composes existing package workspaces and read models. Phase 10D remains read-only and does not mutate repository state, register routes, create controllers, render UI, queue jobs, issue Pay Codes, send feedback, write journals, call providers directly, generate files, persist reports, mutate wallets, or move money.
 
 ## Test Coverage Status
 
@@ -886,10 +893,15 @@ Complete through Phase 10C in progress.
 - Phase 10C full package result: `336 passed, 3495 assertions`.
 - Phase 10C `composer validate --strict` passed.
 - Phase 10C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 10D focused failing baseline was observed before implementation: `3 failed, 1 assertion`.
+- Phase 10D focused result after implementation: `3 passed, 30 assertions`.
+- Phase 10D full package result: `339 passed, 3525 assertions`.
+- Phase 10D `composer validate --strict` passed.
+- Phase 10D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 10D — Repository-Backed Cockpit Workspace Baseline.
+Phase 10E — Operator API Response Presenter Baseline.
 
 ## Open Questions
 
