@@ -540,3 +540,15 @@ Phase 4D adds a repository-backed execution handoff workspace:
 - exposes side-effect metadata for host/Cockpit consumers
 
 This workspace is an integration seam over existing planning data. It does not mutate repository state, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, or move money.
+
+## Phase 4E Boundary
+
+Phase 4E adds a queued payload to execution handoff mapper:
+
+- accepts queued campaign payloads with operation `execution.handoff`
+- requires a scalar non-empty `execution_id`
+- maps queue metadata into handoff workspace input
+- fails closed for unsupported queued operations
+- preserves handoff-only side-effect metadata
+
+The mapper does not invoke queue jobs, call the handoff workspace, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, persist state, or move money.

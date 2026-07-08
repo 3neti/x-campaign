@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 4D: Repository-Backed Execution Handoff Workspace Baseline.
+Wave 5 — Phase 4E: Queued Payload to Execution Handoff Mapping Baseline.
 
 ## Status
 
-Complete through Phase 4D.
+Complete through Phase 4E.
 
 ## Completed Work
 
@@ -321,6 +321,7 @@ Complete through Phase 4D.
 - Campaign audience import attachment operator workspace collections aggregate existing workspace results across audiences. They are read-only and do not query persistence, trigger attachment mutation, queue ingestion, issue Pay Codes, send feedback, write journals, call providers, or move money.
 - Campaign execution handoff planning validates execution handoff readiness in memory. It returns handoff IDs, blockers, and metadata, but it does not execute campaigns, issue Pay Codes, send feedback, write journals, call providers, persist state, or move money.
 - Campaign execution handoff workspace integration reads existing repository-backed planning state and delegates to the handoff planner. It does not mutate repository state, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, or move money.
+- Queued payload to execution handoff mapping converts queue transport payloads into handoff workspace input only. It does not handle jobs, invoke the workspace, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, persist state, or move money.
 
 ## Test Coverage Status
 
@@ -584,10 +585,16 @@ Complete through Phase 4D.
 - Phase 4D syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 4D `composer validate --strict` passed.
 - Phase 4D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 4E focused failing baseline was observed before implementation: `5 failed, 2 assertions`.
+- Phase 4E focused result after implementation: `5 passed, 32 assertions`.
+- Phase 4E full package result: `210 passed, 2139 assertions`.
+- Phase 4E syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 4E `composer validate --strict` passed.
+- Phase 4E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 4E — Queued Payload to Execution Handoff Mapping Baseline, before campaign execution, Pay Code generation, or delivery.
+Phase 4F — Execution Handoff Read Model and Parity, before campaign execution, Pay Code generation, or delivery.
 
 ## Open Questions
 
