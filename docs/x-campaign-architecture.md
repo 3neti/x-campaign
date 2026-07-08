@@ -505,3 +505,14 @@ Phase 4A adds the campaign execution handoff boundary plan:
 - sequence the remaining Phase 4 handoff slices
 
 This is a planning slice only. It does not create handoff contracts, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 4B Boundary
+
+Phase 4B adds execution handoff contracts and DTOs:
+
+- define a campaign execution handoff DTO
+- define a handoff result envelope
+- define a handoff planning contract
+- keep default effect metadata handoff-only and non-executing
+
+This is a contract slice only. It does not bind a handoff planner, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

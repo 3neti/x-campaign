@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 4A: Campaign Execution Handoff Boundary Plan.
+Wave 5 — Phase 4B: Execution Handoff Contract Baseline.
 
 ## Status
 
-Complete through Phase 4A.
+Complete through Phase 4B.
 
 ## Completed Work
 
@@ -563,10 +563,17 @@ Complete through Phase 4A.
 - Phase 4A syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 4A `composer validate --strict` passed.
 - Phase 4A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 4B focused failing baseline was observed before implementation: `3 failed, 1 assertion`.
+- Phase 4B focused result after implementation: `3 passed, 33 assertions`.
+- Phase 4B combined boundary/contract result after stale Phase 4A boundary update: `5 passed, 52 assertions`.
+- Phase 4B full package result: `196 passed, 2026 assertions`.
+- Phase 4B syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 4B `composer validate --strict` passed.
+- Phase 4B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 4B — Execution Handoff Contract Baseline, before campaign execution, Pay Code generation, or delivery.
+Phase 4C — In-Memory Execution Handoff Planning Baseline, before campaign execution, Pay Code generation, or delivery.
 
 ## Open Questions
 

@@ -26,10 +26,11 @@ it('documents the phase four execution handoff boundary before execution handoff
         ->toContain('Phase 4F');
 });
 
-it('keeps phase four a free of execution handoff implementation classes', function () {
+it('keeps phase four free of execution side effect infrastructure', function () {
     $root = realpath(__DIR__.'/../../..');
 
     expect(is_dir($root.'/src/Handoff'))->toBeFalse()
-        ->and(class_exists('LBHurtado\\XCampaign\\Data\\CampaignExecutionHandoffData'))->toBeFalse()
-        ->and(interface_exists('LBHurtado\\XCampaign\\Contracts\\PlansCampaignExecutionHandoffs'))->toBeFalse();
+        ->and(is_dir($root.'/src/Delivery'))->toBeFalse()
+        ->and(is_dir($root.'/src/Journal'))->toBeFalse()
+        ->and(is_dir($root.'/src/Providers'))->toBeFalse();
 });
