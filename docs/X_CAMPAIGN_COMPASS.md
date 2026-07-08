@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 2F: Campaign Persistence Integration Parity.
+Wave 5 — Phase 3A: Campaign Queue Boundary Plan.
 
 ## Status
 
-Complete.
+Complete through Phase 3A.
 
 ## Completed Work
 
@@ -520,10 +520,16 @@ Complete.
 - Phase 2F syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 2F `composer validate --strict` passed.
 - Phase 2F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 3A focused failing baseline was observed before implementation: 1 failed, 1 passed, 6 assertions.
+- Phase 3A focused result after implementation: `2 passed, 19 assertions`.
+- Phase 3A full package result: `172 passed, 1841 assertions`.
+- Phase 3A syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 3A `composer validate --strict` passed.
+- Phase 3A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 3A — Campaign Queue Boundary Plan, before queued execution, Pay Code generation, or delivery.
+Phase 3B — Queue Dispatch Contract Baseline, before real queue dispatch, Pay Code generation, or delivery.
 
 ## Open Questions
 

@@ -428,3 +428,14 @@ Phase 2F adds persistence integration parity:
 - preserve durable repository effects as storage-only side effects
 
 This is a persistence parity slice only. It does not register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 3A Boundary
+
+Phase 3A adds the campaign queue boundary plan before any queue contract or job exists:
+
+- document queue ownership and host runtime responsibilities
+- define queue handoff non-goals
+- preserve the distinction between queue planning, queue dispatch, and campaign execution
+- sequence the remaining Phase 3 queue slices
+
+This is a planning slice only. It does not create queue contracts, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
