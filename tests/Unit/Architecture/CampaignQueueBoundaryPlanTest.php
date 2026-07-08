@@ -25,16 +25,14 @@ it('documents the phase three queue boundary before queue contracts are introduc
         ->toContain('Phase 3F');
 });
 
-it('keeps phase three a free of queue job classes and dispatch behavior', function () {
+it('keeps phase three queue boundary free of real dispatch behavior', function () {
     $root = realpath(__DIR__.'/../../..');
     $source = collect([
         ...glob($root.'/src/**/*.php') ?: [],
         ...glob($root.'/src/**/**/*.php') ?: [],
     ])->map(fn (string $file): string => file_get_contents($file) ?: '')->implode("\n");
 
-    expect(is_dir($root.'/src/Jobs'))->toBeFalse()
-        ->and($source)
-        ->not->toContain('ShouldQueue')
+    expect($source)
         ->not->toContain('Bus::')
         ->not->toContain('dispatch(')
         ->not->toContain('Queue::');

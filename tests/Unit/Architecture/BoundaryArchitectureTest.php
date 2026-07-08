@@ -19,12 +19,11 @@ it('keeps phase zero free of execution and notification package dependencies', f
         ->not->toContain('Paynamics');
 });
 
-it('does not scaffold routes controllers jobs or execution owners outside authorized storage slices', function () {
+it('does not scaffold routes controllers or execution owners outside authorized slices', function () {
     $root = realpath(__DIR__.'/../../..');
 
     expect(is_dir($root.'/routes'))->toBeFalse()
         ->and(is_dir($root.'/src/Http/Controllers'))->toBeFalse()
-        ->and(is_dir($root.'/src/Jobs'))->toBeFalse()
         ->and(is_dir($root.'/src/Execution'))->toBeFalse()
         ->and(is_dir($root.'/src/Payments'))->toBeFalse()
         ->and(is_dir($root.'/src/Wallets'))->toBeFalse();

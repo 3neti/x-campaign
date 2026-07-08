@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 3D: Queued Plan Payload Baseline.
+Wave 5 — Phase 3E: Queue Job Wrapper Baseline.
 
 ## Status
 
-Complete through Phase 3D.
+Complete through Phase 3E.
 
 ## Completed Work
 
@@ -544,10 +544,17 @@ Complete through Phase 3D.
 - Phase 3D syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 3D `composer validate --strict` passed.
 - Phase 3D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 3E focused failing baseline was observed before implementation: 3 failed, 0 assertions.
+- Phase 3E implementation discovery: Laravel's `Queueable` trait already owns the `$queue` property; the job wrapper must call `onQueue('campaigns')` instead of redefining the property.
+- Phase 3E focused result after implementation: `3 passed, 26 assertions`.
+- Phase 3E full package result: `188 passed, 1949 assertions`.
+- Phase 3E syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 3E `composer validate --strict` passed.
+- Phase 3E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 3E — Queue Job Wrapper Baseline, before campaign execution, Pay Code generation, or delivery.
+Phase 3F — Queue Dispatch Integration Parity, before campaign execution, Pay Code generation, or delivery.
 
 ## Open Questions
 

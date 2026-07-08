@@ -472,3 +472,14 @@ Phase 3D adds queued plan payload data:
 - provide stable correlation identifiers when a caller does not supply one
 
 This is a payload slice only. It does not create job classes, push work to queues, register routes, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 3E Boundary
+
+Phase 3E adds a queue job wrapper:
+
+- carry a validated queued plan payload
+- opt into Laravel queue transport through a package job wrapper
+- keep `handle()` as a no-op until execution integration is explicitly authorized
+- expose no-side-effect metadata for boundary tests
+
+This is a job wrapper slice only. It does not push work to queues, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
