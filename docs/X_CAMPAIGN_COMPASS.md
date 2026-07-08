@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 3E: Queue Job Wrapper Baseline.
+Wave 5 — Phase 3F: Queue Dispatch Integration Parity.
 
 ## Status
 
-Complete through Phase 3E.
+Complete through Phase 3F.
 
 ## Completed Work
 
@@ -551,10 +551,18 @@ Complete through Phase 3E.
 - Phase 3E syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 3E `composer validate --strict` passed.
 - Phase 3E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 3F focused failing baseline was observed before implementation: 3 failed, 0 assertions.
+- Phase 3F focused result after implementation: `3 passed, 25 assertions`.
+- Phase 3F full package result: `191 passed, 1974 assertions`.
+- Phase 3F syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 3F `composer validate --strict` passed.
+- Phase 3F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 3F — Queue Dispatch Integration Parity, before campaign execution, Pay Code generation, or delivery.
+Phase 4A — Campaign Execution Handoff Boundary Plan.
+
+Do not start Phase 4 without explicit human approval. Phase 3 queue handoff is now present, but campaign execution, Pay Code generation, delivery, journal writes, provider calls, wallet mutation, and money movement remain intentionally unimplemented.
 
 ## Open Questions
 

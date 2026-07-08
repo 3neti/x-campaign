@@ -30,7 +30,10 @@ it('keeps phase three queue boundary free of real dispatch behavior', function (
     $source = collect([
         ...glob($root.'/src/**/*.php') ?: [],
         ...glob($root.'/src/**/**/*.php') ?: [],
-    ])->map(fn (string $file): string => file_get_contents($file) ?: '')->implode("\n");
+    ])->reject(fn (string $file): bool => str_contains($file, '/src/Queue/'))
+        ->reject(fn (string $file): bool => str_contains($file, '/src/Contracts/DispatchesCampaignQueuedPlans.php'))
+        ->map(fn (string $file): string => file_get_contents($file) ?: '')
+        ->implode("\n");
 
     expect($source)
         ->not->toContain('Bus::')

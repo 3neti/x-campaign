@@ -483,3 +483,14 @@ Phase 3E adds a queue job wrapper:
 - expose no-side-effect metadata for boundary tests
 
 This is a job wrapper slice only. It does not push work to queues, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 3F Boundary
+
+Phase 3F adds the queue dispatch integration seam:
+
+- bind a queue dispatcher contract
+- push the no-op queue job wrapper through Laravel's queue facade
+- prove queue handoff with queue fakes
+- return queued effect metadata while keeping all execution, delivery, audit, provider, wallet, and money effects false
+
+This is a queued handoff slice only. It does not execute campaign operations, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

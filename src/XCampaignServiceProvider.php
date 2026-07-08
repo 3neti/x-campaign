@@ -46,6 +46,7 @@ use LBHurtado\XCampaign\Contracts\CampaignRecipientImportRowWorkspace;
 use LBHurtado\XCampaign\Contracts\CreatesCampaignPlans;
 use LBHurtado\XCampaign\Contracts\DecidesCampaignAudienceImportApprovals;
 use LBHurtado\XCampaign\Contracts\DecidesCampaignAudienceImportRecipientAttachmentMutations;
+use LBHurtado\XCampaign\Contracts\DispatchesCampaignQueuedPlans;
 use LBHurtado\XCampaign\Contracts\PlansCampaignAudienceImportRowCollections;
 use LBHurtado\XCampaign\Contracts\PlansCampaignAudienceImportRecipientAttachments;
 use LBHurtado\XCampaign\Contracts\PlansCampaignAudienceImports;
@@ -62,6 +63,7 @@ use LBHurtado\XCampaign\ReadModels\CampaignAudienceImportAttachmentOperatorWorks
 use LBHurtado\XCampaign\ReadModels\CampaignAudienceImportRecipientAttachmentMutationSummaryReadModel;
 use LBHurtado\XCampaign\ReadModels\CampaignAudienceImportReviewSummaryReadModel;
 use LBHurtado\XCampaign\ReadModels\CampaignSummaryReadModel;
+use LBHurtado\XCampaign\Queue\CampaignQueueDispatcher;
 use LBHurtado\XCampaign\Repositories\EloquentCampaignPlanSnapshotRepository;
 use LBHurtado\XCampaign\Repositories\InMemoryCampaignPlanRepository;
 use LBHurtado\XCampaign\Services\CampaignStateGrammar;
@@ -102,6 +104,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(PlansCampaignAudienceImportRowCollections::class, PlanCampaignAudienceImportRowCollection::class);
         $this->app->singleton(PlansCampaignRecipientImportRows::class, PlanCampaignRecipientImportRow::class);
         $this->app->singleton(PlansCampaignQueueDispatches::class, PlanCampaignQueueDispatch::class);
+        $this->app->singleton(DispatchesCampaignQueuedPlans::class, CampaignQueueDispatcher::class);
         $this->app->singleton(PlansCampaignExecutions::class, PlanCampaignExecution::class);
         $this->app->singleton(PlansCampaignExecutionBatches::class, PlanCampaignExecutionBatches::class);
         $this->app->singleton(BuildsCampaignAudienceImportAttachmentOperatorReadModels::class, CampaignAudienceImportAttachmentOperatorReadModel::class);

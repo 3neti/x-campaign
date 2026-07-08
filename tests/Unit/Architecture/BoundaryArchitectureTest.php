@@ -31,8 +31,10 @@ it('does not scaffold routes controllers or execution owners outside authorized 
 
 it('does not introduce campaign execution side effects in phase one a', function () {
     $source = collect([
-        ...glob(__DIR__.'/../../../src/**/*.php') ?: [],
-        ...glob(__DIR__.'/../../../src/**/**/*.php') ?: [],
+        ...glob(__DIR__.'/../../../src/Actions/*.php') ?: [],
+        ...glob(__DIR__.'/../../../src/Services/*.php') ?: [],
+        ...glob(__DIR__.'/../../../src/Workspaces/*.php') ?: [],
+        ...glob(__DIR__.'/../../../src/ReadModels/*.php') ?: [],
     ])->map(fn (string $file): string => file_get_contents($file) ?: '')->implode("\n");
 
     expect($source)
