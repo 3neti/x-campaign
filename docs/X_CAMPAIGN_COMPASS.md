@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 8B: Analytics Snapshot Contract Baseline.
+Wave 5 — Phase 8C: In-Memory Analytics Snapshot Aggregation Baseline.
 
 ## Status
 
-Complete through Phase 8A.
+Complete through Phase 8B.
 
 ## Completed Work
 
@@ -274,6 +274,12 @@ Complete through Phase 8A.
   - `EloquentCampaignPlanRepository`
 - Added Phase 2F persistence parity tests proving the in-memory and Eloquent campaign plan repositories preserve `put`, `get`, `has`, `all`, and `forget` behavior.
 - Kept the primary `CampaignPlanRepository` service-provider binding on the in-memory baseline; durable replacement remains a future explicit host/runtime decision.
+- Added Phase 8B analytics snapshot contract:
+  - `BuildsCampaignAnalyticsSnapshots`
+- Added Phase 8B analytics DTOs:
+  - `CampaignAnalyticsInputData`
+  - `CampaignAnalyticsSnapshotData`
+- Added Phase 8B Pest coverage proving analytics snapshot inputs/results are read-only and carry no persistence, queue, Pay Code, feedback, journal, or money movement effects by default.
 
 ## Discoveries
 
@@ -327,6 +333,7 @@ Complete through Phase 8A.
 - Portable-code generation request/result contracts describe host gateway handoff shape only. They do not bind a planner, invoke gateway implementations, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
 - The null portable-code generation gateway is the package default for the existing gateway contract. It returns planned/not-issued metadata only and does not call x-change, voucher, providers, wallets, feedback, journal, HTTP clients, or money-moving infrastructure.
 - Portable-code generation planning creates deterministic generation plans for recipient/execution pairs. It does not invoke the gateway, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, persist state, or move money.
+- Analytics snapshot contracts describe read-only aggregation over existing campaign, generation, delivery, and claim visibility summaries. Phase 8B does not bind an aggregator, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist analytics, mutate wallets, or move money.
 
 ## Test Coverage Status
 
@@ -716,10 +723,16 @@ Complete through Phase 8A.
 - Phase 8A syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 8A `composer validate --strict` passed.
 - Phase 8A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 8B focused failing baseline was observed before implementation: `3 failed, 1 assertion`.
+- Phase 8B focused result after implementation: `3 passed, 43 assertions`.
+- Phase 8B full package result: `292 passed, 2986 assertions`.
+- Phase 8B syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 8B `composer validate --strict` passed.
+- Phase 8B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 8B — Analytics Snapshot Contract Baseline.
+Phase 8C — In-Memory Analytics Snapshot Aggregation Baseline.
 
 ## Open Questions
 

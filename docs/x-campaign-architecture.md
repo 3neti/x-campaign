@@ -789,3 +789,14 @@ Phase 8A adds the analytics / reporting aggregation boundary plan:
 - sequence the remaining Phase 8 analytics slices
 
 This is a planning slice only. It does not create analytics contracts, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist analytics, mutate wallets, or move money.
+
+## Phase 8B Boundary
+
+Phase 8B adds analytics snapshot contracts and DTOs:
+
+- define an analytics input envelope over existing campaign, generation, delivery, and claim visibility summaries
+- define a read-only analytics snapshot result
+- define the analytics snapshot aggregation contract for later implementation
+- keep default effect metadata non-persistent and non-mutating
+
+This is a contract slice only. It does not bind an aggregator, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist analytics, mutate wallets, or move money.
