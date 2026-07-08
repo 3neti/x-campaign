@@ -563,3 +563,14 @@ Phase 4F adds an execution handoff read model:
 - documents Phase 4 parity across boundary plan, contracts, planner, workspace, queue mapping, and read model
 
 The execution handoff read model is read-only. It does not invoke queue jobs, call the handoff workspace, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, persist state, or move money.
+
+## Phase 5A Boundary
+
+Phase 5A adds the Pay Code generation gateway boundary plan:
+
+- document campaign-side generation handoff ownership
+- preserve external ownership of voucher issuance and execution semantics
+- define generation non-goals
+- sequence the remaining Phase 5 generation slices
+
+This is a planning slice only. It does not create generation request/result contracts, invoke gateway implementations, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

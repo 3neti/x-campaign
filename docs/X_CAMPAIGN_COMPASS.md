@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 4F: Execution Handoff Read Model and Parity.
+Wave 5 — Phase 5A: Pay Code Generation Gateway Boundary Plan.
 
 ## Status
 
-Complete through Phase 4F. Stopped at the start of Phase 5 as requested.
+Complete through Phase 5A.
 
 ## Completed Work
 
@@ -323,6 +323,7 @@ Complete through Phase 4F. Stopped at the start of Phase 5 as requested.
 - Campaign execution handoff workspace integration reads existing repository-backed planning state and delegates to the handoff planner. It does not mutate repository state, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, or move money.
 - Queued payload to execution handoff mapping converts queue transport payloads into handoff workspace input only. It does not handle jobs, invoke the workspace, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, persist state, or move money.
 - Campaign execution handoff summaries are read-only projections over handoff results. They expose readiness, counts, blockers, and effect metadata without invoking queue jobs, workspaces, campaign execution, Pay Code generation, feedback delivery, journal writes, provider calls, persistence, or money movement.
+- Pay Code generation gateway planning is campaign-side handoff documentation only. Actual voucher issuance, execution semantics, provider behavior, delivery, journal writes, wallet mutation, and money movement remain external responsibilities.
 
 ## Test Coverage Status
 
@@ -598,10 +599,15 @@ Complete through Phase 4F. Stopped at the start of Phase 5 as requested.
 - Phase 4F syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 4F `composer validate --strict` passed.
 - Phase 4F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 5A focused result after implementation: `2 passed, 21 assertions`.
+- Phase 5A full package result: `217 passed, 2199 assertions`.
+- Phase 5A syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 5A `composer validate --strict` passed.
+- Phase 5A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 5A — Pay Code Generation Gateway Boundary Plan. Do not begin without explicit approval.
+Phase 5B — Portable Code Generation Request/Result Contract Baseline.
 
 ## Open Questions
 
