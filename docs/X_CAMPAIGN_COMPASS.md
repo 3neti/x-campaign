@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 5 complete. Next boundary: Phase 6.
+Wave 5 — Phase 6B: Delivery Handoff Request/Result Contract Baseline.
 
 ## Status
 
-Complete through Phase 5F. Stop before Phase 6 until explicitly authorized.
+Complete through Phase 6A.
 
 ## Completed Work
 
@@ -638,10 +638,16 @@ Complete through Phase 5F. Stop before Phase 6 until explicitly authorized.
 - Phase 5F syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 5F `composer validate --strict` passed.
 - Phase 5F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 6A focused failing baseline was observed before implementation: `1 failed, 1 passed, 5 assertions`.
+- Phase 6A focused result after implementation: `2 passed, 21 assertions`.
+- Phase 6A full package result: `239 passed, 2455 assertions`.
+- Phase 6A syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 6A `composer validate --strict` passed.
+- Phase 6A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 6 — Delivery / Feedback Handoff Boundary Plan.
+Phase 6B — Delivery Handoff Request/Result Contract Baseline.
 
 ## Open Questions
 

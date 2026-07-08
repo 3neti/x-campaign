@@ -634,3 +634,14 @@ Phase 5F adds a portable-code generation read model and parity closure:
 - documents Phase 5 parity across boundary plan, contracts, null gateway, planner, workspace, and read model
 
 The portable-code generation read model is read-only. It does not invoke the workspace, invoke the gateway, issue Pay Codes, send feedback, write journals, call providers, persist state, mutate wallets, or move money.
+
+## Phase 6A Boundary
+
+Phase 6A adds the delivery / feedback handoff boundary plan:
+
+- document campaign-side delivery handoff ownership
+- preserve external ownership of notification transport and feedback lifecycle truth
+- define delivery handoff non-goals
+- sequence the remaining Phase 6 delivery handoff slices
+
+This is a planning slice only. It does not create delivery handoff request/result contracts, call x-feedback, send notifications, call providers, write journals, issue Pay Codes, mutate wallets, or move money.
