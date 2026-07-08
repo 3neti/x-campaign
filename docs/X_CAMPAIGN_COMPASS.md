@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 8F: Analytics Operator Summary Parity.
+Wave 5 — Phase 8 complete. Next boundary: Phase 9.
 
 ## Status
 
-Complete through Phase 8E.
+Complete through Phase 8F. Stop before Phase 9 unless explicitly authorized.
 
 ## Completed Work
 
@@ -298,6 +298,13 @@ Complete through Phase 8E.
   - `CampaignQueuedPayloadAnalyticsSnapshotMapper`
 - Bound queued analytics payload mapping to the analytics mapper.
 - Added Phase 8E Pest coverage proving queued payloads map to analytics workspace input without running analytics and fail closed for unsupported operations or missing execution IDs.
+- Added Phase 8F analytics operator summary contract:
+  - `BuildsCampaignAnalyticsOperatorSummaries`
+- Added Phase 8F analytics operator summary DTO/read model:
+  - `CampaignAnalyticsOperatorSummaryData`
+  - `CampaignAnalyticsOperatorSummaryReadModel`
+- Bound analytics operator summaries to the read-only read model.
+- Added Phase 8F Pest coverage proving operator-facing analytics summaries expose counts, posture, blockers, and read-only/no-side-effect metadata.
 
 ## Discoveries
 
@@ -355,6 +362,7 @@ Complete through Phase 8E.
 - Analytics snapshot aggregation is read-model-only. Phase 8C derives counts and blockers from existing summaries without invoking workspaces, reports, exports, lifecycle mutation, providers, feedback, journal writes, Pay Code issuance, analytics persistence, wallet mutation, or money movement.
 - Repository-backed analytics workspace integration composes existing package workspaces and read models. Phase 8D remains read-only and does not persist analytics, run reports, generate exports, mutate lifecycle state, call providers directly, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
 - Queued analytics payload mapping is translation-only. Phase 8E does not invoke the analytics workspace, persist analytics, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
+- Analytics operator summaries are presentation aggregation only. Phase 8F does not invoke workspaces, persist analytics, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
 
 ## Test Coverage Status
 
@@ -768,10 +776,16 @@ Complete through Phase 8E.
 - Phase 8E syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 8E `composer validate --strict` passed.
 - Phase 8E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 8F focused failing baseline was observed before implementation: `3 failed, 0 assertions`.
+- Phase 8F focused result after implementation: `3 passed, 44 assertions`.
+- Phase 8F full package result: `307 passed, 3154 assertions`.
+- Phase 8F syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 8F `composer validate --strict` passed.
+- Phase 8F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 8F — Analytics Operator Summary Parity.
+Phase 9 — Operator Report / Export Handoff Boundary Plan.
 
 ## Open Questions
 

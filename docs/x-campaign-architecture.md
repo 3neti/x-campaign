@@ -835,3 +835,14 @@ Phase 8E adds queued payload mapping for analytics snapshots:
 - exposes explicit no-side-effect metadata for queue-to-workspace handoff
 
 This mapper is a translation seam only. It does not invoke the analytics workspace, persist analytics, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
+
+## Phase 8F Boundary
+
+Phase 8F adds analytics operator summary parity:
+
+- projects analytics snapshots into operator-facing summary DTOs
+- exposes campaign analytics counts, blocker counts, and operator posture
+- binds the operator summary read-model contract
+- closes the Phase 8 analytics/reporting baseline as read-only package infrastructure
+
+This read model is presentation aggregation only. It does not invoke workspaces, persist analytics, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
