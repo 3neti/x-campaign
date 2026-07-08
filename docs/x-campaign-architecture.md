@@ -728,3 +728,15 @@ Phase 7B adds claim visibility contracts and DTOs:
 - keep default effect metadata non-mutating by default
 
 This is a contract slice only. It does not bind a planner, query x-change, redeem vouchers, mutate claim lifecycle state, call providers, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
+
+## Phase 7C Boundary
+
+Phase 7C adds in-memory claim visibility planning:
+
+- validates claim visibility planning keys
+- requires a portable-code reference before visibility is visible
+- requires a claim status snapshot before visibility is visible
+- creates deterministic claim visibility IDs
+- preserves operator-safe visibility metadata
+
+This is still a visibility planning slice only. It does not query x-change, redeem vouchers, mutate claim lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist state, mutate wallets, or move money.

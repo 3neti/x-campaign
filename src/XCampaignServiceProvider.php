@@ -15,6 +15,7 @@ use LBHurtado\XCampaign\Actions\DecideCampaignAudienceImportRecipientAttachmentM
 use LBHurtado\XCampaign\Actions\PlanCampaignAudienceImport;
 use LBHurtado\XCampaign\Actions\PlanCampaignAudienceImportRecipientAttachments;
 use LBHurtado\XCampaign\Actions\PlanCampaignAudienceImportRowCollection;
+use LBHurtado\XCampaign\Actions\PlanCampaignClaimVisibility;
 use LBHurtado\XCampaign\Actions\PlanCampaignDeliveryHandoff;
 use LBHurtado\XCampaign\Actions\PlanCampaignExecution;
 use LBHurtado\XCampaign\Actions\PlanCampaignExecutionBatches;
@@ -61,6 +62,7 @@ use LBHurtado\XCampaign\Contracts\MapsCampaignQueuedPayloadsToExecutionHandoffs;
 use LBHurtado\XCampaign\Contracts\PlansCampaignAudienceImportRowCollections;
 use LBHurtado\XCampaign\Contracts\PlansCampaignAudienceImportRecipientAttachments;
 use LBHurtado\XCampaign\Contracts\PlansCampaignAudienceImports;
+use LBHurtado\XCampaign\Contracts\PlansCampaignClaimVisibilities;
 use LBHurtado\XCampaign\Contracts\PlansCampaignDeliveryHandoffs;
 use LBHurtado\XCampaign\Contracts\PlansCampaignExecutionBatches;
 use LBHurtado\XCampaign\Contracts\PlansCampaignExecutionHandoffs;
@@ -126,6 +128,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(PlansCampaignAudienceImportRecipientAttachments::class, PlanCampaignAudienceImportRecipientAttachments::class);
         $this->app->singleton(PlansCampaignAudienceImports::class, PlanCampaignAudienceImport::class);
         $this->app->singleton(PlansCampaignAudienceImportRowCollections::class, PlanCampaignAudienceImportRowCollection::class);
+        $this->app->singleton(PlansCampaignClaimVisibilities::class, PlanCampaignClaimVisibility::class);
         $this->app->singleton(PlansCampaignDeliveryHandoffs::class, PlanCampaignDeliveryHandoff::class);
         $this->app->singleton(PlansCampaignRecipientImportRows::class, PlanCampaignRecipientImportRow::class);
         $this->app->singleton(PlansCampaignQueueDispatches::class, PlanCampaignQueueDispatch::class);
