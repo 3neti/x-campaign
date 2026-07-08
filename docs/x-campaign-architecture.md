@@ -766,3 +766,15 @@ Phase 7E adds queued payload mapping for claim visibility:
 - exposes explicit no-side-effect metadata for queue-to-workspace handoff
 
 This mapper is a translation seam only. It does not run the claim visibility workspace, query x-change, redeem vouchers, mutate claim lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist state, mutate wallets, or move money.
+
+## Phase 7F Boundary
+
+Phase 7F adds the claim visibility read model and parity closure:
+
+- summarizes repository-backed claim visibility workspace results
+- exposes visible, blocked, claimed, unclaimed, and recipient counts
+- preserves blockers for operator-facing review
+- carries no-side-effect metadata into a read-only summary DTO
+- documents Phase 7 parity across boundary plan, contracts, planner, workspace, queue mapper, and read model
+
+The claim visibility read model is read-only. It does not invoke the workspace, query x-change, redeem vouchers, mutate claim lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist state, mutate wallets, or move money.

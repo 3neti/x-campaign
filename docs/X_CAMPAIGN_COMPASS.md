@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 7F: Claim Visibility Read Model and Parity Closure.
+Wave 5 — Phase 7 complete. Next boundary: Phase 8.
 
 ## Status
 
-Complete through Phase 7E.
+Complete through Phase 7F. Stop before Phase 8 until explicitly authorized.
 
 ## Completed Work
 
@@ -704,10 +704,16 @@ Complete through Phase 7E.
 - Phase 7E syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 7E `composer validate --strict` passed.
 - Phase 7E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 7F focused failing baseline was observed before implementation: `4 failed, 1 passed, 14 assertions`.
+- Phase 7F focused result after implementation: `5 passed, 51 assertions`.
+- Phase 7F full package result: `287 passed, 2922 assertions`.
+- Phase 7F syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 7F `composer validate --strict` passed.
+- Phase 7F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 7F — Claim Visibility Read Model and Parity Closure.
+Phase 8 — Analytics / Reporting Aggregation Boundary Plan.
 
 ## Open Questions
 

@@ -35,6 +35,7 @@ use LBHurtado\XCampaign\Contracts\BuildsCampaignAudienceImportAttachmentOperator
 use LBHurtado\XCampaign\Contracts\BuildsCampaignAudienceImportAttachmentOperatorWorkspaceCollections;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignAudienceImportRecipientAttachmentMutationSummaries;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignAudienceImportReviewSummaries;
+use LBHurtado\XCampaign\Contracts\BuildsCampaignClaimVisibilitySummaries;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignDeliveryHandoffSummaries;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignExecutionHandoffSummaries;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignPortableCodeGenerationSummaries;
@@ -82,6 +83,7 @@ use LBHurtado\XCampaign\ReadModels\CampaignAudienceImportAttachmentOperatorWorks
 use LBHurtado\XCampaign\ReadModels\CampaignAudienceImportAttachmentOperatorWorkspaceCollectionReadModel;
 use LBHurtado\XCampaign\ReadModels\CampaignAudienceImportRecipientAttachmentMutationSummaryReadModel;
 use LBHurtado\XCampaign\ReadModels\CampaignAudienceImportReviewSummaryReadModel;
+use LBHurtado\XCampaign\ReadModels\CampaignClaimVisibilitySummaryReadModel;
 use LBHurtado\XCampaign\ReadModels\CampaignDeliveryHandoffSummaryReadModel;
 use LBHurtado\XCampaign\ReadModels\CampaignExecutionHandoffSummaryReadModel;
 use LBHurtado\XCampaign\ReadModels\CampaignPortableCodeGenerationSummaryReadModel;
@@ -153,6 +155,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(BuildsCampaignAudienceImportAttachmentOperatorWorkspaceCollections::class, CampaignAudienceImportAttachmentOperatorWorkspaceCollectionReadModel::class);
         $this->app->singleton(BuildsCampaignAudienceImportRecipientAttachmentMutationSummaries::class, CampaignAudienceImportRecipientAttachmentMutationSummaryReadModel::class);
         $this->app->singleton(BuildsCampaignAudienceImportReviewSummaries::class, CampaignAudienceImportReviewSummaryReadModel::class);
+        $this->app->singleton(BuildsCampaignClaimVisibilitySummaries::class, CampaignClaimVisibilitySummaryReadModel::class);
         $this->app->singleton(BuildsCampaignDeliveryHandoffSummaries::class, CampaignDeliveryHandoffSummaryReadModel::class);
         $this->app->singleton(BuildsCampaignExecutionHandoffSummaries::class, CampaignExecutionHandoffSummaryReadModel::class);
         $this->app->singleton(BuildsCampaignPortableCodeGenerationSummaries::class, CampaignPortableCodeGenerationSummaryReadModel::class);
