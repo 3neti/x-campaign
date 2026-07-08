@@ -912,3 +912,14 @@ Phase 9F closes the operator report / export handoff baseline:
 - verifies Phase 9 implementation parity against the boundary plan
 
 This planner is export handoff preparation only. It does not generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
+
+## Phase 10A Boundary
+
+Phase 10A adds the Cockpit / operator API integration boundary plan:
+
+- document campaign-side Cockpit summary ownership
+- preserve host ownership of routes, controllers, pages, authorization, and redaction enforcement
+- preserve external ownership of Pay Code issuance, feedback delivery, journal writes, providers, wallets, and money movement
+- sequence the remaining Phase 10 Cockpit/operator integration slices
+
+This is a planning slice only. It does not create Cockpit DTOs, bind read models, register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.

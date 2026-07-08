@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 9 complete. Next boundary: Phase 10.
+Wave 5 — Phase 10A: Cockpit / Operator Integration Boundary Plan.
 
 ## Status
 
-Complete through Phase 9F.
+Complete through Phase 10A in progress.
 
 ## Completed Work
 
@@ -336,6 +336,9 @@ Complete through Phase 9F.
   - `CampaignExportHandoffPlanner`
 - Bound export handoff planning to the no-side-effect planner.
 - Added Phase 9F Pest coverage proving export handoff manifests are planned or blocked from report readiness without file generation, storage, delivery, persistence, journal writes, feedback sends, Pay Code issuance, or money movement.
+- Added Phase 10A Cockpit/operator integration boundary document:
+  - `docs/phase-10-cockpit-operator-integration-boundary.md`
+- Added Phase 10A architecture coverage proving the Cockpit/operator boundary is documented before routes, controllers, pages, or views exist.
 
 ## Discoveries
 
@@ -400,6 +403,7 @@ Complete through Phase 9F.
 - Export handoff contracts describe export planning shape over existing operator reports. Phase 9D does not bind an export planner, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
 - Queued export handoff mapping is translation-only. Phase 9E does not invoke report builders, plan exports, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
 - Export handoff planning is manifest-only. Phase 9F binds a no-side-effect planner that describes export readiness and manifest shape, but it does not generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
+- Cockpit/operator integration begins as a read-only package boundary. Phase 10A does not register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
 
 ## Test Coverage Status
 
@@ -855,10 +859,15 @@ Complete through Phase 9F.
 - Phase 9F syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 9F `composer validate --strict` passed.
 - Phase 9F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 10A focused failing baseline was observed before implementation: `1 failed, 1 passed, 6 assertions`.
+- Phase 10A focused result after implementation: `2 passed, 17 assertions`.
+- Phase 10A full package result: `330 passed, 3410 assertions`.
+- Phase 10A `composer validate --strict` passed.
+- Phase 10A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 10 — Campaign Cockpit / Operator API Integration Boundary Plan.
+Phase 10B — Cockpit Summary Contract Baseline.
 
 ## Open Questions
 
