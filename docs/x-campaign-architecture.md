@@ -857,3 +857,14 @@ Phase 9A adds the operator report / export handoff boundary plan:
 - sequence the remaining Phase 9 report/export handoff slices
 
 This is a planning slice only. It does not create report contracts, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
+
+## Phase 9B Boundary
+
+Phase 9B adds operator report contracts and DTOs:
+
+- define an operator report request over existing analytics operator summaries
+- define a read-only operator report result envelope
+- define the operator report builder contract for later implementation
+- keep default effect metadata non-persistent and non-mutating
+
+This is a contract slice only. It does not bind a report builder, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
