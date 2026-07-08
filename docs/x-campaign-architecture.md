@@ -934,3 +934,15 @@ Phase 10B adds Cockpit summary contracts and DTOs:
 - keep default effect metadata non-persistent and non-mutating
 
 This is a contract slice only. It does not bind a Cockpit summary builder, register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
+
+## Phase 10C Boundary
+
+Phase 10C adds in-memory Cockpit summary building:
+
+- builds operator-safe cards from campaign, analytics, and export handoff summaries
+- exposes report panels from existing operator report data
+- exposes read-only refresh and export handoff action descriptors
+- surfaces blockers without hiding operator risk
+- binds the Cockpit summary contract to a read-only builder
+
+This is an in-memory read-model slice only. It does not invoke workspaces, register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.

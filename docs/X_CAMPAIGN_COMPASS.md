@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 10B: Cockpit Summary Contract Baseline.
+Wave 5 — Phase 10C: In-Memory Cockpit Summary Builder Baseline.
 
 ## Status
 
-Complete through Phase 10B in progress.
+Complete through Phase 10C in progress.
 
 ## Completed Work
 
@@ -345,6 +345,10 @@ Complete through Phase 10B in progress.
   - `CampaignCockpitSummaryRequestData`
   - `CampaignCockpitSummaryData`
 - Added Phase 10B Pest coverage proving Cockpit summary requests/results are read-only and carry no persistence, queue, Pay Code, feedback, journal, provider, route, controller, or money movement behavior by default.
+- Added Phase 10C Cockpit summary builder:
+  - `CampaignCockpitSummaryBuilder`
+- Bound `BuildsCampaignCockpitSummaries` to the read-only builder.
+- Added Phase 10C Pest coverage proving Cockpit summaries expose operator-safe cards, panels, action descriptors, and blockers without route, controller, UI, persistence, queue, feedback, journal, Pay Code, provider, or money movement behavior.
 
 ## Discoveries
 
@@ -411,6 +415,7 @@ Complete through Phase 10B in progress.
 - Export handoff planning is manifest-only. Phase 9F binds a no-side-effect planner that describes export readiness and manifest shape, but it does not generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
 - Cockpit/operator integration begins as a read-only package boundary. Phase 10A does not register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
 - Cockpit summary contracts describe package-side read-model shape only. Phase 10B does not bind a Cockpit summary builder, register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
+- Cockpit summary building is read-model-only. Phase 10C derives operator-safe cards, panels, and handoff action descriptors from existing DTOs without invoking workspaces, registering routes, creating controllers, rendering UI, mutating campaigns, queueing jobs, issuing Pay Codes, sending feedback, writing journals, calling providers, generating files, persisting reports, mutating wallets, or moving money.
 
 ## Test Coverage Status
 
@@ -876,10 +881,15 @@ Complete through Phase 10B in progress.
 - Phase 10B full package result: `333 passed, 3458 assertions`.
 - Phase 10B `composer validate --strict` passed.
 - Phase 10B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 10C focused failing baseline was observed before implementation: `3 failed, 0 assertions`.
+- Phase 10C focused result after implementation: `3 passed, 37 assertions`.
+- Phase 10C full package result: `336 passed, 3495 assertions`.
+- Phase 10C `composer validate --strict` passed.
+- Phase 10C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 10C — In-Memory Cockpit Summary Builder Baseline.
+Phase 10D — Repository-Backed Cockpit Workspace Baseline.
 
 ## Open Questions
 
