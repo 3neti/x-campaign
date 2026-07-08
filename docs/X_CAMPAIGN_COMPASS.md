@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 2E: Campaign Eloquent Repository Baseline.
+Wave 5 — Phase 2F: Campaign Persistence Integration Parity.
 
 ## Status
 
@@ -270,6 +270,10 @@ Complete.
 - Bound `CampaignPlanSnapshotRepository` to the Eloquent durable baseline.
 - Added Phase 2E tests proving snapshots persist/retrieve through database storage and durable effects remain free of queues, Pay Code generation, feedback, journal writes, and money movement.
 - Updated the older in-memory repository architecture guard to protect only the in-memory repository now that Eloquent repository storage is authorized.
+- Added Phase 2F Eloquent campaign plan repository:
+  - `EloquentCampaignPlanRepository`
+- Added Phase 2F persistence parity tests proving the in-memory and Eloquent campaign plan repositories preserve `put`, `get`, `has`, `all`, and `forget` behavior.
+- Kept the primary `CampaignPlanRepository` service-provider binding on the in-memory baseline; durable replacement remains a future explicit host/runtime decision.
 
 ## Discoveries
 
@@ -510,10 +514,16 @@ Complete.
 - Phase 2E syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 2E `composer validate --strict` passed.
 - Phase 2E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 2F focused failing baseline was observed before implementation: 2 failed, 0 assertions.
+- Phase 2F focused result after implementation: `2 passed, 40 assertions`.
+- Phase 2F full package result: `170 passed, 1822 assertions`.
+- Phase 2F syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 2F `composer validate --strict` passed.
+- Phase 2F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 2F — Campaign Persistence Integration Parity, before queues, Pay Code generation, or delivery.
+Phase 3A — Campaign Queue Boundary Plan, before queued execution, Pay Code generation, or delivery.
 
 ## Open Questions
 

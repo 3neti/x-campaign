@@ -417,3 +417,14 @@ Phase 2E adds the first Eloquent-backed durable repository baseline:
 - keep the primary planning repository binding on the in-memory baseline until parity is proven
 
 This is a durable snapshot repository slice only. It does not register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 2F Boundary
+
+Phase 2F adds persistence integration parity:
+
+- implement an Eloquent-backed `CampaignPlanRepository`
+- prove repository behavior matches the in-memory baseline for core operations
+- keep runtime binding on the in-memory baseline until a future explicit storage-mode decision
+- preserve durable repository effects as storage-only side effects
+
+This is a persistence parity slice only. It does not register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
