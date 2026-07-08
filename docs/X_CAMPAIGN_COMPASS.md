@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 3B: Queue Dispatch Contract Baseline.
+Wave 5 — Phase 3C: In-Memory Queue Dispatch Planning Baseline.
 
 ## Status
 
-Complete through Phase 3B.
+Complete through Phase 3C.
 
 ## Completed Work
 
@@ -532,10 +532,16 @@ Complete through Phase 3B.
 - Phase 3B syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 3B `composer validate --strict` passed.
 - Phase 3B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 3C focused failing baseline was observed before implementation: 6 failed, 3 assertions.
+- Phase 3C focused result after implementation: `6 passed, 28 assertions`.
+- Phase 3C full package result: `181 passed, 1916 assertions`.
+- Phase 3C syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 3C `composer validate --strict` passed.
+- Phase 3C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 3C — In-Memory Queue Dispatch Planning Baseline, before real queue dispatch, Pay Code generation, or delivery.
+Phase 3D — Queued Plan Payload Baseline, before real queue dispatch, Pay Code generation, or delivery.
 
 ## Open Questions
 

@@ -450,3 +450,14 @@ Phase 3B adds queue dispatch contracts and DTOs before real queue dispatch exist
 - keep default effect metadata planning-only and non-dispatching
 
 This is a contract slice only. It does not bind a dispatcher, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 3C Boundary
+
+Phase 3C adds an in-memory queue dispatch planner:
+
+- validate queue dispatch intent completeness
+- return a stable planning identifier for identical dispatch intents
+- preserve planning-only result metadata
+- bind the queue dispatch planning contract to the in-memory planner
+
+This is still not queue dispatch. It does not create job classes, push work to queues, register routes, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
