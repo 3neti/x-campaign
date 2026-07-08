@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 7D: Repository-Backed Claim Visibility Workspace Baseline.
+Wave 5 — Phase 7E: Queued Payload to Claim Visibility Mapping Baseline.
 
 ## Status
 
-Complete through Phase 7C.
+Complete through Phase 7D.
 
 ## Completed Work
 
@@ -692,10 +692,16 @@ Complete through Phase 7C.
 - Phase 7C syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 7C `composer validate --strict` passed.
 - Phase 7C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 7D focused failing baseline was observed before implementation: `5 failed, 0 assertions`.
+- Phase 7D focused result after implementation: `5 passed, 58 assertions`.
+- Phase 7D full package result: `277 passed, 2839 assertions`.
+- Phase 7D syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 7D `composer validate --strict` passed.
+- Phase 7D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 7D — Repository-Backed Claim Visibility Workspace Baseline.
+Phase 7E — Queued Payload to Claim Visibility Mapping Baseline.
 
 ## Open Questions
 

@@ -740,3 +740,17 @@ Phase 7C adds in-memory claim visibility planning:
 - preserves operator-safe visibility metadata
 
 This is still a visibility planning slice only. It does not query x-change, redeem vouchers, mutate claim lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist state, mutate wallets, or move money.
+
+## Phase 7D Boundary
+
+Phase 7D adds a repository-backed claim visibility workspace:
+
+- reads existing campaign planning state through `CampaignPlanRepository`
+- selects an existing campaign execution plan by execution ID
+- composes portable-code generation workspace planning
+- reads claim status through the safe `CampaignClaimStatusProvider` seam
+- delegates per-recipient visibility checks to `PlansCampaignClaimVisibilities`
+- fails closed for unknown planning keys or execution IDs
+- exposes workspace-level metadata for future host/Cockpit consumers
+
+This workspace is a composition seam over existing planning data and safe status snapshots. It does not mutate repository state, query x-change directly, redeem vouchers, mutate claim lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist new state, mutate wallets, or move money.
