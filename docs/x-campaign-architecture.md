@@ -800,3 +800,14 @@ Phase 8B adds analytics snapshot contracts and DTOs:
 - keep default effect metadata non-persistent and non-mutating
 
 This is a contract slice only. It does not bind an aggregator, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist analytics, mutate wallets, or move money.
+
+## Phase 8C Boundary
+
+Phase 8C adds in-memory analytics snapshot aggregation:
+
+- aggregates existing campaign, portable-code generation, delivery handoff, and claim visibility summaries
+- exposes operator-safe analytics counts and blockers
+- marks snapshots `ready` or `attention_required` based on upstream blockers
+- binds the analytics snapshot contract to a read-only builder
+
+This is an in-memory read-model slice only. It does not invoke workspaces, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist analytics, mutate wallets, or move money.
