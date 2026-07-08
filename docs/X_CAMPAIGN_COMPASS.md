@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 6E: Queued Payload to Delivery Handoff Mapping Baseline.
+Wave 5 — Phase 6F: Delivery Handoff Read Model and Parity Closure.
 
 ## Status
 
-Complete through Phase 6D.
+Complete through Phase 6E.
 
 ## Completed Work
 
@@ -662,10 +662,16 @@ Complete through Phase 6D.
 - Phase 6D syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 6D `composer validate --strict` passed.
 - Phase 6D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 6E focused failing baseline was observed before implementation: `5 failed, 2 assertions`.
+- Phase 6E focused result after implementation: `5 passed, 34 assertions`.
+- Phase 6E full package result: `257 passed, 2621 assertions`.
+- Phase 6E syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 6E `composer validate --strict` passed.
+- Phase 6E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 6E — Queued Payload to Delivery Handoff Mapping Baseline.
+Phase 6F — Delivery Handoff Read Model and Parity Closure.
 
 ## Open Questions
 

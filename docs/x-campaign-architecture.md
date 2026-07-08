@@ -682,3 +682,15 @@ Phase 6D adds a repository-backed delivery handoff workspace:
 - exposes workspace-level metadata for future host/Cockpit consumers
 
 This workspace is a composition seam over existing planning data. It does not mutate repository state, call x-feedback, send notifications, call providers, write journals, issue Pay Codes, persist new state, mutate wallets, or move money.
+
+## Phase 6E Boundary
+
+Phase 6E adds queued payload mapping for delivery handoffs:
+
+- accepts queued campaign payloads with operation `delivery.handoff`
+- requires an execution ID before mapping
+- carries channel, requester, correlation, and metadata into a workspace input DTO
+- fails closed for unsupported operations or incomplete payloads
+- exposes explicit no-side-effect metadata for queue-to-workspace handoff
+
+This mapper is a translation seam only. It does not run the delivery handoff workspace, call x-feedback, send notifications, call providers, write journals, issue Pay Codes, persist state, mutate wallets, or move money.
