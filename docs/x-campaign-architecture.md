@@ -622,3 +622,15 @@ Phase 5E adds a repository-backed portable-code generation workspace:
 - exposes workspace-level metadata for future host/Cockpit consumers
 
 This workspace is a composition seam over existing planning data. It does not mutate repository state, invoke the gateway, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, persist new state, or move money.
+
+## Phase 5F Boundary
+
+Phase 5F adds a portable-code generation read model and parity closure:
+
+- summarizes repository-backed portable-code generation workspace results
+- exposes planned, blocked, and recipient counts
+- preserves blockers for operator-facing review
+- carries no-side-effect metadata into a read-only summary DTO
+- documents Phase 5 parity across boundary plan, contracts, null gateway, planner, workspace, and read model
+
+The portable-code generation read model is read-only. It does not invoke the workspace, invoke the gateway, issue Pay Codes, send feedback, write journals, call providers, persist state, mutate wallets, or move money.

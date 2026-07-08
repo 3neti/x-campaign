@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 5F: Portable Code Generation Read Model and Parity.
+Wave 5 — Phase 5 complete. Next boundary: Phase 6.
 
 ## Status
 
-Complete through Phase 5E.
+Complete through Phase 5F. Stop before Phase 6 until explicitly authorized.
 
 ## Completed Work
 
@@ -632,10 +632,16 @@ Complete through Phase 5E.
 - Phase 5E syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 5E `composer validate --strict` passed.
 - Phase 5E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 5F focused failing baseline was observed before implementation: `4 failed, 1 passed, 14 assertions`.
+- Phase 5F focused result after implementation: `5 passed, 55 assertions`.
+- Phase 5F full package result: `237 passed, 2434 assertions`.
+- Phase 5F syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 5F `composer validate --strict` passed.
+- Phase 5F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 5F — Portable Code Generation Read Model and Parity.
+Phase 6 — Delivery / Feedback Handoff Boundary Plan.
 
 ## Open Questions
 
