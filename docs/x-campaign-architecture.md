@@ -823,3 +823,15 @@ Phase 8D adds repository-backed analytics workspace integration:
 - fails closed for unknown planning keys or execution IDs
 
 This workspace is read-only aggregation over existing package seams. It does not persist analytics, run reports, generate exports, mutate lifecycle state, call providers directly, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
+
+## Phase 8E Boundary
+
+Phase 8E adds queued payload mapping for analytics snapshots:
+
+- accepts queued campaign payloads with operation `analytics.snapshot`
+- requires an execution ID before mapping
+- carries channel, correlation, and metadata into a workspace input DTO
+- fails closed for unsupported operations or incomplete payloads
+- exposes explicit no-side-effect metadata for queue-to-workspace handoff
+
+This mapper is a translation seam only. It does not invoke the analytics workspace, persist analytics, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
