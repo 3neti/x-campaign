@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 10A: Cockpit / Operator Integration Boundary Plan.
+Wave 5 — Phase 10B: Cockpit Summary Contract Baseline.
 
 ## Status
 
-Complete through Phase 10A in progress.
+Complete through Phase 10B in progress.
 
 ## Completed Work
 
@@ -339,6 +339,12 @@ Complete through Phase 10A in progress.
 - Added Phase 10A Cockpit/operator integration boundary document:
   - `docs/phase-10-cockpit-operator-integration-boundary.md`
 - Added Phase 10A architecture coverage proving the Cockpit/operator boundary is documented before routes, controllers, pages, or views exist.
+- Added Phase 10B Cockpit summary contract:
+  - `BuildsCampaignCockpitSummaries`
+- Added Phase 10B Cockpit summary DTOs:
+  - `CampaignCockpitSummaryRequestData`
+  - `CampaignCockpitSummaryData`
+- Added Phase 10B Pest coverage proving Cockpit summary requests/results are read-only and carry no persistence, queue, Pay Code, feedback, journal, provider, route, controller, or money movement behavior by default.
 
 ## Discoveries
 
@@ -404,6 +410,7 @@ Complete through Phase 10A in progress.
 - Queued export handoff mapping is translation-only. Phase 9E does not invoke report builders, plan exports, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
 - Export handoff planning is manifest-only. Phase 9F binds a no-side-effect planner that describes export readiness and manifest shape, but it does not generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
 - Cockpit/operator integration begins as a read-only package boundary. Phase 10A does not register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
+- Cockpit summary contracts describe package-side read-model shape only. Phase 10B does not bind a Cockpit summary builder, register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
 
 ## Test Coverage Status
 
@@ -864,10 +871,15 @@ Complete through Phase 10A in progress.
 - Phase 10A full package result: `330 passed, 3410 assertions`.
 - Phase 10A `composer validate --strict` passed.
 - Phase 10A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 10B focused failing baseline was observed before implementation: `3 failed, 1 assertion`.
+- Phase 10B focused result after implementation: `3 passed, 48 assertions`.
+- Phase 10B full package result: `333 passed, 3458 assertions`.
+- Phase 10B `composer validate --strict` passed.
+- Phase 10B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 10B — Cockpit Summary Contract Baseline.
+Phase 10C — In-Memory Cockpit Summary Builder Baseline.
 
 ## Open Questions
 

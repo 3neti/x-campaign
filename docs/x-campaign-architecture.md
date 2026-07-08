@@ -923,3 +923,14 @@ Phase 10A adds the Cockpit / operator API integration boundary plan:
 - sequence the remaining Phase 10 Cockpit/operator integration slices
 
 This is a planning slice only. It does not create Cockpit DTOs, bind read models, register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
+
+## Phase 10B Boundary
+
+Phase 10B adds Cockpit summary contracts and DTOs:
+
+- define a Cockpit summary request over existing campaign, analytics, report, and export handoff summaries
+- define a read-only Cockpit summary result envelope
+- define the Cockpit summary builder contract for later implementation
+- keep default effect metadata non-persistent and non-mutating
+
+This is a contract slice only. It does not bind a Cockpit summary builder, register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
