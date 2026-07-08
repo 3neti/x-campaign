@@ -439,3 +439,14 @@ Phase 3A adds the campaign queue boundary plan before any queue contract or job 
 - sequence the remaining Phase 3 queue slices
 
 This is a planning slice only. It does not create queue contracts, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 3B Boundary
+
+Phase 3B adds queue dispatch contracts and DTOs before real queue dispatch exists:
+
+- define a serializable queue dispatch intent
+- define a queue dispatch result envelope
+- define a queue dispatch planning contract
+- keep default effect metadata planning-only and non-dispatching
+
+This is a contract slice only. It does not bind a dispatcher, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
