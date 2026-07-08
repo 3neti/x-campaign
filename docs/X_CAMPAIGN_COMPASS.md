@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 4E: Queued Payload to Execution Handoff Mapping Baseline.
+Wave 5 — Phase 4F: Execution Handoff Read Model and Parity.
 
 ## Status
 
-Complete through Phase 4E.
+Complete through Phase 4F. Stopped at the start of Phase 5 as requested.
 
 ## Completed Work
 
@@ -322,6 +322,7 @@ Complete through Phase 4E.
 - Campaign execution handoff planning validates execution handoff readiness in memory. It returns handoff IDs, blockers, and metadata, but it does not execute campaigns, issue Pay Codes, send feedback, write journals, call providers, persist state, or move money.
 - Campaign execution handoff workspace integration reads existing repository-backed planning state and delegates to the handoff planner. It does not mutate repository state, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, or move money.
 - Queued payload to execution handoff mapping converts queue transport payloads into handoff workspace input only. It does not handle jobs, invoke the workspace, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, persist state, or move money.
+- Campaign execution handoff summaries are read-only projections over handoff results. They expose readiness, counts, blockers, and effect metadata without invoking queue jobs, workspaces, campaign execution, Pay Code generation, feedback delivery, journal writes, provider calls, persistence, or money movement.
 
 ## Test Coverage Status
 
@@ -591,10 +592,16 @@ Complete through Phase 4E.
 - Phase 4E syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 4E `composer validate --strict` passed.
 - Phase 4E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 4F focused failing baseline was observed before implementation: `5 failed, 6 assertions`.
+- Phase 4F focused result after implementation: `5 passed, 39 assertions`.
+- Phase 4F full package result: `215 passed, 2178 assertions`.
+- Phase 4F syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 4F `composer validate --strict` passed.
+- Phase 4F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 4F — Execution Handoff Read Model and Parity, before campaign execution, Pay Code generation, or delivery.
+Phase 5A — Pay Code Generation Gateway Boundary Plan. Do not begin without explicit approval.
 
 ## Open Questions
 

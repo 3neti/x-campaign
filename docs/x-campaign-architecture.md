@@ -552,3 +552,14 @@ Phase 4E adds a queued payload to execution handoff mapper:
 - preserves handoff-only side-effect metadata
 
 The mapper does not invoke queue jobs, call the handoff workspace, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, persist state, or move money.
+
+## Phase 4F Boundary
+
+Phase 4F adds an execution handoff read model:
+
+- summarizes handoff result status and readiness
+- exposes planning key, handoff ID, execution ID, batch count, recipient count, and blockers
+- preserves read-only effect metadata
+- documents Phase 4 parity across boundary plan, contracts, planner, workspace, queue mapping, and read model
+
+The execution handoff read model is read-only. It does not invoke queue jobs, call the handoff workspace, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, persist state, or move money.
