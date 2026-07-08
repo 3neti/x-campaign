@@ -37,6 +37,7 @@ use LBHurtado\XCampaign\Contracts\BuildsCampaignAudienceImportReviewSummaries;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignExecutionHandoffSummaries;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignPortableCodeGenerationSummaries;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignSummaries;
+use LBHurtado\XCampaign\Contracts\CampaignDeliveryHandoffWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignAudienceImportAttachmentOperatorWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignAudienceImportAttachmentOperatorWorkspaceCollectionWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignAudienceImportApprovalWorkspace;
@@ -90,6 +91,7 @@ use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportAttachm
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportAttachmentOperatorWorkspaceCollectionWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportRecipientAttachmentMutationWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportRecipientAttachmentWorkspace;
+use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignDeliveryHandoffWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignPlanningWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignExecutionHandoffWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignPortableCodeGenerationWorkspace;
@@ -147,6 +149,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(CampaignAudienceImportRecipientAttachmentMutationWorkspace::class, RepositoryBackedCampaignAudienceImportRecipientAttachmentMutationWorkspace::class);
         $this->app->singleton(CampaignAudienceImportRecipientAttachmentWorkspace::class, RepositoryBackedCampaignAudienceImportRecipientAttachmentWorkspace::class);
         $this->app->singleton(CampaignAudienceImportWorkspace::class, RepositoryBackedCampaignAudienceImportWorkspace::class);
+        $this->app->singleton(CampaignDeliveryHandoffWorkspace::class, RepositoryBackedCampaignDeliveryHandoffWorkspace::class);
         $this->app->singleton(CampaignExecutionHandoffWorkspace::class, RepositoryBackedCampaignExecutionHandoffWorkspace::class);
         $this->app->singleton(CampaignPortableCodeGenerationWorkspace::class, RepositoryBackedCampaignPortableCodeGenerationWorkspace::class);
         $this->app->singleton(CampaignRecipientImportRowWorkspace::class, RepositoryBackedCampaignRecipientImportRowWorkspace::class);

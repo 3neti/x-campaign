@@ -669,3 +669,16 @@ Phase 6C adds in-memory delivery handoff planning:
 - preserves operator-safe handoff metadata
 
 This is still a handoff planning slice only. It does not call x-feedback, send notifications, call providers, write journals, issue Pay Codes, persist state, mutate wallets, or move money.
+
+## Phase 6D Boundary
+
+Phase 6D adds a repository-backed delivery handoff workspace:
+
+- reads existing campaign planning state through `CampaignPlanRepository`
+- selects an existing campaign execution plan by execution ID
+- composes portable-code generation workspace planning
+- delegates per-recipient delivery handoff checks to `PlansCampaignDeliveryHandoffs`
+- fails closed for unknown planning keys or execution IDs
+- exposes workspace-level metadata for future host/Cockpit consumers
+
+This workspace is a composition seam over existing planning data. It does not mutate repository state, call x-feedback, send notifications, call providers, write journals, issue Pay Codes, persist new state, mutate wallets, or move money.
