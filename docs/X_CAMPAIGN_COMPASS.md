@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 2C: Campaign Migration Readiness Review.
+Wave 5 — Phase 2D: Campaign Database Migration Baseline.
 
 ## Status
 
@@ -259,6 +259,11 @@ Complete.
 - Added Phase 2C migration readiness review:
   - `docs/phase-2-migration-readiness.md`
 - Added Phase 2C architecture tests proving table names, portable identifiers, index expectations, JSON boundaries, and non-goals are documented before migrations exist.
+- Added Phase 2D package migration baseline:
+  - `database/migrations/2026_07_08_000000_create_x_campaign_planning_tables.php`
+- Loaded package migrations from `XCampaignServiceProvider`.
+- Added Phase 2D feature tests proving the initial campaign planning tables and required portable identifier/status/JSON context columns are created.
+- Updated earlier storage-boundary tests to treat Phase 2A/2C as historical planning/review boundaries now that Phase 2D authorizes migrations.
 
 ## Discoveries
 
@@ -484,10 +489,16 @@ Complete.
 - Phase 2C syntax checks passed for `src`, `tests`, and `config`.
 - Phase 2C `composer validate --strict` passed.
 - Phase 2C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 2D focused failing baseline was observed before implementation: 2 failed, 2 assertions.
+- Phase 2D focused result after implementation: `6 passed, 69 assertions`.
+- Phase 2D full package result: `165 passed, 1758 assertions`.
+- Phase 2D syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 2D `composer validate --strict` passed.
+- Phase 2D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 2D — Campaign Database Migration Baseline, before queues, Pay Code generation, or delivery.
+Phase 2E — Campaign Eloquent Repository Baseline, before queues, Pay Code generation, or delivery.
 
 ## Open Questions
 

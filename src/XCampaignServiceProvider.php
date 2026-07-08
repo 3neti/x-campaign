@@ -118,6 +118,8 @@ class XCampaignServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/x-campaign.php' => config_path('x-campaign.php'),

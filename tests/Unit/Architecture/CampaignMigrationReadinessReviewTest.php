@@ -45,8 +45,10 @@ it('documents migration readiness before schema files are introduced', function 
         ->toContain('No money movement');
 });
 
-it('keeps phase two c migration readiness free of migration files', function () {
-    $migrationFiles = glob(__DIR__.'/../../../database/migrations/*.php') ?: [];
+it('records that phase two c authorized the later migration baseline without owning runtime effects', function () {
+    $document = file_get_contents(__DIR__.'/../../../docs/phase-2-migration-readiness.md') ?: '';
 
-    expect($migrationFiles)->toBe([]);
+    expect($document)
+        ->toContain('Phase 2D may proceed')
+        ->toContain('tests continue proving no queues, delivery, issuance, journal writes, or money movement');
 });

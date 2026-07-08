@@ -32,8 +32,10 @@ it('documents the phase two durable storage boundary before migrations exist', f
         ->toContain('Phase 2F');
 });
 
-it('keeps phase two a free of migrations while storage is still only planned', function () {
-    $migrationFiles = glob(__DIR__.'/../../../database/migrations/*.php') ?: [];
+it('records that phase two a was a planning slice before migrations were authorized', function () {
+    $document = file_get_contents(__DIR__.'/../../../docs/phase-2-durable-storage-boundary.md') ?: '';
 
-    expect($migrationFiles)->toBe([]);
+    expect($document)
+        ->toContain('Phase 2D — database migration baseline')
+        ->toContain('Each Phase 2 slice must');
 });

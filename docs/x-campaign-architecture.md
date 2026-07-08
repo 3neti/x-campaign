@@ -394,3 +394,15 @@ Phase 2C adds migration readiness review before migrations exist:
 - keep lifecycle truth explicit in status and identifier columns
 
 This is a review slice only. It does not create migrations, bind a database repository, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 2D Boundary
+
+Phase 2D adds the first durable database migration baseline:
+
+- create campaign planning tables
+- preserve portable identifiers as first-class columns
+- expose explicit status columns
+- allow JSON context columns for metadata, effects, source payloads, and review payloads
+- load package migrations through the service provider
+
+This is a storage schema slice only. It does not bind a database repository, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
