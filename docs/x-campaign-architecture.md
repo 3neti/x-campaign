@@ -645,3 +645,14 @@ Phase 6A adds the delivery / feedback handoff boundary plan:
 - sequence the remaining Phase 6 delivery handoff slices
 
 This is a planning slice only. It does not create delivery handoff request/result contracts, call x-feedback, send notifications, call providers, write journals, issue Pay Codes, mutate wallets, or move money.
+
+## Phase 6B Boundary
+
+Phase 6B adds delivery handoff contracts and DTOs:
+
+- define a delivery handoff DTO from execution, recipient, generation, and channel context
+- define a delivery handoff result envelope
+- define a planning contract for later delivery handoff planning
+- keep effect metadata non-delivering by default
+
+This is a contract slice only. It does not bind a planner, call x-feedback, send notifications, call providers, write journals, issue Pay Codes, mutate wallets, or move money.
