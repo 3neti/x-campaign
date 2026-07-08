@@ -574,3 +574,14 @@ Phase 5A adds the Pay Code generation gateway boundary plan:
 - sequence the remaining Phase 5 generation slices
 
 This is a planning slice only. It does not create generation request/result contracts, invoke gateway implementations, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 5B Boundary
+
+Phase 5B adds portable-code generation request/result contracts:
+
+- define a generation request from campaign execution and recipient context
+- define a generation result envelope with status, generation ID, optional external reference, blockers, and metadata
+- define a planning contract for later generation planning
+- keep effect metadata non-generating by default
+
+This is a contract slice only. It does not bind a planner, invoke gateway implementations, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

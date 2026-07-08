@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 5A: Pay Code Generation Gateway Boundary Plan.
+Wave 5 — Phase 5B: Portable Code Generation Request/Result Contract Baseline.
 
 ## Status
 
-Complete through Phase 5A.
+Complete through Phase 5B.
 
 ## Completed Work
 
@@ -324,6 +324,7 @@ Complete through Phase 5A.
 - Queued payload to execution handoff mapping converts queue transport payloads into handoff workspace input only. It does not handle jobs, invoke the workspace, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, persist state, or move money.
 - Campaign execution handoff summaries are read-only projections over handoff results. They expose readiness, counts, blockers, and effect metadata without invoking queue jobs, workspaces, campaign execution, Pay Code generation, feedback delivery, journal writes, provider calls, persistence, or money movement.
 - Pay Code generation gateway planning is campaign-side handoff documentation only. Actual voucher issuance, execution semantics, provider behavior, delivery, journal writes, wallet mutation, and money movement remain external responsibilities.
+- Portable-code generation request/result contracts describe host gateway handoff shape only. They do not bind a planner, invoke gateway implementations, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
 
 ## Test Coverage Status
 
@@ -604,10 +605,17 @@ Complete through Phase 5A.
 - Phase 5A syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 5A `composer validate --strict` passed.
 - Phase 5A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 5B focused failing baseline was observed before implementation: `3 failed, 1 assertion`.
+- Phase 5B focused result after implementation: `3 passed, 40 assertions`.
+- Phase 5B combined boundary/contract result after stale Phase 5A boundary update: `5 passed, 60 assertions`.
+- Phase 5B full package result: `220 passed, 2238 assertions`.
+- Phase 5B syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 5B `composer validate --strict` passed.
+- Phase 5B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 5B — Portable Code Generation Request/Result Contract Baseline.
+Phase 5C — Null Portable Code Generation Gateway Baseline.
 
 ## Open Questions
 
