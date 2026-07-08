@@ -878,3 +878,14 @@ Phase 9C adds in-memory operator report building:
 - binds the operator report contract to a read-only builder
 
 This is an in-memory read-model slice only. It does not invoke workspaces, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
+
+## Phase 9D Boundary
+
+Phase 9D adds export handoff contracts and DTOs:
+
+- define export handoff requests over existing operator reports
+- define export handoff result envelopes with manifest metadata
+- define the export handoff planning contract for later implementation
+- keep default effect metadata non-persistent and non-mutating
+
+This is a contract slice only. It does not bind an export planner, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.

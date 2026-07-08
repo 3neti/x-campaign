@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+namespace LBHurtado\XCampaign\Data;
+
+use Spatie\LaravelData\Data;
+
+class CampaignExportHandoffRequestData extends Data
+{
+    public readonly CampaignPersistenceEffectData $effects;
+
+    /**
+     * @param  array<string, mixed>  $metadata
+     */
+    public function __construct(
+        public readonly string $planningKey,
+        public readonly string $executionId,
+        public readonly string $format,
+        public readonly string $destination,
+        public readonly CampaignOperatorReportData $report,
+        public readonly array $metadata = [],
+        ?CampaignPersistenceEffectData $effects = null,
+    ) {
+        $this->effects = $effects ?? new CampaignPersistenceEffectData;
+    }
+}
