@@ -461,3 +461,14 @@ Phase 3C adds an in-memory queue dispatch planner:
 - bind the queue dispatch planning contract to the in-memory planner
 
 This is still not queue dispatch. It does not create job classes, push work to queues, register routes, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 3D Boundary
+
+Phase 3D adds queued plan payload data:
+
+- define a serializable queued plan payload
+- require planning key and operation before payload creation
+- preserve arbitrary operation payload data
+- provide stable correlation identifiers when a caller does not supply one
+
+This is a payload slice only. It does not create job classes, push work to queues, register routes, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
