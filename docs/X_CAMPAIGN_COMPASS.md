@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 7E: Queued Payload to Claim Visibility Mapping Baseline.
+Wave 5 — Phase 7F: Claim Visibility Read Model and Parity Closure.
 
 ## Status
 
-Complete through Phase 7D.
+Complete through Phase 7E.
 
 ## Completed Work
 
@@ -698,10 +698,16 @@ Complete through Phase 7D.
 - Phase 7D syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 7D `composer validate --strict` passed.
 - Phase 7D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 7E focused failing baseline was observed before implementation: `5 failed, 2 assertions`.
+- Phase 7E focused result after implementation: `5 passed, 32 assertions`.
+- Phase 7E full package result: `282 passed, 2871 assertions`.
+- Phase 7E syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 7E `composer validate --strict` passed.
+- Phase 7E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 7E — Queued Payload to Claim Visibility Mapping Baseline.
+Phase 7F — Claim Visibility Read Model and Parity Closure.
 
 ## Open Questions
 

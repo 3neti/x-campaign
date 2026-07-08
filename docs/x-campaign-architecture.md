@@ -754,3 +754,15 @@ Phase 7D adds a repository-backed claim visibility workspace:
 - exposes workspace-level metadata for future host/Cockpit consumers
 
 This workspace is a composition seam over existing planning data and safe status snapshots. It does not mutate repository state, query x-change directly, redeem vouchers, mutate claim lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist new state, mutate wallets, or move money.
+
+## Phase 7E Boundary
+
+Phase 7E adds queued payload mapping for claim visibility:
+
+- accepts queued campaign payloads with operation `claim.visibility`
+- requires an execution ID before mapping
+- carries requester, correlation, and metadata into a workspace input DTO
+- fails closed for unsupported operations or incomplete payloads
+- exposes explicit no-side-effect metadata for queue-to-workspace handoff
+
+This mapper is a translation seam only. It does not run the claim visibility workspace, query x-change, redeem vouchers, mutate claim lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist state, mutate wallets, or move money.
