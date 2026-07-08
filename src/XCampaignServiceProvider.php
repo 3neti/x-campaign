@@ -59,6 +59,7 @@ use LBHurtado\XCampaign\Contracts\PlansCampaignExecutionHandoffs;
 use LBHurtado\XCampaign\Contracts\PlansCampaignExecutions;
 use LBHurtado\XCampaign\Contracts\PlansCampaignQueueDispatches;
 use LBHurtado\XCampaign\Contracts\PlansCampaignRecipientImportRows;
+use LBHurtado\XCampaign\Contracts\PayCodeGenerationGateway;
 use LBHurtado\XCampaign\Contracts\RemovesRecipientsFromCampaignAudiencePlans;
 use LBHurtado\XCampaign\Contracts\SchedulesCampaignPlans;
 use LBHurtado\XCampaign\Contracts\UpdatesCampaignPlans;
@@ -69,6 +70,7 @@ use LBHurtado\XCampaign\ReadModels\CampaignAudienceImportRecipientAttachmentMuta
 use LBHurtado\XCampaign\ReadModels\CampaignAudienceImportReviewSummaryReadModel;
 use LBHurtado\XCampaign\ReadModels\CampaignExecutionHandoffSummaryReadModel;
 use LBHurtado\XCampaign\ReadModels\CampaignSummaryReadModel;
+use LBHurtado\XCampaign\Gateways\NullPortableCodeGenerationGateway;
 use LBHurtado\XCampaign\Queue\CampaignQueueDispatcher;
 use LBHurtado\XCampaign\Repositories\EloquentCampaignPlanSnapshotRepository;
 use LBHurtado\XCampaign\Repositories\InMemoryCampaignPlanRepository;
@@ -114,6 +116,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(PlansCampaignQueueDispatches::class, PlanCampaignQueueDispatch::class);
         $this->app->singleton(DispatchesCampaignQueuedPlans::class, CampaignQueueDispatcher::class);
         $this->app->singleton(MapsCampaignQueuedPayloadsToExecutionHandoffs::class, CampaignQueuedPayloadExecutionHandoffMapper::class);
+        $this->app->singleton(PayCodeGenerationGateway::class, NullPortableCodeGenerationGateway::class);
         $this->app->singleton(PlansCampaignExecutions::class, PlanCampaignExecution::class);
         $this->app->singleton(PlansCampaignExecutionBatches::class, PlanCampaignExecutionBatches::class);
         $this->app->singleton(PlansCampaignExecutionHandoffs::class, PlanCampaignExecutionHandoff::class);

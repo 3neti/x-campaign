@@ -29,9 +29,10 @@ it('documents the phase five pay code generation gateway boundary before generat
         ->toContain('Phase 5F');
 });
 
-it('keeps phase five boundary free of gateway implementation classes until authorized', function () {
+it('keeps phase five boundary free of real gateway infrastructure', function () {
     $root = realpath(__DIR__.'/../../..');
 
-    expect(is_dir($root.'/src/Gateways'))->toBeFalse()
-        ->and(class_exists('LBHurtado\\XCampaign\\Gateways\\NullPortableCodeGenerationGateway'))->toBeFalse();
+    expect(is_dir($root.'/src/Providers'))->toBeFalse()
+        ->and(is_dir($root.'/src/Wallets'))->toBeFalse()
+        ->and(is_dir($root.'/src/Http/Controllers'))->toBeFalse();
 });

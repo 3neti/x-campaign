@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 5B: Portable Code Generation Request/Result Contract Baseline.
+Wave 5 — Phase 5C: Null Portable Code Generation Gateway Baseline.
 
 ## Status
 
-Complete through Phase 5B.
+Complete through Phase 5C.
 
 ## Completed Work
 
@@ -325,6 +325,7 @@ Complete through Phase 5B.
 - Campaign execution handoff summaries are read-only projections over handoff results. They expose readiness, counts, blockers, and effect metadata without invoking queue jobs, workspaces, campaign execution, Pay Code generation, feedback delivery, journal writes, provider calls, persistence, or money movement.
 - Pay Code generation gateway planning is campaign-side handoff documentation only. Actual voucher issuance, execution semantics, provider behavior, delivery, journal writes, wallet mutation, and money movement remain external responsibilities.
 - Portable-code generation request/result contracts describe host gateway handoff shape only. They do not bind a planner, invoke gateway implementations, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+- The null portable-code generation gateway is the package default for the existing gateway contract. It returns planned/not-issued metadata only and does not call x-change, voucher, providers, wallets, feedback, journal, HTTP clients, or money-moving infrastructure.
 
 ## Test Coverage Status
 
@@ -612,10 +613,16 @@ Complete through Phase 5B.
 - Phase 5B syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 5B `composer validate --strict` passed.
 - Phase 5B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 5C focused failing baseline was observed before implementation: `3 failed, 0 assertions`.
+- Phase 5C focused result after implementation: `3 passed, 15 assertions`.
+- Phase 5C full package result: `223 passed, 2254 assertions`.
+- Phase 5C syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 5C `composer validate --strict` passed.
+- Phase 5C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 5C — Null Portable Code Generation Gateway Baseline.
+Phase 5D — Portable Code Generation Planning Baseline.
 
 ## Open Questions
 

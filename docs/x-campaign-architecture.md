@@ -585,3 +585,14 @@ Phase 5B adds portable-code generation request/result contracts:
 - keep effect metadata non-generating by default
 
 This is a contract slice only. It does not bind a planner, invoke gateway implementations, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 5C Boundary
+
+Phase 5C adds a null portable-code generation gateway:
+
+- binds the existing gateway contract to a safe package default
+- returns stable generation IDs for execution/recipient pairs
+- reports planned, not issued, generation state
+- exposes no-side-effect metadata
+
+The null gateway is a safe default and does not call x-change, voucher, providers, wallets, feedback, journal, HTTP clients, or money-moving infrastructure.
