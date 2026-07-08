@@ -846,3 +846,14 @@ Phase 8F adds analytics operator summary parity:
 - closes the Phase 8 analytics/reporting baseline as read-only package infrastructure
 
 This read model is presentation aggregation only. It does not invoke workspaces, persist analytics, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
+
+## Phase 9A Boundary
+
+Phase 9A adds the operator report / export handoff boundary plan:
+
+- document campaign-side report/export handoff ownership
+- preserve external ownership of concrete PDF, spreadsheet, CSV file, storage, delivery, audit, and lifecycle truth
+- define report/export non-goals
+- sequence the remaining Phase 9 report/export handoff slices
+
+This is a planning slice only. It does not create report contracts, generate PDFs, generate spreadsheets, generate CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.

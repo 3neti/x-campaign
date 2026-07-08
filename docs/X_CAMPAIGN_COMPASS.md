@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 8 complete. Next boundary: Phase 9.
+Wave 5 — Phase 9B: Operator Report Contract Baseline.
 
 ## Status
 
-Complete through Phase 8F. Stop before Phase 9 unless explicitly authorized.
+Complete through Phase 9A.
 
 ## Completed Work
 
@@ -305,6 +305,9 @@ Complete through Phase 8F. Stop before Phase 9 unless explicitly authorized.
   - `CampaignAnalyticsOperatorSummaryReadModel`
 - Bound analytics operator summaries to the read-only read model.
 - Added Phase 8F Pest coverage proving operator-facing analytics summaries expose counts, posture, blockers, and read-only/no-side-effect metadata.
+- Added Phase 9A operator report/export handoff boundary document:
+  - `docs/phase-9-operator-report-export-boundary.md`
+- Added Phase 9A architecture coverage proving the report/export handoff boundary is documented before concrete export transports exist.
 
 ## Discoveries
 
@@ -363,6 +366,7 @@ Complete through Phase 8F. Stop before Phase 9 unless explicitly authorized.
 - Repository-backed analytics workspace integration composes existing package workspaces and read models. Phase 8D remains read-only and does not persist analytics, run reports, generate exports, mutate lifecycle state, call providers directly, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
 - Queued analytics payload mapping is translation-only. Phase 8E does not invoke the analytics workspace, persist analytics, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
 - Analytics operator summaries are presentation aggregation only. Phase 8F does not invoke workspaces, persist analytics, run reports, generate exports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
+- Operator report/export handoff is campaign-side planning metadata only. Phase 9A does not generate PDFs, spreadsheets, CSV files, store files, deliver reports, mutate lifecycle state, call providers, send feedback, write journals, issue Pay Codes, persist reports, mutate wallets, or move money.
 
 ## Test Coverage Status
 
@@ -782,10 +786,16 @@ Complete through Phase 8F. Stop before Phase 9 unless explicitly authorized.
 - Phase 8F syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 8F `composer validate --strict` passed.
 - Phase 8F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 9A focused failing baseline was observed before implementation: `1 failed, 1 passed, 5 assertions`.
+- Phase 9A focused result after implementation: `2 passed, 15 assertions`.
+- Phase 9A full package result: `309 passed, 3169 assertions`.
+- Phase 9A syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 9A `composer validate --strict` passed.
+- Phase 9A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 9 — Operator Report / Export Handoff Boundary Plan.
+Phase 9B — Operator Report Contract Baseline.
 
 ## Open Questions
 
