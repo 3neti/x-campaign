@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 6C: In-Memory Delivery Handoff Planning Baseline.
+Wave 5 — Phase 6D: Repository-Backed Delivery Handoff Workspace Baseline.
 
 ## Status
 
-Complete through Phase 6B.
+Complete through Phase 6C.
 
 ## Completed Work
 
@@ -650,10 +650,16 @@ Complete through Phase 6B.
 - Phase 6B syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 6B `composer validate --strict` passed.
 - Phase 6B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 6C focused failing baseline was observed before implementation: `5 failed, 1 assertion`.
+- Phase 6C focused result after implementation: `5 passed, 34 assertions`.
+- Phase 6C full package result: `247 passed, 2525 assertions`.
+- Phase 6C syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 6C `composer validate --strict` passed.
+- Phase 6C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 6C — In-Memory Delivery Handoff Planning Baseline.
+Phase 6D — Repository-Backed Delivery Handoff Workspace Baseline.
 
 ## Open Questions
 

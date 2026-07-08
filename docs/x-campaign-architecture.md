@@ -656,3 +656,16 @@ Phase 6B adds delivery handoff contracts and DTOs:
 - keep effect metadata non-delivering by default
 
 This is a contract slice only. It does not bind a planner, call x-feedback, send notifications, call providers, write journals, issue Pay Codes, mutate wallets, or move money.
+
+## Phase 6C Boundary
+
+Phase 6C adds in-memory delivery handoff planning:
+
+- validates delivery handoff planning keys
+- requires planned portable-code generation before delivery handoff readiness
+- requires a portable-code reference before delivery handoff readiness
+- checks recipient contact availability for the selected channel
+- creates deterministic delivery handoff IDs
+- preserves operator-safe handoff metadata
+
+This is still a handoff planning slice only. It does not call x-feedback, send notifications, call providers, write journals, issue Pay Codes, persist state, mutate wallets, or move money.
