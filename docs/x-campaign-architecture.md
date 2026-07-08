@@ -717,3 +717,14 @@ Phase 7A adds the engagement / claim visibility boundary plan:
 - sequence the remaining Phase 7 claim visibility slices
 
 This is a planning slice only. It does not create claim visibility request/result contracts, query x-change, redeem vouchers, mutate claim lifecycle state, call providers, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
+
+## Phase 7B Boundary
+
+Phase 7B adds claim visibility contracts and DTOs:
+
+- define a claim visibility DTO from execution, recipient, portable-code generation, and claim status snapshot context
+- define a claim visibility result envelope
+- define a planning contract for later visibility planning
+- keep default effect metadata non-mutating by default
+
+This is a contract slice only. It does not bind a planner, query x-change, redeem vouchers, mutate claim lifecycle state, call providers, send feedback, write journals, issue Pay Codes, mutate wallets, or move money.
