@@ -136,9 +136,11 @@ it('keeps phase one e read models free of routes persistence execution delivery 
 
 it('keeps phase one f repositories in memory without migrations queues issuance delivery or journal ownership', function () {
     $source = collect([
-        ...glob(__DIR__.'/../../../src/Repositories/*.php') ?: [],
+        __DIR__.'/../../../src/Repositories/InMemoryCampaignPlanRepository.php',
         __DIR__.'/../../../src/Contracts/CampaignPlanRepository.php',
-    ])->map(fn (string $file): string => file_get_contents($file) ?: '')->implode("\n");
+    ])->filter(fn (string $file): bool => is_file($file))
+        ->map(fn (string $file): string => file_get_contents($file) ?: '')
+        ->implode("\n");
 
     expect($source)
         ->not->toContain('extends Model')

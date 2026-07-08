@@ -406,3 +406,14 @@ Phase 2D adds the first durable database migration baseline:
 - load package migrations through the service provider
 
 This is a storage schema slice only. It does not bind a database repository, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 2E Boundary
+
+Phase 2E adds the first Eloquent-backed durable repository baseline:
+
+- add an Eloquent model for campaign plan records
+- implement `CampaignPlanSnapshotRepository` using database storage
+- bind the snapshot repository contract to the durable implementation
+- keep the primary planning repository binding on the in-memory baseline until parity is proven
+
+This is a durable snapshot repository slice only. It does not register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

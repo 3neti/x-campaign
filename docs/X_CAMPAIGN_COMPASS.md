@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 2D: Campaign Database Migration Baseline.
+Wave 5 — Phase 2E: Campaign Eloquent Repository Baseline.
 
 ## Status
 
@@ -264,6 +264,12 @@ Complete.
 - Loaded package migrations from `XCampaignServiceProvider`.
 - Added Phase 2D feature tests proving the initial campaign planning tables and required portable identifier/status/JSON context columns are created.
 - Updated earlier storage-boundary tests to treat Phase 2A/2C as historical planning/review boundaries now that Phase 2D authorizes migrations.
+- Added Phase 2E Eloquent snapshot repository baseline:
+  - `CampaignPlan`
+  - `EloquentCampaignPlanSnapshotRepository`
+- Bound `CampaignPlanSnapshotRepository` to the Eloquent durable baseline.
+- Added Phase 2E tests proving snapshots persist/retrieve through database storage and durable effects remain free of queues, Pay Code generation, feedback, journal writes, and money movement.
+- Updated the older in-memory repository architecture guard to protect only the in-memory repository now that Eloquent repository storage is authorized.
 
 ## Discoveries
 
@@ -495,10 +501,19 @@ Complete.
 - Phase 2D syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 2D `composer validate --strict` passed.
 - Phase 2D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 2E focused failing baselines were observed before implementation:
+  - repository behavior: 2 failed, 0 assertions.
+  - binding: 1 failed, 0 assertions.
+- Phase 2E focused result after implementation: `3 passed, 24 assertions`.
+- Phase 2E architecture result after implementation: `28 passed, 473 assertions`.
+- Phase 2E full package result: `168 passed, 1782 assertions`.
+- Phase 2E syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 2E `composer validate --strict` passed.
+- Phase 2E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 2E — Campaign Eloquent Repository Baseline, before queues, Pay Code generation, or delivery.
+Phase 2F — Campaign Persistence Integration Parity, before queues, Pay Code generation, or delivery.
 
 ## Open Questions
 

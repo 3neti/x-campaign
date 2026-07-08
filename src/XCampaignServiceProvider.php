@@ -39,6 +39,7 @@ use LBHurtado\XCampaign\Contracts\CampaignAudienceImportRecipientAttachmentWorks
 use LBHurtado\XCampaign\Contracts\CampaignAudienceImportWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignFeatureProfileResolver;
 use LBHurtado\XCampaign\Contracts\CampaignPlanRepository;
+use LBHurtado\XCampaign\Contracts\CampaignPlanSnapshotRepository;
 use LBHurtado\XCampaign\Contracts\CampaignPlanningWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignRecipientImportRowWorkspace;
 use LBHurtado\XCampaign\Contracts\CreatesCampaignPlans;
@@ -59,6 +60,7 @@ use LBHurtado\XCampaign\ReadModels\CampaignAudienceImportAttachmentOperatorWorks
 use LBHurtado\XCampaign\ReadModels\CampaignAudienceImportRecipientAttachmentMutationSummaryReadModel;
 use LBHurtado\XCampaign\ReadModels\CampaignAudienceImportReviewSummaryReadModel;
 use LBHurtado\XCampaign\ReadModels\CampaignSummaryReadModel;
+use LBHurtado\XCampaign\Repositories\EloquentCampaignPlanSnapshotRepository;
 use LBHurtado\XCampaign\Repositories\InMemoryCampaignPlanRepository;
 use LBHurtado\XCampaign\Services\CampaignStateGrammar;
 use LBHurtado\XCampaign\Services\ConfigCampaignFeatureProfileResolver;
@@ -106,6 +108,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(BuildsCampaignAudienceImportReviewSummaries::class, CampaignAudienceImportReviewSummaryReadModel::class);
         $this->app->singleton(BuildsCampaignSummaries::class, CampaignSummaryReadModel::class);
         $this->app->singleton(CampaignPlanRepository::class, InMemoryCampaignPlanRepository::class);
+        $this->app->singleton(CampaignPlanSnapshotRepository::class, EloquentCampaignPlanSnapshotRepository::class);
         $this->app->singleton(CampaignPlanningWorkspace::class, RepositoryBackedCampaignPlanningWorkspace::class);
         $this->app->singleton(CampaignAudienceImportAttachmentOperatorWorkspace::class, RepositoryBackedCampaignAudienceImportAttachmentOperatorWorkspace::class);
         $this->app->singleton(CampaignAudienceImportAttachmentOperatorWorkspaceCollectionWorkspace::class, RepositoryBackedCampaignAudienceImportAttachmentOperatorWorkspaceCollectionWorkspace::class);
