@@ -596,3 +596,15 @@ Phase 5C adds a null portable-code generation gateway:
 - exposes no-side-effect metadata
 
 The null gateway is a safe default and does not call x-change, voucher, providers, wallets, feedback, journal, HTTP clients, or money-moving infrastructure.
+
+## Phase 5D Boundary
+
+Phase 5D adds portable-code generation planning:
+
+- validates generation planning keys
+- blocks generation planning when recipient identity is incomplete
+- creates deterministic generation IDs
+- preserves generation metadata for later host gateway handoff
+- keeps gateway invocation explicitly false
+
+This is a planning action only. It does not invoke the gateway, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, persist state, or move money.

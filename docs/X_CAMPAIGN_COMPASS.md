@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 5C: Null Portable Code Generation Gateway Baseline.
+Wave 5 — Phase 5E: Repository-Backed Portable Code Generation Workspace Baseline.
 
 ## Status
 
-Complete through Phase 5C.
+Complete through Phase 5D.
 
 ## Completed Work
 
@@ -326,6 +326,7 @@ Complete through Phase 5C.
 - Pay Code generation gateway planning is campaign-side handoff documentation only. Actual voucher issuance, execution semantics, provider behavior, delivery, journal writes, wallet mutation, and money movement remain external responsibilities.
 - Portable-code generation request/result contracts describe host gateway handoff shape only. They do not bind a planner, invoke gateway implementations, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
 - The null portable-code generation gateway is the package default for the existing gateway contract. It returns planned/not-issued metadata only and does not call x-change, voucher, providers, wallets, feedback, journal, HTTP clients, or money-moving infrastructure.
+- Portable-code generation planning creates deterministic generation plans for recipient/execution pairs. It does not invoke the gateway, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, persist state, or move money.
 
 ## Test Coverage Status
 
@@ -619,10 +620,16 @@ Complete through Phase 5C.
 - Phase 5C syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 5C `composer validate --strict` passed.
 - Phase 5C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 5D focused failing baseline was observed before implementation: `4 failed, 1 assertion`.
+- Phase 5D focused result after implementation: `4 passed, 41 assertions`.
+- Phase 5D full package result: `227 passed, 2295 assertions`.
+- Phase 5D syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 5D `composer validate --strict` passed.
+- Phase 5D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 5D — Portable Code Generation Planning Baseline.
+Phase 5E — Repository-Backed Portable Code Generation Workspace Baseline.
 
 ## Open Questions
 
