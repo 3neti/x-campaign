@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 6F: Delivery Handoff Read Model and Parity Closure.
+Wave 5 — Phase 6 complete. Next boundary: Phase 7.
 
 ## Status
 
-Complete through Phase 6E.
+Complete through Phase 6F. Stop before Phase 7 until explicitly authorized.
 
 ## Completed Work
 
@@ -668,10 +668,16 @@ Complete through Phase 6E.
 - Phase 6E syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 6E `composer validate --strict` passed.
 - Phase 6E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 6F focused failing baseline was observed before implementation: `4 failed, 1 passed, 15 assertions`.
+- Phase 6F focused result after implementation: `5 passed, 51 assertions`.
+- Phase 6F full package result: `262 passed, 2672 assertions`.
+- Phase 6F syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 6F `composer validate --strict` passed.
+- Phase 6F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 6F — Delivery Handoff Read Model and Parity Closure.
+Phase 7 — Engagement / Claim Visibility Boundary Plan.
 
 ## Open Questions
 

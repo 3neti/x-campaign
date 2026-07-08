@@ -694,3 +694,15 @@ Phase 6E adds queued payload mapping for delivery handoffs:
 - exposes explicit no-side-effect metadata for queue-to-workspace handoff
 
 This mapper is a translation seam only. It does not run the delivery handoff workspace, call x-feedback, send notifications, call providers, write journals, issue Pay Codes, persist state, mutate wallets, or move money.
+
+## Phase 6F Boundary
+
+Phase 6F adds the delivery handoff read model and parity closure:
+
+- summarizes repository-backed delivery handoff workspace results
+- exposes ready, blocked, and recipient counts
+- preserves blockers for operator-facing review
+- carries no-side-effect metadata into a read-only summary DTO
+- documents Phase 6 parity across boundary plan, contracts, planner, workspace, queue mapper, and read model
+
+The delivery handoff read model is read-only. It does not invoke the workspace, call x-feedback, send notifications, call providers, write journals, issue Pay Codes, persist state, mutate wallets, or move money.
