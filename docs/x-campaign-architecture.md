@@ -516,3 +516,15 @@ Phase 4B adds execution handoff contracts and DTOs:
 - keep default effect metadata handoff-only and non-executing
 
 This is a contract slice only. It does not bind a handoff planner, execute campaigns, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 4C Boundary
+
+Phase 4C adds an in-memory execution handoff planner:
+
+- validates that a campaign execution handoff has a planning key
+- checks handoff readiness without running campaign execution
+- blocks handoff when execution batches are missing
+- blocks handoff when the execution state is not planned
+- returns stable handoff identifiers and operator-safe handoff metadata
+
+This is still a handoff planning slice only. It does not execute campaigns, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, persist state, or move money.

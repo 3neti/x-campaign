@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 4B: Execution Handoff Contract Baseline.
+Wave 5 — Phase 4C: In-Memory Execution Handoff Planning Baseline.
 
 ## Status
 
-Complete through Phase 4B.
+Complete through Phase 4C.
 
 ## Completed Work
 
@@ -319,6 +319,7 @@ Complete through Phase 4B.
 - Campaign audience import attachment operator read models aggregate existing mutation summaries into an operator-facing overview. They are read-only and do not trigger attachment mutation, persist state, queue ingestion, issue Pay Codes, send feedback, write journals, call providers, or move money.
 - Campaign audience import attachment operator workspaces validate in-memory campaign/audience context and compose existing operator read-model aggregation. They are read-only and do not trigger attachment mutation, persist state, queue ingestion, issue Pay Codes, send feedback, write journals, call providers, or move money.
 - Campaign audience import attachment operator workspace collections aggregate existing workspace results across audiences. They are read-only and do not query persistence, trigger attachment mutation, queue ingestion, issue Pay Codes, send feedback, write journals, call providers, or move money.
+- Campaign execution handoff planning validates execution handoff readiness in memory. It returns handoff IDs, blockers, and metadata, but it does not execute campaigns, issue Pay Codes, send feedback, write journals, call providers, persist state, or move money.
 
 ## Test Coverage Status
 
@@ -570,10 +571,16 @@ Complete through Phase 4B.
 - Phase 4B syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 4B `composer validate --strict` passed.
 - Phase 4B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 4C focused failing baseline was observed before implementation: `4 failed, 1 assertion`.
+- Phase 4C focused result after implementation: `5 passed, 44 assertions`.
+- Phase 4C full package result: `201 passed, 2070 assertions`.
+- Phase 4C syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 4C `composer validate --strict` passed.
+- Phase 4C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 4C — In-Memory Execution Handoff Planning Baseline, before campaign execution, Pay Code generation, or delivery.
+Phase 4D — Repository-Backed Execution Handoff Workspace Baseline, before campaign execution, Pay Code generation, or delivery.
 
 ## Open Questions
 
