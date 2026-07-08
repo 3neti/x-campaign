@@ -371,3 +371,14 @@ Phase 2A adds the durable storage boundary plan before any migration exists:
 - sequence later persistence slices
 
 This is a planning slice only. It does not create migrations, use a database, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.
+
+## Phase 2B Boundary
+
+Phase 2B adds persistence contracts and DTOs before migrations exist:
+
+- introduce a snapshot repository seam for future durable campaign plans
+- introduce a snapshot DTO that preserves the current campaign plan DTO
+- introduce explicit persistence effect metadata
+- keep the existing campaign plan repository contract intact
+
+This is a contract baseline only. It does not create migrations, bind a database repository, register routes, run jobs, issue Pay Codes, send feedback, write journals, call providers, mutate wallets, or move money.

@@ -6,7 +6,7 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 2A: Campaign Durable Storage Boundary Plan.
+Wave 5 — Phase 2B: Campaign Persistence Contract Baseline.
 
 ## Status
 
@@ -251,6 +251,11 @@ Complete.
 - Added Phase 2A durable storage boundary plan:
   - `docs/phase-2-durable-storage-boundary.md`
 - Added Phase 2A architecture tests proving the storage boundary is documented before migrations exist and that Phase 2A introduces no migrations.
+- Added Phase 2B persistence contract/DTO baseline:
+  - `CampaignPlanSnapshotRepository`
+  - `CampaignPlanSnapshotData`
+  - `CampaignPersistenceEffectData`
+- Added Phase 2B Pest coverage proving the snapshot seam exists, current `CampaignPlanRepository` remains intact, and persistence effects remain separate from queues, Pay Codes, feedback, journal writes, and money movement.
 
 ## Discoveries
 
@@ -463,10 +468,17 @@ Complete.
 - Phase 2A syntax checks passed for `src`, `tests`, and `config`.
 - Phase 2A `composer validate --strict` passed.
 - Phase 2A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 2B focused failing baseline was observed before implementation: 3 failed, 1 assertion.
+- Phase 2B focused result after implementation: `3 passed, 35 assertions`.
+- Phase 2B full package result: `161 passed, 1712 assertions`.
+- Phase 2B syntax checks passed for `src`, `tests`, and `config`.
+- Phase 2B `composer validate --strict` passed.
+- Phase 2B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 2B architectural discovery: production code cannot contain package-owner tokens such as `PayCode` or `Journal`; persistence-effect internals use boundary-safe names while preserving serialized keys like `issues_pay_codes` and `writes_journal`.
 
 ## Next Recommended Slice
 
-Phase 2B — Campaign Persistence Contract Baseline, before migrations, queues, Pay Code generation, or delivery.
+Phase 2C — Campaign Migration Readiness Review, before migrations, queues, Pay Code generation, or delivery.
 
 ## Open Questions
 
