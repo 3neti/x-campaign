@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 12B complete. Next boundary: Phase 12C.
+Wave 5 — Phase 12C complete. Next boundary: Phase 12D.
 
 ## Status
 
-Complete through Phase 12B.
+Complete through Phase 12C.
 
 ## Completed Work
 
@@ -399,6 +399,10 @@ Complete through Phase 12B.
   - `CampaignProductionReadinessChecklistData`
   - `CampaignProductionReadinessAssessmentData`
 - Added Phase 12B Pest coverage proving production readiness checklist and assessment envelopes are read-only and carry no persistence, queue, Pay Code, feedback, journal, or money movement effects by default.
+- Added Phase 12C production readiness assessment builder:
+  - `CampaignProductionReadinessAssessmentBuilder`
+- Bound `BuildsCampaignProductionReadinessAssessments` to the read-only builder.
+- Added Phase 12C Pest coverage proving production readiness assessments derive checks and blockers from operational readiness without deployment, environment, worker, queue, feedback, journal, Pay Code, provider, or money movement behavior.
 
 ## Discoveries
 
@@ -1003,10 +1007,15 @@ Complete through Phase 12B.
 - Phase 12B full package result: `365 passed, 3773 assertions`.
 - Phase 12B `composer validate --strict` passed.
 - Phase 12B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 12C focused failing baseline was observed before implementation: `4 failed, 0 assertions`.
+- Phase 12C focused result after implementation: `4 passed, 26 assertions`.
+- Phase 12C full package result: `369 passed, 3799 assertions`.
+- Phase 12C `composer validate --strict` passed.
+- Phase 12C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 12C — In-Memory Production Readiness Assessment Builder.
+Phase 12D — Repository-Backed Production Readiness Workspace Baseline.
 
 ## Open Questions
 
