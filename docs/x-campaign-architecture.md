@@ -1000,3 +1000,14 @@ Phase 11B adds observability signal contracts and DTOs:
 - keep default effect metadata non-persistent and non-mutating
 
 This is a contract slice only. It does not bind a health builder, export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
+
+## Phase 11C Boundary
+
+Phase 11C adds in-memory operational health snapshot building:
+
+- derives health checks from Cockpit summary and API response state
+- exposes indicators for blocker and action counts
+- preserves blockers for operator attention
+- binds operational health snapshot building to a read-only builder
+
+This is an in-memory diagnostic read-model slice only. It does not invoke workspaces, export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.

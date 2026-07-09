@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 11B: Observability Signal Contract Baseline.
+Wave 5 — Phase 11C: In-Memory Health Snapshot Builder Baseline.
 
 ## Status
 
-Complete through Phase 11B in progress.
+Complete through Phase 11C in progress.
 
 ## Completed Work
 
@@ -372,6 +372,10 @@ Complete through Phase 11B in progress.
   - `CampaignOperationalSignalData`
   - `CampaignOperationalHealthSnapshotData`
 - Added Phase 11B Pest coverage proving operational signals and health snapshots are read-only and carry no exporter, alert, journal, queue, feedback, or money movement effects by default.
+- Added Phase 11C operational health snapshot builder:
+  - `CampaignOperationalHealthSnapshotBuilder`
+- Bound operational health snapshot building to the read-only builder.
+- Added Phase 11C Pest coverage proving operational snapshots derive checks, indicators, and blockers without metrics exporters, alerts, logs, journals, routes, controllers, queues, feedback, Pay Code issuance, providers, or money movement.
 
 ## Discoveries
 
@@ -444,6 +448,7 @@ Complete through Phase 11B in progress.
 - Phase 10 closes as a package-side read-only Cockpit/operator integration baseline. Host applications remain responsible for routes, controllers, authorization, redaction, UI rendering, and API exposure.
 - Observability/operational hardening begins as a read-only diagnostic package boundary. Phase 11A does not export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
 - Operational signal contracts describe diagnostic data shape only. Phase 11B does not bind a health builder, export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
+- Operational health snapshot building is diagnostic read-model-only. Phase 11C does not invoke workspaces, export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
 
 ## Test Coverage Status
 
@@ -940,10 +945,15 @@ Complete through Phase 11B in progress.
 - Phase 11B full package result: `349 passed, 3629 assertions`.
 - Phase 11B `composer validate --strict` passed.
 - Phase 11B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 11C focused failing baseline was observed before implementation: `3 failed, 0 assertions`.
+- Phase 11C focused result after implementation: `3 passed, 23 assertions`.
+- Phase 11C full package result: `352 passed, 3652 assertions`.
+- Phase 11C `composer validate --strict` passed.
+- Phase 11C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 11C — In-Memory Health Snapshot Builder Baseline.
+Phase 11D — Repository-Backed Operational Monitor Workspace Baseline.
 
 ## Open Questions
 
