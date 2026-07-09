@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 12D complete. Next boundary: Phase 12E.
+Wave 5 — Phase 12E complete. Next boundary: Phase 12F.
 
 ## Status
 
-Complete through Phase 12D.
+Complete through Phase 12E.
 
 ## Completed Work
 
@@ -409,6 +409,13 @@ Complete through Phase 12D.
   - `RepositoryBackedCampaignProductionReadinessWorkspace`
 - Bound production readiness workspace composition to the repository-backed read-only workspace.
 - Added Phase 12D Pest coverage proving production readiness assessments compose repository-backed operational state without release, deployment, environment, worker, queue, feedback, journal, Pay Code, provider, or money movement behavior.
+- Added Phase 12E production release presenter contract:
+  - `PresentsCampaignProductionReleases`
+- Added Phase 12E production release DTO/read model:
+  - `CampaignProductionReleaseData`
+  - `CampaignProductionReleasePresenter`
+- Bound production release presentation to the read-only presenter.
+- Added Phase 12E Pest coverage proving production readiness assessments project into host-safe release envelopes without deployment, environment, worker, queue, feedback, journal, Pay Code, provider, or money movement behavior.
 
 ## Discoveries
 
@@ -1023,10 +1030,15 @@ Complete through Phase 12D.
 - Phase 12D full package result: `372 passed, 3829 assertions`.
 - Phase 12D `composer validate --strict` passed.
 - Phase 12D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 12E focused failing baseline was observed before implementation: `4 failed, 0 assertions`.
+- Phase 12E focused result after implementation: `4 passed, 39 assertions`.
+- Phase 12E full package result: `376 passed, 3868 assertions`.
+- Phase 12E `composer validate --strict` passed.
+- Phase 12E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 12E — Production Readiness Release Presenter Baseline.
+Phase 12F — Production Readiness Parity.
 
 ## Open Questions
 
