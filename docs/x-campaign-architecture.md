@@ -989,3 +989,14 @@ Phase 11A adds the observability / operational hardening boundary plan:
 - sequence the remaining Phase 11 observability/hardening slices
 
 This is a planning slice only. It does not create observability DTOs, bind health builders, export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
+
+## Phase 11B Boundary
+
+Phase 11B adds observability signal contracts and DTOs:
+
+- define operational signals over Cockpit summaries and API response envelopes
+- define operational health snapshot results
+- define the operational health snapshot builder contract for later implementation
+- keep default effect metadata non-persistent and non-mutating
+
+This is a contract slice only. It does not bind a health builder, export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
