@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 13 complete. Next boundary: Phase 14.
+Wave 5 — Phase 14A complete. Next boundary: Phase 14B.
 
 ## Status
 
-Complete through Phase 13F.
+Complete through Phase 14A.
 
 ## Completed Work
 
@@ -444,6 +444,9 @@ Complete through Phase 13F.
 - Bound host integration response presentation to the read-only presenter.
 - Added Phase 13E Pest coverage proving host integration manifests project into host-safe response envelopes without route, controller, middleware, policy, queue, feedback, journal, Pay Code, provider, or money movement behavior.
 - Added Phase 13F parity coverage proving host integration includes the expected contracts, DTOs, read models, workspace, response presenter, and architecture documentation without concrete routes, controllers, middleware, policies, route files, mutation endpoints, journal writers, feedback senders, provider calls, Pay Code issuance, wallet mutation, or money movement.
+- Added Phase 14A public API boundary document:
+  - `docs/phase-14-public-api-boundary.md`
+- Added Phase 14A architecture coverage proving public API boundaries are documented before package-owned routes, controllers, requests, resources, or route files exist.
 
 ## Discoveries
 
@@ -1099,10 +1102,15 @@ Complete through Phase 13F.
 - Phase 13F full package result: `394 passed, 4074 assertions`.
 - Phase 13F `composer validate --strict` passed.
 - Phase 13F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 14A focused failing baseline was observed before implementation: `1 failed, 1 passed, 7 assertions`.
+- Phase 14A focused result after implementation: `2 passed, 15 assertions`.
+- Phase 14A full package result: `396 passed, 4089 assertions`.
+- Phase 14A `composer validate --strict` passed.
+- Phase 14A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 14 — Campaign Public API Boundary Plan.
+Phase 14B — Public API Descriptor Contract Baseline.
 
 ## Open Questions
 

@@ -1173,3 +1173,14 @@ Phase 13F closes the host integration baseline:
 - verifies no concrete routes, controllers, middleware, policies, route files, mutation endpoints, journal writers, feedback senders, provider calls, Pay Code issuance, wallet mutation, or money movement were introduced
 
 This parity slice is architectural hardening only. It does not register routes, create controllers, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
+
+## Phase 14A Boundary
+
+Phase 14A adds the public API boundary plan:
+
+- document package-side public API descriptor ownership
+- preserve host ownership of routes, controllers, form requests, API resources, middleware, policies, authentication, authorization, redaction, API versioning, and rate limiting
+- preserve external ownership of journal writes, feedback delivery, provider callbacks, Pay Code issuance, wallets, and money movement
+- sequence the remaining Phase 14 public API slices
+
+This is a planning slice only. It does not create API DTOs, bind API builders, register routes, create controllers, own requests, own resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
