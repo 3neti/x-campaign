@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 14D complete. Next boundary: Phase 14E.
+Wave 5 — Phase 14E complete. Next boundary: Phase 14F.
 
 ## Status
 
-Complete through Phase 14D.
+Complete through Phase 14E.
 
 ## Completed Work
 
@@ -1136,10 +1136,22 @@ Complete through Phase 14D.
 - Phase 14D full package result: `407 passed, 4194 assertions`.
 - Phase 14D `composer validate --strict` passed.
 - Phase 14D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 14E focused failing baseline was observed before implementation: `3 failed, 0 assertions`.
+- Added Phase 14E public API response presenter contract:
+  - `PresentsCampaignPublicApiResponses`
+- Added Phase 14E public API response DTO:
+  - `CampaignPublicApiResponseData`
+- Added Phase 14E public API response presenter:
+  - `CampaignPublicApiResponsePresenter`
+- Bound the public API response presenter contract to the read-only implementation.
+- Phase 14E focused result after implementation: `3 passed, 46 assertions`.
+- Phase 14E full package result: `410 passed, 4240 assertions`.
+- Phase 14E `composer validate --strict` passed.
+- Phase 14E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 14E — Public API Response Presenter Baseline.
+Phase 14F — Public API Baseline Parity.
 
 ## Open Questions
 

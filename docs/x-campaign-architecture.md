@@ -1217,3 +1217,14 @@ Phase 14D adds repository-backed public API workspace composition:
 - keeps public API package-side and descriptive
 
 This workspace is public API composition only. It does not register routes, create controllers, own form requests, own API resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers directly, generate files, mutate wallets, or move money.
+
+## Phase 14E Boundary
+
+Phase 14E adds public API response presentation:
+
+- projects public API descriptors into host-safe response envelopes
+- carries endpoint candidates, host responsibilities, and package responsibilities
+- explicitly marks route registration, controller registration, request ownership, and resource ownership as external host responsibilities
+- binds public API response presentation to a read-only presenter
+
+This presenter is response shaping only. It does not register routes, create controllers, own form requests, own API resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.

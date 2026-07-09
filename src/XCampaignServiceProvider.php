@@ -94,6 +94,7 @@ use LBHurtado\XCampaign\Contracts\PresentsCampaignCockpitApiResponses;
 use LBHurtado\XCampaign\Contracts\PresentsCampaignHostIntegrationResponses;
 use LBHurtado\XCampaign\Contracts\PresentsCampaignOperationalReadiness;
 use LBHurtado\XCampaign\Contracts\PresentsCampaignProductionReleases;
+use LBHurtado\XCampaign\Contracts\PresentsCampaignPublicApiResponses;
 use LBHurtado\XCampaign\Contracts\PlansCampaignRecipientImportRows;
 use LBHurtado\XCampaign\Contracts\PayCodeGenerationGateway;
 use LBHurtado\XCampaign\Contracts\RemovesRecipientsFromCampaignAudiencePlans;
@@ -121,6 +122,7 @@ use LBHurtado\XCampaign\ReadModels\CampaignPortableCodeGenerationSummaryReadMode
 use LBHurtado\XCampaign\ReadModels\CampaignProductionReadinessAssessmentBuilder;
 use LBHurtado\XCampaign\ReadModels\CampaignProductionReleasePresenter;
 use LBHurtado\XCampaign\ReadModels\CampaignPublicApiDescriptorBuilder;
+use LBHurtado\XCampaign\ReadModels\CampaignPublicApiResponsePresenter;
 use LBHurtado\XCampaign\ReadModels\CampaignSummaryReadModel;
 use LBHurtado\XCampaign\Gateways\NullPortableCodeGenerationGateway;
 use LBHurtado\XCampaign\Gateways\NullCampaignClaimStatusProvider;
@@ -208,6 +210,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(PresentsCampaignHostIntegrationResponses::class, CampaignHostIntegrationResponsePresenter::class);
         $this->app->singleton(PresentsCampaignOperationalReadiness::class, CampaignOperationalReadinessPresenter::class);
         $this->app->singleton(PresentsCampaignProductionReleases::class, CampaignProductionReleasePresenter::class);
+        $this->app->singleton(PresentsCampaignPublicApiResponses::class, CampaignPublicApiResponsePresenter::class);
         $this->app->singleton(BuildsCampaignDeliveryHandoffSummaries::class, CampaignDeliveryHandoffSummaryReadModel::class);
         $this->app->singleton(BuildsCampaignExecutionHandoffSummaries::class, CampaignExecutionHandoffSummaryReadModel::class);
         $this->app->singleton(BuildsCampaignHostIntegrationManifests::class, CampaignHostIntegrationManifestBuilder::class);
