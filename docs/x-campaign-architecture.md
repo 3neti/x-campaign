@@ -1152,3 +1152,14 @@ Phase 13D adds repository-backed host integration workspace composition:
 - keeps host integration package-side and descriptive
 
 This workspace is host integration composition only. It does not register routes, create controllers, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers directly, generate files, mutate wallets, or move money.
+
+## Phase 13E Boundary
+
+Phase 13E adds host integration response presentation:
+
+- projects host integration manifests into host-safe response envelopes
+- carries capabilities, host responsibilities, package responsibilities, and warnings
+- explicitly marks route registration, controller registration, middleware ownership, and policy ownership as external host responsibilities
+- binds host integration response presentation to a read-only presenter
+
+This presenter is response shaping only. It does not register routes, create controllers, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
