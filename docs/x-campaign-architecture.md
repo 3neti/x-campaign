@@ -1141,3 +1141,14 @@ Phase 13C adds in-memory host integration manifest building:
 - binds host integration manifest building to a read-only builder
 
 This is an in-memory manifest read-model slice only. It does not invoke workspaces, register routes, create controllers, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
+
+## Phase 13D Boundary
+
+Phase 13D adds repository-backed host integration workspace composition:
+
+- reads campaign planning presence through `CampaignPlanRepository`
+- delegates host integration manifest construction to the manifest builder
+- exposes workspace-level metadata for host integration consumers
+- keeps host integration package-side and descriptive
+
+This workspace is host integration composition only. It does not register routes, create controllers, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers directly, generate files, mutate wallets, or move money.

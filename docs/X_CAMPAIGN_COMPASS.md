@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 13C complete. Next boundary: Phase 13D.
+Wave 5 — Phase 13D complete. Next boundary: Phase 13E.
 
 ## Status
 
-Complete through Phase 13C.
+Complete through Phase 13D.
 
 ## Completed Work
 
@@ -430,6 +430,12 @@ Complete through Phase 13C.
   - `CampaignHostIntegrationManifestBuilder`
 - Bound `BuildsCampaignHostIntegrationManifests` to the read-only builder.
 - Added Phase 13C Pest coverage proving host integration manifests describe capabilities, host responsibilities, package responsibilities, and warnings without route, controller, middleware, policy, queue, feedback, journal, Pay Code, provider, or money movement behavior.
+- Added Phase 13D host integration workspace contract:
+  - `CampaignHostIntegrationWorkspace`
+- Added Phase 13D repository-backed host integration workspace:
+  - `RepositoryBackedCampaignHostIntegrationWorkspace`
+- Bound host integration workspace composition to the repository-backed descriptive workspace.
+- Added Phase 13D Pest coverage proving host integration manifests compose repository-backed planning context without route, controller, middleware, policy, queue, feedback, journal, Pay Code, provider, or money movement behavior.
 
 ## Discoveries
 
@@ -1070,10 +1076,15 @@ Complete through Phase 13C.
 - Phase 13C full package result: `386 passed, 3973 assertions`.
 - Phase 13C `composer validate --strict` passed.
 - Phase 13C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 13D focused failing baseline was observed before implementation: `3 failed, 1 assertion`.
+- Phase 13D focused result after implementation: `3 passed, 34 assertions`.
+- Phase 13D full package result: `389 passed, 4007 assertions`.
+- Phase 13D `composer validate --strict` passed.
+- Phase 13D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 13D — Repository-Backed Host Integration Workspace Baseline.
+Phase 13E — Host Integration Response Presenter Baseline.
 
 ## Open Questions
 
