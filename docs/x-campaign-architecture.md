@@ -1098,3 +1098,13 @@ Phase 12E adds production release readiness presentation:
 - explicitly marks deployment, environment writes, and worker operations as external responsibilities
 
 This presenter is release readiness response shaping only. It does not deploy releases, write environments, start workers, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
+
+## Phase 12F Boundary
+
+Phase 12F closes the production readiness baseline:
+
+- verifies package-side production readiness contracts, DTOs, assessment builder, workspace composition, release presenter, and documentation exist
+- verifies all Phase 12 architecture slices are documented
+- verifies no concrete deployment automation, release infrastructure, environment writers, provisioning, installers, worker orchestration, routes, controllers, mutation endpoints, journal writers, feedback senders, provider calls, Pay Code issuance, wallet mutation, or money movement were introduced
+
+This parity slice is architectural hardening only. It does not deploy releases, write environments, start workers, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.

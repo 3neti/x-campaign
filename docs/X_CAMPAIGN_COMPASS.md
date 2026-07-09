@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 12E complete. Next boundary: Phase 12F.
+Wave 5 — Phase 12 complete. Next boundary: Phase 13.
 
 ## Status
 
-Complete through Phase 12E.
+Complete through Phase 12F.
 
 ## Completed Work
 
@@ -416,6 +416,7 @@ Complete through Phase 12E.
   - `CampaignProductionReleasePresenter`
 - Bound production release presentation to the read-only presenter.
 - Added Phase 12E Pest coverage proving production readiness assessments project into host-safe release envelopes without deployment, environment, worker, queue, feedback, journal, Pay Code, provider, or money movement behavior.
+- Added Phase 12F parity coverage proving production readiness includes the expected contracts, DTOs, read models, workspace, release presenter, and architecture documentation without concrete deployment automation, release infrastructure, environment writers, provisioning, installers, worker orchestration, routes, controllers, mutation endpoints, journal writers, feedback senders, provider calls, Pay Code issuance, wallet mutation, or money movement.
 
 ## Discoveries
 
@@ -1035,10 +1036,15 @@ Complete through Phase 12E.
 - Phase 12E full package result: `376 passed, 3868 assertions`.
 - Phase 12E `composer validate --strict` passed.
 - Phase 12E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 12F focused failing baseline was observed before implementation: `1 failed, 1 passed, 15 assertions`.
+- Phase 12F focused result after implementation: `2 passed, 21 assertions`.
+- Phase 12F full package result: `378 passed, 3889 assertions`.
+- Phase 12F `composer validate --strict` passed.
+- Phase 12F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 12F — Production Readiness Parity.
+Phase 13 — Campaign Host Integration Boundary Plan.
 
 ## Open Questions
 
