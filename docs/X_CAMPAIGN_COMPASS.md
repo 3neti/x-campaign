@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 15A complete. Next boundary: Phase 15B.
+Wave 5 — Phase 15B complete. Next boundary: Phase 15C.
 
 ## Status
 
-Complete through Phase 15A.
+Complete through Phase 15B.
 
 ## Completed Work
 
@@ -1165,10 +1165,20 @@ Complete through Phase 15A.
 - Phase 15A full package result: `415 passed, 4274 assertions`.
 - Phase 15A `composer validate --strict` passed.
 - Phase 15A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 15B focused failing baseline was observed before implementation: `2 failed, 1 assertion`.
+- Added Phase 15B x-change integration manifest builder contract:
+  - `BuildsCampaignXChangeIntegrationManifests`
+- Added Phase 15B x-change integration DTOs:
+  - `CampaignXChangeIntegrationRequestData`
+  - `CampaignXChangeIntegrationManifestData`
+- Phase 15B focused result after implementation: `2 passed, 36 assertions`.
+- Phase 15B full package result: `417 passed, 4310 assertions`.
+- Phase 15B `composer validate --strict` passed.
+- Phase 15B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 15B — x-change Integration Manifest Contract.
+Phase 15C — Cockpit Consumption Map.
 
 ## Open Questions
 

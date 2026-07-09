@@ -1249,3 +1249,14 @@ Phase 15A adds the host adoption boundary plan:
 - sequence the remaining Phase 15 host adoption slices
 
 This is a planning slice only. It does not create host adoption DTOs, bind manifest builders, register routes, create controllers, own requests, own resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
+
+## Phase 15B Boundary
+
+Phase 15B adds x-change integration manifest contracts and DTOs:
+
+- define a host adoption request scoped to `x-change`
+- define a host adoption manifest that describes capabilities, host responsibilities, package responsibilities, and unsupported operations
+- define the x-change integration manifest builder contract for later implementation
+- keep default effect metadata non-persistent and non-mutating
+
+This is a contract slice only. It does not bind a manifest builder, register routes, create controllers, own requests, own resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
