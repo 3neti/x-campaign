@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 10E: Operator API Response Presenter Baseline.
+Wave 5 — Phase 10 complete. Next boundary: Phase 11.
 
 ## Status
 
-Complete through Phase 10E in progress.
+Complete through Phase 10F.
 
 ## Completed Work
 
@@ -362,6 +362,7 @@ Complete through Phase 10E in progress.
   - `CampaignCockpitApiResponsePresenter`
 - Bound Cockpit API response presentation to the read-only presenter.
 - Added Phase 10E Pest coverage proving Cockpit summaries project into host-safe API response envelopes without routes, controllers, UI, persistence, queue, feedback, journal, Pay Code, provider, or money movement behavior.
+- Added Phase 10F parity coverage proving Cockpit/operator integration includes the expected contracts, DTOs, read models, workspace, presenter, and architecture documentation without concrete routes, controllers, pages, views, UI assets, mutation endpoints, delivery transports, journal writers, or execution behavior.
 
 ## Discoveries
 
@@ -431,6 +432,7 @@ Complete through Phase 10E in progress.
 - Cockpit summary building is read-model-only. Phase 10C derives operator-safe cards, panels, and handoff action descriptors from existing DTOs without invoking workspaces, registering routes, creating controllers, rendering UI, mutating campaigns, queueing jobs, issuing Pay Codes, sending feedback, writing journals, calling providers, generating files, persisting reports, mutating wallets, or moving money.
 - Repository-backed Cockpit workspace integration composes existing package workspaces and read models. Phase 10D remains read-only and does not mutate repository state, register routes, create controllers, render UI, queue jobs, issue Pay Codes, send feedback, write journals, call providers directly, generate files, persist reports, mutate wallets, or move money.
 - Cockpit API response presentation is response shaping only. Phase 10E does not register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
+- Phase 10 closes as a package-side read-only Cockpit/operator integration baseline. Host applications remain responsible for routes, controllers, authorization, redaction, UI rendering, and API exposure.
 
 ## Test Coverage Status
 
@@ -911,10 +913,16 @@ Complete through Phase 10E in progress.
 - Phase 10E full package result: `342 passed, 3564 assertions`.
 - Phase 10E `composer validate --strict` passed.
 - Phase 10E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 10F focused failing baseline was observed before implementation: `1 failed, 1 passed, 15 assertions`.
+- Phase 10F focused result after implementation: `2 passed, 20 assertions`.
+- Phase 10F full package result: `344 passed, 3584 assertions`.
+- Phase 10F syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 10F `composer validate --strict` passed.
+- Phase 10F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 10F — Cockpit / Operator Integration Parity.
+Phase 11 — Campaign Observability / Operational Hardening Boundary Plan.
 
 ## Open Questions
 

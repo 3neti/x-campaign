@@ -968,3 +968,13 @@ Phase 10E adds operator API response presentation:
 - binds the response presenter contract to a read-only presenter
 
 This presenter is response shaping only. It does not register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
+
+## Phase 10F Boundary
+
+Phase 10F closes the Cockpit / operator integration baseline:
+
+- verifies package-side Cockpit contracts, DTOs, builders, workspace composition, and response presentation exist
+- verifies all Phase 10 architecture slices are documented
+- verifies no concrete routes, controllers, pages, views, UI assets, mutation endpoints, delivery transports, journal writers, or execution behavior were introduced
+
+This parity slice is architectural hardening only. It does not register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
