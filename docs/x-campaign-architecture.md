@@ -1130,3 +1130,14 @@ Phase 13B adds host integration manifest contracts and DTOs:
 - keep default effect metadata non-persistent and non-mutating
 
 This is a contract slice only. It does not bind a manifest builder, register routes, create controllers, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
+
+## Phase 13C Boundary
+
+Phase 13C adds in-memory host integration manifest building:
+
+- describes package-side capabilities as read-only or bounded in-memory seams
+- lists host-owned infrastructure responsibilities explicitly
+- warns hosts about authorization, redaction, and route registration requirements
+- binds host integration manifest building to a read-only builder
+
+This is an in-memory manifest read-model slice only. It does not invoke workspaces, register routes, create controllers, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.

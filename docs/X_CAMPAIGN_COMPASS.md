@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 13B complete. Next boundary: Phase 13C.
+Wave 5 — Phase 13C complete. Next boundary: Phase 13D.
 
 ## Status
 
-Complete through Phase 13B.
+Complete through Phase 13C.
 
 ## Completed Work
 
@@ -426,6 +426,10 @@ Complete through Phase 13B.
   - `CampaignHostIntegrationRequestData`
   - `CampaignHostIntegrationManifestData`
 - Added Phase 13B Pest coverage proving host integration manifests describe package capabilities and host responsibilities without persistence, queue, Pay Code, feedback, journal, or money movement effects by default.
+- Added Phase 13C host integration manifest builder:
+  - `CampaignHostIntegrationManifestBuilder`
+- Bound `BuildsCampaignHostIntegrationManifests` to the read-only builder.
+- Added Phase 13C Pest coverage proving host integration manifests describe capabilities, host responsibilities, package responsibilities, and warnings without route, controller, middleware, policy, queue, feedback, journal, Pay Code, provider, or money movement behavior.
 
 ## Discoveries
 
@@ -1061,10 +1065,15 @@ Complete through Phase 13B.
 - Phase 13B full package result: `383 passed, 3941 assertions`.
 - Phase 13B `composer validate --strict` passed.
 - Phase 13B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 13C focused failing baseline was observed before implementation: `3 failed, 0 assertions`.
+- Phase 13C focused result after implementation: `3 passed, 32 assertions`.
+- Phase 13C full package result: `386 passed, 3973 assertions`.
+- Phase 13C `composer validate --strict` passed.
+- Phase 13C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 13C — In-Memory Host Integration Manifest Builder.
+Phase 13D — Repository-Backed Host Integration Workspace Baseline.
 
 ## Open Questions
 
