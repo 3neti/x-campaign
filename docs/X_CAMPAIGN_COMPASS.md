@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 14F complete. Next boundary: Phase 15.
+Wave 5 — Phase 15A complete. Next boundary: Phase 15B.
 
 ## Status
 
-Complete through Phase 14F.
+Complete through Phase 15A.
 
 ## Completed Work
 
@@ -1157,10 +1157,18 @@ Complete through Phase 14F.
 - Phase 14F full package result: `413 passed, 4261 assertions`.
 - Phase 14F `composer validate --strict` passed.
 - Phase 14F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 15A focused failing baseline was observed before implementation: `1 failed, 1 passed, 7 assertions`.
+- Added Phase 15A host adoption boundary document:
+  - `docs/phase-15-host-adoption-boundary.md`
+- Added Phase 15A architecture coverage proving host adoption boundaries are documented before package-owned routes, controllers, requests, resources, or route files exist.
+- Phase 15A focused result after implementation: `2 passed, 13 assertions`.
+- Phase 15A full package result: `415 passed, 4274 assertions`.
+- Phase 15A `composer validate --strict` passed.
+- Phase 15A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 15 — Next campaign scaffold boundary to be defined from the roadmap before implementation.
+Phase 15B — x-change Integration Manifest Contract.
 
 ## Open Questions
 

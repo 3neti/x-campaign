@@ -1238,3 +1238,14 @@ Phase 14F closes the public API baseline:
 - verifies no concrete routes, controllers, form requests, API resources, route files, mutation endpoints, journal writers, feedback senders, provider calls, Pay Code issuance, wallet mutation, or money movement were introduced
 
 This parity slice is architectural hardening only. It does not register routes, create controllers, own form requests, own API resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
+
+## Phase 15A Boundary
+
+Phase 15A adds the host adoption boundary plan:
+
+- document how `x-change` can safely consume `x-campaign` seams
+- preserve host ownership of routes, controllers, form requests, API resources, middleware, policies, authentication, authorization, redaction, rate limiting, and operator identity
+- preserve package ownership of descriptive integration contracts, read models, workspace seams, endpoint recommendations, mutation readiness gates, and parity reporting
+- sequence the remaining Phase 15 host adoption slices
+
+This is a planning slice only. It does not create host adoption DTOs, bind manifest builders, register routes, create controllers, own requests, own resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
