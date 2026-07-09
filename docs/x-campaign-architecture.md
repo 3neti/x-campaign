@@ -1043,3 +1043,14 @@ Phase 11F closes the observability / operational hardening baseline:
 - verifies no concrete metrics exporters, alert transports, loggers, monitoring transports, listeners, routes, controllers, mutation endpoints, journal writers, feedback senders, provider calls, or money movement were introduced
 
 This parity slice is architectural hardening only. It does not export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
+
+## Phase 12A Boundary
+
+Phase 12A adds the production readiness boundary plan:
+
+- document campaign-side production readiness assessment ownership
+- preserve host ownership of release approvals, deployment automation, environment writes, and worker operations
+- preserve external ownership of journal writes, feedback delivery, provider callbacks, Pay Code issuance, wallets, and money movement
+- sequence the remaining Phase 12 production readiness slices
+
+This is a planning slice only. It does not create readiness DTOs, bind readiness builders, deploy releases, write environments, start workers, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.

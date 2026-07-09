@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 11 complete. Next boundary: Phase 12.
+Wave 5 — Phase 12A complete. Next boundary: Phase 12B.
 
 ## Status
 
-Complete through Phase 11F.
+Complete through Phase 12A.
 
 ## Completed Work
 
@@ -390,6 +390,9 @@ Complete through Phase 11F.
 - Bound operational readiness presentation to the read-only presenter.
 - Added Phase 11E Pest coverage proving health snapshots project into host-safe readiness envelopes without metrics exporters, alerts, logs, journals, routes, controllers, queue workers, feedback, Pay Code issuance, providers, or money movement.
 - Added Phase 11F parity coverage proving observability/operational hardening includes the expected contracts, DTOs, read models, workspace, presenter, and architecture documentation without concrete metrics exporters, alert transports, loggers, monitoring transports, listeners, routes, controllers, mutation endpoints, journal writers, feedback senders, provider calls, or money movement.
+- Added Phase 12A production readiness boundary document:
+  - `docs/phase-12-production-readiness-boundary.md`
+- Added Phase 12A architecture coverage proving production readiness boundaries are documented before deployment automation, environment writers, worker orchestration, or release infrastructure exist.
 
 ## Discoveries
 
@@ -401,6 +404,7 @@ Complete through Phase 11F.
 - Future phases must avoid duplicating x-change Program Blueprints, voucher templates, Pay Code generation, claim lifecycle, settlement, disbursement, and wallet behavior.
 - Future delivery integration must avoid duplicating x-feedback transport ownership.
 - Future audit/reporting integration must avoid duplicating x-journal audit ownership.
+- Future production readiness integration must remain a read-only evidence and handoff layer unless a host application explicitly owns release approval, deployment, environment, and worker operations.
 
 ## Architectural Decisions
 
@@ -983,10 +987,15 @@ Complete through Phase 11F.
 - Phase 11F syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 11F `composer validate --strict` passed.
 - Phase 11F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 12A focused failing baseline was observed before implementation: `1 failed, 1 passed, 6 assertions`.
+- Phase 12A focused result after implementation: `2 passed, 15 assertions`.
+- Phase 12A full package result: `362 passed, 3739 assertions`.
+- Phase 12A `composer validate --strict` passed.
+- Phase 12A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 12 — Campaign Production Readiness Boundary Plan.
+Phase 12B — Production Readiness Checklist Contract Baseline.
 
 ## Open Questions
 
