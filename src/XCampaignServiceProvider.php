@@ -47,6 +47,7 @@ use LBHurtado\XCampaign\Contracts\BuildsCampaignOperatorReports;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignOperationalHealthSnapshots;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignPortableCodeGenerationSummaries;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignProductionReadinessAssessments;
+use LBHurtado\XCampaign\Contracts\BuildsCampaignPublicApiEndpointRecommendationMatrices;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignPublicApiDescriptors;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignSummaries;
 use LBHurtado\XCampaign\Contracts\CampaignAnalyticsWorkspace;
@@ -124,6 +125,7 @@ use LBHurtado\XCampaign\ReadModels\CampaignPortableCodeGenerationSummaryReadMode
 use LBHurtado\XCampaign\ReadModels\CampaignProductionReadinessAssessmentBuilder;
 use LBHurtado\XCampaign\ReadModels\CampaignProductionReleasePresenter;
 use LBHurtado\XCampaign\ReadModels\CampaignPublicApiDescriptorBuilder;
+use LBHurtado\XCampaign\ReadModels\CampaignPublicApiEndpointRecommendationMatrixBuilder;
 use LBHurtado\XCampaign\ReadModels\CampaignPublicApiResponsePresenter;
 use LBHurtado\XCampaign\ReadModels\CampaignSummaryReadModel;
 use LBHurtado\XCampaign\Gateways\NullPortableCodeGenerationGateway;
@@ -221,6 +223,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(BuildsCampaignOperationalHealthSnapshots::class, CampaignOperationalHealthSnapshotBuilder::class);
         $this->app->singleton(BuildsCampaignPortableCodeGenerationSummaries::class, CampaignPortableCodeGenerationSummaryReadModel::class);
         $this->app->singleton(BuildsCampaignProductionReadinessAssessments::class, CampaignProductionReadinessAssessmentBuilder::class);
+        $this->app->singleton(BuildsCampaignPublicApiEndpointRecommendationMatrices::class, CampaignPublicApiEndpointRecommendationMatrixBuilder::class);
         $this->app->singleton(BuildsCampaignPublicApiDescriptors::class, CampaignPublicApiDescriptorBuilder::class);
         $this->app->singleton(BuildsCampaignSummaries::class, CampaignSummaryReadModel::class);
         $this->app->singleton(CampaignPlanRepository::class, InMemoryCampaignPlanRepository::class);

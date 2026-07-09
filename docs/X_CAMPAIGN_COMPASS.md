@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 15C complete. Next boundary: Phase 15D.
+Wave 5 — Phase 15D complete. Next boundary: Phase 15E.
 
 ## Status
 
-Complete through Phase 15C.
+Complete through Phase 15D.
 
 ## Completed Work
 
@@ -1187,10 +1187,22 @@ Complete through Phase 15C.
 - Phase 15C full package result: `420 passed, 4343 assertions`.
 - Phase 15C `composer validate --strict` passed.
 - Phase 15C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 15D focused failing baseline was observed before implementation: `3 failed, 0 assertions`.
+- Added Phase 15D public API endpoint recommendation matrix contract:
+  - `BuildsCampaignPublicApiEndpointRecommendationMatrices`
+- Added Phase 15D endpoint recommendation matrix DTO:
+  - `CampaignPublicApiEndpointRecommendationMatrixData`
+- Added Phase 15D endpoint recommendation matrix builder:
+  - `CampaignPublicApiEndpointRecommendationMatrixBuilder`
+- Bound the endpoint recommendation matrix contract to the read-only implementation.
+- Phase 15D focused result after implementation: `3 passed, 35 assertions`.
+- Phase 15D full package result: `423 passed, 4378 assertions`.
+- Phase 15D `composer validate --strict` passed.
+- Phase 15D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 15D — Public API Endpoint Recommendation Matrix.
+Phase 15E — Host Mutation Authorization Checklist.
 
 ## Open Questions
 

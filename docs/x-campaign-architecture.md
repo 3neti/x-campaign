@@ -1271,3 +1271,14 @@ Phase 15C adds the Cockpit consumption map:
 - binds Cockpit consumption map building to a read-only builder
 
 This is a host adoption read-model slice only. It does not register routes, create controllers, own requests, own resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
+
+## Phase 15D Boundary
+
+Phase 15D adds a public API endpoint recommendation matrix:
+
+- recommends host route names, methods, workspace seams, and response presenters for `x-change`
+- marks all recommended endpoints as host-registered and package-described
+- keeps recommendations read-only and non-mutating
+- binds endpoint recommendation matrix building to a read-only builder
+
+This is endpoint recommendation metadata only. It does not register routes, create controllers, own requests, own resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
