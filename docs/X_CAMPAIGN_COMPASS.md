@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 12C complete. Next boundary: Phase 12D.
+Wave 5 — Phase 12D complete. Next boundary: Phase 12E.
 
 ## Status
 
-Complete through Phase 12C.
+Complete through Phase 12D.
 
 ## Completed Work
 
@@ -403,6 +403,12 @@ Complete through Phase 12C.
   - `CampaignProductionReadinessAssessmentBuilder`
 - Bound `BuildsCampaignProductionReadinessAssessments` to the read-only builder.
 - Added Phase 12C Pest coverage proving production readiness assessments derive checks and blockers from operational readiness without deployment, environment, worker, queue, feedback, journal, Pay Code, provider, or money movement behavior.
+- Added Phase 12D production readiness workspace contract:
+  - `CampaignProductionReadinessWorkspace`
+- Added Phase 12D repository-backed production readiness workspace:
+  - `RepositoryBackedCampaignProductionReadinessWorkspace`
+- Bound production readiness workspace composition to the repository-backed read-only workspace.
+- Added Phase 12D Pest coverage proving production readiness assessments compose repository-backed operational state without release, deployment, environment, worker, queue, feedback, journal, Pay Code, provider, or money movement behavior.
 
 ## Discoveries
 
@@ -1012,10 +1018,15 @@ Complete through Phase 12C.
 - Phase 12C full package result: `369 passed, 3799 assertions`.
 - Phase 12C `composer validate --strict` passed.
 - Phase 12C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 12D focused failing baseline was observed before implementation: `3 failed, 1 assertion`.
+- Phase 12D focused result after implementation: `3 passed, 30 assertions`.
+- Phase 12D full package result: `372 passed, 3829 assertions`.
+- Phase 12D `composer validate --strict` passed.
+- Phase 12D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 12D — Repository-Backed Production Readiness Workspace Baseline.
+Phase 12E — Production Readiness Release Presenter Baseline.
 
 ## Open Questions
 

@@ -1076,3 +1076,14 @@ Phase 12C adds in-memory production readiness assessment building:
 - binds production readiness assessment building to a read-only builder
 
 This is an in-memory readiness read-model slice only. It does not invoke workspaces, deploy releases, write environments, start workers, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
+
+## Phase 12D Boundary
+
+Phase 12D adds repository-backed production readiness workspace composition:
+
+- composes existing operational monitor snapshots and operational readiness presentation
+- delegates production readiness assessment construction to the assessment builder
+- exposes workspace-level metadata for host production readiness consumers
+- keeps production readiness package-side and read-only
+
+This workspace is readiness composition only. It does not deploy releases, write environments, start workers, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers directly, generate files, mutate wallets, or move money.
