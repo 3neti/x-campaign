@@ -1033,3 +1033,13 @@ Phase 11E adds operational readiness presentation:
 - binds readiness presentation to a read-only presenter
 
 This presenter is readiness response shaping only. It does not export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
+
+## Phase 11F Boundary
+
+Phase 11F closes the observability / operational hardening baseline:
+
+- verifies package-side observability contracts, DTOs, builders, workspace composition, presenter, and documentation exist
+- verifies all Phase 11 architecture slices are documented
+- verifies no concrete metrics exporters, alert transports, loggers, monitoring transports, listeners, routes, controllers, mutation endpoints, journal writers, feedback senders, provider calls, or money movement were introduced
+
+This parity slice is architectural hardening only. It does not export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.

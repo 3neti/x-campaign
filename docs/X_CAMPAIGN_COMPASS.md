@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 11E: Operational Readiness Presenter Baseline.
+Wave 5 — Phase 11 complete. Next boundary: Phase 12.
 
 ## Status
 
-Complete through Phase 11E in progress.
+Complete through Phase 11F.
 
 ## Completed Work
 
@@ -389,6 +389,7 @@ Complete through Phase 11E in progress.
   - `CampaignOperationalReadinessPresenter`
 - Bound operational readiness presentation to the read-only presenter.
 - Added Phase 11E Pest coverage proving health snapshots project into host-safe readiness envelopes without metrics exporters, alerts, logs, journals, routes, controllers, queue workers, feedback, Pay Code issuance, providers, or money movement.
+- Added Phase 11F parity coverage proving observability/operational hardening includes the expected contracts, DTOs, read models, workspace, presenter, and architecture documentation without concrete metrics exporters, alert transports, loggers, monitoring transports, listeners, routes, controllers, mutation endpoints, journal writers, feedback senders, provider calls, or money movement.
 
 ## Discoveries
 
@@ -464,6 +465,7 @@ Complete through Phase 11E in progress.
 - Operational health snapshot building is diagnostic read-model-only. Phase 11C does not invoke workspaces, export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
 - Repository-backed operational monitor workspace integration composes existing Cockpit and health read models. Phase 11D remains read-only and does not export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers directly, generate files, mutate wallets, or move money.
 - Operational readiness presentation is response shaping only. Phase 11E does not export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
+- Phase 11 closes as a package-side read-only observability and operational hardening baseline. Host applications remain responsible for metrics export, alert delivery, log sinks, monitoring infrastructure, routes, controllers, authorization, and operational automation.
 
 ## Test Coverage Status
 
@@ -975,10 +977,16 @@ Complete through Phase 11E in progress.
 - Phase 11E full package result: `358 passed, 3704 assertions`.
 - Phase 11E `composer validate --strict` passed.
 - Phase 11E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 11F focused failing baseline was observed before implementation: `1 failed, 1 passed, 15 assertions`.
+- Phase 11F focused result after implementation: `2 passed, 20 assertions`.
+- Phase 11F full package result: `360 passed, 3724 assertions`.
+- Phase 11F syntax checks passed for `src`, `tests`, `database`, and `config`.
+- Phase 11F `composer validate --strict` passed.
+- Phase 11F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 11F — Observability / Operational Hardening Parity.
+Phase 12 — Campaign Production Readiness Boundary Plan.
 
 ## Open Questions
 
