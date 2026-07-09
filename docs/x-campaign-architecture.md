@@ -1228,3 +1228,13 @@ Phase 14E adds public API response presentation:
 - binds public API response presentation to a read-only presenter
 
 This presenter is response shaping only. It does not register routes, create controllers, own form requests, own API resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
+
+## Phase 14F Boundary
+
+Phase 14F closes the public API baseline:
+
+- verifies package-side public API contracts, DTOs, descriptor builder, workspace composition, response presenter, and documentation exist
+- verifies all Phase 14 architecture slices are documented
+- verifies no concrete routes, controllers, form requests, API resources, route files, mutation endpoints, journal writers, feedback senders, provider calls, Pay Code issuance, wallet mutation, or money movement were introduced
+
+This parity slice is architectural hardening only. It does not register routes, create controllers, own form requests, own API resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.

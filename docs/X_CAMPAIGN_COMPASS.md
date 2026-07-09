@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 14E complete. Next boundary: Phase 14F.
+Wave 5 — Phase 14F complete. Next boundary: Phase 15.
 
 ## Status
 
-Complete through Phase 14E.
+Complete through Phase 14F.
 
 ## Completed Work
 
@@ -1148,10 +1148,19 @@ Complete through Phase 14E.
 - Phase 14E full package result: `410 passed, 4240 assertions`.
 - Phase 14E `composer validate --strict` passed.
 - Phase 14E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 14F focused failing baseline was observed before implementation: `1 failed, 2 passed, 21 assertions`.
+- Added Phase 14F public API parity coverage:
+  - complete public API baseline class and contract surface
+  - Phase 14 architecture documentation coverage
+  - no host public API transport infrastructure ownership
+- Phase 14F focused result after implementation: `3 passed, 21 assertions`.
+- Phase 14F full package result: `413 passed, 4261 assertions`.
+- Phase 14F `composer validate --strict` passed.
+- Phase 14F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 14F — Public API Baseline Parity.
+Phase 15 — Next campaign scaffold boundary to be defined from the roadmap before implementation.
 
 ## Open Questions
 
