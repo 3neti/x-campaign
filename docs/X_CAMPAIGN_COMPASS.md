@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 10 complete. Next boundary: Phase 11.
+Wave 5 — Phase 11A: Observability / Operational Hardening Boundary Plan.
 
 ## Status
 
-Complete through Phase 10F.
+Complete through Phase 11A in progress.
 
 ## Completed Work
 
@@ -363,6 +363,9 @@ Complete through Phase 10F.
 - Bound Cockpit API response presentation to the read-only presenter.
 - Added Phase 10E Pest coverage proving Cockpit summaries project into host-safe API response envelopes without routes, controllers, UI, persistence, queue, feedback, journal, Pay Code, provider, or money movement behavior.
 - Added Phase 10F parity coverage proving Cockpit/operator integration includes the expected contracts, DTOs, read models, workspace, presenter, and architecture documentation without concrete routes, controllers, pages, views, UI assets, mutation endpoints, delivery transports, journal writers, or execution behavior.
+- Added Phase 11A observability/operational hardening boundary document:
+  - `docs/phase-11-observability-operational-hardening-boundary.md`
+- Added Phase 11A architecture coverage proving observability boundaries are documented before metrics exporters, alert transports, loggers, monitoring transports, or listener transports exist.
 
 ## Discoveries
 
@@ -433,6 +436,7 @@ Complete through Phase 10F.
 - Repository-backed Cockpit workspace integration composes existing package workspaces and read models. Phase 10D remains read-only and does not mutate repository state, register routes, create controllers, render UI, queue jobs, issue Pay Codes, send feedback, write journals, call providers directly, generate files, persist reports, mutate wallets, or move money.
 - Cockpit API response presentation is response shaping only. Phase 10E does not register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
 - Phase 10 closes as a package-side read-only Cockpit/operator integration baseline. Host applications remain responsible for routes, controllers, authorization, redaction, UI rendering, and API exposure.
+- Observability/operational hardening begins as a read-only diagnostic package boundary. Phase 11A does not export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
 
 ## Test Coverage Status
 
@@ -919,10 +923,15 @@ Complete through Phase 10F.
 - Phase 10F syntax checks passed for `src`, `tests`, `database`, and `config`.
 - Phase 10F `composer validate --strict` passed.
 - Phase 10F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 11A focused failing baseline was observed before implementation: `1 failed, 1 passed, 6 assertions`.
+- Phase 11A focused result after implementation: `2 passed, 15 assertions`.
+- Phase 11A full package result: `346 passed, 3599 assertions`.
+- Phase 11A `composer validate --strict` passed.
+- Phase 11A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 11 — Campaign Observability / Operational Hardening Boundary Plan.
+Phase 11B — Observability Signal Contract Baseline.
 
 ## Open Questions
 

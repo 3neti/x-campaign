@@ -978,3 +978,14 @@ Phase 10F closes the Cockpit / operator integration baseline:
 - verifies no concrete routes, controllers, pages, views, UI assets, mutation endpoints, delivery transports, journal writers, or execution behavior were introduced
 
 This parity slice is architectural hardening only. It does not register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
+
+## Phase 11A Boundary
+
+Phase 11A adds the observability / operational hardening boundary plan:
+
+- document campaign-side operational health ownership
+- preserve host ownership of real metrics exporters, alert delivery, log sinks, and monitoring infrastructure
+- preserve external ownership of journal writes, feedback delivery, provider callbacks, Pay Code issuance, wallets, and money movement
+- sequence the remaining Phase 11 observability/hardening slices
+
+This is a planning slice only. It does not create observability DTOs, bind health builders, export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
