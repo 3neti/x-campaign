@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 11D: Repository-Backed Operational Monitor Workspace Baseline.
+Wave 5 — Phase 11E: Operational Readiness Presenter Baseline.
 
 ## Status
 
-Complete through Phase 11D in progress.
+Complete through Phase 11E in progress.
 
 ## Completed Work
 
@@ -382,6 +382,13 @@ Complete through Phase 11D in progress.
   - `RepositoryBackedCampaignOperationalMonitorWorkspace`
 - Bound operational monitoring to the repository-backed diagnostic workspace.
 - Added Phase 11D Pest coverage proving operational monitor snapshots compose Cockpit/API state without metrics exporters, alerts, logs, journals, routes, controllers, queue workers, feedback, Pay Code issuance, providers, or money movement.
+- Added Phase 11E operational readiness presenter contract:
+  - `PresentsCampaignOperationalReadiness`
+- Added Phase 11E operational readiness DTO/read model:
+  - `CampaignOperationalReadinessData`
+  - `CampaignOperationalReadinessPresenter`
+- Bound operational readiness presentation to the read-only presenter.
+- Added Phase 11E Pest coverage proving health snapshots project into host-safe readiness envelopes without metrics exporters, alerts, logs, journals, routes, controllers, queue workers, feedback, Pay Code issuance, providers, or money movement.
 
 ## Discoveries
 
@@ -456,6 +463,7 @@ Complete through Phase 11D in progress.
 - Operational signal contracts describe diagnostic data shape only. Phase 11B does not bind a health builder, export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
 - Operational health snapshot building is diagnostic read-model-only. Phase 11C does not invoke workspaces, export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
 - Repository-backed operational monitor workspace integration composes existing Cockpit and health read models. Phase 11D remains read-only and does not export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers directly, generate files, mutate wallets, or move money.
+- Operational readiness presentation is response shaping only. Phase 11E does not export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
 
 ## Test Coverage Status
 
@@ -962,10 +970,15 @@ Complete through Phase 11D in progress.
 - Phase 11D full package result: `355 passed, 3679 assertions`.
 - Phase 11D `composer validate --strict` passed.
 - Phase 11D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 11E focused failing baseline was observed before implementation: `3 failed, 0 assertions`.
+- Phase 11E focused result after implementation: `3 passed, 25 assertions`.
+- Phase 11E full package result: `358 passed, 3704 assertions`.
+- Phase 11E `composer validate --strict` passed.
+- Phase 11E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 11E — Operational Readiness Presenter Baseline.
+Phase 11F — Observability / Operational Hardening Parity.
 
 ## Open Questions
 

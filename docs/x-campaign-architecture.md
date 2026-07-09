@@ -1022,3 +1022,14 @@ Phase 11D adds repository-backed operational monitor workspace composition:
 - keeps monitoring package-side and read-only
 
 This workspace is diagnostic composition only. It does not export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers directly, generate files, mutate wallets, or move money.
+
+## Phase 11E Boundary
+
+Phase 11E adds operational readiness presentation:
+
+- projects operational health snapshots into host-safe readiness envelopes
+- carries checks, indicators, blockers, and safe metadata
+- explicitly marks metrics export, alert delivery, and journal writes as external responsibilities
+- binds readiness presentation to a read-only presenter
+
+This presenter is readiness response shaping only. It does not export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
