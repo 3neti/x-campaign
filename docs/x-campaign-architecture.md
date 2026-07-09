@@ -1054,3 +1054,14 @@ Phase 12A adds the production readiness boundary plan:
 - sequence the remaining Phase 12 production readiness slices
 
 This is a planning slice only. It does not create readiness DTOs, bind readiness builders, deploy releases, write environments, start workers, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
+
+## Phase 12B Boundary
+
+Phase 12B adds production readiness checklist and assessment contracts:
+
+- define a checklist DTO over existing operational readiness evidence
+- define an assessment DTO for host-safe production readiness results
+- define the production readiness assessment builder contract for later implementation
+- keep default effect metadata non-persistent and non-mutating
+
+This is a contract slice only. It does not bind an assessment builder, deploy releases, write environments, start workers, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.

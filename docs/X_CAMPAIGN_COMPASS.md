@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 12A complete. Next boundary: Phase 12B.
+Wave 5 — Phase 12B complete. Next boundary: Phase 12C.
 
 ## Status
 
-Complete through Phase 12A.
+Complete through Phase 12B.
 
 ## Completed Work
 
@@ -393,6 +393,12 @@ Complete through Phase 12A.
 - Added Phase 12A production readiness boundary document:
   - `docs/phase-12-production-readiness-boundary.md`
 - Added Phase 12A architecture coverage proving production readiness boundaries are documented before deployment automation, environment writers, worker orchestration, or release infrastructure exist.
+- Added Phase 12B production readiness assessment contract:
+  - `BuildsCampaignProductionReadinessAssessments`
+- Added Phase 12B production readiness DTOs:
+  - `CampaignProductionReadinessChecklistData`
+  - `CampaignProductionReadinessAssessmentData`
+- Added Phase 12B Pest coverage proving production readiness checklist and assessment envelopes are read-only and carry no persistence, queue, Pay Code, feedback, journal, or money movement effects by default.
 
 ## Discoveries
 
@@ -992,10 +998,15 @@ Complete through Phase 12A.
 - Phase 12A full package result: `362 passed, 3739 assertions`.
 - Phase 12A `composer validate --strict` passed.
 - Phase 12A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 12B focused failing baseline was observed before implementation: `3 failed, 1 assertion`.
+- Phase 12B focused result after implementation: `3 passed, 34 assertions`.
+- Phase 12B full package result: `365 passed, 3773 assertions`.
+- Phase 12B `composer validate --strict` passed.
+- Phase 12B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 12B — Production Readiness Checklist Contract Baseline.
+Phase 12C — In-Memory Production Readiness Assessment Builder.
 
 ## Open Questions
 
