@@ -1011,3 +1011,14 @@ Phase 11C adds in-memory operational health snapshot building:
 - binds operational health snapshot building to a read-only builder
 
 This is an in-memory diagnostic read-model slice only. It does not invoke workspaces, export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
+
+## Phase 11D Boundary
+
+Phase 11D adds repository-backed operational monitor workspace composition:
+
+- composes existing Cockpit workspace summaries and API response presentation
+- delegates health snapshot construction to the operational health builder
+- exposes workspace-level diagnostic metadata for host monitoring consumers
+- keeps monitoring package-side and read-only
+
+This workspace is diagnostic composition only. It does not export metrics, send alerts, write logs, write journals, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers directly, generate files, mutate wallets, or move money.

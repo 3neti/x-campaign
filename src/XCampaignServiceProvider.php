@@ -58,6 +58,7 @@ use LBHurtado\XCampaign\Contracts\CampaignAudienceImportRecipientAttachmentWorks
 use LBHurtado\XCampaign\Contracts\CampaignAudienceImportWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignExecutionHandoffWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignFeatureProfileResolver;
+use LBHurtado\XCampaign\Contracts\CampaignOperationalMonitorWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignPlanRepository;
 use LBHurtado\XCampaign\Contracts\CampaignPlanSnapshotRepository;
 use LBHurtado\XCampaign\Contracts\CampaignPlanningWorkspace;
@@ -128,6 +129,7 @@ use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAnalyticsWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignClaimVisibilityWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignCockpitWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignDeliveryHandoffWorkspace;
+use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignOperationalMonitorWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignPlanningWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignExecutionHandoffWorkspace;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignPortableCodeGenerationWorkspace;
@@ -204,6 +206,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(CampaignClaimVisibilityWorkspace::class, RepositoryBackedCampaignClaimVisibilityWorkspace::class);
         $this->app->singleton(CampaignCockpitWorkspace::class, RepositoryBackedCampaignCockpitWorkspace::class);
         $this->app->singleton(CampaignDeliveryHandoffWorkspace::class, RepositoryBackedCampaignDeliveryHandoffWorkspace::class);
+        $this->app->singleton(CampaignOperationalMonitorWorkspace::class, RepositoryBackedCampaignOperationalMonitorWorkspace::class);
         $this->app->singleton(CampaignExecutionHandoffWorkspace::class, RepositoryBackedCampaignExecutionHandoffWorkspace::class);
         $this->app->singleton(CampaignPortableCodeGenerationWorkspace::class, RepositoryBackedCampaignPortableCodeGenerationWorkspace::class);
         $this->app->singleton(CampaignRecipientImportRowWorkspace::class, RepositoryBackedCampaignRecipientImportRowWorkspace::class);
