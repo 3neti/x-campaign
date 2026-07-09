@@ -1119,3 +1119,14 @@ Phase 13A adds the host integration boundary plan:
 - sequence the remaining Phase 13 host integration slices
 
 This is a planning slice only. It does not create host integration DTOs, bind host integration builders, register routes, create controllers, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
+
+## Phase 13B Boundary
+
+Phase 13B adds host integration manifest contracts and DTOs:
+
+- define a host integration request over existing campaign planning/execution/operator context
+- define a host integration manifest result that describes package capabilities and host responsibilities
+- define the host integration manifest builder contract for later implementation
+- keep default effect metadata non-persistent and non-mutating
+
+This is a contract slice only. It does not bind a manifest builder, register routes, create controllers, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.

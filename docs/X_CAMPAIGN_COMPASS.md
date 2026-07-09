@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 13A complete. Next boundary: Phase 13B.
+Wave 5 — Phase 13B complete. Next boundary: Phase 13C.
 
 ## Status
 
-Complete through Phase 13A.
+Complete through Phase 13B.
 
 ## Completed Work
 
@@ -420,6 +420,12 @@ Complete through Phase 13A.
 - Added Phase 13A host integration boundary document:
   - `docs/phase-13-host-integration-boundary.md`
 - Added Phase 13A architecture coverage proving host integration boundaries are documented before package-owned routes, controllers, middleware, policies, or route files exist.
+- Added Phase 13B host integration manifest builder contract:
+  - `BuildsCampaignHostIntegrationManifests`
+- Added Phase 13B host integration DTOs:
+  - `CampaignHostIntegrationRequestData`
+  - `CampaignHostIntegrationManifestData`
+- Added Phase 13B Pest coverage proving host integration manifests describe package capabilities and host responsibilities without persistence, queue, Pay Code, feedback, journal, or money movement effects by default.
 
 ## Discoveries
 
@@ -1050,10 +1056,15 @@ Complete through Phase 13A.
 - Phase 13A full package result: `380 passed, 3904 assertions`.
 - Phase 13A `composer validate --strict` passed.
 - Phase 13A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 13B focused failing baseline was observed before implementation: `3 failed, 1 assertion`.
+- Phase 13B focused result after implementation: `3 passed, 37 assertions`.
+- Phase 13B full package result: `383 passed, 3941 assertions`.
+- Phase 13B `composer validate --strict` passed.
+- Phase 13B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 13B — Host Integration Manifest Contract Baseline.
+Phase 13C — In-Memory Host Integration Manifest Builder.
 
 ## Open Questions
 
