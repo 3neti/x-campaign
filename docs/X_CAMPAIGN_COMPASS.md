@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 13E complete. Next boundary: Phase 13F.
+Wave 5 — Phase 13 complete. Next boundary: Phase 14.
 
 ## Status
 
-Complete through Phase 13E.
+Complete through Phase 13F.
 
 ## Completed Work
 
@@ -443,6 +443,7 @@ Complete through Phase 13E.
   - `CampaignHostIntegrationResponsePresenter`
 - Bound host integration response presentation to the read-only presenter.
 - Added Phase 13E Pest coverage proving host integration manifests project into host-safe response envelopes without route, controller, middleware, policy, queue, feedback, journal, Pay Code, provider, or money movement behavior.
+- Added Phase 13F parity coverage proving host integration includes the expected contracts, DTOs, read models, workspace, response presenter, and architecture documentation without concrete routes, controllers, middleware, policies, route files, mutation endpoints, journal writers, feedback senders, provider calls, Pay Code issuance, wallet mutation, or money movement.
 
 ## Discoveries
 
@@ -1093,10 +1094,15 @@ Complete through Phase 13E.
 - Phase 13E full package result: `392 passed, 4053 assertions`.
 - Phase 13E `composer validate --strict` passed.
 - Phase 13E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 13F focused failing baseline was observed before implementation: `1 failed, 1 passed, 15 assertions`.
+- Phase 13F focused result after implementation: `2 passed, 21 assertions`.
+- Phase 13F full package result: `394 passed, 4074 assertions`.
+- Phase 13F `composer validate --strict` passed.
+- Phase 13F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 13F — Host Integration Parity.
+Phase 14 — Campaign Public API Boundary Plan.
 
 ## Open Questions
 

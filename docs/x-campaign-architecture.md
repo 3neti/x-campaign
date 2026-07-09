@@ -1163,3 +1163,13 @@ Phase 13E adds host integration response presentation:
 - binds host integration response presentation to a read-only presenter
 
 This presenter is response shaping only. It does not register routes, create controllers, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
+
+## Phase 13F Boundary
+
+Phase 13F closes the host integration baseline:
+
+- verifies package-side host integration contracts, DTOs, manifest builder, workspace composition, response presenter, and documentation exist
+- verifies all Phase 13 architecture slices are documented
+- verifies no concrete routes, controllers, middleware, policies, route files, mutation endpoints, journal writers, feedback senders, provider calls, Pay Code issuance, wallet mutation, or money movement were introduced
+
+This parity slice is architectural hardening only. It does not register routes, create controllers, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
