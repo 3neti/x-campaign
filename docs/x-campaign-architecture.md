@@ -957,3 +957,14 @@ Phase 10D adds repository-backed Cockpit workspace composition:
 - fails closed for unknown planning keys through the repository boundary
 
 This workspace is read-only composition over existing package seams. It does not mutate repository state, register routes, create controllers, render UI, queue jobs, issue Pay Codes, send feedback, write journals, call providers directly, generate files, persist reports, mutate wallets, or move money.
+
+## Phase 10E Boundary
+
+Phase 10E adds operator API response presentation:
+
+- projects Cockpit summaries into host-safe response envelopes
+- carries cards, panels, action descriptors, blockers, and safe metadata
+- explicitly marks route and controller registration as external host responsibilities
+- binds the response presenter contract to a read-only presenter
+
+This presenter is response shaping only. It does not register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.

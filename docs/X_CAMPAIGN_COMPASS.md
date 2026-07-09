@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 10D: Repository-Backed Cockpit Workspace Baseline.
+Wave 5 — Phase 10E: Operator API Response Presenter Baseline.
 
 ## Status
 
-Complete through Phase 10D in progress.
+Complete through Phase 10E in progress.
 
 ## Completed Work
 
@@ -355,6 +355,13 @@ Complete through Phase 10D in progress.
   - `RepositoryBackedCampaignCockpitWorkspace`
 - Bound Cockpit workspace composition to the repository-backed read-only workspace.
 - Added Phase 10D Pest coverage proving Cockpit workspace summaries compose existing campaign, analytics, report, and export handoff seams without mutation or delivery side effects.
+- Added Phase 10E Cockpit API response presenter contract:
+  - `PresentsCampaignCockpitApiResponses`
+- Added Phase 10E Cockpit API response DTO/read model:
+  - `CampaignCockpitApiResponseData`
+  - `CampaignCockpitApiResponsePresenter`
+- Bound Cockpit API response presentation to the read-only presenter.
+- Added Phase 10E Pest coverage proving Cockpit summaries project into host-safe API response envelopes without routes, controllers, UI, persistence, queue, feedback, journal, Pay Code, provider, or money movement behavior.
 
 ## Discoveries
 
@@ -423,6 +430,7 @@ Complete through Phase 10D in progress.
 - Cockpit summary contracts describe package-side read-model shape only. Phase 10B does not bind a Cockpit summary builder, register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
 - Cockpit summary building is read-model-only. Phase 10C derives operator-safe cards, panels, and handoff action descriptors from existing DTOs without invoking workspaces, registering routes, creating controllers, rendering UI, mutating campaigns, queueing jobs, issuing Pay Codes, sending feedback, writing journals, calling providers, generating files, persisting reports, mutating wallets, or moving money.
 - Repository-backed Cockpit workspace integration composes existing package workspaces and read models. Phase 10D remains read-only and does not mutate repository state, register routes, create controllers, render UI, queue jobs, issue Pay Codes, send feedback, write journals, call providers directly, generate files, persist reports, mutate wallets, or move money.
+- Cockpit API response presentation is response shaping only. Phase 10E does not register routes, create controllers, render UI, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, persist reports, mutate wallets, or move money.
 
 ## Test Coverage Status
 
@@ -898,10 +906,15 @@ Complete through Phase 10D in progress.
 - Phase 10D full package result: `339 passed, 3525 assertions`.
 - Phase 10D `composer validate --strict` passed.
 - Phase 10D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 10E focused failing baseline was observed before implementation: `3 failed, 0 assertions`.
+- Phase 10E focused result after implementation: `3 passed, 39 assertions`.
+- Phase 10E full package result: `342 passed, 3564 assertions`.
+- Phase 10E `composer validate --strict` passed.
+- Phase 10E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 10E — Operator API Response Presenter Baseline.
+Phase 10F — Cockpit / Operator Integration Parity.
 
 ## Open Questions
 
