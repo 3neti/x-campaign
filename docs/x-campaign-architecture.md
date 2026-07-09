@@ -1206,3 +1206,14 @@ Phase 14C adds in-memory public API descriptor building:
 - binds public API descriptor building to a read-only builder
 
 This is an in-memory descriptor read-model slice only. It does not invoke workspaces, register routes, create controllers, own form requests, own API resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
+
+## Phase 14D Boundary
+
+Phase 14D adds repository-backed public API workspace composition:
+
+- reads campaign planning presence through `CampaignPlanRepository`
+- delegates public API descriptor construction to the descriptor builder
+- exposes workspace-level metadata for public API consumers
+- keeps public API package-side and descriptive
+
+This workspace is public API composition only. It does not register routes, create controllers, own form requests, own API resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers directly, generate files, mutate wallets, or move money.

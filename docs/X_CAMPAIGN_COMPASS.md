@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 14C complete. Next boundary: Phase 14D.
+Wave 5 — Phase 14D complete. Next boundary: Phase 14E.
 
 ## Status
 
-Complete through Phase 14C.
+Complete through Phase 14D.
 
 ## Completed Work
 
@@ -1126,10 +1126,20 @@ Complete through Phase 14C.
 - Phase 14C full package result: `402 passed, 4155 assertions`.
 - Phase 14C `composer validate --strict` passed.
 - Phase 14C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 14D focused failing baseline was observed before implementation: `5 failed, 2 assertions`.
+- Added Phase 14D public API workspace contract:
+  - `CampaignPublicApiWorkspace`
+- Added Phase 14D repository-backed public API workspace:
+  - `RepositoryBackedCampaignPublicApiWorkspace`
+- Bound the public API workspace contract to the repository-backed descriptive implementation.
+- Phase 14D focused result after implementation: `5 passed, 39 assertions`.
+- Phase 14D full package result: `407 passed, 4194 assertions`.
+- Phase 14D `composer validate --strict` passed.
+- Phase 14D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 14D — Repository-Backed Public API Workspace Baseline.
+Phase 14E — Public API Response Presenter Baseline.
 
 ## Open Questions
 
