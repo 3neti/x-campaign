@@ -1282,3 +1282,14 @@ Phase 15D adds a public API endpoint recommendation matrix:
 - binds endpoint recommendation matrix building to a read-only builder
 
 This is endpoint recommendation metadata only. It does not register routes, create controllers, own requests, own resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
+
+## Phase 15E Boundary
+
+Phase 15E adds the host mutation authorization checklist:
+
+- describes the host-owned gates that must be satisfied before mutation-capable campaign operations can be exposed
+- marks Pay Code generation, delivery dispatch, unauthorized campaign mutation, journal writes, and feedback sends as blocked until host authorization and handoff are explicit
+- preserves `x-campaign` as a checklist provider, not the host authorization engine
+- binds mutation checklist building to a non-executing read model
+
+This is mutation readiness metadata only. It does not authorize users, register routes, create controllers, own requests, own resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.

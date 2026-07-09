@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 15D complete. Next boundary: Phase 15E.
+Wave 5 — Phase 15E complete. Next boundary: Phase 15F.
 
 ## Status
 
-Complete through Phase 15D.
+Complete through Phase 15E.
 
 ## Completed Work
 
@@ -1199,10 +1199,22 @@ Complete through Phase 15D.
 - Phase 15D full package result: `423 passed, 4378 assertions`.
 - Phase 15D `composer validate --strict` passed.
 - Phase 15D formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 15E focused failing baseline was observed before implementation: `3 failed, 0 assertions`.
+- Added Phase 15E host mutation authorization checklist contract:
+  - `BuildsCampaignHostMutationAuthorizationChecklists`
+- Added Phase 15E host mutation authorization checklist DTO:
+  - `CampaignHostMutationAuthorizationChecklistData`
+- Added Phase 15E host mutation authorization checklist builder:
+  - `CampaignHostMutationAuthorizationChecklistBuilder`
+- Bound the host mutation authorization checklist contract to the non-executing implementation.
+- Phase 15E focused result after implementation: `3 passed, 29 assertions`.
+- Phase 15E full package result: `426 passed, 4407 assertions`.
+- Phase 15E `composer validate --strict` passed.
+- Phase 15E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 15E — Host Mutation Authorization Checklist.
+Phase 15F — Host Adoption Parity Report.
 
 ## Open Questions
 
