@@ -1108,3 +1108,14 @@ Phase 12F closes the production readiness baseline:
 - verifies no concrete deployment automation, release infrastructure, environment writers, provisioning, installers, worker orchestration, routes, controllers, mutation endpoints, journal writers, feedback senders, provider calls, Pay Code issuance, wallet mutation, or money movement were introduced
 
 This parity slice is architectural hardening only. It does not deploy releases, write environments, start workers, register routes, create controllers, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
+
+## Phase 13A Boundary
+
+Phase 13A adds the host integration boundary plan:
+
+- document package-side host integration description ownership
+- preserve host ownership of routes, controllers, middleware, policies, authentication, authorization, redaction, request validation, and API versioning
+- preserve external ownership of journal writes, feedback delivery, provider callbacks, Pay Code issuance, wallets, and money movement
+- sequence the remaining Phase 13 host integration slices
+
+This is a planning slice only. It does not create host integration DTOs, bind host integration builders, register routes, create controllers, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.

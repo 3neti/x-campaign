@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 12 complete. Next boundary: Phase 13.
+Wave 5 — Phase 13A complete. Next boundary: Phase 13B.
 
 ## Status
 
-Complete through Phase 12F.
+Complete through Phase 13A.
 
 ## Completed Work
 
@@ -417,6 +417,9 @@ Complete through Phase 12F.
 - Bound production release presentation to the read-only presenter.
 - Added Phase 12E Pest coverage proving production readiness assessments project into host-safe release envelopes without deployment, environment, worker, queue, feedback, journal, Pay Code, provider, or money movement behavior.
 - Added Phase 12F parity coverage proving production readiness includes the expected contracts, DTOs, read models, workspace, release presenter, and architecture documentation without concrete deployment automation, release infrastructure, environment writers, provisioning, installers, worker orchestration, routes, controllers, mutation endpoints, journal writers, feedback senders, provider calls, Pay Code issuance, wallet mutation, or money movement.
+- Added Phase 13A host integration boundary document:
+  - `docs/phase-13-host-integration-boundary.md`
+- Added Phase 13A architecture coverage proving host integration boundaries are documented before package-owned routes, controllers, middleware, policies, or route files exist.
 
 ## Discoveries
 
@@ -429,6 +432,7 @@ Complete through Phase 12F.
 - Future delivery integration must avoid duplicating x-feedback transport ownership.
 - Future audit/reporting integration must avoid duplicating x-journal audit ownership.
 - Future production readiness integration must remain a read-only evidence and handoff layer unless a host application explicitly owns release approval, deployment, environment, and worker operations.
+- Future host integration must remain a package-side description and handoff layer unless a host application explicitly owns routes, controllers, authentication, authorization, redaction, request validation, and public API versioning.
 
 ## Architectural Decisions
 
@@ -1041,10 +1045,15 @@ Complete through Phase 12F.
 - Phase 12F full package result: `378 passed, 3889 assertions`.
 - Phase 12F `composer validate --strict` passed.
 - Phase 12F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 13A focused failing baseline was observed before implementation: `1 failed, 1 passed, 7 assertions`.
+- Phase 13A focused result after implementation: `2 passed, 15 assertions`.
+- Phase 13A full package result: `380 passed, 3904 assertions`.
+- Phase 13A `composer validate --strict` passed.
+- Phase 13A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 13 — Campaign Host Integration Boundary Plan.
+Phase 13B — Host Integration Manifest Contract Baseline.
 
 ## Open Questions
 
