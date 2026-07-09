@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 15B complete. Next boundary: Phase 15C.
+Wave 5 — Phase 15C complete. Next boundary: Phase 15D.
 
 ## Status
 
-Complete through Phase 15B.
+Complete through Phase 15C.
 
 ## Completed Work
 
@@ -1175,10 +1175,22 @@ Complete through Phase 15B.
 - Phase 15B full package result: `417 passed, 4310 assertions`.
 - Phase 15B `composer validate --strict` passed.
 - Phase 15B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 15C focused failing baseline was observed before implementation: `3 failed, 0 assertions`.
+- Added Phase 15C Cockpit consumption map contract:
+  - `BuildsCampaignCockpitConsumptionMaps`
+- Added Phase 15C Cockpit consumption map DTO:
+  - `CampaignCockpitConsumptionMapData`
+- Added Phase 15C Cockpit consumption map builder:
+  - `CampaignCockpitConsumptionMapBuilder`
+- Bound the Cockpit consumption map contract to the read-only implementation.
+- Phase 15C focused result after implementation: `3 passed, 33 assertions`.
+- Phase 15C full package result: `420 passed, 4343 assertions`.
+- Phase 15C `composer validate --strict` passed.
+- Phase 15C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 15C — Cockpit Consumption Map.
+Phase 15D — Public API Endpoint Recommendation Matrix.
 
 ## Open Questions
 

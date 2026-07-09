@@ -1260,3 +1260,14 @@ Phase 15B adds x-change integration manifest contracts and DTOs:
 - keep default effect metadata non-persistent and non-mutating
 
 This is a contract slice only. It does not bind a manifest builder, register routes, create controllers, own requests, own resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
+
+## Phase 15C Boundary
+
+Phase 15C adds the Cockpit consumption map:
+
+- describes which `x-campaign` read models, workspaces, and response presenters are safe for `x-change` Cockpit composition
+- maps operator-facing surfaces to package seams without registering routes or controllers
+- marks Cockpit consumption as read-only and non-mutating
+- binds Cockpit consumption map building to a read-only builder
+
+This is a host adoption read-model slice only. It does not register routes, create controllers, own requests, own resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
