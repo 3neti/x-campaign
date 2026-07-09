@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 14A complete. Next boundary: Phase 14B.
+Wave 5 — Phase 14B complete. Next boundary: Phase 14C.
 
 ## Status
 
-Complete through Phase 14A.
+Complete through Phase 14B.
 
 ## Completed Work
 
@@ -447,6 +447,12 @@ Complete through Phase 14A.
 - Added Phase 14A public API boundary document:
   - `docs/phase-14-public-api-boundary.md`
 - Added Phase 14A architecture coverage proving public API boundaries are documented before package-owned routes, controllers, requests, resources, or route files exist.
+- Added Phase 14B public API descriptor builder contract:
+  - `BuildsCampaignPublicApiDescriptors`
+- Added Phase 14B public API DTOs:
+  - `CampaignPublicApiRequestData`
+  - `CampaignPublicApiDescriptorData`
+- Added Phase 14B Pest coverage proving public API descriptors describe endpoint candidates and ownership boundaries without persistence, queue, Pay Code, feedback, journal, or money movement effects by default.
 
 ## Discoveries
 
@@ -1107,10 +1113,15 @@ Complete through Phase 14A.
 - Phase 14A full package result: `396 passed, 4089 assertions`.
 - Phase 14A `composer validate --strict` passed.
 - Phase 14A formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 14B focused failing baseline was observed before implementation: `3 failed, 1 assertion`.
+- Phase 14B focused result after implementation: `3 passed, 35 assertions`.
+- Phase 14B full package result: `399 passed, 4124 assertions`.
+- Phase 14B `composer validate --strict` passed.
+- Phase 14B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 14B — Public API Descriptor Contract Baseline.
+Phase 14C — In-Memory Public API Descriptor Builder.
 
 ## Open Questions
 

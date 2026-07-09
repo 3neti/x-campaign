@@ -1184,3 +1184,14 @@ Phase 14A adds the public API boundary plan:
 - sequence the remaining Phase 14 public API slices
 
 This is a planning slice only. It does not create API DTOs, bind API builders, register routes, create controllers, own requests, own resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, call providers, generate files, mutate wallets, or move money.
+
+## Phase 14B Boundary
+
+Phase 14B adds public API descriptor contracts and DTOs:
+
+- define a public API descriptor request over campaign planning, execution, operator, and API version context
+- define a public API descriptor result that describes endpoint candidates and ownership boundaries
+- define the public API descriptor builder contract for later implementation
+- keep default effect metadata non-persistent and non-mutating
+
+This is a contract slice only. It does not bind an API descriptor builder, register routes, create controllers, own form requests, own API resources, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
