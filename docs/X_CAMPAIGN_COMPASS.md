@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 15E complete. Next boundary: Phase 15F.
+Wave 5 — Phase 15F complete. Next boundary: host-side x-change adoption planning.
 
 ## Status
 
-Complete through Phase 15E.
+Complete through Phase 15F.
 
 ## Completed Work
 
@@ -1211,10 +1211,21 @@ Complete through Phase 15E.
 - Phase 15E full package result: `426 passed, 4407 assertions`.
 - Phase 15E `composer validate --strict` passed.
 - Phase 15E formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 15F focused failing baseline was observed before implementation: `2 failed, 1 passed, 19 assertions`.
+- Added Phase 15F host adoption parity report:
+  - `docs/PARITY_REPORT.md`
+- Added Phase 15F architecture parity coverage:
+  - host adoption report presence
+  - complete Phase 15 class/contract surface
+  - Phase 15 documentation coverage
+- Phase 15F focused result after implementation: `3 passed, 27 assertions`.
+- Phase 15F full package result: `429 passed, 4434 assertions`.
+- Phase 15F `composer validate --strict` passed.
+- Phase 15F formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 15F — Host Adoption Parity Report.
+Host-side x-change adoption planning using the Phase 15 parity report and endpoint recommendation matrix.
 
 ## Open Questions
 

@@ -1293,3 +1293,14 @@ Phase 15E adds the host mutation authorization checklist:
 - binds mutation checklist building to a non-executing read model
 
 This is mutation readiness metadata only. It does not authorize users, register routes, create controllers, own requests, own resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
+
+## Phase 15F Boundary
+
+Phase 15F closes the host adoption baseline:
+
+- verifies package-side host adoption contracts, DTOs, builders, and documentation exist
+- verifies all Phase 15 architecture slices are documented
+- adds a parity report mapping functional specifications to as-built classes and host adoption surfaces
+- verifies no concrete host routes, controllers, request classes, API resources, middleware, policies, mutation endpoints, journal writers, feedback senders, provider calls, Pay Code issuance, wallet mutation, or money movement were introduced
+
+This parity slice is architectural hardening and reporting only. It does not authorize users, register routes, create controllers, own requests, own resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
