@@ -6,11 +6,11 @@ Build `x-campaign` as the beneficiary distribution platform for the x-change Set
 
 ## Current Slice
 
-Wave 5 — Phase 14B complete. Next boundary: Phase 14C.
+Wave 5 — Phase 14C complete. Next boundary: Phase 14D.
 
 ## Status
 
-Complete through Phase 14B.
+Complete through Phase 14C.
 
 ## Completed Work
 
@@ -1118,10 +1118,18 @@ Complete through Phase 14B.
 - Phase 14B full package result: `399 passed, 4124 assertions`.
 - Phase 14B `composer validate --strict` passed.
 - Phase 14B formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
+- Phase 14C focused failing baseline was observed before implementation: `3 failed, 0 assertions`.
+- Added Phase 14C public API descriptor builder:
+  - `CampaignPublicApiDescriptorBuilder`
+- Bound the public API descriptor builder contract to the read-only implementation.
+- Phase 14C focused result after implementation: `3 passed, 31 assertions`.
+- Phase 14C full package result: `402 passed, 4155 assertions`.
+- Phase 14C `composer validate --strict` passed.
+- Phase 14C formatter note: `vendor/bin/pint --dirty --format agent` is unavailable because `vendor/bin/pint` does not exist in this package.
 
 ## Next Recommended Slice
 
-Phase 14C — In-Memory Public API Descriptor Builder.
+Phase 14D — Repository-Backed Public API Workspace Baseline.
 
 ## Open Questions
 

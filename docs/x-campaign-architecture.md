@@ -1195,3 +1195,14 @@ Phase 14B adds public API descriptor contracts and DTOs:
 - keep default effect metadata non-persistent and non-mutating
 
 This is a contract slice only. It does not bind an API descriptor builder, register routes, create controllers, own form requests, own API resources, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
+
+## Phase 14C Boundary
+
+Phase 14C adds in-memory public API descriptor building:
+
+- describes host-owned campaign endpoint candidates without registering them
+- lists host responsibilities for routes, controllers, request validation, API resources, middleware, policies, authentication, authorization, redaction, and rate limiting
+- lists package responsibilities for descriptors, read models, workspace contracts, response presenters, and effect metadata
+- binds public API descriptor building to a read-only builder
+
+This is an in-memory descriptor read-model slice only. It does not invoke workspaces, register routes, create controllers, own form requests, own API resources, own middleware, own policies, mutate campaigns, queue jobs, issue Pay Codes, send feedback, write journals, call providers, generate files, mutate wallets, or move money.
