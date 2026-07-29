@@ -31,6 +31,8 @@ interface CampaignWorksheetRepository
         array $rows,
     ): CampaignWorksheetData;
 
+    public function freeze(string $reference, string $ownerType, string $ownerId): CampaignWorksheetData;
+
     /**
      * @return array<int, CampaignWorksheetSummaryData>
      */

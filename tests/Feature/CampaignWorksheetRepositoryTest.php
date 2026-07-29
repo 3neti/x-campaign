@@ -149,3 +149,18 @@ it('stages encrypted import rows and applies a valid import only once', function
         ->and(fn () => $imports->apply((string) $worksheet->reference, (string) $staged->reference, 'App\\Models\\User', '5'))
         ->toThrow(InvalidArgumentException::class);
 });
+
+it('freezes a non-empty draft into an immutable owner-scoped manifest', function () {
+    $this->artisan('migrate:fresh')->run();
+    $repository = app(CampaignWorksheetRepository::class);
+    $worksheet = $repository->put(new CampaignWorksheetData(null, 'App\\Models\\User', '5', 'payroll', 'Freeze', rows: [
+        new CampaignWorksheetRowData(null, 1, ['mobile' => '09173011987'], 1_000),
+    ]));
+    $frozen = $repository->freeze((string) $worksheet->reference, 'App\\Models\\User', '5');
+
+    expect($frozen->status)->toBe('awaiting_authorization')
+        ->and($frozen->rowsHash)->not->toBeNull()
+        ->and($frozen->frozenAt)->not->toBeNull()
+        ->and(fn () => $repository->appendRow((string) $worksheet->reference, 'App\\Models\\User', '5', new CampaignWorksheetRowData(null, 2, ['mobile' => '09170000000'], 1_000)))
+        ->toThrow(InvalidArgumentException::class);
+});

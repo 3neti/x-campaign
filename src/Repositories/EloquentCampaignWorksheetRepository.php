@@ -142,6 +142,46 @@ class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
         });
     }
 
+    public function freeze(string $reference, string $ownerType, string $ownerId): CampaignWorksheetData
+    {
+        return DB::transaction(function () use ($reference, $ownerType, $ownerId): CampaignWorksheetData {
+            $worksheet = CampaignWorksheet::query()
+                ->where('reference', trim($reference))
+                ->where('owner_type', $ownerType)
+                ->where('owner_id', $ownerId)
+                ->with('rows')
+                ->lockForUpdate()
+                ->first();
+
+            if (! $worksheet instanceof CampaignWorksheet) {
+                throw new InvalidArgumentException('Campaign worksheet was not found for this owner.');
+            }
+
+            if ($worksheet->status !== 'draft') {
+                throw new InvalidArgumentException('Only a draft campaign worksheet may be frozen.');
+            }
+
+            if ($worksheet->rows->isEmpty()) {
+                throw new InvalidArgumentException('A campaign worksheet needs at least one beneficiary before it can be frozen.');
+            }
+
+            $manifest = $worksheet->rows->map(fn ($row): array => [
+                'ordinal' => (int) $row->ordinal,
+                'beneficiary' => $row->beneficiary_ciphertext,
+                'amount_minor' => (int) $row->amount_minor,
+                'currency' => (string) $row->currency,
+                'delivery_preference' => $row->delivery_preference,
+            ])->all();
+            $worksheet->forceFill([
+                'status' => 'awaiting_authorization',
+                'rows_hash' => hash_hmac('sha256', json_encode($manifest, JSON_THROW_ON_ERROR), (string) config('app.key')),
+                'frozen_at' => now(),
+            ])->save();
+
+            return $this->toData($worksheet->fresh('rows'));
+        });
+    }
+
     /**
      * @return array<int, CampaignWorksheetSummaryData>
      */
