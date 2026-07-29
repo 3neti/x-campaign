@@ -85,3 +85,44 @@ it('rejects unsupported worksheet profiles and non-positive row amounts', functi
             rows: [new CampaignWorksheetRowData(null, 1, [], 0)],
         )))->toThrow(InvalidArgumentException::class);
 });
+
+it('appends encrypted beneficiaries only while the owner worksheet is a draft', function () {
+    $this->artisan('migrate:fresh')->run();
+
+    $repository = app(CampaignWorksheetRepository::class);
+    $worksheet = $repository->put(new CampaignWorksheetData(
+        reference: null,
+        ownerType: 'App\\Models\\User',
+        ownerId: '5',
+        profile: 'assistance',
+        name: 'Emergency Assistance',
+    ));
+
+    $updated = $repository->appendRow(
+        (string) $worksheet->reference,
+        'App\\Models\\User',
+        '5',
+        new CampaignWorksheetRowData(
+            reference: null,
+            ordinal: 0,
+            beneficiary: ['mobile' => '09173011987', 'remarks' => 'July request'],
+            amountMinor: 5_000,
+            deliveryPreference: 'manual',
+        ),
+    );
+
+    expect($updated->rows)->toHaveCount(1)
+        ->and($updated->rows[0]->ordinal)->toBe(1)
+        ->and($updated->rows[0]->beneficiary['mobile'])->toBe('09173011987');
+
+    DB::table('campaign_worksheets')
+        ->where('reference', $worksheet->reference)
+        ->update(['status' => 'frozen']);
+
+    expect(fn () => $repository->appendRow(
+        (string) $worksheet->reference,
+        'App\\Models\\User',
+        '5',
+        new CampaignWorksheetRowData(null, 0, ['mobile' => '09179999999'], 1_000),
+    ))->toThrow(InvalidArgumentException::class);
+});

@@ -84,6 +84,53 @@ class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
         return $record instanceof CampaignWorksheet ? $this->toData($record) : null;
     }
 
+    public function appendRow(
+        string $reference,
+        string $ownerType,
+        string $ownerId,
+        CampaignWorksheetRowData $row,
+    ): CampaignWorksheetData {
+        if ($row->amountMinor < 1) {
+            throw new InvalidArgumentException('Campaign worksheet row amounts must be positive.');
+        }
+
+        return DB::transaction(function () use ($reference, $ownerId, $ownerType, $row): CampaignWorksheetData {
+            $worksheet = CampaignWorksheet::query()
+                ->where('reference', trim($reference))
+                ->where('owner_type', $ownerType)
+                ->where('owner_id', $ownerId)
+                ->lockForUpdate()
+                ->first();
+
+            if (! $worksheet instanceof CampaignWorksheet) {
+                throw new InvalidArgumentException('Campaign worksheet was not found for this owner.');
+            }
+
+            if ($worksheet->status !== 'draft') {
+                throw new InvalidArgumentException('Only a draft campaign worksheet may be changed.');
+            }
+
+            $ordinal = max(
+                (int) $row->ordinal,
+                (int) $worksheet->rows()->max('ordinal') + 1,
+            );
+
+            $rowRecord = $worksheet->rows()->make([
+                'ordinal' => $ordinal,
+                'beneficiary_ciphertext' => $row->beneficiary,
+                'amount_minor' => $row->amountMinor,
+                'currency' => $row->currency,
+                'delivery_preference' => $row->deliveryPreference,
+                'status' => $row->status,
+                'metadata' => $row->metadata,
+            ]);
+            $rowRecord->reference = $row->reference ?? (string) Str::ulid();
+            $rowRecord->save();
+
+            return $this->toData($worksheet->fresh('rows'));
+        });
+    }
+
     /**
      * @return array<int, CampaignWorksheetSummaryData>
      */
