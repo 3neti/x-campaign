@@ -164,3 +164,23 @@ it('freezes a non-empty draft into an immutable owner-scoped manifest', function
         ->and(fn () => $repository->appendRow((string) $worksheet->reference, 'App\\Models\\User', '5', new CampaignWorksheetRowData(null, 2, ['mobile' => '09170000000'], 1_000)))
         ->toThrow(InvalidArgumentException::class);
 });
+
+it('keeps staged import history available after a worksheet is frozen', function () {
+    $this->artisan('migrate:fresh')->run();
+    $worksheets = app(CampaignWorksheetRepository::class);
+    $imports = app(CampaignWorksheetImportRepository::class);
+    $worksheet = $worksheets->put(new CampaignWorksheetData(null, 'App\\Models\\User', '5', 'payroll', 'Import History', rows: [
+        new CampaignWorksheetRowData(null, 1, ['mobile' => '09173011987'], 1_000),
+    ]));
+
+    $staged = $imports->stage(new CampaignWorksheetImportData(
+        null, (string) $worksheet->reference, 'staged', 'csv', hash('sha256', 'history-file'), 1,
+        [['beneficiary' => ['mobile' => '09173011987'], 'amount_minor' => 1_000]], [], ['mobile' => 'mobile', 'amount' => 'amount'],
+    ), 'App\\Models\\User', '5');
+    $worksheets->freeze((string) $worksheet->reference, 'App\\Models\\User', '5');
+
+    expect($imports->forOwner((string) $worksheet->reference, 'App\\Models\\User', '5'))
+        ->toHaveCount(1)
+        ->and($imports->forOwner((string) $worksheet->reference, 'App\\Models\\User', '5')[0]->reference)
+        ->toBe($staged->reference);
+});

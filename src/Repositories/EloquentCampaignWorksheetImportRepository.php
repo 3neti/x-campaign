@@ -18,7 +18,7 @@ class EloquentCampaignWorksheetImportRepository implements CampaignWorksheetImpo
     public function stage(CampaignWorksheetImportData $import, string $ownerType, string $ownerId): CampaignWorksheetImportData
     {
         return DB::transaction(function () use ($import, $ownerId, $ownerType): CampaignWorksheetImportData {
-            $worksheet = $this->worksheet($import->worksheetReference, $ownerType, $ownerId, true);
+            $worksheet = $this->worksheet($import->worksheetReference, $ownerType, $ownerId, true, true);
             $record = new CampaignWorksheetImport;
             $record->reference = $import->reference ?? (string) Str::ulid();
             $record->fill([
@@ -57,7 +57,7 @@ class EloquentCampaignWorksheetImportRepository implements CampaignWorksheetImpo
     public function apply(string $worksheetReference, string $importReference, string $ownerType, string $ownerId): CampaignWorksheetImportData
     {
         return DB::transaction(function () use ($worksheetReference, $importReference, $ownerType, $ownerId): CampaignWorksheetImportData {
-            $worksheet = $this->worksheet($worksheetReference, $ownerType, $ownerId, true);
+            $worksheet = $this->worksheet($worksheetReference, $ownerType, $ownerId, true, true);
             $record = $worksheet->imports()->where('reference', $importReference)->lockForUpdate()->first();
 
             if (! $record instanceof CampaignWorksheetImport) {
@@ -97,7 +97,7 @@ class EloquentCampaignWorksheetImportRepository implements CampaignWorksheetImpo
         });
     }
 
-    private function worksheet(string $reference, string $ownerType, string $ownerId, bool $lock = false): CampaignWorksheet
+    private function worksheet(string $reference, string $ownerType, string $ownerId, bool $lock = false, bool $requireDraft = false): CampaignWorksheet
     {
         $query = CampaignWorksheet::query()->where('reference', trim($reference))->where('owner_type', $ownerType)->where('owner_id', $ownerId);
         if ($lock) {
@@ -105,7 +105,7 @@ class EloquentCampaignWorksheetImportRepository implements CampaignWorksheetImpo
         }
 
         $worksheet = $query->first();
-        if (! $worksheet instanceof CampaignWorksheet || $worksheet->status !== 'draft') {
+        if (! $worksheet instanceof CampaignWorksheet || ($requireDraft && $worksheet->status !== 'draft')) {
             throw new InvalidArgumentException('Only a draft campaign worksheet may be changed.');
         }
 
