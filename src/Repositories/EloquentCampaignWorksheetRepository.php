@@ -10,6 +10,7 @@ use InvalidArgumentException;
 use LBHurtado\XCampaign\Contracts\CampaignWorksheetRepository;
 use LBHurtado\XCampaign\Data\CampaignWorksheetData;
 use LBHurtado\XCampaign\Data\CampaignWorksheetRowData;
+use LBHurtado\XCampaign\Data\CampaignWorksheetSummaryData;
 use LBHurtado\XCampaign\Models\CampaignWorksheet;
 
 class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
@@ -80,6 +81,34 @@ class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
             ->first();
 
         return $record instanceof CampaignWorksheet ? $this->toData($record) : null;
+    }
+
+    /**
+     * @return array<int, CampaignWorksheetSummaryData>
+     */
+    public function summariesForOwner(string $ownerType, string $ownerId): array
+    {
+        return CampaignWorksheet::query()
+            ->where('owner_type', $ownerType)
+            ->where('owner_id', $ownerId)
+            ->withCount('rows')
+            ->withSum('rows', 'amount_minor')
+            ->latest('updated_at')
+            ->get()
+            ->map(fn (CampaignWorksheet $worksheet): CampaignWorksheetSummaryData => new CampaignWorksheetSummaryData(
+                reference: (string) $worksheet->reference,
+                profile: (string) $worksheet->profile,
+                name: (string) $worksheet->name,
+                currency: (string) $worksheet->currency,
+                status: (string) $worksheet->status,
+                payCodeTemplateReference: $worksheet->pay_code_template_reference,
+                fulfillmentMode: (string) $worksheet->fulfillment_mode,
+                deliveryPlan: $worksheet->delivery_plan ?? [],
+                beneficiaryCount: (int) $worksheet->rows_count,
+                principalMinor: (int) ($worksheet->rows_sum_amount_minor ?? 0),
+                updatedAt: $worksheet->updated_at?->toIso8601String(),
+            ))
+            ->all();
     }
 
     private function assertValid(CampaignWorksheetData $worksheet): void

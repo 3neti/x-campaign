@@ -55,6 +55,13 @@ it('persists an encrypted owner-scoped campaign worksheet without execution side
         ->and($retrieved?->rows[0]->amountMinor)->toBe(125000)
         ->and($ciphertext)->not->toContain('09173011987')
         ->and($ciphertext)->not->toContain('113-001-00001-9');
+
+    $summary = $repository->summariesForOwner('App\\Models\\User', '5');
+
+    expect($summary)->toHaveCount(1)
+        ->and($summary[0]->beneficiaryCount)->toBe(1)
+        ->and($summary[0]->principalMinor)->toBe(125000)
+        ->and($summary[0]->name)->toBe('July Payroll');
 });
 
 it('rejects unsupported worksheet profiles and non-positive row amounts', function () {
