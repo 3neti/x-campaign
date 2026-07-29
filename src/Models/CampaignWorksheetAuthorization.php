@@ -6,6 +6,7 @@ namespace LBHurtado\XCampaign\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class CampaignWorksheetAuthorization extends Model
@@ -29,4 +30,7 @@ class CampaignWorksheetAuthorization extends Model
     {
         return $this->belongsTo(CampaignWorksheet::class, 'campaign_worksheet_id');
     }
+
+    /** @return HasMany<CampaignWorksheetFulfillment, $this> */
+    public function fulfillments(): HasMany { return $this->hasMany(CampaignWorksheetFulfillment::class); }
 }
