@@ -10,7 +10,12 @@ use Illuminate\Support\Str;
 
 class CampaignWorksheetAuthorization extends Model
 {
-    protected $fillable = ['campaign_worksheet_id', 'manifest_hash', 'beneficiary_count', 'principal_minor', 'currency', 'status', 'approval_pay_code'];
+    protected $fillable = ['campaign_worksheet_id', 'manifest_hash', 'beneficiary_count', 'principal_minor', 'currency', 'status', 'approval_pay_code', 'approved_by_type', 'approved_by_id', 'approved_at'];
+
+    protected function casts(): array
+    {
+        return ['approved_at' => 'immutable_datetime'];
+    }
 
     protected static function booted(): void
     {
