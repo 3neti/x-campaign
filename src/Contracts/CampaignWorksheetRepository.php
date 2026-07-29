@@ -22,6 +22,16 @@ interface CampaignWorksheetRepository
     ): CampaignWorksheetData;
 
     /**
+     * @param  array<int, CampaignWorksheetRowData>  $rows
+     */
+    public function appendRows(
+        string $reference,
+        string $ownerType,
+        string $ownerId,
+        array $rows,
+    ): CampaignWorksheetData;
+
+    /**
      * @return array<int, CampaignWorksheetSummaryData>
      */
     public function summariesForOwner(string $ownerType, string $ownerId): array;

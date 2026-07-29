@@ -60,4 +60,10 @@ class CampaignWorksheet extends Model
     {
         return $this->hasMany(CampaignWorksheetRow::class)->orderBy('ordinal');
     }
+
+    /** @return HasMany<CampaignWorksheetImport, $this> */
+    public function imports(): HasMany
+    {
+        return $this->hasMany(CampaignWorksheetImport::class);
+    }
 }

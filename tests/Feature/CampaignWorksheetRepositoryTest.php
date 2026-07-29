@@ -5,6 +5,8 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use LBHurtado\XCampaign\Contracts\CampaignWorksheetRepository;
+use LBHurtado\XCampaign\Contracts\CampaignWorksheetImportRepository;
+use LBHurtado\XCampaign\Data\CampaignWorksheetImportData;
 use LBHurtado\XCampaign\Data\CampaignWorksheetData;
 use LBHurtado\XCampaign\Data\CampaignWorksheetRowData;
 
@@ -125,4 +127,25 @@ it('appends encrypted beneficiaries only while the owner worksheet is a draft', 
         '5',
         new CampaignWorksheetRowData(null, 0, ['mobile' => '09179999999'], 1_000),
     ))->toThrow(InvalidArgumentException::class);
+});
+
+it('stages encrypted import rows and applies a valid import only once', function () {
+    $this->artisan('migrate:fresh')->run();
+    $worksheets = app(CampaignWorksheetRepository::class);
+    $imports = app(CampaignWorksheetImportRepository::class);
+    $worksheet = $worksheets->put(new CampaignWorksheetData(null, 'App\\Models\\User', '5', 'payroll', 'July Import'));
+
+    $staged = $imports->stage(new CampaignWorksheetImportData(
+        null, (string) $worksheet->reference, 'staged', 'csv', hash('sha256', 'private-file'), 1,
+        [['beneficiary' => ['mobile' => '09173011987'], 'amount_minor' => 125_000, 'currency' => 'PHP', 'delivery_preference' => 'sms']], [], ['mobile' => 'mobile', 'amount' => 'amount'],
+    ), 'App\\Models\\User', '5');
+
+    $ciphertext = DB::table('campaign_worksheet_imports')->value('rows_ciphertext');
+    $applied = $imports->apply((string) $worksheet->reference, (string) $staged->reference, 'App\\Models\\User', '5');
+
+    expect($ciphertext)->not->toContain('09173011987')
+        ->and($applied->status)->toBe('applied')
+        ->and($worksheets->findForOwner((string) $worksheet->reference, 'App\\Models\\User', '5')?->rows)->toHaveCount(1)
+        ->and(fn () => $imports->apply((string) $worksheet->reference, (string) $staged->reference, 'App\\Models\\User', '5'))
+        ->toThrow(InvalidArgumentException::class);
 });

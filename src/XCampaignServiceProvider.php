@@ -73,6 +73,7 @@ use LBHurtado\XCampaign\Contracts\CampaignPortableCodeGenerationWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignProductionReadinessWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignPublicApiWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignRecipientImportRowWorkspace;
+use LBHurtado\XCampaign\Contracts\CampaignWorksheetImportRepository;
 use LBHurtado\XCampaign\Contracts\CampaignWorksheetRepository;
 use LBHurtado\XCampaign\Contracts\CreatesCampaignPlans;
 use LBHurtado\XCampaign\Contracts\DecidesCampaignAudienceImportApprovals;
@@ -135,6 +136,7 @@ use LBHurtado\XCampaign\ReadModels\CampaignPublicApiEndpointRecommendationMatrix
 use LBHurtado\XCampaign\ReadModels\CampaignPublicApiResponsePresenter;
 use LBHurtado\XCampaign\ReadModels\CampaignSummaryReadModel;
 use LBHurtado\XCampaign\Repositories\EloquentCampaignPlanSnapshotRepository;
+use LBHurtado\XCampaign\Repositories\EloquentCampaignWorksheetImportRepository;
 use LBHurtado\XCampaign\Repositories\EloquentCampaignWorksheetRepository;
 use LBHurtado\XCampaign\Repositories\InMemoryCampaignPlanRepository;
 use LBHurtado\XCampaign\Services\CampaignQueuedPayloadAnalyticsSnapshotMapper;
@@ -233,6 +235,7 @@ class XCampaignServiceProvider extends ServiceProvider
         $this->app->singleton(BuildsCampaignSummaries::class, CampaignSummaryReadModel::class);
         $this->app->singleton(CampaignPlanRepository::class, InMemoryCampaignPlanRepository::class);
         $this->app->singleton(CampaignWorksheetRepository::class, EloquentCampaignWorksheetRepository::class);
+        $this->app->singleton(CampaignWorksheetImportRepository::class, EloquentCampaignWorksheetImportRepository::class);
         $this->app->singleton(CampaignPlanSnapshotRepository::class, EloquentCampaignPlanSnapshotRepository::class);
         $this->app->singleton(CampaignPlanningWorkspace::class, RepositoryBackedCampaignPlanningWorkspace::class);
         $this->app->singleton(CampaignAnalyticsWorkspace::class, RepositoryBackedCampaignAnalyticsWorkspace::class);

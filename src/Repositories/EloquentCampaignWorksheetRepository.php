@@ -90,11 +90,22 @@ class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
         string $ownerId,
         CampaignWorksheetRowData $row,
     ): CampaignWorksheetData {
-        if ($row->amountMinor < 1) {
-            throw new InvalidArgumentException('Campaign worksheet row amounts must be positive.');
+        return $this->appendRows($reference, $ownerType, $ownerId, [$row]);
+    }
+
+    public function appendRows(
+        string $reference,
+        string $ownerType,
+        string $ownerId,
+        array $rows,
+    ): CampaignWorksheetData {
+        foreach ($rows as $row) {
+            if (! $row instanceof CampaignWorksheetRowData || $row->amountMinor < 1) {
+                throw new InvalidArgumentException('Campaign worksheet row amounts must be positive.');
+            }
         }
 
-        return DB::transaction(function () use ($reference, $ownerId, $ownerType, $row): CampaignWorksheetData {
+        return DB::transaction(function () use ($reference, $ownerId, $ownerType, $rows): CampaignWorksheetData {
             $worksheet = CampaignWorksheet::query()
                 ->where('reference', trim($reference))
                 ->where('owner_type', $ownerType)
@@ -110,22 +121,22 @@ class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
                 throw new InvalidArgumentException('Only a draft campaign worksheet may be changed.');
             }
 
-            $ordinal = max(
-                (int) $row->ordinal,
-                (int) $worksheet->rows()->max('ordinal') + 1,
-            );
+            $nextOrdinal = (int) $worksheet->rows()->max('ordinal') + 1;
 
-            $rowRecord = $worksheet->rows()->make([
-                'ordinal' => $ordinal,
-                'beneficiary_ciphertext' => $row->beneficiary,
-                'amount_minor' => $row->amountMinor,
-                'currency' => $row->currency,
-                'delivery_preference' => $row->deliveryPreference,
-                'status' => $row->status,
-                'metadata' => $row->metadata,
-            ]);
-            $rowRecord->reference = $row->reference ?? (string) Str::ulid();
-            $rowRecord->save();
+            foreach ($rows as $row) {
+                $rowRecord = $worksheet->rows()->make([
+                    'ordinal' => max((int) $row->ordinal, $nextOrdinal),
+                    'beneficiary_ciphertext' => $row->beneficiary,
+                    'amount_minor' => $row->amountMinor,
+                    'currency' => $row->currency,
+                    'delivery_preference' => $row->deliveryPreference,
+                    'status' => $row->status,
+                    'metadata' => $row->metadata,
+                ]);
+                $rowRecord->reference = $row->reference ?? (string) Str::ulid();
+                $rowRecord->save();
+                $nextOrdinal++;
+            }
 
             return $this->toData($worksheet->fresh('rows'));
         });
