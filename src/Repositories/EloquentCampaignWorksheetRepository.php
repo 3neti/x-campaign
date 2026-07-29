@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LBHurtado\XCampaign\Repositories;
 
+use DateTimeInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
@@ -106,7 +107,7 @@ class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
                 deliveryPlan: $worksheet->delivery_plan ?? [],
                 beneficiaryCount: (int) $worksheet->rows_count,
                 principalMinor: (int) ($worksheet->rows_sum_amount_minor ?? 0),
-                updatedAt: $worksheet->updated_at?->toIso8601String(),
+                updatedAt: $this->timestamp($worksheet->updated_at),
             ))
             ->all();
     }
@@ -126,6 +127,19 @@ class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
                 throw new InvalidArgumentException('Campaign worksheet row amounts must be positive.');
             }
         }
+    }
+
+    private function timestamp(mixed $value): ?string
+    {
+        if ($value instanceof DateTimeInterface) {
+            return $value->format(DATE_ATOM);
+        }
+
+        if (is_string($value) && trim($value) !== '') {
+            return $value;
+        }
+
+        return null;
     }
 
     private function toData(CampaignWorksheet $worksheet): CampaignWorksheetData
