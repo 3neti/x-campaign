@@ -66,4 +66,10 @@ class CampaignWorksheet extends Model
     {
         return $this->hasMany(CampaignWorksheetImport::class);
     }
+
+    /** @return HasMany<CampaignWorksheetAuthorization, $this> */
+    public function authorizations(): HasMany
+    {
+        return $this->hasMany(CampaignWorksheetAuthorization::class);
+    }
 }
