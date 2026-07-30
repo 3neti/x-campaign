@@ -13,7 +13,8 @@ return new class extends Migration
         Schema::create('campaign_worksheet_intakes', function (Blueprint $table): void {
             $table->id();
             $table->ulid('reference')->unique();
-            $table->morphs('owner');
+            $table->string('owner_type', 191);
+            $table->string('owner_id', 191);
             $table->string('status', 32)->default('staged');
             $table->text('source_name_ciphertext');
             $table->string('source_format', 16);
