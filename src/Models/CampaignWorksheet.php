@@ -26,6 +26,11 @@ class CampaignWorksheet extends Model
         'delivery_plan',
         'metadata',
         'rows_hash',
+        'instruction_blueprint_ciphertext',
+        'instruction_blueprint_hash',
+        'instruction_blueprint_schema',
+        'instruction_blueprint_revision',
+        'manifest_hash',
         'frozen_at',
     ];
 
@@ -44,6 +49,8 @@ class CampaignWorksheet extends Model
         return [
             'delivery_plan' => 'array',
             'metadata' => 'array',
+            'instruction_blueprint_ciphertext' => 'encrypted:array',
+            'instruction_blueprint_revision' => 'integer',
             'frozen_at' => 'immutable_datetime',
         ];
     }

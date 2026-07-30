@@ -11,11 +11,29 @@ use Illuminate\Support\Str;
 
 class CampaignWorksheetAuthorization extends Model
 {
-    protected $fillable = ['campaign_worksheet_id', 'manifest_hash', 'beneficiary_count', 'principal_minor', 'currency', 'status', 'approval_pay_code', 'approved_by_type', 'approved_by_id', 'approved_at'];
+    protected $fillable = [
+        'campaign_worksheet_id',
+        'manifest_hash',
+        'rows_hash',
+        'instruction_blueprint_ciphertext',
+        'instruction_blueprint_hash',
+        'instruction_blueprint_schema',
+        'beneficiary_count',
+        'principal_minor',
+        'currency',
+        'status',
+        'approval_pay_code',
+        'approved_by_type',
+        'approved_by_id',
+        'approved_at',
+    ];
 
     protected function casts(): array
     {
-        return ['approved_at' => 'immutable_datetime'];
+        return [
+            'instruction_blueprint_ciphertext' => 'encrypted:array',
+            'approved_at' => 'immutable_datetime',
+        ];
     }
 
     protected static function booted(): void
@@ -32,5 +50,8 @@ class CampaignWorksheetAuthorization extends Model
     }
 
     /** @return HasMany<CampaignWorksheetFulfillment, $this> */
-    public function fulfillments(): HasMany { return $this->hasMany(CampaignWorksheetFulfillment::class); }
+    public function fulfillments(): HasMany
+    {
+        return $this->hasMany(CampaignWorksheetFulfillment::class);
+    }
 }

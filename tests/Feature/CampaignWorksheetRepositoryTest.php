@@ -238,6 +238,92 @@ it('appends encrypted beneficiaries only while the owner worksheet is a draft', 
     ))->toThrow(InvalidArgumentException::class);
 });
 
+it('stores an owner draft instruction blueprint encrypted and binds it into a separate manifest hash', function () {
+    $this->artisan('migrate:fresh')->run();
+
+    $repository = app(CampaignWorksheetRepository::class);
+    $worksheet = $repository->put(new CampaignWorksheetData(
+        reference: null,
+        ownerType: 'App\\Models\\User',
+        ownerId: '5',
+        profile: 'payroll',
+        name: 'Blueprint Payroll',
+        rows: [new CampaignWorksheetRowData(null, 1, ['mobile' => '09173011987'], 10_000)],
+    ));
+
+    $updated = $repository->updateInstructionBlueprint(
+        (string) $worksheet->reference,
+        'App\\Models\\User',
+        '5',
+        [
+            'rider' => ['message' => 'July payroll', 'url' => 'https://example.test/private'],
+            'inputs' => ['fields' => ['otp']],
+        ],
+        'x-change.campaign-voucher-blueprint.v1',
+        0,
+    );
+
+    $ciphertext = DB::table('campaign_worksheets')
+        ->where('reference', $worksheet->reference)
+        ->value('instruction_blueprint_ciphertext');
+
+    expect($updated->instructionBlueprintRevision)->toBe(1)
+        ->and($updated->instructionBlueprint['rider']['message'])->toBe('July payroll')
+        ->and($updated->instructionBlueprintHash)->toHaveLength(64)
+        ->and($ciphertext)->not->toContain('July payroll')
+        ->and($ciphertext)->not->toContain('example.test');
+
+    $frozen = $repository->freeze((string) $worksheet->reference, 'App\\Models\\User', '5');
+
+    expect($frozen->rowsHash)->toHaveLength(64)
+        ->and($frozen->manifestHash)->toHaveLength(64)
+        ->and($frozen->manifestHash)->not->toBe($frozen->rowsHash);
+});
+
+it('canonicalizes blueprints and rejects stale or non-draft updates', function () {
+    $this->artisan('migrate:fresh')->run();
+
+    $repository = app(CampaignWorksheetRepository::class);
+    $first = $repository->put(new CampaignWorksheetData(
+        null,
+        'App\\Models\\User',
+        '5',
+        'assistance',
+        'Canonical Blueprint',
+        rows: [new CampaignWorksheetRowData(null, 1, ['mobile' => '09173011987'], 1_000)],
+    ));
+
+    $updated = $repository->updateInstructionBlueprint(
+        (string) $first->reference,
+        'App\\Models\\User',
+        '5',
+        ['rider' => ['url' => 'https://example.test', 'message' => 'Assistance'], 'inputs' => ['fields' => []]],
+        'x-change.campaign-voucher-blueprint.v1',
+        0,
+    );
+
+    expect(fn () => $repository->updateInstructionBlueprint(
+        (string) $first->reference,
+        'App\\Models\\User',
+        '5',
+        ['inputs' => ['fields' => []], 'rider' => ['message' => 'Assistance', 'url' => 'https://example.test']],
+        'x-change.campaign-voucher-blueprint.v1',
+        0,
+    ))->toThrow(InvalidArgumentException::class);
+
+    $repository->freeze((string) $first->reference, 'App\\Models\\User', '5');
+
+    expect($updated->instructionBlueprintHash)->toHaveLength(64)
+        ->and(fn () => $repository->updateInstructionBlueprint(
+            (string) $first->reference,
+            'App\\Models\\User',
+            '5',
+            [],
+            'x-change.campaign-voucher-blueprint.v1',
+            1,
+        ))->toThrow(InvalidArgumentException::class);
+});
+
 it('deletes only an owner draft and cascades its private working data', function () {
     $this->artisan('migrate:fresh')->run();
 

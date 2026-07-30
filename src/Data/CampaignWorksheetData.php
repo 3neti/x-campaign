@@ -28,6 +28,11 @@ class CampaignWorksheetData extends Data
         public readonly array $rows = [],
         public readonly array $metadata = [],
         public readonly ?string $rowsHash = null,
+        public readonly array $instructionBlueprint = [],
+        public readonly ?string $instructionBlueprintHash = null,
+        public readonly ?string $instructionBlueprintSchema = null,
+        public readonly int $instructionBlueprintRevision = 0,
+        public readonly ?string $manifestHash = null,
         public readonly ?CarbonImmutable $frozenAt = null,
     ) {}
 }

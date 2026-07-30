@@ -31,6 +31,18 @@ interface CampaignWorksheetRepository
         array $rows,
     ): CampaignWorksheetData;
 
+    /**
+     * @param  array<string, mixed>  $blueprint
+     */
+    public function updateInstructionBlueprint(
+        string $reference,
+        string $ownerType,
+        string $ownerId,
+        array $blueprint,
+        string $schema,
+        int $expectedRevision,
+    ): CampaignWorksheetData;
+
     public function freeze(string $reference, string $ownerType, string $ownerId): CampaignWorksheetData;
 
     public function deleteDraft(string $reference, string $ownerType, string $ownerId): void;

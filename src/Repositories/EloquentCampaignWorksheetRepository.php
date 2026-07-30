@@ -14,9 +14,14 @@ use LBHurtado\XCampaign\Data\CampaignWorksheetRowData;
 use LBHurtado\XCampaign\Data\CampaignWorksheetSummaryData;
 use LBHurtado\XCampaign\Models\CampaignWorksheet;
 use LBHurtado\XCampaign\Models\CampaignWorksheetIntake;
+use LBHurtado\XCampaign\Services\CampaignWorksheetManifestHasher;
 
 class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
 {
+    public function __construct(
+        private readonly CampaignWorksheetManifestHasher $hasher,
+    ) {}
+
     public function put(CampaignWorksheetData $worksheet): CampaignWorksheetData
     {
         $this->assertValid($worksheet);
@@ -50,6 +55,11 @@ class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
                 'delivery_plan' => $worksheet->deliveryPlan,
                 'metadata' => $worksheet->metadata,
                 'rows_hash' => $worksheet->rowsHash,
+                'instruction_blueprint_ciphertext' => $worksheet->instructionBlueprint,
+                'instruction_blueprint_hash' => $worksheet->instructionBlueprintHash,
+                'instruction_blueprint_schema' => $worksheet->instructionBlueprintSchema,
+                'instruction_blueprint_revision' => $worksheet->instructionBlueprintRevision,
+                'manifest_hash' => $worksheet->manifestHash,
                 'frozen_at' => $worksheet->frozenAt,
             ])->save();
 
@@ -173,10 +183,74 @@ class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
                 'currency' => (string) $row->currency,
                 'delivery_preference' => $row->delivery_preference,
             ])->all();
+            $rowsHash = $this->hasher->hash($manifest);
+            $blueprint = $worksheet->instruction_blueprint_ciphertext ?? [];
+            $blueprintSchema = $worksheet->instruction_blueprint_schema ?? 'x-campaign.instruction-blueprint.v1';
+            $blueprintHash = $worksheet->instruction_blueprint_hash ?? $this->hasher->hash($blueprint);
+            $manifestHash = $this->hasher->hash([
+                'schema' => 'x-campaign.worksheet-manifest.v2',
+                'rows_hash' => $rowsHash,
+                'instruction_blueprint_hash' => $blueprintHash,
+                'instruction_blueprint_schema' => $blueprintSchema,
+                'currency' => (string) $worksheet->currency,
+                'fulfillment_mode' => (string) $worksheet->fulfillment_mode,
+                'delivery_plan' => $worksheet->delivery_plan ?? [],
+                'pay_code_template_reference' => $worksheet->pay_code_template_reference,
+            ]);
+
             $worksheet->forceFill([
                 'status' => 'awaiting_authorization',
-                'rows_hash' => hash_hmac('sha256', json_encode($manifest, JSON_THROW_ON_ERROR), (string) config('app.key')),
+                'rows_hash' => $rowsHash,
+                'instruction_blueprint_ciphertext' => $blueprint,
+                'instruction_blueprint_hash' => $blueprintHash,
+                'instruction_blueprint_schema' => $blueprintSchema,
+                'manifest_hash' => $manifestHash,
                 'frozen_at' => now(),
+            ])->save();
+
+            return $this->toData($worksheet->fresh('rows'));
+        });
+    }
+
+    public function updateInstructionBlueprint(
+        string $reference,
+        string $ownerType,
+        string $ownerId,
+        array $blueprint,
+        string $schema,
+        int $expectedRevision,
+    ): CampaignWorksheetData {
+        return DB::transaction(function () use ($reference, $ownerType, $ownerId, $blueprint, $schema, $expectedRevision): CampaignWorksheetData {
+            $worksheet = CampaignWorksheet::query()
+                ->where('reference', trim($reference))
+                ->where('owner_type', $ownerType)
+                ->where('owner_id', $ownerId)
+                ->lockForUpdate()
+                ->first();
+
+            if (! $worksheet instanceof CampaignWorksheet) {
+                throw new InvalidArgumentException('Campaign worksheet was not found for this owner.');
+            }
+
+            if ($worksheet->status !== 'draft') {
+                throw new InvalidArgumentException('Only a draft campaign worksheet blueprint may be changed.');
+            }
+
+            if ((int) $worksheet->instruction_blueprint_revision !== $expectedRevision) {
+                throw new InvalidArgumentException('The campaign Pay Code blueprint changed in another session. Refresh before saving.');
+            }
+
+            $normalizedSchema = trim($schema);
+            if ($normalizedSchema === '') {
+                throw new InvalidArgumentException('Campaign instruction blueprint schema is required.');
+            }
+
+            $worksheet->forceFill([
+                'instruction_blueprint_ciphertext' => $this->hasher->canonicalize($blueprint),
+                'instruction_blueprint_hash' => $this->hasher->hash($blueprint),
+                'instruction_blueprint_schema' => $normalizedSchema,
+                'instruction_blueprint_revision' => $expectedRevision + 1,
+                'manifest_hash' => null,
             ])->save();
 
             return $this->toData($worksheet->fresh('rows'));
@@ -303,6 +377,11 @@ class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
                 ->all(),
             metadata: $worksheet->metadata ?? [],
             rowsHash: $worksheet->rows_hash,
+            instructionBlueprint: $worksheet->instruction_blueprint_ciphertext ?? [],
+            instructionBlueprintHash: $worksheet->instruction_blueprint_hash,
+            instructionBlueprintSchema: $worksheet->instruction_blueprint_schema,
+            instructionBlueprintRevision: (int) $worksheet->instruction_blueprint_revision,
+            manifestHash: $worksheet->manifest_hash,
             frozenAt: $worksheet->frozen_at,
         );
     }
