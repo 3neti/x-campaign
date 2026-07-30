@@ -13,6 +13,7 @@ use LBHurtado\XCampaign\Data\CampaignWorksheetData;
 use LBHurtado\XCampaign\Data\CampaignWorksheetRowData;
 use LBHurtado\XCampaign\Data\CampaignWorksheetSummaryData;
 use LBHurtado\XCampaign\Models\CampaignWorksheet;
+use LBHurtado\XCampaign\Models\CampaignWorksheetIntake;
 
 class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
 {
@@ -205,6 +206,14 @@ class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
                 ->each(fn ($import) => $import->rows()->delete());
             $worksheet->imports()->delete();
             $worksheet->rows()->delete();
+
+            CampaignWorksheetIntake::query()
+                ->where('owner_type', $ownerType)
+                ->where('owner_id', $ownerId)
+                ->where('status', 'converted')
+                ->where('converted_worksheet_reference', $worksheet->reference)
+                ->update(['status' => 'superseded']);
+
             $worksheet->delete();
         });
     }

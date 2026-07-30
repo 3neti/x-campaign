@@ -30,6 +30,12 @@ class EloquentCampaignWorksheetIntakeRepository implements CampaignWorksheetInta
                 ->lockForUpdate()
                 ->latest('created_at')
                 ->first();
+            if ($duplicate instanceof CampaignWorksheetIntake
+                && $duplicate->status === 'converted'
+                && ! $this->convertedWorksheetExists($duplicate)) {
+                $duplicate->forceFill(['status' => 'superseded'])->save();
+                $duplicate = null;
+            }
             if ($duplicate instanceof CampaignWorksheetIntake) {
                 return $this->toData($duplicate);
             }
@@ -208,6 +214,20 @@ class EloquentCampaignWorksheetIntakeRepository implements CampaignWorksheetInta
         return CampaignWorksheetIntake::query()
             ->where('owner_type', $ownerType)
             ->where('owner_id', $ownerId);
+    }
+
+    private function convertedWorksheetExists(CampaignWorksheetIntake $intake): bool
+    {
+        if (! is_string($intake->converted_worksheet_reference)
+            || trim($intake->converted_worksheet_reference) === '') {
+            return false;
+        }
+
+        return CampaignWorksheet::query()
+            ->where('reference', $intake->converted_worksheet_reference)
+            ->where('owner_type', $intake->owner_type)
+            ->where('owner_id', $intake->owner_id)
+            ->exists();
     }
 
     private function lockedStaged(string $reference, string $ownerType, string $ownerId): CampaignWorksheetIntake

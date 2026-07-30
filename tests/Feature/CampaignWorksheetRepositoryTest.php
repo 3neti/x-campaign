@@ -74,6 +74,55 @@ it('stages an encrypted owner intake and converts selected valid rows atomically
         )->reference)->toBe($converted->reference);
 });
 
+it('restages the same file after its converted draft worksheet is deleted', function () {
+    $this->artisan('migrate:fresh')->run();
+    $intakes = app(CampaignWorksheetIntakeRepository::class);
+    $worksheets = app(CampaignWorksheetRepository::class);
+    $payload = new CampaignWorksheetIntakeData(
+        reference: null,
+        ownerType: 'App\\Models\\User',
+        ownerId: '5',
+        status: 'staged',
+        sourceName: 'beneficiaries.csv',
+        sourceFormat: 'csv',
+        contentHash: hash('sha256', 'reusable-beneficiaries'),
+        rowCount: 1,
+        sourceHeaders: ['mobile', 'amount'],
+        sourceSheet: null,
+        mapping: ['mobile' => 'mobile', 'amount' => 'amount'],
+        suggestion: ['profile' => 'payroll', 'fulfillment_mode' => 'pay_code_distribution'],
+        rows: [[
+            'source_row' => 2,
+            'status' => 'valid',
+            'source' => ['mobile' => '09173011987', 'amount' => '100.00'],
+            'normalized' => [
+                'beneficiary' => ['mobile' => '09173011987'],
+                'amount_minor' => 10_000,
+                'currency' => 'PHP',
+                'delivery_preference' => 'sms',
+            ],
+            'errors' => [],
+        ]],
+    );
+    $first = $intakes->stage($payload);
+    $converted = $intakes->convert(
+        (string) $first->reference,
+        'App\\Models\\User',
+        '5',
+        new CampaignWorksheetData(null, 'App\\Models\\User', '5', 'payroll', 'First Campaign'),
+        [2],
+    );
+
+    $worksheets->deleteDraft((string) $converted->reference, 'App\\Models\\User', '5');
+    $restaged = $intakes->stage($payload);
+
+    expect($intakes->findForOwner((string) $first->reference, 'App\\Models\\User', '5')?->status)
+        ->toBe('superseded')
+        ->and($restaged->reference)->not->toBe($first->reference)
+        ->and($restaged->status)->toBe('staged')
+        ->and($restaged->rows)->toHaveCount(1);
+});
+
 it('persists an encrypted owner-scoped campaign worksheet without execution side effects', function () {
     $this->artisan('migrate:fresh')->run();
 
