@@ -182,6 +182,33 @@ class EloquentCampaignWorksheetRepository implements CampaignWorksheetRepository
         });
     }
 
+    public function deleteDraft(string $reference, string $ownerType, string $ownerId): void
+    {
+        DB::transaction(function () use ($reference, $ownerType, $ownerId): void {
+            $worksheet = CampaignWorksheet::query()
+                ->where('reference', trim($reference))
+                ->where('owner_type', $ownerType)
+                ->where('owner_id', $ownerId)
+                ->lockForUpdate()
+                ->first();
+
+            if (! $worksheet instanceof CampaignWorksheet) {
+                throw new InvalidArgumentException('Campaign worksheet was not found for this owner.');
+            }
+
+            if ($worksheet->status !== 'draft') {
+                throw new InvalidArgumentException('Only a draft campaign worksheet may be deleted.');
+            }
+
+            $worksheet->imports()
+                ->get()
+                ->each(fn ($import) => $import->rows()->delete());
+            $worksheet->imports()->delete();
+            $worksheet->rows()->delete();
+            $worksheet->delete();
+        });
+    }
+
     /**
      * @return array<int, CampaignWorksheetSummaryData>
      */

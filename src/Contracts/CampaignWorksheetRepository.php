@@ -33,6 +33,8 @@ interface CampaignWorksheetRepository
 
     public function freeze(string $reference, string $ownerType, string $ownerId): CampaignWorksheetData;
 
+    public function deleteDraft(string $reference, string $ownerType, string $ownerId): void;
+
     /**
      * @return array<int, CampaignWorksheetSummaryData>
      */

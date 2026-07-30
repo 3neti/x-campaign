@@ -129,6 +129,71 @@ it('appends encrypted beneficiaries only while the owner worksheet is a draft', 
     ))->toThrow(InvalidArgumentException::class);
 });
 
+it('deletes only an owner draft and cascades its private working data', function () {
+    $this->artisan('migrate:fresh')->run();
+
+    $worksheets = app(CampaignWorksheetRepository::class);
+    $imports = app(CampaignWorksheetImportRepository::class);
+    $draft = $worksheets->put(new CampaignWorksheetData(
+        null,
+        'App\\Models\\User',
+        '5',
+        'payroll',
+        'Mistaken Import',
+        rows: [new CampaignWorksheetRowData(null, 1, ['mobile' => '09173011987'], 10_000)],
+    ));
+    $imports->stage(new CampaignWorksheetImportData(
+        null,
+        (string) $draft->reference,
+        'staged',
+        'csv',
+        hash('sha256', 'mistaken-import'),
+        1,
+        [],
+        [],
+        ['mobile' => 'mobile', 'amount' => 'amount'],
+    ), 'App\\Models\\User', '5');
+
+    expect(fn () => $worksheets->deleteDraft(
+        (string) $draft->reference,
+        'App\\Models\\User',
+        '6',
+    ))->toThrow(InvalidArgumentException::class);
+
+    $worksheets->deleteDraft((string) $draft->reference, 'App\\Models\\User', '5');
+
+    expect($worksheets->findForOwner((string) $draft->reference, 'App\\Models\\User', '5'))->toBeNull()
+        ->and(DB::table('campaign_worksheet_rows')->count())->toBe(0)
+        ->and(DB::table('campaign_worksheet_imports')->count())->toBe(0)
+        ->and(DB::table('campaign_worksheet_import_rows')->count())->toBe(0);
+});
+
+it('refuses to delete a frozen or authorized worksheet', function () {
+    $this->artisan('migrate:fresh')->run();
+
+    $worksheets = app(CampaignWorksheetRepository::class);
+    $worksheet = $worksheets->put(new CampaignWorksheetData(
+        null,
+        'App\\Models\\User',
+        '5',
+        'payroll',
+        'Protected Payroll',
+        rows: [new CampaignWorksheetRowData(null, 1, ['mobile' => '09173011987'], 10_000)],
+    ));
+    $worksheets->freeze((string) $worksheet->reference, 'App\\Models\\User', '5');
+
+    expect(fn () => $worksheets->deleteDraft(
+        (string) $worksheet->reference,
+        'App\\Models\\User',
+        '5',
+    ))->toThrow(InvalidArgumentException::class, 'Only a draft campaign worksheet may be deleted.')
+        ->and($worksheets->findForOwner(
+            (string) $worksheet->reference,
+            'App\\Models\\User',
+            '5',
+        ))->not->toBeNull();
+});
+
 it('stages encrypted import rows and applies a valid import only once', function () {
     $this->artisan('migrate:fresh')->run();
     $worksheets = app(CampaignWorksheetRepository::class);
