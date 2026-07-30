@@ -12,6 +12,8 @@ class CampaignWorksheetImportData extends Data
      * @param  array<int, array<string, mixed>>  $validRows
      * @param  array<int, array<string, mixed>>  $validationErrors
      * @param  array<string, string>  $mapping
+     * @param  array<int, array<string, mixed>>  $stagedRows
+     * @param  array<int, string>  $sourceHeaders
      */
     public function __construct(
         public readonly ?string $reference,
@@ -24,5 +26,8 @@ class CampaignWorksheetImportData extends Data
         public readonly array $validationErrors,
         public readonly array $mapping,
         public readonly ?string $appliedAt = null,
+        public readonly array $stagedRows = [],
+        public readonly array $sourceHeaders = [],
+        public readonly ?string $sourceSheet = null,
     ) {}
 }

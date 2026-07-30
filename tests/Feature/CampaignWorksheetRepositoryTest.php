@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use LBHurtado\XCampaign\Contracts\CampaignWorksheetRepository;
 use LBHurtado\XCampaign\Contracts\CampaignWorksheetImportRepository;
-use LBHurtado\XCampaign\Data\CampaignWorksheetImportData;
+use LBHurtado\XCampaign\Contracts\CampaignWorksheetRepository;
 use LBHurtado\XCampaign\Data\CampaignWorksheetData;
+use LBHurtado\XCampaign\Data\CampaignWorksheetImportData;
 use LBHurtado\XCampaign\Data\CampaignWorksheetRowData;
 
 beforeEach(function (): void {
@@ -148,6 +148,144 @@ it('stages encrypted import rows and applies a valid import only once', function
         ->and($worksheets->findForOwner((string) $worksheet->reference, 'App\\Models\\User', '5')?->rows)->toHaveCount(1)
         ->and(fn () => $imports->apply((string) $worksheet->reference, (string) $staged->reference, 'App\\Models\\User', '5'))
         ->toThrow(InvalidArgumentException::class);
+});
+
+it('stages encrypted source rows and applies only valid rows idempotently', function () {
+    $this->artisan('migrate:fresh')->run();
+    $worksheets = app(CampaignWorksheetRepository::class);
+    $imports = app(CampaignWorksheetImportRepository::class);
+    $worksheet = $worksheets->put(new CampaignWorksheetData(
+        null,
+        'App\\Models\\User',
+        '5',
+        'payroll',
+        'Scalable Import',
+    ));
+
+    $staged = $imports->stage(new CampaignWorksheetImportData(
+        reference: null,
+        worksheetReference: (string) $worksheet->reference,
+        status: 'staged',
+        sourceFormat: 'xlsx',
+        contentHash: hash('sha256', 'scalable-private-file'),
+        rowCount: 2,
+        validRows: [],
+        validationErrors: [],
+        mapping: ['mobile' => 'Phone', 'amount' => 'Salary'],
+        stagedRows: [
+            [
+                'source_row' => 2,
+                'status' => 'valid',
+                'source' => ['Phone' => '09173011987', 'Salary' => '1250.00'],
+                'normalized' => [
+                    'beneficiary' => ['mobile' => '09173011987'],
+                    'amount_minor' => 125_000,
+                    'currency' => 'PHP',
+                    'delivery_preference' => 'sms',
+                ],
+                'errors' => [],
+            ],
+            [
+                'source_row' => 3,
+                'status' => 'invalid',
+                'source' => ['Phone' => '', 'Salary' => '100.00'],
+                'normalized' => null,
+                'errors' => ['A mobile number or bank account is required.'],
+            ],
+        ],
+        sourceHeaders: ['Phone', 'Salary'],
+        sourceSheet: 'Payroll',
+    ), 'App\\Models\\User', '5');
+
+    $sourceCiphertext = DB::table('campaign_worksheet_import_rows')
+        ->where('source_row', 2)
+        ->value('source_ciphertext');
+    $applied = $imports->apply(
+        (string) $worksheet->reference,
+        (string) $staged->reference,
+        'App\\Models\\User',
+        '5',
+    );
+
+    expect($sourceCiphertext)->not->toContain('09173011987')
+        ->and($applied->status)->toBe('applied_with_errors')
+        ->and($applied->validationErrors)->toHaveCount(1)
+        ->and($worksheets->findForOwner(
+            (string) $worksheet->reference,
+            'App\\Models\\User',
+            '5',
+        )?->rows)->toHaveCount(1)
+        ->and(fn () => $imports->apply(
+            (string) $worksheet->reference,
+            (string) $staged->reference,
+            'App\\Models\\User',
+            '5',
+        ))->toThrow(InvalidArgumentException::class);
+});
+
+it('revalidates only unapplied import rows and may apply the remainder once', function () {
+    $this->artisan('migrate:fresh')->run();
+    $worksheets = app(CampaignWorksheetRepository::class);
+    $imports = app(CampaignWorksheetImportRepository::class);
+    $worksheet = $worksheets->put(new CampaignWorksheetData(
+        null,
+        'App\\Models\\User',
+        '5',
+        'payroll',
+        'Remapped Import',
+    ));
+    $staged = $imports->stage(new CampaignWorksheetImportData(
+        null,
+        (string) $worksheet->reference,
+        'staged',
+        'csv',
+        hash('sha256', 'remap'),
+        1,
+        [],
+        [],
+        ['amount' => 'Salary'],
+        stagedRows: [[
+            'source_row' => 2,
+            'status' => 'invalid',
+            'source' => ['Phone' => '09173011987', 'Salary' => '50.00'],
+            'normalized' => null,
+            'errors' => ['A mobile number or bank account is required.'],
+        ]],
+    ), 'App\\Models\\User', '5');
+
+    $remapped = $imports->replaceUnappliedRows(
+        (string) $worksheet->reference,
+        (string) $staged->reference,
+        'App\\Models\\User',
+        '5',
+        ['mobile' => 'Phone', 'amount' => 'Salary'],
+        [[
+            'source_row' => 2,
+            'status' => 'valid',
+            'source' => ['Phone' => '09173011987', 'Salary' => '50.00'],
+            'normalized' => [
+                'beneficiary' => ['mobile' => '09173011987'],
+                'amount_minor' => 5_000,
+                'currency' => 'PHP',
+                'delivery_preference' => 'manual',
+            ],
+            'errors' => [],
+        ]],
+    );
+    $applied = $imports->apply(
+        (string) $worksheet->reference,
+        (string) $staged->reference,
+        'App\\Models\\User',
+        '5',
+    );
+
+    expect($remapped->validRows)->toHaveCount(1)
+        ->and($applied->status)->toBe('applied')
+        ->and($worksheets->findForOwner(
+            (string) $worksheet->reference,
+            'App\\Models\\User',
+            '5',
+        )?->rows)->toHaveCount(1);
 });
 
 it('freezes a non-empty draft into an immutable owner-scoped manifest', function () {

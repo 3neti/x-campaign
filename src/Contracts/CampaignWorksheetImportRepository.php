@@ -16,4 +16,24 @@ interface CampaignWorksheetImportRepository
     public function forOwner(string $worksheetReference, string $ownerType, string $ownerId): array;
 
     public function apply(string $worksheetReference, string $importReference, string $ownerType, string $ownerId): CampaignWorksheetImportData;
+
+    /**
+     * @param  array<string, string>  $mapping
+     * @param  array<int, array<string, mixed>>  $rows
+     */
+    public function replaceUnappliedRows(
+        string $worksheetReference,
+        string $importReference,
+        string $ownerType,
+        string $ownerId,
+        array $mapping,
+        array $rows,
+    ): CampaignWorksheetImportData;
+
+    public function discard(
+        string $worksheetReference,
+        string $importReference,
+        string $ownerType,
+        string $ownerId,
+    ): CampaignWorksheetImportData;
 }

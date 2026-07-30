@@ -6,6 +6,7 @@ namespace LBHurtado\XCampaign\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class CampaignWorksheetImport extends Model
@@ -27,5 +28,13 @@ class CampaignWorksheetImport extends Model
     public function worksheet(): BelongsTo
     {
         return $this->belongsTo(CampaignWorksheet::class, 'campaign_worksheet_id');
+    }
+
+    public function rows(): HasMany
+    {
+        return $this->hasMany(
+            CampaignWorksheetImportRow::class,
+            'campaign_worksheet_import_id',
+        );
     }
 }
