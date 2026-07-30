@@ -5,13 +5,73 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use LBHurtado\XCampaign\Contracts\CampaignWorksheetImportRepository;
+use LBHurtado\XCampaign\Contracts\CampaignWorksheetIntakeRepository;
 use LBHurtado\XCampaign\Contracts\CampaignWorksheetRepository;
 use LBHurtado\XCampaign\Data\CampaignWorksheetData;
 use LBHurtado\XCampaign\Data\CampaignWorksheetImportData;
+use LBHurtado\XCampaign\Data\CampaignWorksheetIntakeData;
 use LBHurtado\XCampaign\Data\CampaignWorksheetRowData;
 
 beforeEach(function (): void {
     config()->set('app.key', 'base64:'.base64_encode(random_bytes(32)));
+});
+
+it('stages an encrypted owner intake and converts selected valid rows atomically', function () {
+    $this->artisan('migrate:fresh')->run();
+    $intakes = app(CampaignWorksheetIntakeRepository::class);
+    $staged = $intakes->stage(new CampaignWorksheetIntakeData(
+        reference: null,
+        ownerType: 'App\\Models\\User',
+        ownerId: '5',
+        status: 'staged',
+        sourceName: 'july-payroll.csv',
+        sourceFormat: 'csv',
+        contentHash: hash('sha256', 'july-payroll'),
+        rowCount: 2,
+        sourceHeaders: ['mobile', 'amount'],
+        sourceSheet: null,
+        mapping: ['mobile' => 'mobile', 'amount' => 'amount'],
+        suggestion: ['profile' => 'payroll', 'fulfillment_mode' => 'pay_code_distribution'],
+        rows: [
+            [
+                'source_row' => 2,
+                'status' => 'valid',
+                'source' => ['mobile' => '09173011987', 'amount' => '100.00'],
+                'normalized' => ['beneficiary' => ['mobile' => '09173011987'], 'amount_minor' => 10_000, 'currency' => 'PHP', 'delivery_preference' => 'sms'],
+                'errors' => [],
+            ],
+            [
+                'source_row' => 3,
+                'status' => 'invalid',
+                'source' => ['mobile' => '', 'amount' => '50.00'],
+                'normalized' => null,
+                'errors' => ['A mobile number is required.'],
+            ],
+        ],
+    ));
+
+    $ciphertext = DB::table('campaign_worksheet_intake_rows')->where('source_row', 2)->value('source_ciphertext');
+    $converted = $intakes->convert(
+        (string) $staged->reference,
+        'App\\Models\\User',
+        '5',
+        new CampaignWorksheetData(null, 'App\\Models\\User', '5', 'payroll', 'July Payroll'),
+        [2],
+    );
+
+    expect($ciphertext)->not->toContain('09173011987')
+        ->and($converted->status)->toBe('draft')
+        ->and($converted->rows)->toHaveCount(1)
+        ->and($converted->rows[0]->amountMinor)->toBe(10_000)
+        ->and($intakes->findForOwner((string) $staged->reference, 'App\\Models\\User', '5')?->status)
+        ->toBe('converted')
+        ->and($intakes->convert(
+            (string) $staged->reference,
+            'App\\Models\\User',
+            '5',
+            new CampaignWorksheetData(null, 'App\\Models\\User', '5', 'payroll', 'Duplicate'),
+            [2],
+        )->reference)->toBe($converted->reference);
 });
 
 it('persists an encrypted owner-scoped campaign worksheet without execution side effects', function () {
