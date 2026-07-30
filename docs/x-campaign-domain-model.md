@@ -56,6 +56,25 @@ One planned or attempted delivery to one recipient through one channel.
 
 An audience ingestion event, such as manual entry, CSV import, API import, or future spreadsheet ingestion.
 
+## CampaignWorksheetIntake
+
+A private, owner-scoped review of a CSV or XLSX file before a Campaign worksheet
+exists. The intake persists:
+
+- an encrypted source filename and manifest;
+- an indexed content hash for owner-scoped replay detection;
+- safe mapping and deterministic suggestion metadata;
+- individually encrypted source, normalized, and validation-error rows;
+- the converted worksheet reference and timestamp, when conversion completes.
+
+Only explicitly selected valid rows may be converted. Invalid rows remain
+visible for review and require an explicit exclusion decision. Conversion
+creates the draft worksheet, import history, and beneficiary rows in one
+transaction. Replaying a completed conversion returns the same worksheet.
+
+Intake never freezes or authorizes a worksheet, issues Pay Codes, dispatches
+feedback, calls a provider, writes financial postings, or moves money.
+
 ## External References
 
 Phase 0 allows references to external execution concepts through contracts and metadata. It does not create campaign-owned voucher templates or claim templates.
