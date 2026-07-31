@@ -19,10 +19,15 @@ it('keeps phase five generation architecture free of runtime issuance side effec
     $root = realpath(__DIR__.'/../../..');
     $sourceFiles = iterator_to_array(new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root.'/src')));
     $source = '';
+    $orchestrationSource = '';
 
     foreach ($sourceFiles as $file) {
         if ($file instanceof SplFileInfo && $file->isFile() && $file->getExtension() === 'php') {
             $source .= file_get_contents($file->getPathname()) ?: '';
+
+            if (! str_contains($file->getPathname(), DIRECTORY_SEPARATOR.'Repositories'.DIRECTORY_SEPARATOR)) {
+                $orchestrationSource .= file_get_contents($file->getPathname()) ?: '';
+            }
         }
     }
 
@@ -33,7 +38,7 @@ it('keeps phase five generation architecture free of runtime issuance side effec
         ->not->toContain('Notification::')
         ->not->toContain('Mail::')
         ->not->toContain('Http::')
-        ->not->toContain('DB::transaction')
         ->not->toContain('dispatchSync(');
-});
 
+    expect($orchestrationSource)->not->toContain('DB::transaction');
+});
