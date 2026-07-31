@@ -8,4 +8,3 @@ use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignAudienceImportWorkspa
 it('binds the audience import workspace to the repository-backed non-parsing baseline', function () {
     expect(app(CampaignAudienceImportWorkspace::class))->toBeInstanceOf(RepositoryBackedCampaignAudienceImportWorkspace::class);
 });
-

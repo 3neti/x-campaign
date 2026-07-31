@@ -11,4 +11,3 @@ interface BuildsCampaignDeliveryHandoffSummaries
 {
     public function fromWorkspaceResult(CampaignDeliveryHandoffWorkspaceResultData $result): CampaignDeliveryHandoffSummaryData;
 }
-

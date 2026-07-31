@@ -32,4 +32,3 @@ interface CampaignPlanningWorkspace
      */
     public function effects(): array;
 }
-

@@ -26,4 +26,3 @@ interface CampaignPlanRepository
      */
     public function effects(): array;
 }
-

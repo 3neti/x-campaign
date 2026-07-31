@@ -11,4 +11,3 @@ interface PlansCampaignClaimVisibilities
 {
     public function plan(CampaignClaimVisibilityData $visibility): CampaignClaimVisibilityResultData;
 }
-

@@ -9,6 +9,7 @@ use LBHurtado\XCampaign\Actions\PlanCampaignRecipientImportRow;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignAudienceImportReviewSummaries;
 use LBHurtado\XCampaign\Data\CampaignAudienceImportReviewRowIssueData;
 use LBHurtado\XCampaign\Data\CampaignAudienceImportReviewSummaryData;
+use LBHurtado\XCampaign\Data\CampaignAudienceImportRowCollectionPlanData;
 use LBHurtado\XCampaign\Data\CampaignAudienceImportRowCollectionPlanningInputData;
 use LBHurtado\XCampaign\Data\CampaignAudiencePlanningInputData;
 use LBHurtado\XCampaign\Data\CampaignPlanningInputData;
@@ -16,7 +17,7 @@ use LBHurtado\XCampaign\ReadModels\CampaignAudienceImportReviewSummaryReadModel;
 use LBHurtado\XCampaign\Repositories\InMemoryCampaignPlanRepository;
 use LBHurtado\XCampaign\Workspaces\RepositoryBackedCampaignRecipientImportRowWorkspace;
 
-function campaignAudienceImportReviewCollection(): LBHurtado\XCampaign\Data\CampaignAudienceImportRowCollectionPlanData
+function campaignAudienceImportReviewCollection(): CampaignAudienceImportRowCollectionPlanData
 {
     $repository = new InMemoryCampaignPlanRepository;
 
@@ -88,7 +89,7 @@ it('builds a read-only audience import review summary from a row collection plan
 
 it('marks all-valid row collections as ready for approval without mutating the audience', function () {
     $collection = campaignAudienceImportReviewCollection();
-    $validOnly = new LBHurtado\XCampaign\Data\CampaignAudienceImportRowCollectionPlanData(
+    $validOnly = new CampaignAudienceImportRowCollectionPlanData(
         importId: $collection->importId,
         audienceId: $collection->audienceId,
         status: 'valid',
@@ -115,7 +116,7 @@ it('marks all-valid row collections as ready for approval without mutating the a
 
 it('marks empty row collections as empty and not ready for approval', function () {
     $summary = (new CampaignAudienceImportReviewSummaryReadModel)->fromCollectionPlan(
-        new LBHurtado\XCampaign\Data\CampaignAudienceImportRowCollectionPlanData(
+        new CampaignAudienceImportRowCollectionPlanData(
             importId: 'import-empty-review',
             audienceId: 'audience-review',
         ),

@@ -235,4 +235,3 @@ it('fails closed when the target audience is outside the stored plan', function 
         allowedRecipientAttachmentMutationDecision(),
     ))->toThrow(InvalidArgumentException::class, 'Unknown campaign audience plan [missing-audience].');
 });
-

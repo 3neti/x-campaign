@@ -7,4 +7,3 @@ use LBHurtado\XCampaign\Contracts\AttachesCampaignAudienceImportRecipientsInMemo
 it('binds in-memory recipient attachment mutation contracts to the in-memory baseline', function () {
     expect(app(AttachesCampaignAudienceImportRecipientsInMemory::class))->toBeInstanceOf(AttachesCampaignAudienceImportRecipientsInMemory::class);
 });
-

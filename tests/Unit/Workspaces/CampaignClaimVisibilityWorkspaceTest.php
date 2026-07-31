@@ -110,4 +110,3 @@ it('fails closed for an execution outside the stored campaign plan before claim 
     expect(fn () => $workspace->plan('planning-visibility', 'missing-execution'))
         ->toThrow(InvalidArgumentException::class, 'Unknown campaign execution plan [missing-execution].');
 });
-

@@ -7,4 +7,3 @@ use LBHurtado\XCampaign\Contracts\CampaignAudienceImportRecipientAttachmentWorks
 it('binds audience import recipient attachment workspace contracts to the repository-backed baseline', function () {
     expect(app(CampaignAudienceImportRecipientAttachmentWorkspace::class))->toBeInstanceOf(CampaignAudienceImportRecipientAttachmentWorkspace::class);
 });
-

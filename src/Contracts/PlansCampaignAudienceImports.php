@@ -11,4 +11,3 @@ interface PlansCampaignAudienceImports
 {
     public function handle(CampaignAudienceImportPlanningInputData $input): CampaignAudienceImportPlanData;
 }
-

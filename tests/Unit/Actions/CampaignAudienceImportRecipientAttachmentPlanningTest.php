@@ -221,4 +221,3 @@ it('skips non-valid rows even when attachment planning is otherwise approved', f
         ->and($plan->blockedRowNumbers)->toBe([2])
         ->and($plan->blockers)->toBe(['1 row is not valid for attachment planning.']);
 });
-

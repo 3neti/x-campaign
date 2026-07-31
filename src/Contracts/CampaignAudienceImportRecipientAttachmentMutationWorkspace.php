@@ -16,4 +16,3 @@ interface CampaignAudienceImportRecipientAttachmentMutationWorkspace
         CampaignAudienceImportRecipientAttachmentMutationDecisionInputData $mutationInput,
     ): CampaignAudienceImportRecipientAttachmentMutationWorkspaceResultData;
 }
-

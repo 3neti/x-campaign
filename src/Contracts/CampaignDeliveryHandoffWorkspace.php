@@ -25,4 +25,3 @@ interface CampaignDeliveryHandoffWorkspace
      */
     public function effects(): array;
 }
-

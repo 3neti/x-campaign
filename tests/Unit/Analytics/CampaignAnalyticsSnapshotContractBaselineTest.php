@@ -78,4 +78,3 @@ function phase8bAnalyticsInput(): CampaignAnalyticsInputData
         claimVisibilitySummary: new CampaignClaimVisibilitySummaryData('visible', 'planning-analytics', 'execution-analytics', 3, 2, 1, 1, 1, false),
     );
 }
-

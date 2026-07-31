@@ -8,4 +8,3 @@ use LBHurtado\XCampaign\Contracts\PlansCampaignClaimVisibilities;
 it('binds claim visibility planning to the in-memory planner', function () {
     expect(app(PlansCampaignClaimVisibilities::class))->toBeInstanceOf(PlanCampaignClaimVisibility::class);
 });
-

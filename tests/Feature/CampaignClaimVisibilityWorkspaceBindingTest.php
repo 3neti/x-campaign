@@ -28,4 +28,3 @@ it('binds claim visibility workspace contracts to the repository-backed workspac
 it('binds claim status provider to a safe null provider', function () {
     expect(app(CampaignClaimStatusProvider::class))->toBeInstanceOf(NullCampaignClaimStatusProvider::class);
 });
-

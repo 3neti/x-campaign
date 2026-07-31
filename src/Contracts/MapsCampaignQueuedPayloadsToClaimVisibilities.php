@@ -11,4 +11,3 @@ interface MapsCampaignQueuedPayloadsToClaimVisibilities
 {
     public function map(CampaignQueuedPlanPayloadData $payload): CampaignClaimVisibilityWorkspaceInputData;
 }
-

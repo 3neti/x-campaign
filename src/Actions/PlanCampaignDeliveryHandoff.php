@@ -90,4 +90,3 @@ class PlanCampaignDeliveryHandoff implements PlansCampaignDeliveryHandoffs
         ])), 0, 16);
     }
 }
-

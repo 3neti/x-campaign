@@ -100,4 +100,3 @@ it('fails closed when adding a recipient to an unknown audience plan', function 
         new CampaignRecipientPlanningInputData(name: 'No Audience'),
     ))->toThrow(InvalidArgumentException::class, 'Unknown campaign audience plan [missing-audience].');
 });
-

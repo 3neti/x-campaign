@@ -96,4 +96,3 @@ it('archives a campaign plan without deleting records or mutating external state
             'moves_money' => false,
         ]);
 });
-

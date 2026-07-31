@@ -27,4 +27,3 @@ class CampaignPortableCodeGenerationWorkspaceResultData extends Data
         $this->effects = $effects ?? new CampaignPersistenceEffectData;
     }
 }
-

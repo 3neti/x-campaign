@@ -99,4 +99,3 @@ function phase7cVisibility(
         correlationId: 'corr-visibility',
     );
 }
-

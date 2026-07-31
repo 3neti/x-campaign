@@ -22,4 +22,3 @@ it('binds delivery handoff workspace contracts to the repository-backed workspac
             'moves_money' => false,
         ]);
 });
-

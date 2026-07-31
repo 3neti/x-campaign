@@ -65,4 +65,3 @@ it('fails closed before mapping queued claim visibility payloads without an exec
         payload: [],
     )))->toThrow(InvalidArgumentException::class, 'Queued claim visibility payloads require an execution_id.');
 });
-

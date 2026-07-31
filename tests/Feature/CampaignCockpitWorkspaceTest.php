@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use LBHurtado\XCampaign\Actions\CreateCampaignPlan;
 use LBHurtado\XCampaign\Actions\AddAudienceToCampaignPlan;
+use LBHurtado\XCampaign\Actions\CreateCampaignPlan;
 use LBHurtado\XCampaign\Actions\PlanCampaignExecution;
 use LBHurtado\XCampaign\Contracts\CampaignCockpitWorkspace;
 use LBHurtado\XCampaign\Contracts\CampaignPlanRepository;

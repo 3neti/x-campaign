@@ -83,4 +83,3 @@ class CampaignClaimVisibilitySummaryReadModel implements BuildsCampaignClaimVisi
         return array_values(array_unique($blockers));
     }
 }
-

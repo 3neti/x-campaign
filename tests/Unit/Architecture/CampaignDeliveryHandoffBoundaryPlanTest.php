@@ -36,4 +36,3 @@ it('keeps phase six boundary free of real delivery infrastructure', function () 
         ->and(is_dir($root.'/src/Http/Clients'))->toBeFalse()
         ->and(is_dir($root.'/src/Http/Controllers'))->toBeFalse();
 });
-

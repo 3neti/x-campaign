@@ -22,4 +22,3 @@ it('binds portable code generation workspace contracts to the repository-backed 
             'moves_money' => false,
         ]);
 });
-

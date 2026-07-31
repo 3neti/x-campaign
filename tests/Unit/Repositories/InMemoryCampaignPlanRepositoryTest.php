@@ -71,4 +71,3 @@ it('rejects empty planning keys before storing a campaign plan', function () {
     expect(fn () => $repository->put(' ', $plan))
         ->toThrow(InvalidArgumentException::class, 'Campaign planning repository key must not be empty.');
 });
-

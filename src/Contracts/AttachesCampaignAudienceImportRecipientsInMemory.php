@@ -16,4 +16,3 @@ interface AttachesCampaignAudienceImportRecipientsInMemory
         CampaignAudienceImportRecipientAttachmentMutationDecisionData $decision,
     ): CampaignAudienceImportRecipientAttachmentMutationResultData;
 }
-

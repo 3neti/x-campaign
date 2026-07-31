@@ -11,4 +11,3 @@ interface MapsCampaignQueuedPayloadsToDeliveryHandoffs
 {
     public function map(CampaignQueuedPlanPayloadData $payload): CampaignDeliveryHandoffWorkspaceInputData;
 }
-

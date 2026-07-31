@@ -9,4 +9,3 @@ it('binds campaign execution planning contracts to in-memory implementations', f
     expect(app(PlansCampaignExecutions::class))->toBeInstanceOf(PlansCampaignExecutions::class)
         ->and(app(PlansCampaignExecutionBatches::class))->toBeInstanceOf(PlansCampaignExecutionBatches::class);
 });
-

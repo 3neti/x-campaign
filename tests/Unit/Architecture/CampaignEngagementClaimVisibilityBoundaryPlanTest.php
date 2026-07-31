@@ -37,4 +37,3 @@ it('keeps phase seven boundary free of host claim runtime surfaces', function ()
         ->and(is_dir($root.'/src/Claims'))->toBeFalse()
         ->and(is_dir($root.'/src/Providers/Claim'))->toBeFalse();
 });
-

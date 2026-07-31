@@ -31,4 +31,3 @@ class CampaignAudienceImportRecipientAttachmentPlanData extends Data
         public readonly array $metadata = [],
     ) {}
 }
-

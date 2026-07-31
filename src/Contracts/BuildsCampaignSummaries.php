@@ -11,4 +11,3 @@ interface BuildsCampaignSummaries
 {
     public function fromPlan(CampaignPlanData $plan): CampaignSummaryData;
 }
-

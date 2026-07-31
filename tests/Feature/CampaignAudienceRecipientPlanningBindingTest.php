@@ -11,4 +11,3 @@ it('binds audience and recipient planning contracts to in-memory implementations
         ->and(app(AddsRecipientsToCampaignAudiencePlans::class))->toBeInstanceOf(AddsRecipientsToCampaignAudiencePlans::class)
         ->and(app(RemovesRecipientsFromCampaignAudiencePlans::class))->toBeInstanceOf(RemovesRecipientsFromCampaignAudiencePlans::class);
 });
-

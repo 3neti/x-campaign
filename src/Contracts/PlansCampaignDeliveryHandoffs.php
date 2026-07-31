@@ -11,4 +11,3 @@ interface PlansCampaignDeliveryHandoffs
 {
     public function plan(CampaignDeliveryHandoffData $handoff): CampaignDeliveryHandoffResultData;
 }
-

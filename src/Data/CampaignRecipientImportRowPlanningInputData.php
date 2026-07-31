@@ -20,4 +20,3 @@ class CampaignRecipientImportRowPlanningInputData extends Data
         public readonly array $metadata = [],
     ) {}
 }
-

@@ -80,4 +80,3 @@ class InMemoryCampaignPlanRepository implements CampaignPlanRepository
         return $key;
     }
 }
-

@@ -28,4 +28,3 @@ class CampaignClaimVisibilitySummaryData extends Data
         public readonly array $metadata = [],
     ) {}
 }
-

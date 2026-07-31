@@ -11,4 +11,3 @@ interface PlansCampaignRecipientImportRows
 {
     public function handle(CampaignRecipientImportRowPlanningInputData $input): CampaignRecipientImportRowData;
 }
-

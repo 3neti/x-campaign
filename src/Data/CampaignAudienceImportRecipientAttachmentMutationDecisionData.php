@@ -28,4 +28,3 @@ class CampaignAudienceImportRecipientAttachmentMutationDecisionData extends Data
         public readonly array $metadata = [],
     ) {}
 }
-

@@ -7,4 +7,3 @@ use LBHurtado\XCampaign\Contracts\DecidesCampaignAudienceImportRecipientAttachme
 it('binds recipient attachment mutation decision contracts to the decision-only baseline', function () {
     expect(app(DecidesCampaignAudienceImportRecipientAttachmentMutations::class))->toBeInstanceOf(DecidesCampaignAudienceImportRecipientAttachmentMutations::class);
 });
-

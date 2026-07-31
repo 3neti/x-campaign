@@ -11,4 +11,3 @@ interface PlansCampaignAudienceImportRecipientAttachments
 {
     public function handle(CampaignAudienceImportApprovalWorkspaceResultData $workspaceResult): CampaignAudienceImportRecipientAttachmentPlanData;
 }
-

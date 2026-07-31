@@ -106,4 +106,3 @@ function campaignDeliveryHandoffGenerationResult(
         portableCodeReference: 'portable-code-001',
     );
 }
-

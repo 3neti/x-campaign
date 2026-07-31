@@ -120,4 +120,3 @@ class DecideCampaignAudienceImportRecipientAttachmentMutation implements Decides
         ];
     }
 }
-

@@ -9,4 +9,3 @@ it('binds portable code generation summaries to the read-only summary read model
     expect(app(BuildsCampaignPortableCodeGenerationSummaries::class))
         ->toBeInstanceOf(CampaignPortableCodeGenerationSummaryReadModel::class);
 });
-

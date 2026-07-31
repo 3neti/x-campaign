@@ -21,4 +21,3 @@ class CampaignExecutionSummaryData extends Data
         public readonly array $metadata = [],
     ) {}
 }
-

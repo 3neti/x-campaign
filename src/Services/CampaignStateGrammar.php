@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace LBHurtado\XCampaign\Services;
 
+use BackedEnum;
 use LBHurtado\XCampaign\Enums\CampaignAudienceStatus;
 use LBHurtado\XCampaign\Enums\CampaignExecutionStatus;
 use LBHurtado\XCampaign\Enums\CampaignStatus;
-use BackedEnum;
 
 class CampaignStateGrammar
 {

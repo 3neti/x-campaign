@@ -20,4 +20,3 @@ class CampaignAudienceImportRecipientAttachmentMutationWorkspaceResultData exten
         public readonly array $metadata = [],
     ) {}
 }
-

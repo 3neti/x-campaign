@@ -11,4 +11,3 @@ interface BuildsCampaignClaimVisibilitySummaries
 {
     public function fromWorkspaceResult(CampaignClaimVisibilityWorkspaceResultData $result): CampaignClaimVisibilitySummaryData;
 }
-

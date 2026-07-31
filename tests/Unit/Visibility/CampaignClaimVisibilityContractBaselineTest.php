@@ -112,4 +112,3 @@ function visibilityGenerationResult(): CampaignPortableCodeGenerationResultData
         portableCodeReference: 'pay-code-visibility',
     );
 }
-

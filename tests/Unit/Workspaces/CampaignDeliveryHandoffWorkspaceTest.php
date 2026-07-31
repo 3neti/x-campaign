@@ -120,4 +120,3 @@ it('fails closed for an execution outside the stored campaign plan before delive
     expect(fn () => $workspace->plan('planning-delivery', 'missing-execution'))
         ->toThrow(InvalidArgumentException::class, 'Unknown campaign execution plan [missing-execution].');
 });
-

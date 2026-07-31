@@ -98,4 +98,3 @@ it('rejects invalid batch sizes before planning batches', function () {
     expect(fn () => (new PlanCampaignExecutionBatches)->handle($plan, 'execution-1', 0))
         ->toThrow(InvalidArgumentException::class, 'Campaign execution batch size must be greater than zero.');
 });
-

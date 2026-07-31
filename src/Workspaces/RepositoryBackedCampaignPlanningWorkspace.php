@@ -7,8 +7,8 @@ namespace LBHurtado\XCampaign\Workspaces;
 use InvalidArgumentException;
 use LBHurtado\XCampaign\Contracts\ArchivesCampaignPlans;
 use LBHurtado\XCampaign\Contracts\BuildsCampaignSummaries;
-use LBHurtado\XCampaign\Contracts\CampaignPlanRepository;
 use LBHurtado\XCampaign\Contracts\CampaignPlanningWorkspace;
+use LBHurtado\XCampaign\Contracts\CampaignPlanRepository;
 use LBHurtado\XCampaign\Contracts\CreatesCampaignPlans;
 use LBHurtado\XCampaign\Contracts\SchedulesCampaignPlans;
 use LBHurtado\XCampaign\Contracts\UpdatesCampaignPlans;
@@ -109,4 +109,3 @@ class RepositoryBackedCampaignPlanningWorkspace implements CampaignPlanningWorks
         return $plan;
     }
 }
-

@@ -54,4 +54,3 @@ it('describes audience and execution transitions independently from payment exec
         ->and($grammar->canTransition(CampaignExecutionStatus::Running, CampaignExecutionStatus::Completed))->toBeTrue()
         ->and($grammar->canTransition(CampaignExecutionStatus::Completed, CampaignExecutionStatus::Running))->toBeFalse();
 });
-

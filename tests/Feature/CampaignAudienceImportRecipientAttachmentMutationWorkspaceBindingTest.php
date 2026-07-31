@@ -7,4 +7,3 @@ use LBHurtado\XCampaign\Contracts\CampaignAudienceImportRecipientAttachmentMutat
 it('binds recipient attachment mutation workspace contracts to the repository-backed in-memory baseline', function () {
     expect(app(CampaignAudienceImportRecipientAttachmentMutationWorkspace::class))->toBeInstanceOf(CampaignAudienceImportRecipientAttachmentMutationWorkspace::class);
 });
-

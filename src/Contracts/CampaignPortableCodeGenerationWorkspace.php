@@ -24,4 +24,3 @@ interface CampaignPortableCodeGenerationWorkspace
      */
     public function effects(): array;
 }
-

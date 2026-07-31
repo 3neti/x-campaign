@@ -88,4 +88,3 @@ it('fails closed when mutating an unknown planning key', function () {
     expect(fn () => $workspace->update('missing-key', new CampaignPlanningInputData(name: 'Missing')))
         ->toThrow(InvalidArgumentException::class, 'Unknown campaign planning key [missing-key].');
 });
-

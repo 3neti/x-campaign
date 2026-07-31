@@ -113,4 +113,3 @@ function deliveryGenerationResult(
         portableCodeReference: $portableCodeReference,
     );
 }
-

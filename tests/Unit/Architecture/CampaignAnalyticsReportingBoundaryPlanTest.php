@@ -36,4 +36,3 @@ it('keeps phase eight boundary free of reporting transport surfaces', function (
         ->and(is_dir($root.'/src/Reports'))->toBeFalse()
         ->and(is_dir($root.'/src/Dashboards'))->toBeFalse();
 });
-

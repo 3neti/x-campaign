@@ -60,4 +60,3 @@ class CampaignPortableCodeGenerationSummaryReadModel implements BuildsCampaignPo
         return is_int($count) ? $count : count($result->generationResults);
     }
 }
-

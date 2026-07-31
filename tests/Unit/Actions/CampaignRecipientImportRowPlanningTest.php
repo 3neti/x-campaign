@@ -86,4 +86,3 @@ it('supports common column aliases for recipient import rows', function () {
         ->and($planned->recipient->mobile)->toBe('09171234567')
         ->and($planned->recipient->externalReference)->toBe('EXT-003');
 });
-

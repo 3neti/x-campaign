@@ -188,4 +188,3 @@ it('fails closed for unknown mutation decisions', function () {
         ->and($decision->readyForMutation)->toBeFalse()
         ->and($decision->blockers)->toBe(['Unknown recipient attachment mutation decision [ship].']);
 });
-

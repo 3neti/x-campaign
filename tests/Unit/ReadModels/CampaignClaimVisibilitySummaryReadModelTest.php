@@ -126,4 +126,3 @@ function phase7fClaimVisibilityResult(
         blockers: $blockers,
     );
 }
-

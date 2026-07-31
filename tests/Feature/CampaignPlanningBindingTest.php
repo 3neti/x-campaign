@@ -15,4 +15,3 @@ it('binds campaign planning action contracts to in-memory implementations', func
         ->and(app(SchedulesCampaignPlans::class))->toBeInstanceOf(SchedulesCampaignPlans::class)
         ->and(app(ArchivesCampaignPlans::class))->toBeInstanceOf(ArchivesCampaignPlans::class);
 });
-

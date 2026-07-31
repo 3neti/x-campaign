@@ -97,4 +97,3 @@ function portableCodeGenerationResult(string $generationId, string $recipientId)
         ),
     );
 }
-

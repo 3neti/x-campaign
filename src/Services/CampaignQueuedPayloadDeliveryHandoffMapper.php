@@ -41,4 +41,3 @@ class CampaignQueuedPayloadDeliveryHandoffMapper implements MapsCampaignQueuedPa
         );
     }
 }
-

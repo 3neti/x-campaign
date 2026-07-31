@@ -73,4 +73,3 @@ class CampaignDeliveryHandoffSummaryReadModel implements BuildsCampaignDeliveryH
         return array_values(array_unique($blockers));
     }
 }
-

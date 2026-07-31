@@ -25,8 +25,14 @@ class CampaignWorksheetFulfillment extends Model
     }
 
     /** @return BelongsTo<CampaignWorksheetAuthorization, $this> */
-    public function authorization(): BelongsTo { return $this->belongsTo(CampaignWorksheetAuthorization::class, 'campaign_worksheet_authorization_id'); }
+    public function authorization(): BelongsTo
+    {
+        return $this->belongsTo(CampaignWorksheetAuthorization::class, 'campaign_worksheet_authorization_id');
+    }
 
     /** @return BelongsTo<CampaignWorksheetRow, $this> */
-    public function row(): BelongsTo { return $this->belongsTo(CampaignWorksheetRow::class, 'campaign_worksheet_row_id'); }
+    public function row(): BelongsTo
+    {
+        return $this->belongsTo(CampaignWorksheetRow::class, 'campaign_worksheet_row_id');
+    }
 }

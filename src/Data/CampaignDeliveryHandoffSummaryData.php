@@ -27,4 +27,3 @@ class CampaignDeliveryHandoffSummaryData extends Data
         public readonly array $metadata = [],
     ) {}
 }
-

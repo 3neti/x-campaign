@@ -23,8 +23,7 @@ class ProcessCampaignQueuedPlan implements ShouldQueue
         $this->onQueue('campaigns');
     }
 
-    public function handle(): void
-    {}
+    public function handle(): void {}
 
     public function payload(): CampaignQueuedPlanPayloadData
     {

@@ -72,4 +72,3 @@ class RepositoryBackedCampaignAudienceImportWorkspace implements CampaignAudienc
         throw new InvalidArgumentException("Unknown campaign audience plan [{$audienceId}].");
     }
 }
-

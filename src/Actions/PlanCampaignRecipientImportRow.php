@@ -116,4 +116,3 @@ class PlanCampaignRecipientImportRow implements PlansCampaignRecipientImportRows
         ];
     }
 }
-

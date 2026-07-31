@@ -11,4 +11,3 @@ interface BuildsCampaignPortableCodeGenerationSummaries
 {
     public function fromWorkspaceResult(CampaignPortableCodeGenerationWorkspaceResultData $result): CampaignPortableCodeGenerationSummaryData;
 }
-

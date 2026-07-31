@@ -25,4 +25,3 @@ class CampaignDeliveryHandoffResultData extends Data
         $this->effects = $effects ?? new CampaignPersistenceEffectData;
     }
 }
-

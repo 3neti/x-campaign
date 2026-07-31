@@ -82,4 +82,3 @@ class PlanCampaignClaimVisibility implements PlansCampaignClaimVisibilities
         ])), 0, 16);
     }
 }
-

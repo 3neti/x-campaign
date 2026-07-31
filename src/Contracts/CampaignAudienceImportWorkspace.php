@@ -11,4 +11,3 @@ interface CampaignAudienceImportWorkspace
 {
     public function plan(string $planningKey, CampaignAudienceImportPlanningInputData $input): CampaignAudienceImportPlanData;
 }
-

@@ -26,4 +26,3 @@ class CampaignPortableCodeGenerationSummaryData extends Data
         public readonly array $metadata = [],
     ) {}
 }
-

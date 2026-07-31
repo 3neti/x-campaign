@@ -24,4 +24,3 @@ interface CampaignClaimVisibilityWorkspace
      */
     public function effects(): array;
 }
-
