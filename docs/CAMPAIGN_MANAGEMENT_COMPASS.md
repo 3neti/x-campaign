@@ -11,9 +11,11 @@ integration stay in their existing owners. Existing links and money rules surviv
 successful-start persistence are extracted locally. The three baseline
 officer-authorization failures are fixed. Gates 1–2 remain pending final parity
 and release-boundary review.
-Release and local browser verification authorized on 2026-09-18: publish
-x-campaign v1.1.0 first, require it in x-change, then verify the installed consumer
-before publishing x-change v1.0.25. No Cloud deployment in this gate.
+Release and local browser verification authorized on 2026-09-18. Published
+x-campaign v1.1.0 (`3d63087`) and x-change v1.0.25 (`fd54ed6a`), with consumer
+minimum `^1.1` and synchronized lockfile. Local sandbox upgraded to both releases.
+No Cloud deployment in this gate. Browser run found a demo-driver redirect issue
+described below; do not report the full intake-to-payment journey as passed.
 Full scope: [plan](CAMPAIGN_MANAGEMENT_PLAN.md).
 
 ## First controlled slice
@@ -69,6 +71,67 @@ daily-window inclusivity, or issuance. This is not full Gate 2 completion.
   missing-endpoint and failed-issuance no-increment assertions.
 
 ## Evidence
+
+### Corrective local gate — payment action owns success navigation
+
+- Package source change is in x-change `resources/js/pages/x-change/claim/Success.vue`,
+  not the host or x-rider configuration. A usable canonical
+  `x-change.claim-success.continue-to-payment` action suppresses both countdown
+  and Rider runtime redirects. Existing paired-payment suppression remains.
+  Rider messages and the explicit payment action remain visible.
+- Unrelated, disabled or unusable actions do not suppress normal redirects;
+  removing the payment action restores normal redirect rendering. No financial
+  rules, issuance, collection state, provider access or endpoint data changed.
+- Frontend: 82 passed across eight success/redirect/payment suites. Backend:
+  67 passed / 616 assertions across claim-success, payment-handoff and Leads.
+  Composer validation, asset doctor, production build and diff check passed.
+- Browser verified the existing accepted application `AUI-PT9T` with the temporary
+  local Composer path integration. `x-rider.driver` remained `demo`. The success
+  page stayed in place beyond the eight-second demo timeout, retaining the
+  application message and “Continue to payment”. Clicking the actual CTA opened
+  `/x/pay/AUI-PT9T` with PHP 100.00 due and PHP 0.00 collected.
+- No new voucher, payment, SMS, or QR attempt was created in this corrective gate.
+  This retests the previously failing success-to-payment segment, not a fresh
+  paid lifecycle. The earlier misleading introduction copy remains a separate
+  polish item. No tag, push or Cloud deployment in this corrective gate.
+- Temporary integration is restored to the released v1.0.25 sandbox build after
+  acceptance; the correction requires its own reviewed release to persist there.
+
+### Released dependency and local browser gate — 2026-09-18
+
+- Repeated x-campaign suite: 468 passed / 4,594 assertions.
+- Installed released v1.1.0 normally in x-change, without the temporary overlay:
+  111 consumer tests passed / 1,016 assertions. Composer strict checks passed.
+- Both tags and main commits pushed to their respective 3neti repositories.
+- Sandbox: Composer updated only x-campaign and x-change; generated build inputs
+  matched package source, production Vite build passed. No broad installation,
+  commissioning, migrations, or Cloud operation was run.
+- Additional host smoke tests: 4 passed, 1 failed (`DashboardTest` authenticated
+  case: no `users` table in its in-memory database). `tests/Pest.php` has
+  `RefreshDatabase` commented out. Not fixed here; no old-release reproduction
+  was run, so this is not presented as a proven release-independent baseline.
+- In-app browser created a fresh endpoint and settlement Pay Code `AUI-PT9T`.
+  Persisted endpoint usage is exactly 1. Application/mobile/reference evidence
+  was captured; no beneficiary bank account was requested. Synthetic application
+  details were used. The scenario did not request OTP.
+- **Handoff failed:** local `x-rider.driver=demo` loads `demo-redirect` from
+  `config/x-rider-drivers/demo.yaml`, pointing at `https://example.com/success`
+  after eight seconds. Logs record `rider.redirect.started` for this code after
+  `accepted_success`. Browser safety blocked that unrelated external destination.
+  No security bypass or driver/configuration change was made.
+- Direct diagnostic navigation to the same code's payment page succeeded;
+  generated a visible PHP 100.00 QR Ph. Attempt
+  `01M2SX8BFK42H1NQRKFJRBW95V` is `awaiting_payment`, `settled_at=null`,
+  expected amount 10,000 minor units. No payment or SMS was made by this run.
+- Additional UX observation: introductory demo page says “Pay with Pay Code” /
+  “Pay now”, before the intake form says “Submit Application”.
+- Browser screenshot capture was unavailable (zero-width capture response);
+  accessibility snapshots, application logs and read-only database evidence
+  support the observations. Payment tab retained for inspection.
+- [Local campaign endpoint](https://x-change-sandbox.test/x/o/lester-hurtado-manila/aui-on-demand-insurance-payment-tegdfv)
+  mints another Pay Code when opened; do not reopen simply to inspect this run.
+- [Existing payment page](https://x-change-sandbox.test/x/pay/AUI-PT9T?attempt=01M2SX8BFK42H1NQRKFJRBW95V)
+  is session-bound and its QR expires. It is not evidence of payment settlement.
 
 ### Latest verification (third slice)
 
@@ -147,11 +210,35 @@ Do not publish x-change alone with the current broad `^1.0` minimum.
 
 ## Next gate
 
-Review full Gate 1–2 parity and the upstream release minimum, including the
-intentionally retained paired-display transaction boundary. Publish the additive
-x-campaign dependency before updating/releasing the x-change consumer; verify
-again without the development autoload overlay. Only then proceed to new
-pause/budget/participation behavior. Current authorized release gate is in progress.
+Release dependency ordering and installed-package regression verification are
+complete. The redirect correction is implemented and browser-verified locally.
+Next, review/release the x-change correction, adopt it normally in the sandbox,
+and repeat a fresh AUI lifecycle. Keep this separate from new
+pause/budget/participation behavior and preserve the paired-display boundary.
+
+## 2026-09-19 endpoint management first UI slice
+
+- Implemented the first management-dashboard slice after the user confirmed the
+  richer endpoint list was not yet manifested in testing.
+- x-campaign read model now exposes `created_at` and `updated_at` for endpoint
+  rows without adding database reads or changing persistence.
+- x-change Cockpit endpoint rows now render the full public URL, creator display
+  metadata, derived availability state, exposure, started/completed/in-progress
+  progress, Show QR & Share, Copy Link, and reversible Pause/Resume controls.
+- Pause/Resume is intentionally scoped to new starts only: it changes endpoint
+  status between `active` and `paused`, records an audit event, and does not
+  cancel existing Pay Codes or mutate issued vouchers.
+- Progress is derived from durable starts and currently available display-session
+  evidence. The fuller participation ledger and complete direct-start completion
+  attribution remain a later extraction gate.
+- Focused verification:
+  - x-campaign `tests/Feature/EndpointCampaignSummaryTest.php`: 2 passed, 25 assertions.
+  - x-change `tests/Feature/Cockpit/CockpitCampaignWorksheetTest.php`
+    filtered endpoint coverage: 3 passed, 50 assertions.
+  - x-change `tests/frontend/cockpit/CockpitCampaignWorksheet.test.ts`:
+    1 file passed, 22 tests.
+- Formatting: x-campaign Pint passed; x-change PHP formatted with the host Pint
+  binary because the x-change package checkout has no local Pint binary.
 
 ## Update discipline
 
