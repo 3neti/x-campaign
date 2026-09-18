@@ -18,6 +18,8 @@ interface EndpointCampaignRepository
 
     public function merchantSlugUsedByOtherOwner(string $merchantSlug, string $ownerType, string $ownerId): bool;
 
+    public function updateFutureStartsTemplate(EndpointCampaign $campaign, int|string $payCodeTemplateId, string $templateVersionId): EndpointCampaign;
+
     public function recordSuccessfulStart(EndpointCampaign $campaign): void;
 
     /** @return Collection<int, EndpointCampaign> */

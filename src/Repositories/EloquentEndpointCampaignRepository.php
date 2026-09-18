@@ -46,6 +46,22 @@ final class EloquentEndpointCampaignRepository implements EndpointCampaignReposi
             ->exists();
     }
 
+    public function updateFutureStartsTemplate(EndpointCampaign $campaign, int|string $payCodeTemplateId, string $templateVersionId): EndpointCampaign
+    {
+        return DB::transaction(function () use ($campaign, $payCodeTemplateId, $templateVersionId): EndpointCampaign {
+            $locked = $campaign->newQuery()
+                ->lockForUpdate()
+                ->findOrFail($campaign->getKey());
+
+            $locked->forceFill([
+                'pay_code_template_id' => $payCodeTemplateId,
+                'active_template_version_id' => $templateVersionId,
+            ])->save();
+
+            return $locked->fresh() ?? $locked;
+        });
+    }
+
     public function recordSuccessfulStart(EndpointCampaign $campaign): void
     {
         $campaign->newQuery()

@@ -16,6 +16,7 @@ class EndpointCampaign extends Model
         'owner_type',
         'owner_id',
         'pay_code_template_id',
+        'active_template_version_id',
         'merchant_display_name',
         'merchant_slug',
         'endpoint_slug',

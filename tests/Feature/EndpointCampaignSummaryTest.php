@@ -20,7 +20,7 @@ it('projects only campaign fields with the existing defaults and no database acc
     expect($summary)->toBe([
         'reference' => 'campaign-reference', 'title' => 'Application', 'description' => null,
         'status' => 'active', 'merchant_display_name' => 'Merchant', 'merchant_slug' => 'merchant',
-        'endpoint_slug' => 'apply', 'created_at' => null, 'updated_at' => null,
+        'endpoint_slug' => 'apply', 'active_template_version_id' => null, 'created_at' => null, 'updated_at' => null,
         'usage_count' => 7, 'starts_limit' => null,
         'last_started_at' => null, 'expires_at' => null, 'usage_key' => 'lead', 'usage_label' => 'Lead',
         'capabilities' => [], 'availability' => [], 'limits' => [],

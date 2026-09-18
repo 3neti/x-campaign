@@ -16,6 +16,8 @@ beforeEach(function (): void {
         $table->string('reference')->unique();
         $table->string('owner_type');
         $table->string('owner_id');
+        $table->unsignedBigInteger('pay_code_template_id')->nullable();
+        $table->string('active_template_version_id', 80)->nullable();
         $table->string('title');
         $table->string('status');
         $table->string('merchant_slug')->nullable();
@@ -52,6 +54,31 @@ it('creates and finds the consuming model with the existing creation event and r
 
     expect(fn () => $repository->findByPublicEndpointOrFail('other', 'apply'))->toThrow(ModelNotFoundException::class);
     expect(fn () => $repository->findByPublicEndpointOrFail('merchant', 'other'))->toThrow(ModelNotFoundException::class);
+});
+
+it('updates the future starts template pointer without changing counters or endpoint identity', function (): void {
+    $repository = app(EndpointCampaignRepository::class);
+    $campaign = $repository->create([
+        'owner_type' => 'account',
+        'owner_id' => '7',
+        'title' => 'Public link',
+        'status' => 'active',
+        'merchant_slug' => 'merchant',
+        'endpoint_slug' => 'apply',
+        'pay_code_template_id' => 10,
+        'active_template_version_id' => 'template-version-v1',
+    ])->refresh();
+
+    $updated = $repository->updateFutureStartsTemplate($campaign, 25, 'template-version-v2');
+
+    expect($updated->is($campaign))->toBeTrue()
+        ->and($updated->pay_code_template_id)->toBe(25)
+        ->and($updated->active_template_version_id)->toBe('template-version-v2')
+        ->and($updated->usage_count)->toBe(0)
+        ->and($updated->merchant_slug)->toBe('merchant')
+        ->and($updated->endpoint_slug)->toBe('apply')
+        ->and($campaign->fresh()->pay_code_template_id)->toBe(25)
+        ->and($campaign->fresh()->active_template_version_id)->toBe('template-version-v2');
 });
 
 it('scopes merchant slug collisions by both owner type and owner id', function (): void {
@@ -113,6 +140,37 @@ it('keeps start recording inside the callers transaction', function (): void {
 
     expect($campaign->fresh()->usage_count)->toBe(0)
         ->and($campaign->fresh()->last_started_at)->toBeNull();
+});
+
+it('switches only future starts to a new template version without changing usage counters', function (): void {
+    $repository = app(EndpointCampaignRepository::class);
+    $campaign = $repository->create([
+        'owner_type' => 'account',
+        'owner_id' => '7',
+        'pay_code_template_id' => 10,
+        'active_template_version_id' => 'pctv_original',
+        'title' => 'Stable public endpoint',
+        'status' => 'active',
+        'merchant_slug' => 'merchant',
+        'endpoint_slug' => 'apply',
+        'usage_count' => 4,
+        'last_started_at' => now()->subMinute(),
+    ])->refresh();
+    $events = [];
+    EndpointCampaign::updated(function ($model) use (&$events): void {
+        $events[] = $model->reference;
+    });
+
+    $updated = $repository->updateFutureStartsTemplate($campaign, 22, 'pctv_next');
+
+    expect($updated->is($campaign))->toBeTrue()
+        ->and($updated->pay_code_template_id)->toBe(22)
+        ->and($updated->active_template_version_id)->toBe('pctv_next')
+        ->and($campaign->fresh()->pay_code_template_id)->toBe(22)
+        ->and($campaign->fresh()->active_template_version_id)->toBe('pctv_next')
+        ->and($campaign->fresh()->usage_count)->toBe(4)
+        ->and($campaign->fresh()->last_started_at?->equalTo($campaign->last_started_at))->toBeTrue()
+        ->and($events)->toBe([$campaign->reference]);
 });
 
 it('reads only the latest 25 endpoints for the exact owner without changing records', function (): void {

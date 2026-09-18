@@ -19,6 +19,7 @@ final class EndpointCampaignSummary
             'merchant_display_name' => $campaign->merchant_display_name,
             'merchant_slug' => $campaign->merchant_slug,
             'endpoint_slug' => $campaign->endpoint_slug,
+            'active_template_version_id' => $campaign->active_template_version_id,
             'created_at' => $campaign->created_at?->toIso8601String(),
             'updated_at' => $campaign->updated_at?->toIso8601String(),
             'usage_count' => $campaign->usage_count,
