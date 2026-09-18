@@ -80,6 +80,7 @@ use LBHurtado\XCampaign\Contracts\CreatesCampaignPlans;
 use LBHurtado\XCampaign\Contracts\DecidesCampaignAudienceImportApprovals;
 use LBHurtado\XCampaign\Contracts\DecidesCampaignAudienceImportRecipientAttachmentMutations;
 use LBHurtado\XCampaign\Contracts\DispatchesCampaignQueuedPlans;
+use LBHurtado\XCampaign\Contracts\EndpointCampaignRepository;
 use LBHurtado\XCampaign\Contracts\MapsCampaignQueuedPayloadsToAnalyticsSnapshots;
 use LBHurtado\XCampaign\Contracts\MapsCampaignQueuedPayloadsToClaimVisibilities;
 use LBHurtado\XCampaign\Contracts\MapsCampaignQueuedPayloadsToDeliveryHandoffs;
@@ -140,6 +141,7 @@ use LBHurtado\XCampaign\Repositories\EloquentCampaignPlanSnapshotRepository;
 use LBHurtado\XCampaign\Repositories\EloquentCampaignWorksheetImportRepository;
 use LBHurtado\XCampaign\Repositories\EloquentCampaignWorksheetIntakeRepository;
 use LBHurtado\XCampaign\Repositories\EloquentCampaignWorksheetRepository;
+use LBHurtado\XCampaign\Repositories\EloquentEndpointCampaignRepository;
 use LBHurtado\XCampaign\Repositories\InMemoryCampaignPlanRepository;
 use LBHurtado\XCampaign\Services\CampaignQueuedPayloadAnalyticsSnapshotMapper;
 use LBHurtado\XCampaign\Services\CampaignQueuedPayloadClaimVisibilityMapper;
@@ -172,6 +174,8 @@ class XCampaignServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/x-campaign.php', 'x-campaign');
+
+        $this->app->bind(EndpointCampaignRepository::class, EloquentEndpointCampaignRepository::class);
 
         $this->app->singleton(
             CampaignFeatureProfileResolver::class,

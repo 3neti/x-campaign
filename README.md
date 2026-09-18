@@ -24,6 +24,13 @@ Laravel discovers `XCampaignServiceProvider` automatically. Publish and run the 
 
 Runtime execution remains in the consuming settlement application. Planning services never send notifications, move funds, execute provider calls, or issue Pay Codes directly.
 
+## Campaign management extraction
+
+The endpoint-management workstream is tracked in the
+[implementation plan](docs/CAMPAIGN_MANAGEMENT_PLAN.md) and its
+[living compass](docs/CAMPAIGN_MANAGEMENT_COMPASS.md). Consult the compass before
+continuing this work and update it with each implementation or release gate.
+
 ## Compatibility
 
 - PHP 8.3 or 8.4

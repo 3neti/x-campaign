@@ -1,5 +1,11 @@
 # x-campaign Compass
 
+## Active campaign management workstream (2026-09-18)
+
+See [Campaign management plan](CAMPAIGN_MANAGEMENT_PLAN.md) and the living
+[Campaign management compass](CAMPAIGN_MANAGEMENT_COMPASS.md). The phases below
+are historical package-development evidence, not completion of this new extraction.
+
 ## Mission
 
 Build `x-campaign` as the beneficiary distribution platform for the x-change Settlement Operating System.
